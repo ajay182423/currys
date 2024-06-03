@@ -1,0 +1,147 @@
+[
+    {
+        "name" : "Customer Information",
+        "content": [
+            {
+                "labelName" : "Full Name",
+                "controlName" : "fullName",
+                "controlValue" : "Aisha Malik"            
+            },
+            {
+                "labelName" : "Cutomer Id",
+                "controlName" : "customerId",
+                "controlValue" : "xxx4592"            
+            },
+            {
+                "labelName" : "SSN",
+                "controlName" : "ssn",
+                "controlValue" : "xxxxx2321"            
+            },
+            {
+                "labelName" : "Nationality",
+                "controlName" : "nationality",
+                "controlValue" : "Indian"            
+            },
+            {
+                "labelName" : "DOB",
+                "controlName" : "dob",
+                "controlValue" : "5th August, 1990"            
+            },
+            {
+                "labelName" : "Gender",
+                "controlName" : "gender",
+                "controlValue" : "Female"            
+            }
+        ]
+    },
+    {
+        "name" : "Contact Information",
+        "content": [
+            {
+                "labelName" : "Email Id",
+                "controlName" : "emailId",
+                "controlValue" : "aisha.malik@email.com"            
+            },
+            {
+                "labelName" : "Phone Number",
+                "controlName" : "phoneNumber",
+                "controlValue" : "7923459871"            
+            },
+            {
+                "labelName" : "Usual Residential Address",
+                "controlName" : "usual_residential_address",
+                "controlValue" : "52 Victoria Street, Winchester, SO23 9DD"            
+            },
+            {
+                "labelName" : "Service Address",
+                "controlName" : "serviceAddress",
+                "controlValue" : "52 Victoria Street, Winchester, SO23 9DD"            
+            } 
+        ]
+    },
+    {
+        "name" : "Account Details",
+        "content": [
+            {
+                "labelName" : "Account Name",
+                "controlName" : "accountName",
+                "controlValue" : "Normal Credit Card"            
+            },
+            {
+                "labelName" : "Account Number",
+                "controlName" : "accountNumber",
+                "controlValue" : "XXXX18151623"            
+            },
+            {
+                "labelName" : "Recent Balance($)",
+                "controlName" : "recentBalance",
+                "controlValue" : "2000"            
+            },
+            {
+                "labelName" : "Date Opened",
+                "controlName" : "dateOpened",
+                "controlValue" : "5th August, 2023"            
+            },
+            {
+                "labelName" : "Account Type",
+                "controlName" : "accountType",
+                "controlValue" : "Credit Card"            
+            }, 
+            {
+                "labelName" : "Credit Limit($)",
+                "controlName" : "creditLimit",
+                "controlValue" : "2500"            
+            },
+            {
+                "labelName" : "Association Duration",
+                "controlName" : "associationDuration",
+                "controlValue" : "12 Years"            
+            },
+            {
+                "labelName" : "Credit History",
+                "controlName" : "creditHistory",
+                "controlValue" : "Good"            
+            },
+            {
+                "labelName" : "Other Accounts",
+                "controlName" : "otherAccounts",
+                "controlValue" : "Credit Card"            
+            },
+            {
+                "labelName" : "Product Type 1",
+                "controlName" : "productType1",
+                "controlValue" : "-"            
+            },
+            {
+                "labelName" : "Product Type 2",
+                "controlName" : "productType2",
+                "controlValue" : "-"            
+            }
+        ]
+    },
+    {
+        "name" : "Payment Details",
+        "content": [
+            {
+                "labelName" : "Amount Due($)",
+                "controlName" : "amountDue",
+                "controlValue" : "2524"            
+            },
+            {
+                "labelName" : "Due Date",
+                "controlName" : "dueDate",
+                "controlValue" : "10th October, 2023"            
+            },
+            {
+                "labelName" : "Days Past Due",
+                "controlName" : "daysPastDue",
+                "controlValue" : "30 Days"            
+            },
+            {
+                "labelName" : "Promise to Pay Date",
+                "controlName" : "Pay_Date",
+                "controlValue" : "10th November, 2023"            
+            } 
+        ]
+    }
+]

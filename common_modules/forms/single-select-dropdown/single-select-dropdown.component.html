@@ -1,0 +1,16 @@
+<div style="display: flex; flex-direction: column;">
+  <div class="app-select">
+    <select class="select" [formControl]="ngControl.control" #dropDown [class.is-invalid]="ngControl.touched && ngControl.invalid"
+      (change)="requiredCheckOnChangeInput(dropDown.value)" (blur)="requiredCheckOnBlurInput(dropDown.value)">
+      <ng-container *ngIf="showDefaultOption">
+        <option value={{defaultOption.id}}>{{defaultOption.name}}</option>
+      </ng-container>
+      <option value={{item.id}} *ngFor="let item of optionList">
+        {{item.name}} 
+      </option>
+    </select>
+    <div class="app-select-arrow">
+    </div>
+  </div>
+  <div *ngIf="(ngControl.touched && ngControl.control.errors?.required) || fieldRequiredError" class="invalid-feedback">{{label}} field is required</div>
+</div>

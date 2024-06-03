@@ -1,0 +1,108 @@
+.mobile-hidden-nav {
+  width: 100%;
+  margin-top: -0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .menu-item {
+    width: 100%;
+    .link-with-sub-links {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      .mob-nav-link {
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+      }
+      .sub-menu {
+        padding: 0rem 2.6rem;
+        .sub-menu-link {
+          height: 3rem;
+          .mt-icon {
+            font-size: 1.8rem;
+          }
+        }
+        .sub-menu-link:first-child {
+          margin-top: 0.8rem;
+        }
+        .sub-menu-link:last-child {
+          margin-bottom: 0.3rem;
+        }
+        .sub-menu-link-active {
+          .sub-menu-name {
+            color: var(--secondary-color);
+          }
+        }
+      }
+    }
+    .show-sub-links {
+      background-color: var(--bg-01);
+      .mob-nav-link {
+        .mt-icon,
+        .mob-nav-name {
+          color: var(--secondary-color);
+        }
+        .drop-icon {
+          transform: rotate(225deg);
+          top: 2rem;
+          border-color: var(--secondary-color);
+        }
+      }
+    }
+  }
+  .mob-nav-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 0.6rem 3rem;
+    font-size: calc(var(--font-size-s) * 1.6);
+    color: var(--text-color-00);
+    font-weight: 400;
+    margin-top: 0.5rem;
+    .menu-icon {
+      margin-right: 0.8rem;
+      min-width: 3.5rem;
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mt-icon {
+      color: var(--icon-color);
+      font-size: 2.2rem;
+    }
+    .mob-nav-name {
+      flex-grow: 1;
+    }
+    .drop-icon {
+      content: "";
+      display: flex;
+      box-sizing: border-box;
+      position: absolute;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-bottom: 0.2rem solid;
+      border-right: 0.2rem solid;
+      transform: rotate(45deg);
+      right: 4rem;
+      top: 1.5rem;
+      border-color: var(--icon-color);
+      opacity: 1;
+      transition: 0.4s ease-in-out;
+    }
+  }
+  .active-mob-nav-link {
+    color: var(--primary-color);
+    .mt-icon {
+      color: var(--primary-color);
+    }
+  }
+  .mob-nav-link:hover {
+    background-color: var(--bg-02);
+    color: var(--secondary-color);
+    .mt-icon {
+      color: var(--secondary-color);
+    }
+  }
+}

@@ -1,0 +1,45 @@
+
+{
+  "menuItems": [
+    {
+      "id": "GEN",
+      "link": "/front-office-dashboard",
+      "icon": "computer",
+      "name": "Front Office Dashboard",
+      "showSubMenu": false,
+      "subMenu": []
+    },
+    {
+      "id": "GEN",
+      "link": "/front-office-records",
+      "icon": "format_list_bulleted",
+      "name": "Smart Audit.VO",
+      "showSubMenu": false,
+      "subMenu": []
+    },
+    {
+      "id": "GEN",
+      "link": "/live-audit-records",
+      "icon": "live_tv",
+      "name": "Live Agent Assist",
+      "showSubMenu": false,
+      "subMenu": []
+    },
+    {
+      "//id": "GEN",
+      "//link": "/procedural-guidance",
+      "//icon": "procedure",
+      "//name": "Procedural Guidance",
+      "//showSubMenu": false,
+      "//subMenu": []
+    },
+    {
+      "id": "SET",
+      "link": "/settings",
+      "icon": "settings",
+      "name": "Settings",
+      "showSubMenu": false,
+      "subMenu": []
+    }
+  ]
+}

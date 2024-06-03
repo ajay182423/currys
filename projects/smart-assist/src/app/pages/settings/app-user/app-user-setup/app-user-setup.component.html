@@ -1,0 +1,56 @@
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+      <div>
+        <label class="field-label">Username</label>
+        <text-input [formControl]='modalForm.controls["userName"]' [label]='"Username"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">First Name</label>
+          <text-input [formControl]='modalForm.controls["firstName"]' [label]='"First Name"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">Last Name</label>
+          <text-input [formControl]='modalForm.controls["lastName"]' [label]='"Last Name"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">Email</label>
+          <text-input [formControl]='modalForm.controls["email"]' [label]='"Email"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">Is Active?</label>
+          <text-input [formControl]='modalForm.controls["isActive"]' [label]='"Is Active"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">Last Sign On</label>
+          <text-input [formControl]='modalForm.controls["lastLoggedInOn"]' [label]='"Last Sign On"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">App Role<span>*</span></label>
+        <multi-select-dropdown [label]='"Role"' [optionList]="appRoleList"></multi-select-dropdown>
+      </div>
+      <div>
+        <label class="field-label">Group Name<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #userGroupDropDown formControlName='userGroupId' [class.is-invalid]="userGroupSelectError"
+              (change)="requiredCheckOnSelectInput('UserGroup',userGroupDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('UserGroup',userGroupDropDown.value)">
+              <option value="0">Select</option>
+              <option value={{item.id}} *ngFor="let item of userGroupList">
+                {{item.name}}
+              </option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="userGroupSelectError" class="invalid-feedback">Group name is required</div>
+      </div>
+      <div class="form-btns full-width">
+        <div>
+          <button class="btn" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

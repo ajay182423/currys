@@ -1,0 +1,45 @@
+{
+    "complianceChartData": {
+        "labels" : ["Pass", "Fail", "Exception"],
+        "data" : [27, 13, 190]
+    },
+    "sectionChartData": {
+        "labels" : ["ID&V", "PCI-DSS", "Text/Phrase Detection"],
+        "data" : [25, 56, 110]
+    },
+    "auditFormChartData": {
+        "labels" : ["Call Audit", "Vulnerable Customer"],
+        "data" : [124, 243]
+    },
+    "transactionChartDataDayWise": {
+        "labels" : ["30 Oct", "31 Oct"],
+        "data" : {
+            "completed" : [101, 191],
+            "pending" : [1, 3]
+        }        
+    },
+    "transactionChartDataMonthWise": {
+        "labels" : ["Sep 2022", "Oct 2022"],
+        "data" : {
+            "completed" : [11, 356],
+            "pending" : [3, 6]
+        }        
+    },
+    "failedAuditChartDataDayWise": {
+        "labels" : ["28 Oct",  "29 Oct", "30 Oct"],
+        "data" : {
+            "idv" : [8, 9, 7],
+            "pci_dss" : [3, 6, 2],
+            "phraseDetection" : [7, 9, 5]
+        }        
+    },
+    "failedAuditChartDataMonthWise": {
+        "labels" : ["Sep 2022", "Oct 2022"],
+        "data" : {
+            "idv" : [7,13],
+            "pci_dss" : [3, 12],
+            "phraseDetection" : [6, 13]
+        }          
+    }
+
+}

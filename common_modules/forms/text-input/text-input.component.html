@@ -1,0 +1,28 @@
+<div style="display: flex; flex-direction: column;">
+    <input
+        [class.is-invalid]="ngControl.touched && ngControl.invalid"
+        [class.verified]="isVerified"
+        type={{type}}
+        placeholder={{placeHolder}}
+        class="app-textbox"
+        [formControl]="ngControl.control"
+        autocomplete="off"
+        [ngStyle]="{ 'background-color': backgroundColor, 'animation': blinker ? 'blink 1s infinite' : 'none' }"
+        [readonly]="isReadOnly"zz>
+    <div *ngIf="ngControl.touched && ngControl.control.errors?.required" class="invalid-feedback">{{label}} field is required</div>
+    <div *ngIf="ngControl.control.errors?.minlength" class="invalid-feedback">
+        {{label}} field's length must be at least {{ngControl.control.errors.minlength['requiredLength']}} character
+    </div>
+    <div *ngIf="ngControl.control.errors?.maxlength" class="invalid-feedback">
+        {{label}} field's length must be at most {{ngControl.control.errors.maxlength['requiredLength']}} character
+    </div>
+    <div *ngIf="ngControl.control.errors?.isMatching" class="invalid-feedback">
+        Passwords do not match
+    </div>
+    <div *ngIf="ngControl.control.errors?.email" class="invalid-feedback">
+        Email address is not valid
+    </div>
+    <div *ngIf="ngControl.control.errors?.pattern" class="invalid-feedback">
+        {{label}} field does not meet required criteria
+    </div>
+</div>

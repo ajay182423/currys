@@ -1,0 +1,130 @@
+<div class="call_transcript_block">
+    <div class="call_transcript_header">
+      <div class="d-flex align-center justify-between">
+        <div class="header_right d-flex align-center justify-between"> 
+          <div class="d-flex align-center">
+            
+            <div class="console_button inactive">
+              <button class="eod_btn" title="Expression of Dissatisfaction">
+                <span class="material-symbols-rounded" [ngClass]="eodCheck ? 'text-danger' : ''">
+                  notification_important
+                </span>
+              </button>
+            </div>
+            <div class="console_button inactive">
+                <button class="vulnerable_btn" title="Vulnerability">
+                  <span class="material-symbols-rounded" [ngClass]="VulSign == 'Yes'? 'text-danger' : 'success-color'" >
+                    warning
+                  </span>
+                </button>
+              </div>
+            <div class="console_button active calling d-flex align-center">
+                <button title="Current Call">
+                  <span class="material-symbols-rounded">
+                    wifi_calling_1
+                  </span>
+                </button>
+            </div>
+
+          </div>
+          <ng-container *ngIf="transcriptData?.length > 0">
+            <div class="sentiments d-flex align-center" title="Sentiment {{ transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'Happy' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'Unhappy' : 'Neutral'}}">
+              <span [ngClass]="transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'text-success' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'text-danger' : 'text-secondary'" style="margin-right: 5px;">{{transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'Positive' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'Negative' : 'Neutral'}}</span>
+              <span class="material-symbols-rounded" [ngClass]="transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'text-success' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'text-danger' : 'text-secondary'">
+               {{transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'sentiment_very_satisfied' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'sentiment_very_dissatisfied' : 'sentiment_neutral'}} 
+              </span>
+            </div>
+          </ng-container>
+            <button class="toggle_transcript" (click)="toggleAgentTranscript()" title="Toggle Agent's Transcript">
+              <span class="material-symbols-rounded ">
+               {{isShowAgentTranscript ? 'visibility' : 'visibility_off' }} 
+              </span> 
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner">
+          <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                
+                <div class="scrollable-content"> 
+                  <div *ngFor="let transcript of transcriptData; let i = index">
+                    <div *ngIf="transcript.speaker.toLowerCase() != 'feedback'" class="message_thread {{transcript.speaker.toLowerCase()}}" [ngClass]="isShowAgentTranscript ? 'showAgent' : ''">
+                      <div class="d-flex align-start justify-start" style="width: 100%;">
+                        <div class="d-flex align-start justify-start"  style="width: 100%;">
+                          <span class="badge">
+                            <ng-container *ngIf="transcript.speaker.toLowerCase() != 'agent'">
+                              {{transcript.speaker.toUpperCase().slice(0, 1)}}
+                            </ng-container>
+                            <ng-container *ngIf="transcript.speaker.toLowerCase() == 'agent'">
+                              <span class="material-symbols-rounded" style="font-size: 1.8rem;">
+                                support_agent
+                              </span> 
+                            </ng-container>
+                          </span>
+                          
+                            
+                          
+                          <div style="width: 100%;margin-top: 7px;">
+                            <div>
+                              <span class="{{transcript.speaker.toLowerCase()}} speaker">{{transcript.speaker}}</span> 
+                            </div>
+                            <p class="trans_comment" [class.vulnerable] = "transcript.driver.vulnerability_type != 'Not Applicable'">                               
+                              <span>
+                                {{transcript.comment}}
+                              </span>
+                            </p>
+                            <div class="d-flex align-end justify-end">                               
+                                <span class="time">{{transcript.end_time}}</span> 
+                            </div>                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <ng-container *ngIf="transcript.entities != ' ' ">                    
+                      <div class="ai_entity" *ngFor="let entity of transcript.entities">
+                        <div class="d-flex align-start justify-between">
+                          <div class="d-flex align-start justify-start">
+                            <div class="ai_icon">
+                              <span class="material-symbols-rounded" >
+                                logout
+                              </span> 
+                            </div>
+                            <p class="entity_heading">AI Entity Extract</p>
+                          </div>
+                          <div class="review_buttons">
+                            <button class="dislike_btn" (click)="openEntityPopup({'entity' : entity?.entity, 'text' :entity?.text})">
+                              <span class="material-symbols-rounded" style="font-size: 1.6rem;">
+                                thumb_down
+                              </span> 
+                            </button>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-between">
+                          <div class="entity" title="{{transcript.comment}}">
+                            {{ entity?.entity.replace('_', ' ')}} : <span>{{entity?.text}}</span> 
+                          </div>
+                          <div class="d-flex flex-column justify-end">
+                            <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                              <span class="mt-icon material-icons-round">
+                                content_copy
+                              </span>
+                            </button>
+                            <span class="copy_text_info">
+                              <span>{{copiedText}}</span>
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                  </ng-container> -->
+
+                  </div>
+                </div>
+              </div>
+        </div>
+      </perfect-scrollbar>
+    </div> 
+</div> 

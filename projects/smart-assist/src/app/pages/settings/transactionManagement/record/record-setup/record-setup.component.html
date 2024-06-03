@@ -1,0 +1,100 @@
+
+<div class="audit-form">
+  <div class="table-name">
+    <header>Behavioural</header>
+    <header class="second">Weight <span>60%</span></header>
+  </div>
+  <table class="fp-table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th style="width: 500px;">
+          <label>Questions</label>
+        </th>
+        <th>
+          <label class="field-label">Result<span>*</span></label>
+        </th>
+        <th>
+          <label class="field-label">Confidence<span>*</span></label>
+        </th>
+
+        <th> <label class="field-label">Remark<span>*</span></label>
+        </th>
+      </tr>
+    </thead>
+
+    <thead *ngFor="let question of productQuestion  ; let i = index;">
+      <tr>
+        <th>
+          {{i+1}}
+        </th>
+        <th style="width: 500px; text-align: left;">
+          <div class="fatel-row">
+          <div> {{question.data}}</div>
+          <!-- <div class="mt-icon material-icons-round" style="color: #fb4e0b;">warning</div> -->
+          </div>
+
+        </th>
+        <th>
+          <div class="app-select">
+            <select class="select">
+              <option>NA</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+        </th>
+        <th>
+          <input class="confidence" type="text" placeholder="95%">
+        </th>
+        <th>
+          <input class="audit-input" ngClass="desc" type="text">
+        </th>
+      </tr>
+    </thead>
+  </table> <br>
+
+
+  <div class="table-name">
+    <header>Product and Service Related</header>
+    <header class="second">Weight <span>40%</span></header>
+  </div>
+  <table class="fp-table">
+    <thead *ngFor="let question of questions ; let i = index;">
+      <tr>
+        <th style="border-color: #fb4e0b;" >
+          {{i+1}}
+        </th>
+        <th style="width: 500px; text-align: left;">
+          <div class="fatel-row">
+            <div> {{question.data}}</div>
+            <!-- <div class="mt-icon material-icons-round" style="color: #fb4e0b;">warning</div> -->
+          </div>
+        </th>
+        <th>
+          <div class="app-select">
+            <select class="select">
+              <option>NA</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+        </th>
+        <th>
+
+          <input class="confidence" type="text" placeholder="95%"></th>
+        <!-- <th><select class="conf_option">
+            <option style="color: hsl(0, 1%, 36%)">Fatal</option>
+            <option style="color: hsl(0, 1%, 36%)">Not fatal</option>
+          </select></th> -->
+        <th>
+          <input class="audit-input" ngClass="desc" type="text">
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>

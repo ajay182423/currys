@@ -1,0 +1,768 @@
+<div class="call_console" [ngClass]="showSlider ? 'showSlider': ''">
+
+  <div class="d-flex align-center justify-center" style="margin-bottom: 1rem;">
+    <div class="call_categories d-flex align-center">
+      <ng-container *ngFor="let transcript of transcriptData">
+          <ng-container *ngIf="transcript?.intent_data?.length > 0">
+            <ng-container *ngFor="let intents of transcript.intent_data">
+              <ng-container *ngFor="let intent of intents.value">
+                <div class="call_category">
+                  {{intent.name}}
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+      </ng-container>
+      <ng-container *ngIf="transcriptData == null || transcriptData?.length == 0">
+        <div class="call_category">
+          Call intent loading...
+        </div>
+      </ng-container>
+      <!-- <div class="call_category">
+        Booking
+      </div>
+      <div class="call_category">
+        Air
+      </div>
+      <div class="call_category">
+        Booking
+      </div>
+      <div class="call_category">
+        Air
+      </div> -->
+    </div>
+    <span class="separator"></span>
+    <div class="d-flex align-center">
+      <div class="console_button inactive d-flex align-center">
+        <button class="waiting_time" title="Waiting Time">
+          <span class="material-symbols-rounded">
+            hourglass_top
+          </span>
+        </button>
+        <div class="timer">00:00</div>
+      </div>
+      <div class="console_button active calling d-flex align-center">
+        <button title="Current Call">
+          <span class="material-symbols-rounded">
+            wifi_calling_1
+          </span>
+        </button>
+        <div class="timer">{{currentAudio}}</div>
+      </div>
+    </div>
+    <span class="separator"></span>
+    <div class="d-flex align-center">
+      <div class="console_button inactive">
+        <button (click)="onStartPressed()" class="play_pause" title="Play/Pause">
+          <span class="material-symbols-rounded">
+          {{playingState ? 'pause_circle' : 'play_circle' }}
+          </span>
+        </button>
+      </div>
+      <div class="console_button inactive">
+        <button class="call_forward" title="Call Forward">
+          <span class="material-symbols-rounded">
+            phone_forwarded
+          </span>
+        </button>
+      </div>
+      <div class="console_button inactive">
+        <button (click)="onStopPressed()" class="end_call" title="End Call">
+          <span class="material-symbols-rounded">
+            phone_disabled
+          </span>
+        </button>
+      </div>
+    </div>
+    <span class="separator"></span>
+    <div class="d-flex align-center">
+      <div class="console_button inactive">
+        <button [ngClass]="break ? 'take_break': 'on_break'" title="Take Break" (click)="takeBreakToggle()"> {{break ? 'Take Break' : 'On Break'}} </button>
+      </div>
+      <div class="console_button inactive">
+        <button [ngClass]="shift ? 'end_shift': 'start_shift'"  title="End Shift" (click)="endShiftToggle()"> {{shift ? 'End Shift' : 'Start Shift'}} </button>
+      </div>
+    </div>
+    <div class="header_slider" (click)="sliderToggle()">
+      <button class="slider_btn" >
+        &nbsp;
+      </button>
+    </div>
+  </div>
+  <div>
+    <ng-container>
+      <div id="wave-timeline" class="wave-timeline" style="display: none;"></div>
+      <div id="waveform" class="waveform" style="cursor: pointer;"></div>
+    </ng-container>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="d-flex align-start justify-between">
+    <div class="call_section">
+      <app-call-information></app-call-information>
+    </div>
+    <div class="call_section">
+      <app-call-transcript [transcriptData]="transcriptData" ></app-call-transcript>
+    </div>
+    <div class="call_section">
+      <app-ai-entity-extract></app-ai-entity-extract>
+    </div>
+  </div>
+</div>
+<!-- <perfect-scrollbar>
+  <div class="main_section">
+    <div class="d-flex align-stretch justify-between " >
+      <div class="left_block">
+        <div class="callDetailsBlockOnce padding_5">
+          <div class="d-flex flex-column padding_5" style="border-right: 2px solid hsl(0, 2%, 87%); width: 70%;">
+            <div class="items" style="width: 100%;">
+              <div class="d-flex" style="width: 50%;">
+                <span class="callTypeIcon material-symbols-rounded">
+                  branding_watermark
+                </span>
+                <div style="margin-left: 1vw;">
+                  <label class="field-label">Agent Name</label>
+                  <div class="idCallBox"><span>{{agentName}}&nbsp;</span></div>
+                </div>
+              </div>
+              <div style="margin-left: 2vw">
+                <label class="field-label">No of Driver Comment</label>
+                <div class="idCallBox"><span class="driverComment">{{vulnerability_Data.length}}</span></div>
+              </div>
+            </div>
+            <div class="item2">
+              <div class="d-flex" style="width: 50%;">
+                <span class="callTypeIcon material-symbols-rounded">
+                  phone_in_talk
+                </span>
+                <div style="margin-left: 1vw">
+                  <label class="field-label">Call Type</label>
+                  <div class="idCallBox"><span>{{callResponse}}&nbsp;</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-right: 0.8vw;">
+                <label class="field-label">Current Call Time</label>
+                <div class="idCallBox"><i class="fa fa-phone" style="margin-right: 10px; color: green;"></i>
+                  <span class="currentAudio">{{currentAudio}}&nbsp;</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="padding_5" style="margin-left: 1vw;">
+            <div class="d-flex" style="width: 100%;">
+              <span class="callTypeIcon material-symbols-rounded">
+                notification_important
+              </span>
+              <div style="margin-left: 10px;">
+                <label class="field-label">EOD</label>
+                <div class="idCallBox"><span>
+                  <ng-container  *ngIf="!EODPass">
+                    NA
+                  </ng-container>
+                  <ng-container *ngIf="EODPass" style="color: red;">
+                    Identified
+                  </ng-container>
+                  &nbsp;
+                </span></div>
+              </div>
+            </div>
+            <div class="" style="margin-top: 20px;">
+              <label class="field-label">Complaint Type :</label>
+              <span style="font-size: small;" class="blink_me" *ngIf="complainDriverShow">
+                {{complainDriver}}&nbsp;<span>*</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right_block">
+        <div class="agentDetailsBlock padding_5" >
+          <div class="d-flex align-start justify-between" style="width: 100%;">
+            <div class="d-flex flex-column" style="border-right: 2px solid hsl(0, 2%, 87%); margin-top: 5px; width: 60%;">
+              <div class="d-flex padding_5" style="width: 92%;">
+                <div style="display: flex; width:100%">
+                  <span class="callTypeIcon material-symbols-rounded">
+                    warning
+                  </span>
+                  <div style="margin-left: 1vw; width: 25%;">
+                    <label class="field-label">Sign of Vulnerability</label>
+                    <div class="idCallBox">
+                      <ng-container *ngIf="VulSign == 'Yes'">
+                        <span style="color: Red;">{{VulSign}}&nbsp;</span>
+                      </ng-container>
+                      <ng-container *ngIf="VulSign == 'No'">
+                        <span style="color: green;">{{VulSign}}&nbsp;</span>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-right: 1vw; width: 25%;">
+                  <label class="field-label">Customer Status</label>
+                  <div class="idCallBox">
+                    <ng-container *ngIf="VulSign == 'Yes'">
+                      <span style="color: Red; font-size: small">Potential Vulnerable</span>
+                    </ng-container>
+                    <ng-container *ngIf="VulSign == 'No'">
+                      <span style="color: green;">Non Vulnerable</span>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-right: 10px; height: 2px; border: none; background-color: hsl(0, 2%, 87%);;">
+              <div class="d-flex justify-evenly justify-start padding_5" style="width: 92%; margin-top: 10px;">
+                <div style="display: flex; width:100%">
+                  <span class="callTypeIcon material-symbols-rounded">
+                    manage_search
+                  </span>
+                  <div style="margin-left: 1vw; width: 25%;">
+                    <label class="field-label"title="Click to Check all Driver" style="cursor: pointer;" (click)="clickDriver()"><u>Driver</u>:</label>
+                    <div class="idCallBox">
+                      <ng-container *ngIf="driverData == undefined || driverData == '' ">
+                        <span>Not Applicable</span>
+                      </ng-container>
+                      <ng-container *ngIf="driverData">
+                        <span>{{driverData.driver.vulnerability_type}}</span>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-right: 1vw; width: 25%;">
+                  <label class="field-label">Timestamp</label>
+                  <div class="idCallBox">
+                    <ng-container *ngIf="driverData == undefined || driverData == '' ">
+                      <span>00:00:00:000</span>
+                    </ng-container>
+                    <ng-container *ngIf="driverData">
+                      <span>{{driverData.end_time}}</span>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column padding_5" style="width: 40%;">
+              <div>
+                <label class="field-label">Confidence on Customer Vulnerability</label>
+                <div class="card_content" *ngIf="checkVul">
+                  <canvas id='chart_pci_compliance' height="70"></canvas>
+                </div>
+              </div>
+              <div class="d-flex" *ngIf="VulSign == 'Yes'">
+                <label class="label">Action:</label>
+                <span style="margin-left: 5px; font-size: small;" class="blink_me">
+                  Vulnerable caller detected, handle call more sensitively<span>*</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="audio-player" *ngIf="showAudioPlayer">
+      <div style="display: flex;">
+        <h1   style="font-size: 20px;font-weight: 600;color: #fb4e0b;">Voice Call Timeline</h1>
+        <div *ngIf="audioLoading" style="color: #fb4e0b; margin-left: 50px;">Audio loading... Please Wait..</div>
+      </div>
+      <ng-container>
+        <div id="wave-timeline" class="wave-timeline" style="display: none;"></div>
+        <div id="waveform" class="waveform" style="display: none;"></div>
+      </ng-container>
+       <div *ngIf="wave" class="controls" style="display: none;">
+        <div style="padding:10px; color: hsl(0, 1%, 36%);">Total Call Duration:<span style="margin-left: 10px; font-weight: bold;">{{audioLength}}&nbsp;</span></div>
+        <div class="audioControls">
+          <button class="btn" (click)="onStopPressed()"><i class="fa fa-stop" aria-hidden="true" id="playPause"></i></button>
+          <button class ='btn' (click)="onStartPressed(isPlaying)">
+            <i *ngIf="playingState" class="fa fa-pause" aria-hidden="true"></i>
+            <i *ngIf="!playingState" class="fa fa-play" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="volume-slider">
+          <button class="btn" (click)="showVolumeButtons()" style="border: none; background: none;">
+            <i *ngIf="!isShowing" class="fa fa-volume-up" aria-hidden="true" id="volume_icon"></i>
+            <i *ngIf="isShowing" class="fa fa-volume-off" aria-hidden="true" id="volume_icon"></i>
+          </button>
+          <input type="range" min="0" max="1" step="0.01" value="1"
+          style="width: 10vw; float: right; margin: 18px 25px 0 10px;" (change)="setVolume($event)">
+        </div>
+      </div>
+    </div>
+    <div class="d-flex align-start justify-between" style="margin: 3px 0">
+      <div class="left_block">
+        <div *ngIf="showTranscriptBox">
+          <div class="card utilization-circle" style="display: flex;flex-direction: column;">
+            <div class="card_tabs" style="display: flex">
+              <button *ngIf="iscallTranscript" [ngClass]="callTranscriptShow ? 'tabs-button-active' : 'tabs-button'"
+                  style="flex-grow: 1;border-top-left-radius:5px;"
+                  (click)="callTranscriptDetails('callTranscript')">
+                  Call Transcript
+              </button>
+              <button *ngIf="isProceduralGuidance" [ngClass]="proceduralGuidanceShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1; position: relative;"
+                (click)="callTranscriptDetails('proceduralGuidance')">Procedural Guidance
+              </button>
+              <button *ngIf="isCallSummary" [ngClass]="summaryShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1;border-top-right-radius:5px; position: relative;"
+                (click)="callTranscriptDetails('summary')">Call Summary
+              </button>
+            </div>
+          </div>
+          <div class="card_content" style="height: 100%;" *ngIf="callTranscriptShow">
+            <div class="transcriptBlock">
+              <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <div *ngFor="let transcript of transcriptData">
+                    <div class="message_thread">
+                      <div class="d-flex align-start justify-start" style="width: 100%;">
+                        <div class="d-flex align-start justify-start" style="width: 100%;">
+                          <span class="{{transcript.speaker.toLowerCase()}} badge">{{transcript.speaker.toUpperCase().slice(0, 1)}}</span>
+                          <div style="width: 100%;">
+                            <div class="d-flex align-end justify-between">
+                              <div>
+                                <span class="{{transcript.speaker.toLowerCase()}} speaker">{{transcript.speaker}}</span>
+                                <span class="time">{{transcript.end_time}}</span>
+                              </div>
+                            </div>
+                            <p class="trans_comment" [class.vulnerable] = "transcript.driver.vulnerability_type != 'Not Applicable'">
+                              <ng-container *ngIf="transcript.driver.vulnerability_type != 'Not Applicable'">
+                                <angular-emojis [name]="'warning'" size="15" title="Vulnerability"> </angular-emojis>
+                              </ng-container>
+                              <span>
+                                {{transcript.comment}}
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                        <p>
+                          <ng-container *ngIf="transcript.emotion.label =='admiration'">
+                            <angular-emojis [name]="'clap'" size="25" title="Admiration"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='amusement'">
+                            <angular-emojis [name]="'popcorn'" size="25" title="Amusement"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='anger'">
+                            <angular-emojis [name]="'angry'" size="25" title="Anger"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='approval'">
+                            <angular-emojis [name]="'thumbsup'" size="25" title="Approval"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='caring'">
+                            <angular-emojis [name]="'palms_up_together'" size="25" title="Caring"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='confusion'">
+                            <angular-emojis [name]="'confused'" size="25" title="Confusion"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='curiosity'">
+                            <angular-emojis [name]="'raising_hand'" size="25" title="Curiosity"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='desire'">
+                            <angular-emojis [name]="'face-with-tears-of-joy'" size="25" title="Desire"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='disappointment'">
+                            <angular-emojis [name]="'disappointed'" size="25" title="Disappointment"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='disapproval'">
+                            <angular-emojis [name]="'thumbsdown'" size="25" title="Disapproval"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='disgust'">
+                            <angular-emojis [name]="'grimacing'" size="25" title="Disgust"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='embarrassment'">
+                            <angular-emojis [name]="'pensive'" size="25" title="Embarrassment"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='excitement'">
+                            <angular-emojis [name]="'blush'" size="25" title="Excitement"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='fear'">
+                            <angular-emojis [name]="'fearful'" size="25" title="Fear"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='gratitude'">
+                            <angular-emojis [name]="'pray'" size="25" title="Gratitude"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='grief'">
+                            <angular-emojis [name]="'pensive'" size="25" title="Grief"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='joy'">
+                            <angular-emojis [name]="'joy'" size="25" title="Joy"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='love'">
+                            <angular-emojis [name]="'heart'" size="25" title="Love"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='nervousness'">
+                            <angular-emojis [name]="'cry'" size="25" title="Nervousness"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='optimism'">
+                            <angular-emojis [name]="'open_mouth'" size="25" title="Optimism"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='pride'">
+                            <angular-emojis [name]="'smiley'" size="25" title="Pride"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='realization'">
+                            <angular-emojis [name]="'flushed'" size="25" title="Realization"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='relief'">
+                            <angular-emojis [name]="'relieved'" size="25" title="Relief"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='remorse'">
+                            <angular-emojis [name]="'slightly_frowning_face'" size="25" title="Remorse"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='sadness'">
+                            <angular-emojis [name]="'white_frowning_face'" size="25" title="Sadness"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='surprise'">
+                            <angular-emojis [name]="'face_with_raised_eyebrow'" size="25" title="Surprise"> </angular-emojis>
+                          </ng-container>
+                          <ng-container *ngIf="transcript.emotion.label =='neutral'">
+                            <angular-emojis [name]="'neutral_face'" size="25" title="Neutral"> </angular-emojis>
+                          </ng-container>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card_content" style="height: 100%;" *ngIf="proceduralGuidanceShow">
+            <div class="transcriptBlock" style="position: relative;">
+              <div *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <span class="contents">
+                    <ng-container *ngFor="let transcript of transcriptData; let i = index">
+                      <ng-container *ngIf="transcript.Procedural_Guidance != '' ">
+                        <p class="question">{{transcript.Procedural_Guidance.Question}}</p>
+                        <div class="answer" style="margin-bottom:10px">
+                        <div class="answer_content">
+                            <div class="primary_text" style="margin-bottom: 10px;">
+                              <span class="responseText">{{transcript.Procedural_Guidance.Answer}}</span>
+                            </div>
+                            <div  class="secondary_text">
+                              <p class="answer_heading">Reference Documents :</p>
+                              <ng-container *ngFor="let reference of transcript.Procedural_Guidance.Source">
+                                <button style="cursor: pointer;" (click)="openPopup(reference.source)">
+                                  {{reference.Source_Name}}
+                                </button>
+                              </ng-container>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let response of responseData; let i = index">
+                    <p class="question">{{response.query}}</p>
+                    <div class="answer" style="margin-bottom:10px">
+                     <loading-spinner *ngIf="isRecordLoading" loadingText="Data Processing.."></loading-spinner>
+                      <div class="answer_content">
+                        <div class="primary_text" style="margin-bottom: 10px;">
+                          <span class="responseText">{{response.response}}</span>
+                        </div>
+                        <div  class="secondary_text">
+                          <p class="answer_heading">Reference Documents :</p>
+                          <ng-container *ngFor="let reference of response.sources">
+                            <button (click)="openPopup(reference.source, reference.source_name)">
+                              {{reference.source_name}}
+                            </button>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                    </ng-container>
+                    <div *ngIf="isLoading" style="position:relative">
+                      <loading-spinner [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+                    </div>
+                  </span>
+                <form autocomplete="off"  [formGroup]='modalForm1' (ngSubmit)="submitForm()">
+                  <div class="search_form">
+                    <span class="mt-icon material-icons-round card_icon"> manage_search </span>
+                    <input [formControl]='modalForm1.controls["question"]' type="text" class="search_input" placeholder="Search for articles" />
+                    <div class="search_btns">
+                      <button type="button">
+                        <span class="mt-icon material-icons-round card_icon"> microphone </span>
+                      </button>
+                      <button type="submit">
+                        <span class="mt-icon material-icons-round card_icon"> send </span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card_content" style="height: 100%;" *ngIf="summaryShow">
+            <div class="transcriptBlock">
+              <div *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <div class="entity_block">
+                    <div *ngFor="let transcript of callSummary; let i = index" class="audit_snippet">
+                      <ng-container *ngIf="i % 4 === 0" >
+                        <div class="transcript_comment">
+                          <div style="color: #f00;">{{transcript}}</div>
+                          <div >{{callSummary[i+1]}}</div><br>
+                          <div style="color: #f00;">{{callSummary[i+2]}}</div>
+                          <div>{{callSummary[i+3]}}</div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right_block">
+        <div *ngIf="showTransEntitiesBox">
+          <div class="card utilization-circle" style="display: flex;flex-direction: column;">
+             <span class="card-caption" style="margin-top: 10px;">Performance By</span>
+            <div class="card_tabs" style="display: flex">
+              <button *ngIf="isExtractedDetails" [ngClass]="customerExtractedDetailsShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1;border-top-left-radius:5px; position: relative;"
+                (click)="customerExtractedDetails('details')">Extracted Details
+                <ng-container *ngIf="detailsNotificationCount > 0">
+                  <span class="notifiaction">{{detailsNotificationCount}}</span>
+                </ng-container>
+              </button>
+              <button *ngIf="isLiveFeedback" [ngClass]="customerExtractedDriverShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1; position: relative;"
+                (click)="customerExtractedDetails('driver')">Live Feedback
+                <ng-container *ngIf="driverNotificationCount > 0">
+                  <span class="notifiaction">{{driverNotificationCount}}</span>
+                </ng-container>
+              </button>
+              <button *ngIf="isSentiments" [ngClass]="customerExtractedGraphShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1; position: relative;"
+                (click)="customerExtractedDetails('graph')">Sentiments
+                <ng-container *ngIf="graphNotificationCount > 0">
+                  <span class="notifiaction">{{graphNotificationCount}}</span>
+                </ng-container>
+              </button>
+              <button *ngIf="isLiveAudit" [ngClass]="customerExtractedLiveAuditShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1;border-top-right-radius:5px;position: relative;"
+                (click)="customerExtractedDetails('liveAudit')">Live Audit
+                <ng-container *ngIf="liveAuditNotificationCount > 0">
+                  <span class="notifiaction">{{liveAuditNotificationCount}}</span>
+                </ng-container>
+              </button>
+            </div>
+            <div class="tab_content" style="width: 100%;">
+              <div class="card_content" style="height: 100%;" *ngIf="customerExtractedDetailsShow">
+                <div class="transcriptBlock">
+                  <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                  (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                  (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                    <div class="scrollable-content">
+                      <div *ngFor="let transcript of transcriptData" class="audit_snippet">
+                        <ng-container *ngIf="transcript.entities != ' ' ">
+                          <div class="entity_block" #entity_block>
+                            <p class="transcript_comment">
+                              {{transcript.comment}}
+                            </p>
+                            <div class="d-flex justify-between" *ngFor="let entity of transcript.entities">
+                              <p title="{{transcript.comment}}" class="transcript_entity">
+                                {{ entity.entity}} : {{entity.text}}
+                              </p>
+                              <div class="d-flex flex-column justify-end">
+                                <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                                  <span class="mt-icon material-icons-round">
+                                    content_copy
+                                  </span>
+                                </button>
+                                <span>{{copiedText}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card_content" style="height: 100%;" *ngIf="customerExtractedDriverShow">
+                <div class="transcriptBlock">
+                  <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                  (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                  (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                    <div class="scrollable-content">
+                      <div *ngFor="let transcript of transcriptData; let i = index" class="audit_snippet">
+                        <div *ngIf="transcript.driver.vulnerability_type != 'Not Applicable'" style="border-color: #ddd;" class="entity_block">
+                          <p><strong>Vulnerability Comment :</strong> {{transcript.comment}}</p>
+                          <div class=" d-flex align-start justify-between" style="width: 92%; color: #f00;">
+                            <div>
+                              <p><strong>Vulnerability Type :</strong> {{transcript.driver.vulnerability_type}}</p>
+                            </div>
+                            <p><strong>Timestamp :</strong> {{transcript.end_time}}</p>
+                            <div class="feedbackIcons" style="color: #5D5B5B;">
+                              <span class="material-symbols-rounded icons"
+                              (click)="giveVulthumsUp()" >thumb_up</span> <!-[ngClass]="{'clicked' : vulthumbsUp, 'notClicked': !vulthumbsUp}"->
+                              <span class="material-symbols-rounded icons"
+                              (click)="giveVulthumsDown(i)" >thumb_down</span><!-[ngClass]="{'clicked' : vulthumbsdown, 'notClicked': !vulthumbsdown}"->
+                            </div>
+                          </div>
+                        </div>
+                        <div style="margin-top: 15px;" *ngIf="transcript.driver.vulnerability_type != 'Not Applicable' && transcript.Feedback != '' "></div>
+                        <div *ngIf="transcript.Feedback != '' ">
+                          <div class="entity_block" #entity_block>
+                            <div *ngFor="let item of transcript.Feedback; let i = index">
+                              <ng-container *ngIf="multiLine(item.text)">
+                                <p class="transcript_entity_feedback">
+                                  <strong >{{item.entity}} : </strong>
+                                </p>
+                              <div  *ngFor="let entity  of checkForSplit(item.text)">
+                                <p class="transcript_entity_feedback">
+                                  <span style="color: #5d5b5b;">{{entity}}</span>
+                                </p>
+                              </div>
+                              <div class="d-flex align-start justify-between" style="width: 92%;">
+                                &nbsp;
+                                <div class="feedbackIcons" style="align-items: flex-start;">
+                                  <span class="material-symbols-rounded icons"
+                                  (click)="giveFeedbackthumsUp()" >thumb_up</span><!-[ngClass]="{'clicked' : feebackThumbsUp, 'notClicked': !feebackThumbsUp}"->
+                                  <span class="material-symbols-rounded icons"
+                                  (click)="giveFeedbackthumsDown()" >thumb_down</span><!-[ngClass]="{'clicked' : feebackThumbsDown, 'notClicked': !feebackThumbsDown}"->
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-container *ngIf="!multiLine(item.text)">
+                                <p class="transcript_entity_feedback">
+                                  <strong>{{item.entity}}</strong> : <span style="color: #5d5b5b;">{{item.text}}</span>
+                                </p>
+                                <div class="d-flex align-start justify-between" style="width: 92%;">
+                                  &nbsp;
+                                  <div class="feedbackIcons" style="align-items: flex-start;">
+                                    <span class="material-symbols-rounded icons"
+                                    (click)="giveFeedbackthumsUp()" >thumb_up</span><!-[ngClass]="{'clicked' : feebackThumbsUp, 'notClicked': !feebackThumbsUp}"->
+                                    <span class="material-symbols-rounded icons"
+                                    (click)="giveFeedbackthumsDown()" >thumb_down</span><!-[ngClass]="{'clicked' : feebackThumbsDown, 'notClicked': !feebackThumbsDown}"->
+                                  </div>
+                                </div>
+                            </ng-container>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card_content" style="height: 100%;" *ngIf="customerExtractedGraphShow">
+                <div class="transcriptBlock" style="padding: 20px;">
+                  <div class="d-flex justify-center">
+                    <div class="d-flex">
+                      <p class="legend positive"><span></span> Positive</p>
+                      <p class="legend neutral"><span></span> Neutral</p>
+                      <p class="legend negative"><span></span> Negative</p>
+                    </div>
+                  </div>
+                  <canvas id="sentimentChart"></canvas>
+                </div>
+              </div>
+              <div class="card_content" style="height: 100%;" *ngIf="customerExtractedLiveAuditShow">
+                <div class="transcriptBlock" style="padding: 20px;">
+                  <div *ngIf="type1 === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config2"
+                        (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                        (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                        <div class="scrollable-content">
+                          <div class="timeLineBlock">
+                            <h4 class="timeLineHeading">ID&V</h4>
+                            <div class="timeLine" [ngClass]="{auditFailed : !idvPass}">
+                              <div class="timeLineThread" [ngClass]="{active : lowRiskPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Low Risk Transaction</p>
+                                <span class="timeStamp">{{lowRiskTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : namePass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Full Name</p>
+                                <span class="timeStamp">{{nameTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : DOBPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Date of Birth</p>
+                                <span class="timeStamp">{{DobTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : emailPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Email</p>
+                                <span class="timeStamp">{{emailTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : addressPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Address</p>
+                                <span class="timeStamp">{{addressTimestamp}}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="timeLineBlock">
+                            <h4 class="timeLineHeading">Customer Intent</h4>
+                            <div class="timeLine" [ngClass]="{auditFailed : !customerIntentPass}">
+                              <div class="timeLineThread" [ngClass]="{active : rediatorBlockPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Book appointment- Radiator blocked</p>
+                                <span class="timeStamp">{{rediatorBlockTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : mindateRaditor}">
+                                <span class="timeLineCircle"></span>
+                                <p>Book appointment- Mandate radiator</p>
+                                <span class="timeStamp">{{mindateRaditorTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : noHeatingPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Book appointment- No Heating</p>
+                                <span class="timeStamp">{{refundTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : contractCencellationPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Contract cancellation and queries</p>
+                                <span class="timeStamp">{{contractCencellationTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : setupEnquirePaymentPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Set up or enquire about a payment plan</p>
+                                <span class="timeStamp">{{setupEnquirePaymentTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : debtPaymentPlanpass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Debt and payment plan</p>
+                                <span class="timeStamp">{{debtPaymentPlanTimestamp}}</span>
+                              </div>
+                              <div class="timeLineThread" [ngClass]="{active : meterReadingPass}">
+                                <span class="timeLineCircle"></span>
+                                <p>Meter reading submission	</p>
+                                <span class="timeStamp">{{meterReadingTimeStamp}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex align-end justify-between" style="margin-left: 20px;" *ngIf="showTranscriptBox">
+      <div class="get-audit-details"  *ngIf="flagDivShow">
+        <button class="btn btn-primary" *ngIf="(flaggedCall | lowercase) !== 'flagged'" (click)="flagThisCall()">Flag
+          This Call</button>
+      </div>&nbsp;
+      <div class="view-result">
+        <div>
+          <a *ngIf="enabled" (click)="viewResult()">View Audit Result</a>
+          <a *ngIf="!enabled" style="cursor: not-allowed; color: grey" >View Audit Result</a>
+        </div>
+        <div style="margin-left: 10px; text-align: center;">
+          Quality :
+          <span *ngIf="scoreCalcTotalF >= 80" style="color: green;">{{totalScore}}</span>
+          <span *ngIf="scoreCalcTotalF < 80" style="color: red;">{{totalScore}}</span>
+        </div>
+      </div>
+    </div><br><br>
+  </div>
+</perfect-scrollbar>  -->

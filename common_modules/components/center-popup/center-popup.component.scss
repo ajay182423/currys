@@ -1,0 +1,114 @@
+//-------------------modal-popup
+.modal-popup-wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 199;
+}
+.modal-popup {
+  z-index: 1;
+  background-color: var(--bg-00);
+  border-radius: var(--border-radius-l);
+  max-height: 95vh;
+  min-height: 10vh;
+  &__header {
+    border-bottom: 0.1rem solid var(--border-color);
+    padding-top: 0.5rem;
+    position: relative;
+    height: var(--navbar);
+    display: flex;
+    .heading-container{
+      margin-left: 3.6rem;
+      display: flex;
+      align-items: center;
+    }
+    .header-btn {
+      margin:0 .5rem .1rem 0;
+    }
+    h2 {
+      padding-left: 0.4rem;
+      color: var(--heading-color);
+      font-size: calc(var(--font-size-r) * 2.2);
+      font-weight: 400;
+      align-self: center;
+      flex-grow: 1;
+    }
+    .btn-close {
+      z-index: 2;
+      margin-right: 3.6rem;
+      .mt-icon {
+        font-size: 2.3rem;
+      }
+    }
+  }
+  &__main-wrapper {
+    position: relative;
+    height: 5rem;
+  }
+  &__main {
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.modal-popup-wrapper-left,
+.modal-popup-wrapper-right {
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.modal-popup-wrapper-left {
+  justify-content: flex-start;
+}
+
+.modal-popup-right,
+.modal-popup-left {
+  border-radius: 0;
+  background-color: var(--bg-00);
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-height: 100vh;
+  &__header {
+    position: relative;
+    height: var(--navbar);
+    border-radius: 0;
+    display: flex;
+  }
+  &__main-wrapper {
+    flex-grow: 1;
+    max-height: auto;
+    min-height: auto;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .modal-popup {
+    height: 100vh;
+    border-radius: 0rem;
+    max-height: 100vh;
+    &__header {
+      h2 {
+        margin-left: 0rem;
+        padding-left: 0rem;
+      }
+      button {
+        margin-right: 3rem !important;
+      }
+    }
+  }
+  .modal-popup-abs-center {
+    height: auto;
+    border-radius: var(--border-radius-l);
+  }
+}

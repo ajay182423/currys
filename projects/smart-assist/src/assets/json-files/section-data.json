@@ -1,0 +1,288 @@
+{
+    "sections":[
+       {
+          "sectionId":4,
+          "section":"Vulnerable Customer",
+          "weightage":0.0,
+          "results":[
+             {
+                "auditParameterId":22,
+                "parameter":"Did this customer display any vulnerability?",
+                "helpText":"Is the customer vulnerable?",
+                "score":0,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"No"
+             },
+             {
+                "auditParameterId":7,
+                "parameter":"Did the customer display any financial vulnerability?",
+                "helpText":"Resilience : Is the customer vulnerable due to lack of finance",
+                "score":1,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"NA"
+             },
+             {
+                "auditParameterId":8,
+                "parameter":"Did the customer display vulnerability due to hardship in a life event?",
+                "helpText":"Life Event : Is the customer vulnerable due to hardship life event",
+                "score":1,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"NA"
+             },
+             {
+                "auditParameterId":9,
+                "parameter":"Did the customer display vulnerability due to health reasons?",
+                "helpText":"Health: Is the customer vulnerable due to health issues",
+                "score":1,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"NA"
+             }
+          ]
+       },
+       {
+          "sectionId":4,
+          "section":"Vulnerable Customer",
+          "weightage":0.0,
+          "results":[
+             {
+                "auditParameterId":22,
+                "parameter":"Did this customer display any vulnerability?",
+                "helpText":"Is the customer vulnerable?",
+                "score":0,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"Yes"
+             },
+             {
+                "auditParameterId":7,
+                "parameter":"Did the customer display any financial vulnerability?",
+                "helpText":"Resilience : Is the customer vulnerable due to lack of finance",
+                "score":1,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"NA"
+             },
+             {
+                "auditParameterId":8,
+                "parameter":"Did the customer display vulnerability due to hardship in a life event?",
+                "helpText":"Life Event : Is the customer vulnerable due to hardship life event",
+                "score":1,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"NA"
+             },
+             {
+                "auditParameterId":9,
+                "parameter":"Did the customer display vulnerability due to health reasons?",
+                "helpText":"Health: Is the customer vulnerable due to health issues",
+                "score":1,
+                "maxScore":1.0,
+                "confidence":100,
+                "status":"OK",
+                "fatal":"No",
+                "others":"None",
+                "remarks":"",
+                "otherProperties":[
+                   
+                ],
+                "auditResult":"NA"
+             }
+          ]
+       },
+       {
+        "sectionId":4,
+        "section":"Vulnerable Customer",
+        "weightage":0.0,
+        "results":[
+           {
+              "auditParameterId":22,
+              "parameter":"Did this customer display any vulnerability?",
+              "helpText":"Is the customer vulnerable?",
+              "score":0,
+              "maxScore":1.0,
+              "confidence":100,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"No"
+           },
+           {
+              "auditParameterId":7,
+              "parameter":"Did the customer display any financial vulnerability?",
+              "helpText":"Resilience : Is the customer vulnerable due to lack of finance",
+              "score":1,
+              "maxScore":1.0,
+              "confidence":100,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"NA"
+           },
+           {
+              "auditParameterId":8,
+              "parameter":"Did the customer display vulnerability due to hardship in a life event?",
+              "helpText":"Life Event : Is the customer vulnerable due to hardship life event",
+              "score":1,
+              "maxScore":1.0,
+              "confidence":90,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"NA"
+           },
+           {
+              "auditParameterId":9,
+              "parameter":"Did the customer display vulnerability due to health reasons?",
+              "helpText":"Health: Is the customer vulnerable due to health issues",
+              "score":1,
+              "maxScore":1.0,
+              "confidence":100,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"NA"
+           }
+        ]
+     },
+     {
+        "sectionId":4,
+        "section":"Vulnerable Customer",
+        "weightage":0.0,
+        "results":[
+           {
+              "auditParameterId":22,
+              "parameter":"Did this customer display any vulnerability?",
+              "helpText":"Is the customer vulnerable?",
+              "score":0,
+              "maxScore":1.0,
+              "confidence":80,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"No"
+           },
+           {
+              "auditParameterId":7,
+              "parameter":"Did the customer display any financial vulnerability?",
+              "helpText":"Resilience : Is the customer vulnerable due to lack of finance",
+              "score":1,
+              "maxScore":1.0,
+              "confidence":100,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"NA"
+           },
+           {
+              "auditParameterId":8,
+              "parameter":"Did the customer display vulnerability due to hardship in a life event?",
+              "helpText":"Life Event : Is the customer vulnerable due to hardship life event",
+              "score":1,
+              "maxScore":1.0,
+              "confidence":100,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"NA"
+           },
+           {
+              "auditParameterId":9,
+              "parameter":"Did the customer display vulnerability due to health reasons?",
+              "helpText":"Health: Is the customer vulnerable due to health issues",
+              "score":1,
+              "maxScore":1.0,
+              "confidence":70,
+              "status":"OK",
+              "fatal":"No",
+              "others":"None",
+              "remarks":"",
+              "otherProperties":[
+                 
+              ],
+              "auditResult":"NA"
+           }
+        ]
+     }
+    ]
+ }

@@ -1,0 +1,13 @@
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+    <p id="top"></p>
+    <div id="responseText"></div>
+    <a href="#" (click)="scrollToTop()" class="scrollToTop">
+        <span class="mt-icon material-icons-round card_icon"> arrow_upward </span>
+    </a>
+</div>
+
+
+
+
+

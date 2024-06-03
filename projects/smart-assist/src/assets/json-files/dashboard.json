@@ -1,0 +1,126 @@
+{
+    "card1" : {   
+        "type" : "3column",     
+        "title" : "Transactions",
+        "content" : [
+            {
+                "label" : "Total",
+                "value" : 3056
+            },
+            {
+                "label" : "Completed",
+                "value" : 3030
+            }, 
+            {
+                "label" : "Pending",
+                "value" : 26
+            }
+        ]
+    },
+    "card2" : {     
+        "type" : "3column",     
+        "title" : "Sentiments",
+        "content" : [
+            {
+                "label" : "Neutral",
+                "value" : 2497
+            },
+            {
+                "label" : "Positive",
+                "value" : 511
+            }, 
+            {
+                "label" : "Negative",
+                "value" : 48
+            }
+        ]
+    }, 
+    "card3" : {   
+        "type" : "2column",    
+        "content" : [
+            {
+                "label" : "Total Audit Duration",
+                "value" : 240,
+                "unit" : "Hours"
+            },
+            {
+                "label" : "AHT",
+                "value" : 5.09,
+                "unit" : "Minutes"
+            }            
+        ]
+    },  
+    "card4" : {     
+        "type" : "1column",     
+        "title" : "Quality",
+        "content" : [
+            {
+                "label" : "",
+                "value" : "91.83%"
+            }
+        ]
+    }, 
+    "widget1" : {
+        "tab1" : {
+            "title" : "Month",
+            "content" : {
+                "type" : "bar",
+                "body" : {
+                    "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+                    "data" : {
+                        
+                    }
+                }
+            }
+        }
+    },
+    "dayWiseTransaction" : {
+        "labels" : [],
+        "data" : {
+            "completed" : [316, 317, 380, 315, 12, 336, 563, 447, 344],
+            "pending" : [3, 2, 3,  0, 0, 0, 7, 6, 5]
+        }
+    },
+    "monthWiseTransaction" : {
+        "labels" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+        "data" : {
+            "completed" : [2872, 2872, 3400, 3030],
+            "pending" : [29, 24, 29, 26]
+        }
+    },
+    "compliance" : {
+        "ID&V Complaiance" : {
+            "labels" : ["pass", "exception", "failed"],
+            "data" : [2842, 116, 68]
+        },
+        "Vulnerable Customer" : {
+            "labels" : ["Vulnerable", "Non-Vulnerable"],
+            "data" : [3024, 32]
+        },
+        "EOD" : {
+            "labels" : ["Satisfied", "UnSatisfied"],
+            "data" : [2889, 167, 64]
+        },
+		"Resolution" : {
+            "labels" : ["Resolved", "Not-Resolved"],
+            "data" : [3012, 44]
+        }
+    },
+    "dayWiseFailedAudit" : {
+        "labels" : [],
+        "data" : {
+            "billing" : [5,6,7,6,5,4,3],
+            "invoice" : [6,7,5,6,4,3,6],
+            "finance" : [5,5,6,5,4,5,4]
+        }
+    },
+    "monthWiseFailedAudit" : {
+        "labels" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+        "data" : {
+            "billing" : [138, 139, 157, 158],
+            "invoice" : [162, 150, 140, 156],
+            "finance" : [150, 147, 145, 123]
+        }
+    }
+
+}

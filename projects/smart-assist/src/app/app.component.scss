@@ -1,0 +1,34 @@
+//--------------------app-layout
+.app-main {
+  // min-height: 100vh;
+  min-height: calc(100vh - (var(--navbar) + 8.1rem));
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: 0s;
+  margin-top: var(--navbar);
+}
+
+
+
+.with-navbar{
+  margin-left: var(--navbar);
+  transition: 0s;
+}
+
+.navbar-expanded{
+  margin-left: var(--navbar-expanded);
+}
+
+
+@media only screen and (max-width: 800px) {
+  .app-main {
+    margin-top: var(--navbar);
+    min-height: calc(100vh - var(--navbar));
+    padding: 0rem 0rem 0 0rem;
+  }
+  .with-navbar, .navbar-expanded{
+    margin-left: auto;
+  }
+}

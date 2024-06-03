@@ -1,0 +1,102 @@
+.header {
+  min-height: var(--navbar);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  .heading {
+    align-self: center;
+    flex-grow: 1;
+    margin: 0 3rem;
+    font-weight: 400;
+    font-size: calc(var(--font-size-r) * 2.4);
+    color: var(--heading-color);
+  }
+  button {
+    align-self: center;
+    margin: 0rem 2.5rem 0 0;
+    .mt-icon {
+      font-size: 2.5rem;
+    }
+  }
+}
+.sub-container {
+  flex-grow: 1;
+  background-color: var(--bg-01);
+  .search-box {
+    margin: 0.6rem 2.5rem 1.1rem 2.5rem;
+  }
+  .folders-container {
+    min-height: calc(100vh - (var(--navbar) + 6.5rem));
+    height: calc(100vh - (var(--navbar) + 6.5rem));
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .folder {
+      margin: 0rem 2.5rem;
+      display: flex;
+      text-decoration: none;
+      padding: 0.6rem 1.3rem;
+      border-radius: var(--border-radius-xl);
+      border: 0.2rem dotted var(--bg-01);
+      .mt-icon {
+        font-size: 2rem;
+        color: var(--icon-color);
+        transition: 0s;
+      }
+      .folder-text {
+        margin: auto 1.5rem;
+        flex-grow: 1;
+        font-size: 1.5rem;
+        color: var(--text-color-00);
+      }
+      .folder-info {
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-color-01);
+      }
+      &:hover {
+        background-color: var(--bg-02);
+        border-color: var(--bg-04);
+        .mt-icon {
+          color: var(--secondary-color);
+          transition: 0s;
+          font-variation-settings: 'FILL' 1;
+        }
+      }
+    }
+    .selected {
+      background-color: var(--bg-02);
+      border-color: var(--bg-02);
+      .mt-icon {
+        color: var(--primary-color);
+        transition: 0s;
+        font-variation-settings: 'FILL' 1;
+      }
+      &:hover {
+        .mt-icon {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+
+.no-content {
+  min-height: calc(100vh - (var(--navbar) + 6.5rem));
+  height: calc(100vh - (var(--navbar) + 6.5rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 8rem;
+  }
+  p {
+    padding: 2rem 1rem;
+    font-weight: 300;
+    font-size: calc(var(--font-size-s) * 1.6);
+    color: var(--text-color-00);
+  }
+}

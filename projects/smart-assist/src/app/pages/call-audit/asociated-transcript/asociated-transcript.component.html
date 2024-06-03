@@ -1,0 +1,73 @@
+<div class="main">
+  <div class="ediTable">
+    &nbsp;
+    <div style="display: flex; gap: 10px;">
+      <button type="button" *ngIf="transcriptData.length > 0" class="btn btn-primary" (click)="showForm()">Edit</button>
+      <button type="button" class="btn btn-primary" (click)="showTableUi()">Cancel</button>
+    </div>
+  </div>
+  <div class="table">
+    <div class="thead">
+      <div class="th">
+        <label class="field-label">No</label>
+      </div>
+      <div class="th">
+        <label class="field-label">Start Time</label>
+      </div>
+      <div class="th">
+        <label class="field-label">End Time</label>
+      </div>
+      <div class="th">
+        <label class="field-label">Associated Transcript</label>
+      </div>
+      <!-- <div class="th" *ngIf="showTableForm">
+        <label class="field-label">Action</label>
+      </div> -->
+    </div>
+    <ng-container *ngFor="let rowData of transcriptData; let index = index">
+      <ng-container *ngIf="showTable">
+        <form autocomplete="off">
+          <div class="td">{{index+1}}</div>
+          <div class="td">{{rowData.start_Time}}</div>
+          <div class="td">{{rowData.end_Time}}</div>
+          <div class="td">{{rowData.comment}}</div>
+        </form>
+      </ng-container>
+      <ng-container *ngIf="showTableForm">
+        <form [formGroup]='modalForm[index]' autocomplete="off">
+          <div class="td">{{index+1}}</div>
+          <div class="td" style="width: 15%;">
+            <text-input [formControl]='modalForm[index].controls["startTime"]' [label]='"Start Time"'></text-input>
+          </div>
+          <div class="td" style="width: 15%;">
+            <text-input [formControl]='modalForm[index].controls["endTime"]' [label]='"End Time"'></text-input>
+          </div>
+          <div class="td" style="width: 70%;">
+            <textarea-input [formControl]='modalForm[index].controls["associatedTrans"]' [label]='"Associated Transcript"'></textarea-input>
+          </div>
+          <!-- <div class="td" style="width: 70%;">
+            <button type="button" class="btn btn-primary" (click)="deleteRow(index)">Delete</button>
+          </div> -->
+        </form>
+      </ng-container>
+    </ng-container>
+    <!-- <ng-container *ngFor="let itemRow of modalForm.controls.itemRows.controls let i = index">
+      <form [formGroup]='modalForm[index]' autocomplete="off">
+        <div class="td">{{index+1}}</div>
+        <div class="td" style="width: 15%;">
+          <text-input [formControl]='modalForm[index].controls["startTime"]' [label]='"Start Time"'></text-input>
+        </div>
+        <div class="td" style="width: 15%;">
+          <text-input [formControl]='modalForm[index].controls["endTime"]' [label]='"End Time"'></text-input>
+        </div>
+        <div class="td" style="width: 70%;">
+          <textarea-input [formControl]='modalForm[index].controls["associatedTrans"]' [label]='"Associated Transcript"'></textarea-input>
+        </div>
+      </form>
+    </ng-container> -->
+  </div>
+  <button class="btn" style="float: right; margin: 10px 4rem 0 0;" (click)="addRow()">Add New</button>
+  <div class="saveTable">
+    <button type="button" class="btn btn-primary" (click)="submitForm()">Save</button>
+  </div>
+</div>

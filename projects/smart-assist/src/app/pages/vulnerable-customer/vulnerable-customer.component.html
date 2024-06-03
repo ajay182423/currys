@@ -1,0 +1,270 @@
+<app-page-header [title]="'Vulnerability Result'" [showSeparator]="true"></app-page-header>
+<perfect-scrollbar>
+  <div class="audit-details-container" style="margin-right: 10px;">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
+      <form [formGroup]='modalForm'>
+        <div class="get-audit-details">
+          <div style="width: 150%;">
+            <label class="field-label">Transaction/Call Id<span>*</span></label>
+            <text-input [formControl]='modalForm.controls["transaction"]' [label]='"Transaction Id"'>
+            </text-input>
+          </div>
+          <div style="margin-top: 20px;">
+            <button class="btn btn-primary" (click)="getAudit()" style="width: 100px;">Get Audit</button>
+          </div>
+          <div style="display: flex; gap: 10px;" *ngIf="flagDivShow">
+            <div>
+              <label class="field-label">Call Duration</label>
+              <div class="idCallBox">{{audioLength}}</div>
+            </div>
+            <div *ngIf="agentDetailShow">
+              <label class="field-label">Agent Name</label>
+              <div class="idCallBox" ><span style="margin-left: 3px;">{{agentName}}</span></div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="get-audit-details" style="margin-right: 20px;" *ngIf="flagDivShow">
+        <button class="btn btn-primary" *ngIf="(flaggedCall | lowercase) !== 'flagged'" (click)="flagThisCall()">Flag
+          This Call</button>
+        <div *ngIf="scorecalcu">
+          <div class="buttons-count">
+            <div style="font-size: 25px;width: 5vw; text-align: center;">
+              <label class="field-label">Total Score</label>
+              {{scorecalcu}}/{{maxscorecalcu}} </div>
+            <div style="font-size: 25px;width: 5vw; margin-left: 10px; text-align: center;">
+              <label class="field-label" style="margin-left: -10px;">Quality</label>
+              <span *ngIf="scoreCalcTotalF >= 80" style="color: green;">{{scoreCalcTotalF}}%</span>
+              <span *ngIf="scoreCalcTotalF < 80" style="color: red;">{{scoreCalcTotalF}}%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="call_type_element" *ngIf="flagDivShow">
+        <div>
+          <label class="field-label">Call Type</label>
+          <div class="idCallBox" style="height: 30px"><span style="margin-left: 5px;">{{callResponse}}</span>
+          </div>
+        </div>
+        <div style="margin-left: 10px">
+          <label class="field-label"> Customer - Issue</label>
+          <div class="idCallBox" ><span style="margin-left: 5px;">{{queryResolved}}</span></div>
+        </div>
+      </div>
+    </div><br>
+
+    <div class="audio-player">
+      <div style="display: flex;">
+        <h1 style="font-size: 20px;font-weight: 600;color: #fb4e0b;">Voice Call Timeline</h1>
+        <div *ngIf="audioLoading" style="color: #fb4e0b; margin-left: 50px;">Audio loading... Please Wait..</div>
+      </div>
+      <div id="wave-timeline" class="wave-timeline"></div>
+      <div id="waveform" class="waveform"></div>
+      <div *ngIf="wave" class="controls">
+        <div style="padding:10px; color: hsl(0, 1%, 36%);">Total Call Duration:<span
+            style="margin-left: 10px; font-weight: bold;">{{audioLength}}</span></div>
+        <div class="audioControls">
+          <button class="btn" (click)="onStopPressed()"><i class="fa fa-stop" aria-hidden="true"
+              id="playPause"></i></button>
+          <button class='btn' (click)="onStartPressed(isPlaying)">
+            <i *ngIf="!isPlaying" class="fa fa-pause" aria-hidden="true"></i>
+            <i *ngIf="isPlaying" class="fa fa-play" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="volume-slider">
+          <button (click)="showVolumeButtons()" style="border: none; background: none;">
+            <i *ngIf="!isShowing" class="fa fa-volume-up" aria-hidden="true" id="volume_icon"></i>
+            <i *ngIf="isShowing" class="fa fa-volume-off" aria-hidden="true" id="volume_icon"></i>
+          </button>
+          <input type="range" min="0" max="1" step="0.01" value="1"
+            style="width: 10vw; float: right; margin: 18px 25px 0 10px;" (change)="setVolume($event)">
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; align-items:flex-start; justify-content:space-between">
+      <div style="width: 45%;">
+        <div style="margin: 10px 22px 0 40px;" *ngIf="showTranscriptBox">
+          <label class="field-label"> Call Transcript</label>
+          <div class="transcriptBlock">
+            <div *ngIf="type === 'directive'"
+                class="scroll-container ps"
+                fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)"
+                (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)"
+                (psYReachStart)="onScrollEvent($event)"
+                >
+              <!-- <div *ngFor="let item of items" class="item" #item> -->
+                <div class="scrollable-content">
+                    <p *ngFor="let transcript of transcriptData" #messages>
+                      <span class="{{transcript.speaker.toLowerCase()}}">{{transcript.speaker}}</span> : {{transcript.comment}}
+                    </p>
+                </div>
+
+              <!-- </div> -->
+              </div>
+          </div>
+        </div>
+        <!-- <hr style="margin: 30px 30px 20px 40px;" *ngIf="showTranscriptBox"> -->
+      </div>
+      <div *ngFor="let sectionItem of sectionsData" style="width: 45%;">
+        <div style="margin: 20px 0;" class="vulnarableCustomer" *ngIf="tableShow">
+          <div class="heading" style="font-weight: bold;font-size:22px;">{{sectionItem.sectionName}}</div>
+          <div class="data" style="display: flex; margin-left: 50px;">
+            <div class="list" style="margin-top:20px; display: flex; justify-content: space-between; flex-direction: column;">
+              <div style="display: flex; justify-content: space-between;">
+                <div style="width: 20vw;">
+                  <ol style="list-style: none">
+                    <li>Sign of Vulnerability</li>
+                    <li>Customer Status</li>
+                  </ol>
+                </div>
+                <div>
+                  <ol style="list-style: none">
+                    <li>
+                      <span *ngIf="VulSign == 'Yes'" style="color: Red;">{{VulSign}}</span>
+                      <span *ngIf="VulSign == 'No'" style="color: green;">{{VulSign}}</span>
+                    </li>
+                    <li>
+                      <span *ngIf="VulSign == 'Yes'" style="color: Red;">Potential Vulnarable</span>
+                      <span *ngIf="VulSign == 'No'" style="color: green;">Non Vulnarable</span>
+                      </li>
+                  </ol>
+                </div>
+              </div>
+              <div>
+                <label class="field-label" style="font-size: 15px;">Confidence on Customer Vulnerability</label>
+                <div class="card_content" *ngIf="checkVul">
+                  <canvas id='chart_pci_compliance' height="80"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div style="display: flex; align-items:center" *ngIf="checkVul" (click)="chartLoad()"><button class="btn"
+        (click)="tableShow = true">Check Vulnerability</button></div> -->
+
+    <div *ngFor="let sectionItem of sectionsData">
+      <div style="margin: 20px 0 0 40px;" class="vulnarableCustomer" *ngIf="tableShow">
+        <div class="heading" style="color: hsl(0, 1%, 36%);font-weight: bold;font-size:22px;">Vulnarable Driver</div>
+        <div style="display: flex; margin-left: 50px; align-items: flex-start;">
+          <div style="width: 45%; padding: 0 10px;">
+            <div class="data" *ngFor="let paramItem of sectionItem?.parameters">
+              <div style="display: flex;">
+                <div class="list" style="margin-top:20px">
+                  <ol style="list-style: none;color: hsl(0, 1%, 36%); width: 20vw;">
+                    <li>{{paramItem?.parameterName}}</li>
+                  </ol>
+                </div>
+                <div class="list" style="margin:20px 0 0 20px">
+                  <ol style="list-style: none">
+                    <li>{{paramItem?.auditResult}}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="width: 45%;">
+            <label class="field-label">Reference</label>
+            <div class="remarks">
+              <p>{{returnResult}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="audit-form" *ngIf="tableShow">
+      <div class="table-name" *ngFor="let sectionItem of sectionsData">
+        <!-- <div class="headers">
+          <header>{{sectionItem.sectionName}}</header>
+          <!-- <header class="second">Weightage <span>{{sectionItem.weightage}}%</span></header> ->
+          <div class="phrase-checkbox" *ngIf="sectionItem.sectionName === 'Phrase/Text detection'">
+            <div class="toggle-container disable-btn">
+              <ng-container *ngIf="filterText == ''">
+                <label class="field-label left toggle-change">All Phrase</label>
+              </ng-container>
+              <ng-container *ngIf="filterText == 'Yes'">
+                <label class="field-label left toggle-change">Phrase Identified</label>
+              </ng-container>
+              <label class="switch">
+                <input type="checkbox" (change)="toggleChange(auditToggle.checked)" #auditToggle>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="table">
+          <div class="thead">
+            <div class="th">
+              <label class="field-label">No</label>
+            </div>
+            <div class="th">
+              <label class="field-label" style="font-size: small;">Parameter/Questions</label>
+            </div>
+            <div class="th" *ngFor="let items of isColumnRequiredList">
+                <label class="field-label">{{items.parameterName}}<span>*</span></label>
+            </div>
+            <div class="th">
+              <label class="field-label">Associated Transcript<span>*</span></label>
+            </div>
+            <div class="th">
+              <label class="field-label">Help/Notes</label>
+            </div>
+          </div>
+          <ng-container *ngFor="let paramItem of (sectionItem.sectionName == 'Phrase/Text detection' ?
+            (sectionItem?.parameters | customAudit : filterText) : sectionItem?.parameters );
+              let index = index">
+              <ng-container *ngIf="customForm[paramItem?.parameterIndex]">
+                <form [formGroup]='customForm[paramItem?.parameterIndex]' autocomplete="off">
+                  <div class="td">{{index+1}}</div>
+                  <div class="td">
+                    <div class="questionDiv"> {{paramItem?.parameterName}} <br>
+                      <button (click)="showPlayPauseButton(!isPlaying)">
+                        <i *ngIf="isPlaying" class="fa fa-pause" aria-hidden="true"></i>
+                        <i *ngIf="!isPlaying" class="fa fa-play" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="td">
+                    <div class="app-select" style="width: 95px;">
+                      <single-select-dropdown [formControl]='customForm[paramItem?.parameterIndex].controls["result"]'
+                        [label]='"result"' [optionList]="resultList" #resultDropDown>
+                      </single-select-dropdown>
+                      <div class="app-select-arrow" style="margin-left: 20px;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="td">
+                    <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["confidence"]'
+                    [label]='"confidance"'>
+                  </text-input>
+                  </div>
+                  <div class="td">
+                    <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["score"]'
+                    [label]='"Score"' [isReadOnly]="false">
+                  </text-input>
+                  </div>
+                  <div class="td">
+                    <textarea class="app-textbox" style="height: 70px; width: 390px;"
+                        [formControl]='customForm[paramItem?.parameterIndex].controls["AssociatedTranscript"]'
+                        [label]='"Reference Transcript"'>
+                    </textarea>
+                  </div>
+                  <div class="td">
+                    <a (click)="openHelpText(paramItem?.parameterHelpText)"
+                    style="color: rgb(97, 220, 236); font-size: small;">Help/Notes</a>
+                  </div>
+                </form>
+              </ng-container>
+          </ng-container>
+        </div> -->
+        <div style="clear: both;"></div>
+        <br>
+      </div>
+    </div>
+  </div>
+</perfect-scrollbar>

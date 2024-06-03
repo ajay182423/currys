@@ -1,0 +1,34 @@
+<nav class="top-nav center-container">
+  <!--Hamburger Menu-->
+  <a class="top-nav__mob-menu-link" (click)="openMobileHiddenMenu()">
+    <span class="mt-icon material-icons-round">
+      menu
+    </span>
+  </a>
+  <!--Logo-->
+  <!-- <div class="top-nav__logo">
+    <ng-content></ng-content>
+  </div> -->
+  <!--menu-->
+  <div class="top-nav__menu">
+    <ul class="top-nav__list">
+      <li class="top-nav__item" *ngFor="let item of menuItems">
+        <a routerLink="{{ item.link }}" routerLinkActive='active-link' class="top-nav__link">
+          {{item.name}}
+        </a>
+      </li>
+    </ul>
+    <button *ngIf="darkModeOption" class="btn btn-icon btn-transparent top-nav__dark-mode-btn"
+      title="{{ isDarkMode ? 'Light mode' : 'Dark mode' }}" (click)="toggleDarkMode()">
+      <span class="mt-icon material-icons-round">
+        {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+      </span>
+    </button>
+    <a *ngIf="loginUrl" class="top-nav__login-link btn btn-transparent-bg" href="{{loginUrl}}">
+      <span class="mt-icon material-icons-round">
+        account_circle
+      </span>
+      <span>Log In</span>
+    </a>
+  </div>
+</nav>

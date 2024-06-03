@@ -1,0 +1,102 @@
+<header class="page-header" [style.background-color]="bgColor ? bgColor : 'transparent'">
+   <!--Logo-->
+   <a class="nav-ham-bur-icon" (click)="openMobileHiddenMenu()">
+    <span class="mt-icon material-icons-round">
+      menu
+    </span>
+  </a>
+  <div class="nav-logo">
+    <a class="desktop" href="#">
+      <img src="{{ fileUrl + 'assets/exl_logo_rgb_orange_pos_94.png'}}" alt="logo">
+      <span></span>
+      <div class="appName">
+        <h4>{{appName1}}</h4>
+        <h1>{{appName2}}</h1>
+      </div>
+    </a>
+    <app-logo class="mobile" [logoImgUrl]="fileUrl" [appName]="appName1 + appName2 "></app-logo>
+  </div>
+  <!-- <div class="left" @slideDown>
+    <button *ngIf="goBack" class="header-btn" (click)="goBackToPrePage()" title="Go back">
+      <span class="mt-icon material-icons-round">
+        arrow_back
+      </span>
+    </button>
+    <h2>{{title}}</h2>
+  </div> -->
+  <div class="dropdown" >
+    <button class="dropbtn">☰</button>
+    <div class="dropdown-content">
+      <div class="caller-container">
+        <div class="initials-circle">{{getShortName(userFullName)}}</div>
+        <div class="caller-details">
+          <div class="caller-info">
+            <div class="caller-name">{{userFullName}}</div>
+            <div class="agent-text">{{roleName}}</div>
+          </div>
+          <div class="signout-container">
+            <span class="signout-button" (click)="signOut()">Sign Out</span>
+          </div>
+        </div>
+      </div>
+      <div class="option">
+        <div class="logo">👤</div>
+        <div class="name">Profile Details</div>
+      </div>
+      <div class="option">
+        <div class="logo">⚙️</div>
+        <div class="name">Manage Account</div>
+      </div>
+      <div class="option">
+        <div class="logo">🌓</div>
+        <div class="name">Display Mode</div>
+        <div class="display-mode">
+          <div class="mode-button light-mode" (click)="setLightMode()"></div>
+          <div class="mode-name">Light Mode</div>
+          <div class="mode-button dark-mode" (click)="setDarkMode()"></div>
+          <div class="mode-name">Dark Mode</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div *ngIf="subTitle" class="sub-title">
+      <span>{{subTitle}}</span>
+    </div>
+    <span *ngIf="subTitle" class="separator"></span>
+    <a *ngIf="showSaveButton" title="Save" class="header-btn" (click)="sendSaveButtonRequest()">
+      <span class="mt-icon material-icons-round" style="font-size: 2.2rem;">
+        save
+      </span>
+    </a>
+    <a *ngIf="createNew && createMenuItems?.items?.length <= 0" title="Create" class="header-btn header-btn-primary" (click)="sendCreateNewRequest()">
+      <span class="mt-icon material-icons-round">
+        add
+      </span>
+    </a>
+    <div class="create-new-container" *ngIf="createMenuItems?.items?.length > 0">
+      <a title="{{createMenuItems?.name}}" class="header-btn header-btn-primary" (click)="openCreateMenu($event)">
+        <span class="mt-icon material-icons-round">
+          add
+        </span>
+      </a>
+      <popup-menu [menuItems]="createMenuItems?.items" 
+      [showPopupMenu]="showCreateMenu" 
+      [customStyle]="{right: 0}"
+      (popupMenuClick)="onPopupMenuClick($event)">
+      </popup-menu>
+    </div>
+    <span *ngIf="!showSeparator" class="separator"></span>
+    <div *ngIf="showUserAccount" class="header-user" (click)="openUserAccountPopup()">
+      <div class="icon">
+        <span class="mt-icon material-icons-round">
+          account_circle
+        </span>
+      </div>
+      <div class="info">
+        <span class="f-name">{{ userFullName }}</span>
+        <span class="user-id">{{ roleName }}</span>
+      </div>
+    </div>
+  </div>
+</header>

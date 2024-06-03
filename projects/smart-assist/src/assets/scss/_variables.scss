@@ -1,0 +1,180 @@
+//Primary color hsl(205, 100%, 50%) - To create color pallate add/subtract Lightness by 10
+$color-primary-d3: #004cff;
+$color-primary-d2: hsl(205, 100%, 30%);
+$color-primary-d1: hsl(205, 100%, 40%);
+$color-primary: hsl(205, 100%, 50%);
+$color-primary-l1: hsl(205, 100%, 60%);
+$color-primary-l2: hsl(205, 100%, 70%);
+$color-primary-l3: hsl(205, 100%, 80%);
+$primary-color: #fb4e09;
+
+//Secondary colors hsl(23, 100%, 51%) - To create color pallate add/subtract Lightness by 10
+$color-secondary-d3: hsl(23, 100%, 21%);
+$color-secondary-d2: hsl(23, 100%, 31%);
+$color-secondary-d1: hsl(23, 100%, 41%);
+$color-secondary: hsl(23, 100%, 51%);
+$color-secondary-l1: hsl(23, 100%, 61%);
+$color-secondary-l2: hsl(23, 100%, 71%);
+$color-secondary-l3: hsl(23, 100%, 81%);
+
+//Text color - To get text color set primary color Lightness to 2%
+//To create color pallate add Lightness by 5
+$color-text: hsl(205, 100%, 2%);
+$color-text-l1: hsl(210, 17%, 10%);
+$color-text-l2: hsl(210, 18%, 20%);
+
+$color-text-l3: hsl(213, 5%, 44%);
+
+//Background color - To get text color set primary color Lightness to 98%
+$bg-color-01:hsl(0, 0%, 100%);
+$bg-color-02:#f6f6fc;
+
+$icon-color:gray;
+$border-color:rgb(231, 231, 238);
+$shadow-color:#e3e3e3;
+
+$color-success: #46a44b;
+$color-danger: hsl(23, 100%, 71%);;
+$color-warning: #f09000;
+$color-info: #00aec5;
+
+//z-index
+$level-01:1;
+$level-02:2;
+$level-03:3;
+$level-04:4;
+
+//layout heights and widths
+$navbar-width:7rem;
+$sidebar-width:35rem;
+$logo-height:7rem;
+$s-header-height: 7rem;
+
+//border-radius
+$border-radius-01: 1rem;
+$border-radius-02: 1.5rem;
+$border-radius-03: 2rem;
+
+//box-shadow
+$boxShadow: rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px 0px,rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px 0px;
+
+
+
+/*===== VARIABLES CSS =====*/
+:root {
+    /*========== Colors ==========*/
+    //Primary color hsl(205, 100%, 50%) - To create color pallate add/subtract Lightness by 10
+    --primary-color-d3: #004cff;
+    --primary-color-d2: #005999;
+    --primary-color-d1: #0077cc;
+    --primary-color: #0095ff;
+    --primary-color-l1: #33aaff;
+    --primary-color-l2: #66bfff;
+    --primary-color-l3: #99d5ff;
+
+    //header-bg: #fff + #078DED;
+    //header-nav-link-icon: #fff-16px-
+
+    //nav-link: #102D5E-700-16px-'Source Sans Pro'-Uppercase;
+    //nav-link-l1: #102D5E-700-18px-'Source Sans Pro'; hover: #FF6503;
+    //nav-link-l2: #102D5E-400-13px-'Roboto'; hover: #FF6503;
+
+    //X-left-top: #83b7ee;
+    //x-left-bottom:#236cb9;
+    //x-right-top and x-right-bottom: #0094ff;
+    //x-right::after : #078DED;
+
+    //landing-section-big-title: #fff-900-76px-'Source Sans Pro'-Uppercase; line-height: 91.2px; letter-spacing: 0.433333px/0.025em;
+    //landing-section-title: #fff-900-40px-'Source Sans Pro'-Uppercase; line-height: 48px; letter-spacing: 0.433333px/0.025em;
+    //landing-section-subtitle: #fff-400-17.333px-'Roboto'; line-height: 26px; letter-spacing: 0.433333px/0.025em;
+
+    //landing-section2-title: #fff-700-40px-'Source Sans Pro'; line-height: 48px; letter-spacing: 0.433333px/0.025em;
+    //landing-section2-subtitle: #fff-400-16px-'Roboto'; line-height: 24px;
+
+    --header-bg-01:#fff;
+    --header-bg-02:#078DED;
+    --x-top-left-bg: rgba(131,183,238,0.45);
+    --x-bottom-left: #236cb9;
+    --x-right-bg: #0094ff;
+    --x-right-after-bg: #078DED;
+
+    --section-bg-01:#112d5d;
+    --section-bg-02:#078DED;
+    --section-bg-03:#236cb9;
+    --section-bg-04:#fff;
+    --section-bg-05:#f5f6f6;
+
+
+
+
+    //landing-section3-title: #fff-700-40px-'Source Sans Pro'; line-height: 48px; letter-spacing: 0.433333px/0.025em;
+    //landing-section3-subtitle: #fff-400-16px-'Roboto'; line-height: 24px;
+
+
+    //card-caption: #828282-900-13px-'Source Sans Pro'-Uppercase; line-height: 19.5px; letter-spacing: 1px;
+    //card-title: #102D5E-700-20px-'Source Sans Pro'; line-height: 20px; letter-spacing: 1px;
+
+
+    //quote-text: #102D5E-400-24px-'Armata'; line-height: 36px;
+
+    //popup-heading: #102d5e-700-21.333px-'Source Sans Pro'; line-height: 25.6px;
+
+    //orange button
+    //btn-bg: #ff6503;
+    //btn-font: #fff-900-16px-'Source Sans Pro'; line-height: 24px; letter-spacing: 0.433333px/0.025em; min-width: 150px;
+    //btn-padding: 12px 32px 12px 32px;
+
+    //blue-button
+    //btn-bg: #0094ff;
+
+    //load more button
+    //btn-bg: #102d5e;
+    //max-width + width 250px;
+    //min-width: 150px;
+    //--ver:#102d5e;
+
+
+
+
+
+
+
+
+
+
+    //Secondary colors hsl(23, 100%, 51%) - To create color pallate add/subtract Lightness by 10
+    --secondary-color-d3: hsl(23, 100%, 21%);
+    --secondary-color-d2: hsl(23, 100%, 31%);
+    --secondary-color-d1: hsl(23, 100%, 41%);
+    --secondary-color: hsl(23, 100%, 51%);
+    --secondary-color-l1: hsl(23, 100%, 61%);
+    --secondary-color-l2: hsl(23, 100%, 71%);
+    --secondary-color-l3: hsl(23, 100%, 81%);
+
+    //Text color - To get text color set primary color Lightness to 2%
+    --text-color: hsl(205, 100%, 2%);
+    --text-color-l1: hsl(210, 17%, 10%);
+    --text-color-l2: hsl(210, 17%, 20%);
+
+    //Background color - To get text color set primary color Lightness to 98%
+    --bg-color-01: #fff;
+    --bg-color-02: #f7f7fc;
+    --bg-color-03: #F5F6F6;
+
+    //Other colors
+    --icon-color: #a5b2bb;
+    --border-color: rgb(231, 231, 238);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --success-color: #47a44b;
+    --danger-color: #f33527;
+    --warning-color: #f08f00;
+    --info-color: #00aec5;
+
+    /*===========Other Variables=============*/
+    --header-height: 6rem;
+    --footer-height: 3.76rem;
+    --corner-radius: 0.25rem;
+
+    // Filter-height
+    --table-filter : .6rem;
+  }

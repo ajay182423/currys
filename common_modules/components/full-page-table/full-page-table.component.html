@@ -1,0 +1,118 @@
+<div class="fp-table" [ngClass]="hasFilter? 'fp-content-with-filter' : ''">
+  <!-- <div [ngClass]="'fp-header header sorting tbl-' +  (tableHeaders?.length + columnStartIndex) + '-col'" [ngClass]="applyCustomWidth ? customWidthClass : ''"> -->
+  <div [ngClass]="'fp-header header sorting tbl-' +  (tableHeaders?.length + columnStartIndex) + '-col'">
+    <a *ngIf="recordSelector?.isActive" class="row-selector">
+      <label class="chk-container">
+        <input type="checkbox" [checked]="allRecordsChecked" (change)="selectAllRecords()">
+        <span class="checkmark"></span>
+      </label>
+    </a>
+    <a class="header-col" *ngFor="let item of tableHeaders; let index = index" title={{item.name}} id={{item.id}}
+      (click)="sortTableRows(item)" class={{item.class}}>
+      {{item.name}}
+    </a>
+  </div>
+  <div class="fp-content">
+    <loading-spinner *ngIf="isLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+    <div [ngClass]="!isLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+      <div *ngIf="tableData.tableRows?.length > 0">
+        <perfect-scrollbar>
+          <div class="content">
+            <div [ngClass]="'content-row tbl-' +  (tableHeaders?.length + columnStartIndex) + '-col'"
+              [class.right-clicked]="contextMenu.show && contextMenu.recordId === row[0]?.value"
+              *ngFor="let row of tableData.tableRows" (click)="sendRowClickRequest(row)"
+              (contextmenu)="onRowRightClick($event,row[0]?.value)">
+              <span *ngIf="recordSelector?.isActive" class="row-selector" (click)="selectRecord($event)">
+                <label class="chk-container">
+                  <input type="checkbox" [checked]="row[1]?.value"
+                    (change)="row[1].value = !row[1].value; getTotalSelectedRecordsCount();">
+                  <span class="checkmark"></span>
+                </label>
+              </span>
+              <span class="content-col" *ngFor="let header of tableHeaders; let index = index">
+                <span title={{row[index+(columnStartIndex+1)]?.value}}
+                  [ngClass]="row[index+(columnStartIndex+1)]?.class ? row[index+(columnStartIndex+1)]?.class : ''">{{row[index+(columnStartIndex+1)]?.value}}</span>
+              </span>
+              <span class="separator">
+                <context-menu [menuItems]="menuItems" [showContextMenu]="contextMenu.show"
+                  *ngIf="contextMenu.show && contextMenu.recordId === row[0]?.value"
+                  [mousePosition]="mousePosition" (contextMenuClick)="onContextMenuClick($event, row[0]?.value)">
+                </context-menu>
+              </span>
+            </div>
+          </div>
+        </perfect-scrollbar>
+        <div class="fp-footer" *ngIf="enableFooter">
+          <div *ngIf="totalRecordsSelected === 0" class="records-info" title="Records">
+            {{ (tableData.itemsPerPage * tableData?.currentPage) - (tableData.itemsPerPage - 1)  }} -
+            <ng-container *ngIf="tableData.totalItems >= tableData.itemsPerPage">
+              {{ tableData.itemsPerPage * tableData?.currentPage }}
+            </ng-container>
+            <ng-container *ngIf="tableData.totalItems < tableData.itemsPerPage">
+              {{ tableData.totalItems }}
+            </ng-container>
+            of &nbsp;<p>{{ tableData.totalItems }}</p>
+          </div>
+          <div *ngIf="totalRecordsSelected > 0" class="records-info">
+            <p>{{ totalRecordsSelected }}</p> &nbsp; selected
+            <button class="btn btn-icon btn-close" title="Deselect" type="button" (click)="deselectRecords()">
+              <span class="mt-icon material-icons-round">
+                close
+              </span>
+            </button>
+          </div>
+          <div *ngIf="totalRecordsSelected === 0" class="page-info" title="Pages">
+            <button class="btn btn-icon btn-pre" title="Previous page" (click)="goToPreviousPage()"
+              *ngIf="tableData?.currentPage > 1">
+              <span class="mt-icon material-icons-round">
+                arrow_back
+              </span>
+            </button>
+            <div class="app-select">
+              <select class="select" [(ngModel)]="tableData.currentPage" #pageNoDropDown
+                (change)="sendPageChangeRequest(pageNoDropDown?.value)"
+                (blur)="sendPageChangeRequest(clientDropDown?.value)">
+                <option value={{item}} *ngFor="let item of tableData?.pageNumbers">
+                  {{item}}
+                </option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            of <p>{{ tableData.totalPages }}</p>
+            <button class="btn btn-icon btn-next" title="Next page" (click)="goToNextPage()"
+              *ngIf="tableData?.currentPage < tableData.totalPages">
+              <span class="mt-icon material-icons-round">
+                arrow_forward
+              </span>
+            </button>
+          </div>
+          <div *ngIf="totalRecordsSelected > 0" class="page-info">
+            <button *ngIf="recordSelector.secondaryAction" class="btn btn-transparent-bg" type="button"
+              (click)="sendSecondaryActionRequest()">
+              {{recordSelector?.secondaryAction}}
+            </button>
+            <button *ngIf="recordSelector.primaryAction" style="margin-left: 1.5rem;" class="btn" type="button"
+              (click)="sendPrimaryActionRequest()">
+              {{recordSelector?.primaryAction}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="no-content-container" *ngIf="tableData.tableRows?.length === 0">
+        <div class="no-content">
+          <img src="{{ tableData.fileUrl + 'assets/no-content.svg' }}" alt="No Content">
+          <p>No records found</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="message">
+  <div *ngIf="tableMessage?.text" class="opening-dots">
+    {{ tableMessage.text }}
+    <ng-container *ngIf="tableMessage.isUpdating">
+      <span></span><span></span><span></span>
+    </ng-container>
+  </div>
+</div>

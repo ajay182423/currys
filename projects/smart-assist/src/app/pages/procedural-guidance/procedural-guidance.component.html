@@ -1,0 +1,143 @@
+<div class="bg_page"></div>
+<div class="wrapper">
+  <app-page-header
+  [title]="'Knowledge Center'"
+  [showSeparator]="true"
+></app-page-header>
+<div class="container">
+  <div class="header_filter">
+    <h2>How can we help? 👋</h2>
+    <div class="search_form">
+        <span class="mt-icon material-icons-round card_icon"> manage_search </span>
+        <input [formControl]="question" type="text" class="search_input" placeholder="Search for articles" />
+        <div class="search_btns">
+          <button type="button">
+            <span class="mt-icon material-icons-round card_icon"> microphone </span>
+          </button>
+          <button type="button" (click)="submitForm()">
+            <span class="mt-icon material-icons-round card_icon"> send </span>
+          </button>
+        </div>
+        
+    </div>
+  </div>
+ <div class="main_content">  
+    <!-- <h3>All Categories</h3> ->
+    <div class="flex flex-wrap"> 
+       <span class="contents"> -->
+       <span class="contents" *ngIf="questionText.length > 0">
+          <p class="question">Question : {{questionText}}</p>
+          <div class="answer">
+            <loading-spinner *ngIf="isLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+
+            <!-- <loading-spinner *ngIf="isRecordLoading" loadingText="Data Processing.."></loading-spinner> -->
+              <div class="answer_content" [ngClass]="!isLoading ? 'page-slideup dis-bk' : 'page-hidden'">                   
+                    <!-- {{responseText}} -->
+                    <div class="primary_text" style="margin-bottom: 20px;">
+                      <p class="answer_heading">Answer :</p>
+                      <span id="responseText"></span>
+                    </div>
+                    
+                    <!-- {{referenceText}} -->
+                    <div  class="secondary_text">
+                      <p class="answer_heading">Reference Snippets :</p>
+                      <button style="display:block; text-decoration:underline; margin-bottom: 5px;" (click)="openPopup(reference.source)" *ngFor="let reference of responseData">
+                        {{reference.source_name}}
+                      </button>
+                      
+                      <!-- <button style="text-decoration: underline;" (click)="openPopup()">View Reference</button> -->
+                      <!-- <a href="../../../assets/reference-htmls/reference1.html" target="_blank">Click to View</a> -->
+                      <!-- <span id="referenceText"></span> -->
+                    </div>
+                    
+              </div>
+          </div>
+       </span>
+        <!-- <span class="contents">
+          <a href="" class="w-full px-3 lg:w-1/2 transform hover:scale-[1.02] transition helpkit-category-card mb-6">
+            <div class="relative bg-white dark:bg-[#18233B] rounded helpsite-shadow h-[215px] text-center" style="height:235px">
+              <div class="flex flex-col flex-grow w-full h-full justify-center items-center px-8">
+                <div class="block mb-1">
+                  <div class="mb-2">
+                    <span class="text-4xl helpkit-category-icon-emoji" style="font-size:36px">🚨</span>
+                  </div>
+                  <h2 class="font-bold text-primary-800 dark:text-white line-clamp-2 text-2xl">
+                    New to Warp Studio?
+                  </h2>
+                </div>
+                <p class="leading-snug text-gray-700 dark:text-gray-50 line-clamp-2 mb-2">
+                  Here’s everything you need to get started.
+                </p>
+                <p class="text-xs font-medium text-gray-600 dark:text-gray-200 helpkit-category-article-count mt-2 text-gray-600">
+                  8 Articles
+                </p>
+              </div>
+            </div>
+          </a>
+          <a href="" class="w-full px-3 lg:w-1/2 transform hover:scale-[1.02] transition helpkit-category-card mb-6">
+            <div class="relative bg-white dark:bg-[#18233B] rounded helpsite-shadow h-[215px] text-center" style="height:235px">
+              <div class="flex flex-col flex-grow w-full h-full justify-center items-center px-8">
+                <div class="block mb-1">
+                  <div class="mb-2">
+                    <span class="text-4xl helpkit-category-icon-emoji" style="font-size:36px">🚀</span>
+                  </div>
+                  <h2 class="font-bold text-primary-800 dark:text-white line-clamp-2 text-2xl">
+                    How-to guides
+                  </h2>
+                </div>
+                <p class="leading-snug text-gray-700 dark:text-gray-50 line-clamp-2 mb-2">
+                  Step-by-step guides on how to use every Warp Studio feature.
+                </p>
+                <p class="text-xs font-medium text-gray-600 dark:text-gray-200 helpkit-category-article-count mt-2 text-gray-600">
+                  13 Articles
+                </p>
+              </div>
+            </div>
+            </a>
+            <a href="" class="w-full px-3 lg:w-1/2 transform hover:scale-[1.02] transition helpkit-category-card mb-6">
+              <div class="relative bg-white dark:bg-[#18233B] rounded helpsite-shadow h-[215px] text-center" style="height:235px">
+              <div class="flex flex-col flex-grow w-full h-full justify-center items-center px-8">
+                <div class="block mb-1">
+                  <div class="mb-2">
+                    <span class="text-4xl helpkit-category-icon-emoji" style="font-size:36px">📽️</span>
+                  </div>
+                  <h2 class="font-bold text-primary-800 dark:text-white line-clamp-2 text-2xl">
+                    Scenarios and courses
+                  </h2>
+                </div>
+                <p class="leading-snug text-gray-700 dark:text-gray-50 line-clamp-2 mb-2">
+                  Create, test &amp; publish scenarios and courses, add
+                  documents and more.
+                </p>
+                <p class="text-xs font-medium text-gray-600 dark:text-gray-200 helpkit-category-article-count mt-2 text-gray-600">
+                  14 Articles
+                </p>
+              </div>
+            </div>
+            </a>
+            <a href="" class="w-full px-3 lg:w-1/2 transform hover:scale-[1.02] transition helpkit-category-card mb-6">
+              <div>
+              <div class="flex flex-col flex-grow w-full h-full justify-center items-center px-8">
+                <div class="block mb-1">
+                  <div class="mb-2">
+                    <span class="text-4xl helpkit-category-icon-emoji" style="font-size:36px">📀</span>
+                  </div>
+                  <h2 class="font-bold text-primary-800 dark:text-white line-clamp-2 text-2xl">
+                    Scenes
+                  </h2>
+                </div>
+                <p class="leading-snug text-gray-700 dark:text-gray-50 line-clamp-2 mb-2">
+                  Learn more about scene types and features, and set up a
+                  scoring system.
+                </p>
+                <p class="text-xs font-medium text-gray-600 dark:text-gray-200 helpkit-category-article-count mt-2 text-gray-600">
+                  9 Articles
+                </p>
+              </div>
+            </div>
+          </a>
+        </span> -->
+     <!--  </span>
+     </div> -->
+  </div>
+</div>

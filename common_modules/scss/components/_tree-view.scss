@@ -1,0 +1,151 @@
+//-------------------tree-view
+.treeview input[type="checkbox"] {
+  display: none;
+}
+
+.treeview,
+.treeview ul {
+  width: 100%;
+  overflow: hidden;
+  .sub-tree {
+    li a {
+      padding: 1rem 2rem 1rem 3.2rem;
+      cursor: pointer;
+      font-size: calc(var(--font-size-r) * 1.4);
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.treeview li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tree-item {
+  border: 0.1rem solid transparent;
+  label {
+    padding: 0.9rem 0rem 0.7rem 0rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-l);
+    font-size: calc(var(--font-size-r) * 1.6);
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1rem solid transparent;
+  }
+
+  :hover {
+    background-color: var(--bg-02);
+  }
+}
+
+.tree-item-opened {
+  margin-bottom: 0.8rem;
+  background-color: var(--bg-00);
+  border-radius: var(--border-radius-l);
+  border: 0.1rem solid var(--field-border-color);
+  label {
+    padding: 0.9rem 0rem 0.7rem 0rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-l) var(--border-radius-l) 0 0;
+    font-size: calc(var(--font-size-r) * 1.6);
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1rem dotted var(--border-color);
+  }
+  label:not(.child):before {
+    border-color: var(--secondary-color) !important;
+  }
+  &:hover {
+    border: 0.1rem solid var(--secondary-color);
+    background-color: var(--bg-01);
+    label{
+      border-bottom: 0.1rem solid var(--bg-03);
+    }
+  }
+}
+
+.sub-tree:hover {
+  background-color: transparent;
+}
+
+.sub-tree-item {
+  border-radius: var(--border-radius-l);
+  span {
+    color: var(--text-color-01);
+  }
+  :hover {
+    border-radius: var(--border-radius-l);
+    background-color: var(--bg-00);
+    color: var(--secondary-color);
+    span {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.treeview > li > label > a {
+  padding-left: 2.2rem;
+}
+
+.treeview ul {
+  max-height: 0;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+}
+
+.treeview li input:nth-of-type(1):checked ~ ul {
+  max-height: 100rem;
+}
+
+// .treeview li label {
+//   padding: 1rem 0rem;
+//   cursor: pointer;
+//   font-size: calc(var(--font-size-r) * 1.5);
+//   display: flex;
+//   align-items: center;
+// }
+
+.treeview li label i {
+  font-size: var(--font-size-r);
+}
+
+.treeview li label > span {
+  margin: 0 0;
+}
+
+.treeview li label a {
+  flex: 1;
+  color: var(--text-color-00);
+  transition: 0.2s ease;
+  margin-left: 1rem;
+}
+
+.treeview li label:not(.child):before {
+  transition: 0.2s ease;
+  position: absolute;
+}
+
+.treeview li label:not(.child):before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-bottom: 0.2rem solid;
+  border-right: 0.2rem solid;
+  transform: rotate(-45deg);
+  left: 1.2rem;
+  top: 1.55rem;
+  border-color: var(--icon-color);
+}
+
+.treeview li input[type="checkbox"]:checked + label:before {
+  transform: rotate(45deg);
+  top: 1.4rem;
+}

@@ -1,0 +1,52 @@
+//Form combobox
+.app-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin:0 0rem;
+}  
+.select {
+  background-color: var(--bg-00);
+  border: 0.1rem solid var(--field-border-color);
+  height: 3.4rem;
+  border-radius: var(--border-radius);
+  padding: 0.6rem 0.9rem;
+  width: 100%;
+  cursor: pointer;
+  outline: 0;
+  color: var(--text-color-00);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: inherit;
+  font-size: calc(var(--font-size-s) * 1.5);
+}
+.select::-ms-expand {
+  display: none;
+}
+.select:focus {
+  border-color: var(--focus-border-color);
+}
+.select:disabled {
+  background-color: var(--bg-02);
+  pointer-events: none;
+}
+.app-select-arrow {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.2rem;
+  width: 0.82rem;
+  height: 0.82rem;
+  border: solid var(--icon-color);
+  border-width: 0 0.224rem 0.224rem 0;
+  display: inline-block;
+  padding: 0.23rem;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.select:hover ~ .app-select-arrow, .select:focus ~ .app-select-arrow {
+  border-color: var(--primary-color);
+}
+.select:disabled ~ .app-select-arrow {
+  border-top-color: var(--bg-02);
+}

@@ -1,0 +1,182 @@
+//-------------------page-header
+.page-header {
+  padding: 0rem 2rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  // background-color: #3265d2;
+  height: var(--navbar);
+  justify-content: space-between;
+  z-index: 10;
+  .left {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    .header-btn {
+      margin: auto 0.5rem 0.1rem 0rem;
+      .mt-icon {
+        font-size: 2.4rem;
+      }
+    }
+    h2 {
+      padding-left: 0.3rem;
+      font-size: calc(var(--font-size-r) * 2.2);
+      color: var(--heading-color);
+      font-weight: 400;
+    }
+  }
+  .right {
+    height: Calc(var(--navbar) + 0rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .sub-title {
+      display: flex;
+      margin-right: 1.3rem;
+      span {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--text-color-00);
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .separator {
+      display: block;
+      height: 50%;
+      background-color: var(--border-color);
+      max-width: 0.1rem;
+      min-width: 0.1rem;
+      border-radius: 0.1rem;
+      margin: 2rem 1rem 2rem 1.4rem;
+    }
+    .header-btn {
+      margin-left: 0.7rem;
+      margin-right: 0.7rem;
+    }
+    .header-btn-primary {
+      margin-right: 1rem;
+      .mt-icon {
+        font-size: 2.5rem;
+      }
+    }
+    .header-user {
+      min-width: 2rem;
+      margin-left: -0.5rem;
+      padding: 0rem 0.6rem;
+      display: flex;
+      border-radius: var(--border-radius-xl);
+      cursor: pointer;
+      .icon {
+        display: flex;
+        align-items: center;
+        // width: 3.5rem;
+        .mt-icon {
+          color: var(--bg-00);
+          font-size: 3.5rem;
+          width: 3.5rem;
+        }
+      }
+      .info {
+        margin: auto 0.7rem;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color: var(--bg-00);
+        white-space: nowrap;
+        overflow: hidden;
+        .f-name {
+          font-size: 1.3rem;
+          margin-top: 0.3rem;
+          line-height: 1.3rem;
+        }
+        .user-id {
+          line-height: 1.3rem;
+          font-size: 1.1rem;
+          color: var(--bg-00);
+        }
+      }
+      &:hover {
+        background-color: var(--bg-02);
+        .icon .mt-icon {
+          color: var(--secondary-color);
+          font-variation-settings: 'FILL' 1;
+        }
+      }
+    }
+  }
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .desktop {
+      height: var(--navbar);
+      // width: var(--navbar);
+      display: flex;
+      align-items: center;
+      img {
+        align-self: center;
+        width: 4.4rem;
+        filter: brightness(100);
+      }
+      span {
+        align-self: center;
+        display: block;
+        min-width: 0.2rem;
+        background-color: var(--border-color);
+        height: 30%;
+        border-radius: 0.1rem;
+        margin: auto 1rem;
+        // opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+      }
+      h1 {
+        align-self: center;
+        color: var(--bg-00);
+        white-space: nowrap;      
+        font-size: 2rem;
+        line-height: 1.7rem;
+        font-weight: 500;
+        // opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+      }
+      h4 {
+        align-self: center;
+        color: var(--bg-00);
+        white-space: nowrap;
+        font-size: 1.3rem;
+        line-height: 1.4rem;
+        font-weight: 500;
+        transition: opacity 0.4s ease-in-out;
+      }
+    }
+    .mobile {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .page-header {
+    padding: 0rem 2rem 0rem 2rem !important;
+    .right {
+      .sub-title {
+        display: none;
+      }
+      .separator {
+        display: none;
+      }
+      .btn-dark-mode {
+        display: none;
+      }
+      .header-user{
+        display: none;
+      }
+    }
+  }
+}

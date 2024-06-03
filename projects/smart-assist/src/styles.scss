@@ -1,0 +1,64 @@
+//Yantramanav Google FONTS
+@import url("https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap");
+
+//Dashboard CSS
+
+@import "assets/scss/variables";
+@import "assets/scss/smart";
+@import "assets/scss/smart-stats";
+@import "assets/scss/dashboard";
+@import "assets/scss/tabsview";
+
+//third party package style
+@import "../../../common_modules/scss/vendor/ngx-toastr";
+@import "../../../common_modules/scss/vendor/perfect-scrollbar";
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+//base
+@import "../../../common_modules/scss/base/variables";
+@import "../../../common_modules/scss/base/base";
+@import "../../../common_modules/scss/base/utilities";
+@import "../../../common_modules/scss/base/animations";
+@import "../../../common_modules/scss/material-icons/material-icons";
+//html-tags-custom-style
+@import "../../../common_modules/scss/components/button";
+@import "../../../common_modules/scss/components/checkbox";
+@import "../../../common_modules/scss/components/combobox";
+@import "../../../common_modules/scss/components/textbox";
+@import "../../../common_modules/scss/components/tooltip";
+@import "../../../common_modules/scss/components/form-table";
+@import "../../../common_modules/scss/components/toggle-button";
+@import "../../../common_modules/scss/components/tree-view";
+//components
+@import "../../../common_modules/scss/components/abs-popup";
+@import "../../../common_modules/scss/components/left-navbar";
+@import "../../../common_modules/scss/components/user-account";
+@import "../../../common_modules/scss/components/page-header";
+@import "../../../common_modules/scss/components/drag-drop";
+
+
+
+
+//Common css goes here
+
+
+//Common Dark theme style
+@import "../../../common_modules/scss/base/dark-theme";
+
+//app dark theme style
+.dark-mode {
+  //help
+  .help .help-topics {
+    div {
+      background-color: var(--bg-02) !important;
+      &:hover {
+        .designers__card-body,
+        .designers__card-body span {
+          background-color: var(--bg-03) !important;
+        }
+        .designers__bar {
+          background-color: var(--secondary-color) !important;
+        }
+      }
+    }
+  }
+}

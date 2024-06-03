@@ -1,0 +1,126 @@
+<app-page-header [title]="'Ui Customization'" [goBack]="true" [showSeparator]="true"></app-page-header>
+<perfect-scrollbar>
+  <div class="main_section">
+    <div class="live-audit-checkbox">
+      <label class="field-label" style="font-size: medium;">Enable/disable Smart Agent Assist feature</label>
+      <div class="table">
+        <div class="thead">
+          <div class="th">
+            <label class="field-label">No</label>
+          </div>
+          <div class="th">
+            <label class="field-label">Name</label>
+          </div>
+          <div class="th">
+            <label class="field-label">Checkbox</label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">1</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Call Transcript</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="iscallTranscript" (change)="callTranscriptOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">2</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Procedural Guidance</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isProceduralGuidance" (change)="ProceduralGuidanceOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">3</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Call Summary</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isCallSummary" (change)="CallSummaryOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">4</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Extracted Details</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isExtractedDetails" (change)="ExtractedDetailsOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">5</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Live Feedback</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isLiveFeedback" (change)="LiveFeedbackOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">6</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Sentiments</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isSentiments" (change)="SentimentsOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tbody">
+          <div class="td">
+            <label class="field-label">7</label>
+          </div>
+          <div class="td">
+            <label class="field-label">Live Audit</label>
+          </div>
+          <div class="td">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isLiveAudit" (change)="LiveAuditOn()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</perfect-scrollbar>

@@ -1,0 +1,73 @@
+.tooltip {
+  z-index: 999;
+  opacity: 0;
+  position: absolute;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-00);
+  color: var(--text-color-00);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  font-size: 1.35rem !important;
+  font-family: inherit !important;
+  white-space: nowrap;
+  font-weight: 400;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  letter-spacing: 0.01rem !important;
+  text-transform: none !important;
+}
+
+/*========== Tooltip right  ==========*/
+.tooltip-right {
+  right: 0rem;
+  transform: translateX(100%);
+
+  &::after {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    left: 0.1rem;
+  }
+}
+
+/*========== Tooltip Left  ==========*/
+.tooltip-left {
+  left: 0rem;
+  transform: translateX(-100%);
+
+  &::after {
+    top: 50%;
+    transform: translate(50%, -50%) rotate(45deg);
+    right: 0.1rem;
+  }
+}
+
+/*========== Tooltip top ==========*/
+.tooltip-top {
+  top: 0rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &::after {
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    bottom: 0.1rem;
+  }
+}
+
+/*========== Tooltip bottom ==========*/
+.tooltip-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  &::after {
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    top: 0.1rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .tooltip {
+    display: none;
+  }
+}

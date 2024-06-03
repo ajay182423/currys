@@ -1,0 +1,156 @@
+<app-page-header [title]="'Back Office Audit Page'" [showSeparator]="true"></app-page-header>
+<perfect-scrollbar>
+  <div class="audit-details-container">
+    <div style="display: flex; justify-content: space-between; margin-left: 40px;">
+      <div style="display: flex;">
+        <form [formGroup]='modalForm'>
+          <div class="get-audit-details">
+            <div style="width: 150%;">
+              <label class="field-label">Transaction Id<span>*</span></label>
+              <text-input [formControl]='modalForm.controls["transaction"]' [label]='"Transaction Id"'>
+              </text-input>
+            </div>
+          </div>
+        </form>
+        <div style="margin: 20px 0 0 0;" *ngIf="agentDetailShow">
+          <label class="field-label">Agent Name</label>
+          <div class="idCallBox" style="width: 160px;"><span style="margin-left: 3px;">{{agentName}}</span></div>
+        </div>
+      </div>
+      <div class="get-audit-details flagDiv" *ngIf="flagDivShow">
+        <button class="btn btn-primary" style="margin-right: 40px;" *ngIf="(flaggedCall | lowercase) !== 'flagged'" (click)="flagThisCall()">Flag This Transaction</button>
+        <div *ngIf="scorecalcu">
+          <div class="buttons-count">
+            <div style="font-size: 25px;width: 5vw; text-align: center;">
+              <label class="field-label">Total Score</label>
+              {{scorecalcu}}/{{maxscorecalcu}} </div>
+            <div style="font-size: 25px;width: 5vw; margin-left: 10px; text-align: center;">
+              <label class="field-label" style="margin-left: -10px;">Quality</label>
+              <span *ngIf="scoreCalcTotalF >= 80" style="color: green;">{{scoreCalcTotalF}}%</span>
+              <span *ngIf="scoreCalcTotalF < 80" style="color: red;">{{scoreCalcTotalF}}%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="call_type_element" *ngIf="agentDetailShow">
+      <div>
+        <label class="field-label">Transaction Type</label>
+        <div class="customerFeedback" style="height: 30px"><span style="margin-left: 5px;">{{callResponse}}</span></div>
+      </div>
+      <div style="margin-left: 10px">
+        <label class="field-label"> Customer - Issue</label>
+        <div class="idCallBox" style="width: 150px;"><span style="margin-left: 5px;">{{queryResolved}}</span></div>
+      </div>
+    </div>
+
+    <br />
+    <div>
+      <hr style="margin: 30px 30px 20px 40px;" *ngIf="customForm">
+      <div class="audit-form">
+        <div class="table-name" *ngFor="let sectionItem of sectionsData">
+          <div class="headers">
+            <header>{{sectionItem.sectionName}}</header>
+            <!-- <header class="second">Weightage <span>{{sectionItem.weightage}}%</span></header> -->
+            <div class="phrase-checkbox" *ngIf="sectionItem.sectionName === 'Phrase/Text detection'">
+              <div class="toggle-container disable-btn">
+                <ng-container *ngIf="filterText == ''">
+                  <label class="field-label left toggle-change">All Phrase</label>
+                </ng-container>
+                <ng-container *ngIf="filterText == 'Yes'">
+                  <label class="field-label left toggle-change">Phrase Identified</label>
+                </ng-container>
+                <label class="switch">
+                  <input type="checkbox" (change)="toggleChange(auditToggle.checked)" #auditToggle>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <div class="thead">
+              <div class="th">
+                <label class="field-label">No</label>
+              </div>
+              <div class="th" style="width: 350px;">
+                <label class="field-label" style="font-size: small;">Parameter/Questions</label>
+              </div>
+              <div class="th" *ngFor="let items of isColumnRequiredList">
+                  <label class="field-label">{{items.parameterName}}<span>*</span></label>
+              </div>
+              <div class="th">
+                <label class="field-label">Fatal<span>*</span></label>
+              </div>
+              <div class="th">
+                <label class="field-label">Associated Timestamp<span>*</span></label>
+              </div>
+              <div class="th">
+                <label class="field-label">Help/Notes</label>
+              </div>
+            </div>
+            <ng-container *ngFor="let paramItem of (sectionItem.sectionName == 'Phrase/Text detection' ?
+              (sectionItem?.parameters | customAudit : filterText) : sectionItem?.parameters );
+                let index = index">
+                <ng-container *ngIf="customForm[paramItem?.parameterIndex]">
+                  <form [formGroup]='customForm[paramItem?.parameterIndex]' autocomplete="off">
+                    <div class="td">{{index+1}}</div>
+                    <div class="td">
+                      <div class="questionDiv"> {{paramItem?.parameterName}} <br>
+                      </div>
+                    </div>
+                    <div class="td">
+                      <div class="app-select" style="width: 95px;">
+                        <single-select-dropdown [formControl]='customForm[paramItem?.parameterIndex].controls["result"]'
+                          [label]='"result"' [optionList]="resultList" #resultDropDown>
+                        </single-select-dropdown>
+                        <div class="app-select-arrow" style="margin-left: 20px;">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="td">
+                      <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["confidence"]'
+                      [label]='"confidance"'>
+                    </text-input>
+                    </div>
+                    <div class="td">
+                      <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["score"]'
+                      [label]='"Score"' [isReadOnly]="false">
+                    </text-input>
+                    </div>
+                    <div class="td">
+                      <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["fatal"]'
+                      [label]='"falal"' [isReadOnly]="false">
+                    </text-input>
+                    </div>
+                    <div class="td">
+                      <textarea class="app-textbox" style="height: 70px; width: 390px;"
+                          [formControl]='customForm[paramItem?.parameterIndex].controls["AssociatedTranscript"]'
+                          [label]='"Refrence"'>
+                      </textarea>
+                    </div>
+                    <div class="td">
+                      <a (click)="openHelpText(paramItem?.parameterHelpText)"
+                      style="color: rgb(97, 220, 236); font-size: small;">Help/Notes</a>
+                    </div>
+                  </form>
+                </ng-container>
+            </ng-container>
+          </div>
+          <div style="clear: both;"></div>
+
+          <div class="IDV" *ngIf="sectionItem.sectionName === 'ID&V'">
+            <p>{{sectionItem.sectionName}} Verdict : {{sectionItem.IDVoutcome}}</p>
+            <p>Comments : {{sectionItem.comments}}</p>
+          </div>
+          <div class="IDV" *ngIf="sectionItem.sectionName === 'PCI-DSS'">
+            <p>PCI Compliance : {{sectionItem.PCIoutcome}}</p>
+            <p>Comments : {{PCIcomment}}</p>
+          </div><br>
+        </div>
+      </div>
+      <div class="submit-audited-data" *ngIf="showSubmitAudit">
+        <button class="btn btn-primary" type="button" (click)="submitAudit()">Update</button>
+      </div><br>
+    </div>
+  </div>
+</perfect-scrollbar>

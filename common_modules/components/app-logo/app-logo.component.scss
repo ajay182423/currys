@@ -1,0 +1,57 @@
+//-------------------app-logo
+.app-logo {
+  display: flex;
+  &__box{
+    display: flex;
+    align-items: center;
+    &__img{
+      max-height: 2.1rem;
+      display: flex;
+      justify-content: center;
+      img {
+        height: 100%;
+      }
+    }
+    span {
+      display: block;
+      height: 100%;
+      background-color: var(--border-color);
+      width: 0.15rem;
+      margin: auto 1.8rem auto 2rem;
+    }
+  }
+  &__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      line-height: 1.7rem;
+      font-weight: 500;
+      margin: 0.2rem 0 0 0rem;
+      font-size: 2.2rem;
+      color: var(--primary-color);
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .app-logo {
+    &__box{
+      &__img{
+        height: 2.7rem;
+      }
+      span {
+        margin: auto 0.8rem auto 1rem;
+      }
+    }
+    &__name {
+      h1 {
+        line-height: 1.5rem;
+        margin: 0.3rem 0 0 0rem;
+        font-size: 2.3rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

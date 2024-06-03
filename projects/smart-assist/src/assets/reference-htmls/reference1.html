@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.4rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    
+    
+    <div class="text-center">
+        <h3><strong>Process Training &ndash; SRM Billing</strong></h3>
+        <p><em>Version 1.0</em></p>
+    </div>
+
+<p><strong>Table of Contents</strong></p>
+<ol>
+<li><a href="#_Toc107341970"> Process Overview.. 3</a></li>
+<li><a href="#_Toc107341971"> Annual Billing. 4</a></li>
+<li><a href="#_Toc107341972">a) Owner and Developer Billing. 4</a></li>
+<li><a href="#_Toc107341973"> Setting up Assessment Tables. 4</a></li>
+<li><a href="#_Toc107341974"> Assessment Pricing. 5</a></li>
+</ol>
+<p><a href="#_Toc107341975">iii.&nbsp;&nbsp; Running Projected Budget 6</a></p>
+<ol>
+<li><a href="#_Toc107341976"> Running the Assessment 6</a></li>
+<li><a href="#_Toc107341977"> Posting Transaction. 7</a></li>
+<li><a href="#_Toc107341978"> Creating the Statement File. 7</a></li>
+<li><a href="#_Toc107341979">b) Club and Trust Billing. 8</a></li>
+<li><a href="#_Toc107341980"> Setting up Assessment Tables. 8</a></li>
+<li><a href="#_Toc107341981"> Attaching Tables to Club. 8</a></li>
+</ol>
+<p><a href="#_Toc107341982">iii.&nbsp;&nbsp; Running the Assessment 8</a></p>
+<ol>
+<li><a href="#_Toc107341983"> Posting Transactions. 9</a></li>
+<li><a href="#_Toc107341984"> Creating the Statement File. 9</a></li>
+<li><a href="#_Toc107341985"> Annual Delinquency Billing. 10</a></li>
+<li><a href="#_Toc107341986">a) Annual Owner Delinquency Billing. 10</a></li>
+<li><a href="#_Toc107341987">b) Annual Member Delinquency Billing. 12</a></li>
+<li><a href="#_Toc107341988"> New Owner/ Member Billing. 14</a></li>
+<li><a href="#_Toc107341989">a) New Owner Billing. 14</a></li>
+<li><a href="#_Toc107341990">b) New Member Billing. 16</a></li>
+<li><a href="#_Toc107341991"> Apply Open Credits. 18</a></li>
+</ol>
+<h2><br /> <a name="_Toc107341970"></a><u>1.&nbsp;&nbsp;&nbsp; Process Overview</u></h2>
+<p>&nbsp;</p>
+<p>SRM Billing is responsible for preparing the statements for Owners and Club Members on account Maintenance Fee and Club Dues. These statements are prepared once the billing memorandums are received from the Resort Controllers or National Trust Director (Trust billings). These statements are mailed between August and October each year. Billing Processor are also responsible for running the late fee and interest assessments/ special assessments if required on Owner and Club accounts once past due to charge the accounts.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>An <strong>Owner </strong>is a person who owns a deeded property with Sunterra.</p>
+<p>&nbsp;</p>
+<p>A <strong>Developer</strong> is the party or corporate entity responsible for acquiring the land, desigining and building the resort, marketing and selling the weeks, and providing the service to the owners regarding reservation and financing.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="_Toc107341971"></a><u>2.&nbsp;&nbsp;&nbsp; Annual Billing</u></h2>
+<p>&nbsp;</p>
+<p>Annual Billing is done during August to October with a Due Date of 1 January.</p>
+<p>&nbsp;</p>
+<p>The data files for the billing are sent to the Printing Vendor for printing and upon approval of the proofs received, the vendor prints and mails the statements to the Club Members, Owners, and Developers etc for payments.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a name="_Toc107341972"></a>a) Owner and Developer Billing</h3>
+<p>&nbsp;</p>
+<p>The Resort Controllers prepare and approve the annual budget for their resort; the Budget Memorandum gives projected figures to be collected for the year. The Resort Controllers send these projected figures to Billing based on the following:</p>
+<p>&nbsp;</p>
+<ul>
+<li>Unit Type</li>
+<li>Number of Units</li>
+<li>Maintenance Fee</li>
+<li>Reserve Fee</li>
+<li>Total Billing for the resort</li>
+</ul>
+<p>&nbsp;</p>
+<p>Follow the steps below to complete annual billing:</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341973"></a>i.&nbsp;&nbsp;&nbsp;&nbsp; Setting up Assessment Tables</h4>
+<p>&nbsp;</p>
+<p>Setting up the assessment table on Atlas will allow Atlas to bill as per the assessment criteria&rsquo;s entered. Refer to the Billing Memo to input these details.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Click on &lsquo;Owners&rsquo; tab in &lsquo;Sales and Marketing&rsquo; region</li>
+<li>Click on &lsquo;Owners Receivables&rsquo;</li>
+<li>Click on &lsquo;Receivables Setup&rsquo;</li>
+<li>Click on &lsquo;Assessment Tables&rsquo;</li>
+<li>Click on &lsquo;Add&rsquo; tab to add the parameters to setup the assessment tables</li>
+<li>Enter a 3-letter table code to identify the table. Type YYYY (upcoming billing year)+ Inv Mfee and additional levies (As per Budget Memo) in the Description field. Select &lsquo;Yes&rsquo; in the &lsquo;Active&rsquo; field. Select &lsquo;No&rsquo; in &lsquo;Special Assessment&rsquo; field. Select &lsquo;Billing Currency&rsquo; as &lsquo;USD-US DOLLARS&rsquo;.</li>
+<li>Upon clicking &lsquo;Save&rsquo;, the new 3-letter code will be saved at the bottom in the Code field. Click the 3-letter code to be taken to the Assessment Tables Change screen.</li>
+<li>Select the &lsquo;Price Type&rsquo;, &lsquo;Calc Method&rsquo; and &lsquo;Transaction Code&rsquo; as per the billing memo. Key in the &lsquo;Flat Amt&rsquo; as &lsquo;0.00&rsquo;.</li>
+<li>Click &lsquo;Back&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><em>Note1: </em><em>The Processor will add </em><em>3.00</em><em> (ARDA Fee) in the </em><em>Flat Amt</em><em> field if processing UDI billing.</em></p>
+<p><em>&nbsp;</em></p>
+<p><em>Note 2:</em><em> The Processor will follow the same steps for setting up tables for Developer billing. Example: </em><em>2005 Dev Unit type w/Taxes</em><em>.</em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341974"></a>ii.&nbsp;&nbsp;&nbsp; Assessment Pricing</h4>
+<h4>&nbsp;</h4>
+<p>Follow the below mentioned steps to enter fees applicable for the resort billing as per the Billing Memo.</p>
+<p>&nbsp;</p>
+<p><u>Assessment Pricing for Deeded Week:</u></p>
+<ul>
+<li>Click on &lsquo;Assessment Pricing&rsquo; in the &lsquo;Owners Receivables Setup Menu&rsquo;</li>
+<li>Select the appropriate resort in the &lsquo;Project&rsquo; field and select the upcoming year in the &lsquo;Assessment Year&rsquo; field</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click the &lsquo;Add&rsquo; tab to enter the pricing amounts as per the Resort Billing Memo</li>
+<li>Select the appropriate &lsquo;Calculation Method&rsquo; and click &lsquo;Process&rsquo;</li>
+<li>Select the appropriate &lsquo;Unit Type&rsquo; as per Billing Memo and click &lsquo;Process&rsquo;</li>
+<li>Add all the &lsquo;Unit Type&rsquo; as per the billing memo</li>
+<li>Click on the hotlink of each Unit Type added, to add the pricing</li>
+<li>Select the &lsquo;Assessment Type&rsquo; as the billing memo. Select &lsquo;Odd/Even/Both&rsquo; as per the Assessment Parameters List and enter the &lsquo;Flat Price&rsquo; as the billing memo.</li>
+<li>Click &lsquo;Back&rsquo; button all the way to go to Owners Receivables Setup Menu</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u>Assessment Pricing for UDI Property:</u></p>
+<ul>
+<li>Select &lsquo;Calculation Method&rsquo; as &lsquo;Per Point&rsquo; and Click &lsquo;Process&rsquo;</li>
+<li>Select the appropriate method from the &lsquo;Points Group&rsquo; field and click &lsquo;Process&rsquo;</li>
+<li>Select the &lsquo;Assessment Type&rsquo; and &lsquo;Price/Point&rsquo; as per the billing memo and click &lsquo;Save&rsquo;</li>
+<li>Once all the assessment type have been added, click on &lsquo;back&rsquo; button all the way to go to &lsquo;Owners Receivables Setup Menu&rsquo;</li>
+<li>Click on &lsquo;Project Assignment&rsquo;</li>
+<li>Select the Resort as the &lsquo;Project Assignment&rsquo;</li>
+<li>Enter &lsquo;Inventory Assess Plan&rsquo;, &lsquo;UDI Assess Plan&rsquo;, &lsquo;Developer Inventory Assess Plan&rsquo;, Developer Assess Plan&rsquo; and &lsquo;Trust Assess Plan&rsquo; as per the assessment tables created.</li>
+<li>Click &lsquo;Save&rsquo;</li>
+<li>Click the &lsquo;Back&rsquo; button to return to Owners Receivables Setup Menu</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341975"></a>iii.&nbsp;&nbsp; Running Projected Budget</h4>
+<p><u>&nbsp;</u></p>
+<ul>
+<li>Go to &lsquo;Owners Receivables Main Manu&rsquo;</li>
+<li>Click on &lsquo;Reports&rsquo;</li>
+<li>Click on &lsquo;Assessment Budget&rsquo;</li>
+<li>Select the &lsquo;Project&rsquo; as per the Billing Memo, &lsquo;Assessment Year&rsquo; as the upcoming year and &lsquo;Detail Report&rsquo; as &lsquo;No&rsquo;</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>The Project Assessment Budget Report will populate in an excel format</li>
+<li>Match the report with the Memorandum</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341976"></a>iv.&nbsp;&nbsp; Running the Assessment</h4>
+<p>&nbsp;</p>
+<h6>Deeded and UDI Assessments</h6>
+<ul>
+<li>Click on &lsquo;Assessment&rsquo; Tab in Owners Receivables menu</li>
+<li>Select &lsquo;Invoice Date&rsquo; and &lsquo;Due Date&rsquo; as first day of the year.</li>
+<li>Select &lsquo;Currency&rsquo; as &lsquo;USD-US DOLLARS&rsquo;.</li>
+<li>Select the appropriate &lsquo;UDI or Inventory?&rsquo; type.</li>
+<li>Select &lsquo;Table&rsquo; as created for the resort.</li>
+<li>Select &lsquo;Project&rsquo; as the resort for which assessment has to be run.</li>
+<li>Select &lsquo;Owners Flag&rsquo; as &lsquo;All&rsquo;.</li>
+<li>Select &lsquo;Excluded Owners Flags&rsquo; as &lsquo;All&rsquo; except in for the following resorts.</li>
+<li>Flamingo Beach I &ndash; Select Lock off Owners (LOCL)</li>
+<li>Royal Palm Beach- Select Home Owners (RWOR)</li>
+<li>Villas of Santa Fe- Select SUN9</li>
+<li>Click on &lsquo;Back&rsquo; button</li>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Copy of the Excel file generated will be emailed to the resort controller for approval</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h6>Developer and Trusts Assessments</h6>
+<ul>
+<li>Click on &lsquo;Owners&rsquo; tab in &lsquo;Sales and Marketing&rsquo; field</li>
+<li>Click on &lsquo;Owner Receivables&rsquo;</li>
+<li>Click on &lsquo;Developer Functions&rsquo;</li>
+<li>Click on &lsquo;Developer Assessment&rsquo;</li>
+<li>Select the &lsquo;Inventory Project&rsquo; as the resort for which the assessment is to be run</li>
+<li>Select the &lsquo;Assessment Year&rsquo; as the upcoming year</li>
+<li>Select &lsquo;Invoice Date&rsquo; and &lsquo;Due Date&rsquo; as first day of the year</li>
+<li>Select the appropriate &lsquo;Inventory, UDI or Trust?&rsquo; type.</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Back&rsquo; button</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Copy of the Excel file generated will be emailed to the resort controller for approval</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341977"></a>v.&nbsp;&nbsp;&nbsp; Posting Transaction</h4>
+<ul>
+<li>Click on &lsquo;Post Transactions&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341978"></a>vi.&nbsp;&nbsp; Creating the Statement File</h4>
+<ul>
+<li>Click on &lsquo;Reports&rsquo; under &lsquo;Owner Receivables&rsquo; menu</li>
+<li>Click on &lsquo;Statements to File&rsquo;</li>
+<li>Select &lsquo;Owner Flag&rsquo; and &lsquo;Exclude Selected Owner Flags&rsquo; to move to &lsquo;Parameters Selected&rsquo; region</li>
+<li>Enter the &lsquo;Transaction Date&rsquo; and the &lsquo;Past Due as of Date&rsquo; as the first date of the upcoming year</li>
+<li>Select &lsquo;Include Credit Balance&rsquo; as &lsquo;Yes&rsquo;. Select as &lsquo;No&rsquo; in case the credit balances and zero balances need to be excluded on the billing statement</li>
+<li>Select Project as per Billing Memo</li>
+<li>Select &lsquo;Exclude Selected Owner Flags&rsquo; as &lsquo;Yes&rsquo;</li>
+<li>Select the &lsquo;Owner Flags&rsquo; that need to be excluded</li>
+<li>Select &lsquo;Starting Last Name Character From&rsquo; as &lsquo;A&rsquo;</li>
+<li>Select &lsquo;Starting Last Name Character To&rsquo; as &lsquo;F&rsquo;</li>
+<li>Go through the data files to verify Owner information, True balance and that the current years fees are billed</li>
+<li>Save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a name="_Toc107341979"></a>b) Club and Trust Billing</h3>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341980"></a>i.&nbsp;&nbsp;&nbsp;&nbsp; Setting up Assessment Tables</h4>
+<p>Set up the assessment table on Atlas, this will allow Atlas to bill as per the assessment criteria&rsquo;s entered. The assessment pricing for Club billing is a flat amount, where as in case of Trusts the National Trust Director sends memo to SRM Billing each year.</p>
+<p>&nbsp;</p>
+<p>Follow the steps below to setup the assessment tables:</p>
+<ul>
+<li>Click on &lsquo;Club&rsquo; tab under the fulfillment region</li>
+<li>Click on &lsquo;Club Receivables&rsquo;</li>
+<li>Click on &lsquo;Setup&rsquo;</li>
+<li>Click on &lsquo;Assessment Tables&rsquo;</li>
+<li>Click on &lsquo;Add&rsquo;</li>
+<li>Enter a 3-letter table code to identify the table. Type YYYY (upcoming billing year &lt;&rsquo;US Club Dues&rsquo; or Trusts Name &lsquo;Assessment&rsquo;&gt; in the Description field. Select &lsquo;Yes&rsquo; in the &lsquo;Active&rsquo; field. Select &lsquo;No&rsquo; in &lsquo;Special Assessment&rsquo; field. Select &lsquo;Billing Currency&rsquo; as &lsquo;USD-US DOLLARS&rsquo;.</li>
+<li>Upon clicking &lsquo;Save&rsquo;, the new 3-letter code will be saved at the bottom in the Code field. Click the 3-letter code to be taken to the Assessment Tables Change screen.</li>
+<li>Select the &lsquo;Price Type&rsquo; as &lsquo;Club Assessment&rsquo;. Select &lsquo;Calculation Method&rsquo; as &lsquo;Per Membership&rsquo;. Select &lsquo;Transaction Code&rsquo; as &lsquo;current year club dues&rsquo;. Enter &lsquo;Flat Amount&rsquo; as &lsquo;149&rsquo;. Select &lsquo;Waive&rsquo; as &lsquo;Yes&rsquo;.</li>
+<li>Click &lsquo;Back&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341981"></a>ii.&nbsp;&nbsp;&nbsp; Attaching Tables to Club</h4>
+<ul>
+<li>Click on &lsquo;Membership Types&rsquo; on &lsquo;Club Receivables Setup&rsquo;</li>
+<li>Click on &lsquo;Membership type&rsquo; hotlink (SUN, VTS, CS1, CS3)</li>
+<li>Enter the &lsquo;Year&rsquo; and &lsquo;Assessment Plan&rsquo; and click &lsquo;Save&rsquo;</li>
+<li>Click on the Assessment Year hotlink and click &lsquo;Back&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341982"></a>iii.&nbsp;&nbsp; Running the Assessment</h4>
+<ul>
+<li>Click on &lsquo;Assessment&rsquo; hotlink on &lsquo;Club Receivables Main Menu&rsquo;</li>
+<li>Select &lsquo;Assessment Period&rsquo; as upcoming year. Select the &lsquo;Invoice Date&rsquo; and the &lsquo;Due Date&rsquo; as the first day of the upcoming year. Select &lsquo;Currency&rsquo; as &lsquo;USD-US DOLLARS&rsquo;. Select the appropriate membership type.</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click &lsquo;Back&rsquo; button all the way to go to &lsquo;Club Receivables Menu&rsquo;</li>
+<li>Click on &lsquo;Transaction entry&rsquo;</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Save the file on the shared drvie</li>
+<li>Click &lsquo;Back&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341983"></a>iv.&nbsp;&nbsp;&nbsp; Posting Transactions</h4>
+<ul>
+<li>Click on &lsquo;Post Transactions&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><a name="_Toc107341984"></a>v.&nbsp;&nbsp;&nbsp; Creating the Statement File</h4>
+<ul>
+<li>Click on &lsquo;Reports&rsquo; under &lsquo;Club Receivables Main&rsquo; menu</li>
+<li>Click on &lsquo;Print Statements&rsquo;</li>
+<li>Select &lsquo;Member Flag&rsquo;, &lsquo;Exclude Selected Member Flags&rsquo;, &lsquo;Membership Type&rsquo;, &lsquo;Starting Last Name Character From&rsquo; and &lsquo;Starting Last Name Character To&rsquo; to move to &lsquo;Parameters Selected&rsquo; region.</li>
+<li>Click &lsquo;OK&rsquo;</li>
+<li>Select &lsquo;Report Format&rsquo; as &lsquo;Character&rsquo;. Select &lsquo;Character Report Format&rsquo; as &lsquo;Multiple Line Text&rsquo;</li>
+<li>Enter the &lsquo;Transaction Date To&rsquo;, &lsquo;Transaction Date From&rsquo; and the &lsquo;Past Due as of Date&rsquo; as the first date of the upcoming year</li>
+<li>Select all BNK, HBK and MBK codes as &lsquo;Member Flags&rsquo;</li>
+<li>Select the appropriate &lsquo;Membership Type&rsquo;</li>
+<li>Select &lsquo;Starting Last Name Character From&rsquo; as &lsquo;A&rsquo;</li>
+<li>Select &lsquo;Starting Last Name Character To&rsquo; as &lsquo;F&rsquo;</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="_Toc107341985"></a><u>2.&nbsp;&nbsp;&nbsp; Annual Delinquency Billing</u></h2>
+<p>&nbsp;</p>
+<p>The owners/members are mailed the ABC Policy (Assessment Billing and Collections) with their billing statements each year. The ABC Policy details the late fee, time frame and due dates within which the HOA Fees, Club Dues or Maintenance Fee payments can be made. We start assessing the delinquency billings from January 5th of each year as the due date for paying the fees according to resorts is generally January, 1st. Annual Late Fees are charged only once a year and the interest is charged every&nbsp; month.</p>
+<p>&nbsp;</p>
+<h3><a name="_Toc107341986"></a>a) Annual Owner Delinquency Billing</h3>
+<p>&nbsp;</p>
+<p>Follow the steps given below to complete the delinquency billing for owner accounts:</p>
+<ul>
+<li>Click on &lsquo;Owners&rsquo; tab in &lsquo;Sales and Marketing&rsquo; field</li>
+<li>Click on &lsquo;Owner Receivables&rsquo;</li>
+<li>Click on &lsquo;Receivables Setup&rsquo;</li>
+<li>Click on &lsquo;Delinquency Methods&rsquo;</li>
+<li>Create a 3 digit code in &lsquo;Delinquency Method Code&rsquo; field</li>
+<li>Enter &lsquo;&lt;YYYY&gt; &lt;Resort Code&gt; Late Fee&rsquo; in the &lsquo;Description field</li>
+<li>Enter the &lsquo;Flat Amount&rsquo; of the late fee as per the ABC Policy.</li>
+<li>Enter &lsquo;Minimum Balance&rsquo; as &lsquo;100&rsquo; unless objected by resort controllers</li>
+<li>Enter &lsquo;Minimum Days Past Due&rsquo; as per ABC Policy</li>
+<li>Click &lsquo;Save&rsquo;</li>
+<li>Click the &lsquo;Back&rsquo; button all the way to be taken to &lsquo;Owners Receivables Setup Menu&rsquo;</li>
+<li>Click on &lsquo;Project Assignments&rsquo;</li>
+<li>Select the &lsquo;Project Id&rsquo; and click &lsquo;Search&rsquo;</li>
+<li>Select the &lsquo;Delinquency method for late fees&rsquo; as per the ABC Policy</li>
+<li>Select the &lsquo;Delinquency method for Fin charge&rsquo; as per the ABC Policy</li>
+<li>Click &lsquo;Save&rsquo;</li>
+<li>Click the &lsquo;Back&rsquo; button all the way to be taken to &lsquo;Owners Receivables Setup Menu&rsquo;</li>
+<li>Click on &lsquo;Owners Receivables Main&rsquo; hotlink</li>
+<li>Click on &lsquo;Delinquency Assessment&rsquo;</li>
+<li>Select &lsquo;Type&rsquo; as &lsquo;Late Fee&rsquo;</li>
+<li>Enter the current date in the &lsquo;Balance Date&rsquo; field</li>
+<li>Enter the &lsquo;Invoice Date&rsquo; as per the ABC policy for the resort</li>
+<li>Enter the &lsquo;Due Date&rsquo; as per the ABC policy for the resort</li>
+<li>Select the &lsquo;Transaction Code&rsquo; created</li>
+<li>Select the following &lsquo;Apply Codes&rsquo;:
+<ul>
+<li>City Tax</li>
+<li>Replacement Reserve</li>
+<li>Real Estate Tax</li>
+<li>Maintenance Fee</li>
+<li>Base Flex Ownership</li>
+</ul>
+</li>
+<li>Select the appropriate &lsquo;Project&rsquo;</li>
+<li>Select &lsquo;All&rsquo; in &lsquo;Owner Flag Include&rsquo; field</li>
+<li>Select all Bankruptcy, Do not Assess, Escalated Complaints, Disputed Flags, etc in the &lsquo;Owner Flags Exclude&rsquo; field</li>
+<li>Click the &lsquo;Back&rsquo; button all the way to be taken to &lsquo;Owners Receivables Main Menu&rsquo;</li>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Verify fee on Atlas for few accounts</li>
+<li>Save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u>Posting Batch:</u></p>
+<p>Once the approval is received on the file generated, the payments will be posted on Atlas.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Post Transactions&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click on &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save it on the shared drive</li>
+<li>Click on the &lsquo;Back&rsquo; button to go all the way to &lsquo;Owner Receivables Menu&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u>Printing Statements:</u></p>
+<ul>
+<li>Click on &lsquo;Reports&rsquo; tab</li>
+<li>Click on &lsquo;Statements to File&rsquo;</li>
+<li>Select &lsquo;Owner Flag&rsquo; and &lsquo;Exclude Selected Owner Flag&rsquo; and move it to &lsquo;Parameters Selected&rsquo; field</li>
+<li>Click &lsquo;OK&rsquo;</li>
+<li>Select the first day of the current year in the &lsquo;Transaction Date To&rsquo; field</li>
+<li>Select the first day of the current year in the &lsquo;Past Due as of Date&rsquo; field</li>
+<li>Select &lsquo;Yes&rsquo; in &lsquo;Include credit balances&rsquo; field</li>
+<li>Select &lsquo;Project&rsquo; as per billing memo field</li>
+<li>Select &lsquo;Yes&rsquo; in &lsquo;Exclude Selected Owner Flags&rsquo; field</li>
+<li>Selected all Bankruptcy and Do Not Use codes in &lsquo;Owner Flags&rsquo; field</li>
+<li>Select &lsquo;A&rsquo; in &lsquo;Starting Last Name Character From&rsquo; field</li>
+<li>Select &lsquo;F&rsquo; in &lsquo;Starting Last Name Character To&rsquo; field</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a name="_Toc107341987"></a>b) Annual Member Delinquency Billing</h3>
+<p>Both Club and Trust members are assessed late fees. Monthly interest billing is assessed only to Trust members and not assessed to Club members.</p>
+<p>&nbsp;</p>
+<p>Follow the steps given below to complete the delinquency billing for owner accounts:</p>
+<ul>
+<li>Click on &lsquo;Club&rsquo; tab in &lsquo;Fulfillment&rsquo; field</li>
+<li>Click on &lsquo;Club Receivables&rsquo;</li>
+<li>Click on &lsquo;Delinquency Assessment&rsquo;</li>
+<li>Select &lsquo;Delinquency Method&rsquo; as per ABC Policy</li>
+<li>Select &lsquo;Balance Date&rsquo;, &lsquo;Invoice Date&rsquo; and &lsquo;Due Date&rsquo; as Current Date for assessing Interest Billing. Select &lsquo;Balance Date&rsquo; as current date and &lsquo;Invoice Date&rsquo; and &lsquo;Due Date&rsquo; as per the ABC Policy when assessing Late Fees.</li>
+<li>Select appropriate Transaction Code</li>
+<li>Select &lsquo;Apply Codes&rsquo; as &lsquo;Base Fee&rsquo;, &lsquo;Club Sunterra Fee&rsquo; and &lsquo;Fee Per Point&rsquo;</li>
+<li>Select the appropriate membership type</li>
+<li>Select all Bankruptcy, Do not Assess, Escalated Complaints, Disputed Flags, etc in the &lsquo;Member Flags Exclude&rsquo; field</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u>Posting Batch:</u></p>
+<p>Once the approval is received on the file generated, the payments will be posted on Atlas.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Post Transactions&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click on &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save it on the shared drive</li>
+<li>Click on the &lsquo;Back&rsquo; button to go all the way to &lsquo;Owner Receivables Menu&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u>Printing Statements:</u></p>
+<ul>
+<li>Click on &lsquo;Reports&rsquo; tab</li>
+<li>Click on &lsquo;Print Statements&rsquo;</li>
+<li>Bring &lsquo;Member Flag&rsquo;, &lsquo;Exclude Selected Member Flags&rsquo;, &lsquo;Membership Type&rsquo;, &lsquo;Starting Last Name Character From&rsquo; and &lsquo;Starting Last Name Character To&rsquo; in the &lsquo;Parameters Selected&rsquo; field</li>
+<li>Click &lsquo;Ok&rsquo;</li>
+<li>Select &lsquo;Report Format&rsquo; as &lsquo;Character&rsquo;. Select &lsquo;Report Format&rsquo; as &lsquo;PDF&rsquo; while doing monthly interest assessment.</li>
+<li>Select &lsquo;Character Report Format&rsquo;as &lsquo;Multiple Line Text&rsquo;</li>
+<li>Select the first day of the upcoming year in &lsquo;Transaction Date To&rsquo;, &lsquo;Transaction Date From&rsquo; and &lsquo;Past Due as of Date&rsquo; field. Select &lsquo;Transaction Date To&rsquo; as beginning of the month and &lsquo;Transaction Date From&rsquo; as end of the month while doing monthly interest assessment.</li>
+<li>Select all HBK, BNK and MBK in &lsquo;Member Flags&rsquo; field</li>
+<li>Select the appropriate membership type</li>
+<li>Select &lsquo;A&rsquo; in &lsquo;Starting Last Name Character From&rsquo; field</li>
+<li>Select &lsquo;F&rsquo; in &lsquo;Starting Last Name Character To&rsquo; field</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Save the file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><a name="_Toc107341988"></a><u>4.&nbsp;&nbsp;&nbsp; New Owner/ Member Billing</u></h2>
+<p>&nbsp;</p>
+<p>New Owners/ Members are billed for their HOA fees or Club Dues every month between the 10<sup>th</sup> and 12<sup>th</sup> of the month.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a name="_Toc107341989"></a>a) New Owner Billing</h3>
+<p>Follow the steps given below to bill new owners to pay HOA Fees:</p>
+<p><u>&nbsp;</u></p>
+<p><u>Preparing Assessment:</u></p>
+<ul>
+<li>Click on &lsquo;Owners&rsquo; tab in &lsquo;Sales and Marketing&rsquo; field</li>
+<li>Click on &lsquo;Owner Receivables&rsquo;</li>
+<li>Click on &lsquo;Assessment&rsquo;</li>
+<li>Select &lsquo;Invoice Date&rsquo; as current date</li>
+<li>Select &lsquo;Due Date&rsquo; as 30 days from the Invoice Date</li>
+<li>Select &lsquo;Currency&rsquo; as &lsquo;USD-US DOLLARS</li>
+<li>Select &lsquo;Inventory or UDI?&rsquo; as per the resort</li>
+<li>Select appropriate &lsquo;Inventory Project&rsquo;</li>
+<li>Select &lsquo;Owner Flags&rsquo; as &lsquo;All&rsquo;</li>
+<li>Select &lsquo;Excluded Owner Flags&rsquo; as &lsquo;All&rsquo; except for the resorts mentioned below</li>
+<li>Flamingo Beach I &ndash; Select Lock off Owners (LOCL)</li>
+<li>Royal Palm Beach- Select Home Owners (RWOR)</li>
+<li>Villas of Santa Fe- Select SUN9</li>
+<li>Click on the &lsquo;Back&rsquo; button to go all the way to Owner Receivable Menu</li>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>The batch details sheet will be populated and will show all fields including amount assessed per owner, description and invoice/due date for new owners. Save the report on the shared drive.</li>
+</ul>
+<p><u>&nbsp;</u></p>
+<p><u>Posting Transactions:</u></p>
+<p>Once the approval is received on the file generated, the payments will be posted on Atlas.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Click on &lsquo;Post Transactions&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click on &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save it on the shared drive</li>
+<li>Click on the &lsquo;Back&rsquo; button to go all the way to &lsquo;Owner Receivables Menu&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p><u>Printing Statements:</u></p>
+<ul>
+<li>Click on &lsquo;Reports&rsquo; tab</li>
+<li>Click on &lsquo;Print Statements&rsquo;</li>
+<li>Select &lsquo;Assessed Batch Id&rsquo; and &lsquo;Batch Transaction&rsquo; from &lsquo;Report Parameter Choices&rsquo;</li>
+<li>Click &lsquo;Ok&rsquo;</li>
+<li>Select &lsquo;Apply to&rsquo; in the &lsquo;Report Type&rsquo; field</li>
+<li>Select &lsquo;No&rsquo; in &lsquo;Include Open Items Only&rsquo; field</li>
+<li>Select &lsquo;Transaction Date&rsquo; and &lsquo;Past Due as of Date&rsquo; as the first day of the Upcoming year</li>
+<li>Select &lsquo;Yes&rsquo; in &lsquo;Include Credit Balance&rsquo; Field</li>
+<li>Select Appropriate &lsquo;Project&rsquo;</li>
+<li>Enter the &lsquo;Batch Id&rsquo; generated when posting transactions in the &lsquo;Assessed Batch Id&rsquo; field</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Save the statements generated on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><br /> </u></p>
+<p><u>&nbsp;</u></p>
+<h3><a name="_Toc107341990"></a>b) New Member Billing</h3>
+<p>Follow the steps given below to bill new members joining Club Sunterra to pay their Club Dues:</p>
+<p><u>&nbsp;</u></p>
+<p><u>Preparing Assessment:</u></p>
+<ul>
+<li>Click on &lsquo;Club&rsquo; tab in &lsquo;Fulfillment&rsquo; region</li>
+<li>Click on &lsquo;Club Receivables&rsquo;</li>
+<li>Click on &lsquo;Assessment&rsquo;</li>
+<li>Select &lsquo;Assessment Period&rsquo; as current year</li>
+<li>Select &lsquo;Invoice Date&rsquo; as current date</li>
+<li>Select &lsquo;Due Date&rsquo; as 30 days from the Invoice Date</li>
+<li>Select &lsquo;Currency&rsquo; as &lsquo;USD-US DOLLARS</li>
+<li>Select the appropriate &lsquo;Membership Type&rsquo;</li>
+<li>Select all &lsquo;BNK&rsquo; and &lsquo;DNB&rsquo; codes in &lsquo;Member Flags&rsquo;</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click on the &lsquo;Back&rsquo; button to go all the way to Club Receivables Menu</li>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>The batch details sheet will be populated and will show all fields including Transaction Date, Description and invoice/due date for new members. Save the report on the shared drive.</li>
+</ul>
+<p><u>&nbsp;</u></p>
+<p><u>Posting Transactions:</u></p>
+<p>Once the approval is received on the file generated, the payments will be posted on Atlas.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Click on &lsquo;Post Transactions&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click on &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save it on the shared drive</li>
+<li>Click on the &lsquo;Back&rsquo; button to go all the way to &lsquo;Owner Receivables Menu&rsquo;</li>
+</ul>
+<p>&nbsp;</p>
+<p><u>Printing Statements:</u></p>
+<ul>
+<li>Click on &lsquo;Reports&rsquo; tab</li>
+<li>Click on &lsquo;Print Statements&rsquo;</li>
+<li>Select &lsquo;Assessed Batch Id&rsquo;, &lsquo;Batch Transaction Only&rsquo; and &lsquo;Membership Type&rsquo; from &lsquo;Report Parameter Choices&rsquo;</li>
+<li>Click &lsquo;Ok&rsquo;</li>
+<li>Select &lsquo;Report Format&rsquo; as PDF</li>
+<li>Select &lsquo;Apply to&rsquo; in the &lsquo;Report Type&rsquo; field</li>
+<li>Select &lsquo;Multi Line Text&rsquo; in the &lsquo;Character Report Format&rsquo; field</li>
+<li>Select &lsquo;Invoice&rsquo; in &lsquo;Statement Type&rsquo; field</li>
+<li>Select &lsquo;Transaction Date&rsquo; as the current date</li>
+<li>Select &lsquo;Past Due as of Date&rsquo; as 30 days from the current date</li>
+<li>Enter the &lsquo;Batch Id&rsquo; generated when posting transactions in the &lsquo;Assessed Batch Id&rsquo; field</li>
+<li>Select the appropriate &lsquo;Membership Type&rsquo;</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Save the statements generated on the shared drive<u><br /> </u></li>
+</ul>
+<h2><a name="_Toc107341991"></a><u>5.&nbsp; &nbsp;&nbsp;Apply Open Credits</u></h2>
+<p>&nbsp;</p>
+<p>Any non-applied payments in the account need to be applied to the oldest invoice outstanding. This report is run on the last business day of the month.</p>
+<p>&nbsp;</p>
+<p>Accounts with a negative dollar amount showing as due, are accounts that have credits. When the account is invoiced this credit does not automatically go to the outstanding invoice. In order to apply the funds correctly, this procedure must be completed. This procedure removes credits and applies funds to invoiced fees.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Enter the appropriate Club/Owner Module</li>
+<li>Click on &lsquo;Owner/Club Receivables&rsquo;</li>
+<li>Click on &lsquo;Transaction Entry&rsquo;</li>
+<li>Click on &lsquo;Apply Open Credits&rsquo;</li>
+<li>Enter the &lsquo;Transaction Date&rsquo; as the current date</li>
+<li>Select the &lsquo;Unapplied Credit Code&rsquo; as &lsquo;xPrepaid Credit System Use&rsquo;</li>
+<li>Select &lsquo;Debit Memo Code&rsquo; as &lsquo;Transfer to Open Credit&rsquo;</li>
+<li>Select &lsquo;Credit Memo code&rsquo; as &lsquo;Transfer from Open Credit&rsquo;</li>
+<li>Select appropriate resort as the &lsquo;Project&rsquo;</li>
+<li>Enter &lsquo;Document Number&rsquo; as &lsquo;1&rsquo;</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click the &lsquo;Back&rsquo; button all the way to &lsquo;Owner/Club Transaction Entry&rsquo; menu</li>
+<li>Click on &lsquo;Print Edit List&rsquo;</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hot link</li>
+<li>Save the Excel file on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p><u>Posting Transactions:</u></p>
+<p><u>&nbsp;</u></p>
+<p>Once the file is approved the payments need to be posted on the accounts.</p>
+<p>&nbsp;</p>
+<ul>
+<li>Click on &lsquo;Post Transactions&rsquo; under the Owner/Club Transaction Entry Menu</li>
+<li>Click on the &lsquo;Batch Id&rsquo; hotlink</li>
+<li>Click &lsquo;Process&rsquo;</li>
+<li>Click on &lsquo;Print Journal&rsquo; and save it on the shared drive</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

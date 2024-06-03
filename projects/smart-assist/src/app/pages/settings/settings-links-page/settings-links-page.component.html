@@ -1,0 +1,10 @@
+<perfect-scrollbar class="ps-page">
+  <app-page-header [title]="'Settings'"></app-page-header>
+  <div class="settings-links-page">
+    <loading-spinner *ngIf="isLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+    <div [ngClass]="!isLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+      <settings-links [localStorageUserItem]="localStorageUserItem" [settingsMenu]="settingsMenu"></settings-links>
+      <page-no-content *ngIf="noContentOptions" [options]="noContentOptions"></page-no-content>
+    </div>
+  </div>
+</perfect-scrollbar>

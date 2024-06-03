@@ -1,0 +1,382 @@
+
+<div>
+  <div class="d-flex align-end">
+    <div class="card_tabs">
+      <button [ngClass]="callInfoShow ? 'tabs-button-active' : 'tabs-button'"
+          (click)="callTranscriptDetails('call_info')">
+          Call Information
+      </button>
+      <button [ngClass]="callHistoryShow ? 'tabs-button-active' : 'tabs-button'"
+        (click)="callTranscriptDetails('call_histoty')">Call History
+      </button>
+    </div>
+  </div>
+  <div class="card_content" *ngIf="callInfoShow">
+    <perfect-scrollbar class="ps">
+      <div class="card_content_inner">
+        <!-- {{entities | json}} -->
+        <div class="customer_info" *ngIf="customer_details?.length > 0">
+          <ng-container *ngFor="let item of transcriptData">
+            <ng-container *ngIf="item.customer_details != ''">
+            <ng-container *ngFor="let form of modalForm; let i = index">
+              <div class="customer_info_block" [ngClass]="checkHeaderVerified(formData[i]?.name) ? 'verified' : ''" *ngIf="form">
+                <div class="customer_info_header d-flex align-center justify-between">
+                  <div class="d-flex align-center">
+                    <h3>{{formData[i]?.name}}</h3>
+                    <button class="verify_button">{{checkHeaderVerified(formData[i]?.name) ? 'Verified' : 'Verify'}}</button>
+                  </div>
+                  <div class="toggle up" (click)="toggleDiv(i+1)">
+                    <span class="material-symbols-rounded">
+                      navigate_next
+                    </span>
+                  </div>
+                </div>
+                <div class="customer_info_content"  #info_content [ngClass]="clickedDiv(i+1) ? 'show' : 'hide'" [formGroup]="form">
+                  <!-- {{clickedDiv(i+1)}} -->
+                  <div class="form-2-col" style="padding: 0;">
+                    <!-- {{formData[i].content | json}} -->
+                    <div *ngFor="let control_ of formData[i]?.content">
+                      <label class="field-label" [ngClass]="checkVerified(control_.controlName) ? 'success-color':''">{{control_.labelName}}</label>
+                      <text-input [formControl]='form.controls[control_.controlName]' [isVerified]="checkVerified(control_.controlName)" [label]='control_.labelName'></text-input>
+                    </div>
+                    <!-- <div>
+                      <label class="field-label">Employee Name</label>
+                      <text-input [formControl]='customerInfoForm.controls["employee_name"]' [isVerified]="isCustomerInfoVerified" [label]='"Employee Name"'></text-input>
+                    </div>
+                    <div>
+                      <label class="field-label">Company Name</label>
+                      <text-input [formControl]='customerInfoForm.controls["company_name"]' [isVerified]="isCustomerInfoVerified" [label]='"Company Name"'></text-input>
+                    </div>
+                    <div>
+                      <label class="field-label">Designation</label>
+                      <text-input [formControl]='customerInfoForm.controls["designation"]' [isVerified]="isCustomerInfoVerified" [label]='"Designation"'></text-input>
+                    </div>
+                    <div>
+                      <label class="field-label">Job Band</label>
+                      <text-input [formControl]='customerInfoForm.controls["job_band"]' [isVerified]="isCustomerInfoVerified" [label]='"Job Band"'></text-input>
+                    </div>
+                    <div>
+                      <label class="field-label">Corporate Card</label>
+                      <text-input [formControl]='customerInfoForm.controls["corporate_card"]' [isVerified]="isCustomerInfoVerified" [label]='"Corporate Card"'></text-input>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          </ng-container>
+
+            <!-- <div class="customer_info_block" [ngClass]="isCustomerInfoVerified ? 'verified' : ''" *ngIf="customerInfoForm">
+              <div class="customer_info_header d-flex align-center justify-between">
+                <div class="d-flex align-center">
+                  <h3>Customer Information</h3>
+                  <button class="verify_button">Verified</button>
+                </div>
+                <div class="toggle up">
+                  <span class="material-symbols-rounded">
+                    navigate_next
+                  </span>
+                </div>
+
+              </div>
+              <div class="customer_info_content" [formGroup]="customerInfoForm">
+                <div class="form-2-col" style="padding: 0;">
+                  <div>
+                    <label class="field-label">Employee Number</label>
+                    <text-input [formControl]='customerInfoForm.controls["employee_number"]' [isVerified]="isCustomerInfoVerified" [label]='"Employee Number"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Employee Name</label>
+                    <text-input [formControl]='customerInfoForm.controls["employee_name"]' [isVerified]="isCustomerInfoVerified" [label]='"Employee Name"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Company Name</label>
+                    <text-input [formControl]='customerInfoForm.controls["company_name"]' [isVerified]="isCustomerInfoVerified" [label]='"Company Name"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Designation</label>
+                    <text-input [formControl]='customerInfoForm.controls["designation"]' [isVerified]="isCustomerInfoVerified" [label]='"Designation"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Job Band</label>
+                    <text-input [formControl]='customerInfoForm.controls["job_band"]' [isVerified]="isCustomerInfoVerified" [label]='"Job Band"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Corporate Card</label>
+                    <text-input [formControl]='customerInfoForm.controls["corporate_card"]' [isVerified]="isCustomerInfoVerified" [label]='"Corporate Card"'></text-input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="customer_info_block" *ngIf="contactInfoForm">
+              <div class="customer_info_header d-flex align-center justify-between">
+                <div class="d-flex align-center">
+                  <h3>Contact Information</h3>
+                  <button class="verify_button">Verify</button>
+                </div>
+                <div class="toggle up">
+                  <span class="material-symbols-rounded">
+                    expand_more
+                  </span>
+                </div>
+
+              </div>
+              <div class="customer_info_content" [formGroup]="contactInfoForm">
+                <div class="form-2-col" style="padding: 0;">
+                  <div>
+                    <label class="field-label">Email Id</label>
+                    <text-input [formControl]='contactInfoForm.controls["email_id"]' [label]='"Email Id"'></text-input>
+                  </div>
+                  <div>
+
+                  </div>
+                  <div>
+                    <label class="field-label">Phone Number</label>
+                    <text-input [formControl]='contactInfoForm.controls["phone_number"]' [label]='"Phone Number"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Alternate Phone Number</label>
+                    <text-input [formControl]='contactInfoForm.controls["alternate_phone_number"]' [label]='"Alternate Phone Number"'></text-input>
+                  </div>
+                  <div class="full-width">
+                    <label class="field-label">Full Address</label>
+                    <textarea-input [formControl]='contactInfoForm.controls["full_address"]' [label]='"Full Address"'></textarea-input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="customer_info_block" *ngIf="travelInfoForm">
+              <div class="customer_info_header d-flex align-center justify-between">
+                <div class="d-flex align-center">
+                  <h3>Travel Information</h3>
+                  <button class="verify_button">Verify</button>
+                </div>
+                <div class="toggle up">
+                  <span class="material-symbols-rounded">
+                    expand_more
+                  </span>
+                </div>
+
+              </div>
+              <div class="customer_info_content" [formGroup]="travelInfoForm">
+                <div class="form-2-col" style="padding: 0;">
+                  <div>
+                    <label class="field-label">Travel Type</label>
+                    <text-input [formControl]='travelInfoForm.controls["travel_type"]' [label]='"Travel Type"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Allowable Class</label>
+                    <text-input [formControl]='travelInfoForm.controls["allowable_class"]' [label]='"Allowable Class"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Meal Preference</label>
+                    <text-input [formControl]='travelInfoForm.controls["meal_preference"]' [label]='"Meal Preference"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Seat Preference</label>
+                    <text-input [formControl]='travelInfoForm.controls["seat_preference"]' [label]='"Seat Preference"'></text-input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="customer_info_block" *ngIf="bookingSelectionForm">
+              <div class="customer_info_header d-flex align-center justify-between">
+                <div class="d-flex align-center">
+                  <h3>Booking Selection</h3>
+                  <button class="verify_button">Verify</button>
+                </div>
+                <div class="toggle up">
+                  <span class="material-symbols-rounded">
+                    expand_more
+                  </span>
+                </div>
+
+              </div>
+              <div class="customer_info_content" [formGroup]="bookingSelectionForm">
+                <div class="form-2-col" style="padding: 0;">
+                  <div>
+                    <label class="field-label">Passenger Name</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["passenger_name"]' [label]='"Passenger Name"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Departure City</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["departure_city"]' [label]='"Departure City"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Return City</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["return_city"]' [label]='"Return City"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Departure Date</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["departure_date"]' [label]='"Departure Date"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Return Date</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["return_date"]' [label]='"Return Date"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Departure Time</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["departure_time"]' [label]='"Departure Time"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Departure Airport</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["departure_airport"]' [label]='"Departure airport"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Return Airport</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["return_airport"]' [label]='"Return airport"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Airline</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["airline"]' [label]='"Airline"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Stop</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["stop"]' [label]='"Stop"'></text-input>
+                  </div>
+                  <div>
+                    <label class="field-label">Bags</label>
+                    <text-input [formControl]='bookingSelectionForm.controls["bags"]' [label]='"Bags"'></text-input>
+                  </div>
+                  <div>
+
+                  </div>
+                </div>
+              </div>
+            </div> -->
+        </div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+  <div class="card_content" *ngIf="callHistoryShow">
+    <perfect-scrollbar class="ps">
+      <div class="card_content_inner">
+        <div class="call_history">
+          <div class="call_thread" *ngFor="let call of callHistory; let i = index">
+            <div class="d-flex align-center justify-between" style="padding-bottom: 1rem;">
+              <div class="call_icon d-flex align-center justify-center">
+                <span>{{call.caller_name.split(" ")[0].slice(0, 1) + call.caller_name.split(" ")[1].slice(0, 1) }}</span>
+              </div>
+              <div class="call_details d-flex align-start justify-between">
+                <div class="call_detail_start">
+                  <p>{{call.caller_name}}</p>
+                  <div class="d-flex align-center">
+                    <span class="material-symbols-rounded">
+                     {{call.direction == 'Incoming' ? 'call_received': 'call_made'}}
+                    </span>
+                    <p class="call_status" [ngClass]="call.direction == 'Incoming' ? 'incoming': 'outgoing'">{{call.direction}}</p>
+                    <!-- <p>{{call.response}}</p> -->
+                    <!-- <span class="material-symbols-rounded">
+                      call_received
+                    </span>
+                    <p class="call_status received">Incoming</p> -->
+                  </div>
+                </div>
+                <div class="call_duration">
+                  {{call.duration}}
+                  <p>{{call.call_type}}</p>
+                </div>
+                <div class="call_time">
+                  {{call.time}}
+                <p>{{call.date}}</p>
+                </div>
+              </div>
+            </div>
+            <label class="expand_btn">
+              <input type="checkbox" [checked]="CallHistorychecked || i == 0" (change)="toggleCallHistoryArrow()">
+              <span class="material-symbols-rounded">
+               {{ CallHistorychecked ? 'expand_more' : 'expand_less' }}
+              </span>
+            </label>
+            <div class="call_history_details">
+              <div>
+                <p><strong>Subject:</strong> {{call.call_type}}</p>
+                <p><strong>Situation:</strong>{{call.situation}}</p>
+                <p><strong>Action Taken:</strong>{{call.action}}</p>
+                <p><strong>Resolution:</strong>{{call.resolution}}</p>
+              </div>
+            </div>
+
+          </div>
+          <!-- <div class="call_thread d-flex align-center justify-between">
+            <div class="call_icon d-flex align-center justify-center">
+              <span>AE</span>
+            </div>
+            <div class="call_details d-flex align-start justify-between">
+              <div class="call_detail_start">
+                <p>Andrew Evans</p>
+                <div class="d-flex align-center">
+                  <span class="material-symbols-rounded">
+                    call_made
+                  </span>
+                  <p class="call_status outgoing">Outgoing</p>
+                  <!- <span class="material-symbols-rounded">
+                    call_missed_outgoing
+                  </span>
+                  <p class="call_status incoming">Incoming</p> ->
+                </div>
+              </div>
+              <div class="call_duration">
+                3m 45s
+              </div>
+              <div class="call_time">
+                7:55 PM
+              </div>
+            </div>
+          </div>
+          <div class="call_thread d-flex align-center justify-between">
+            <div class="call_icon d-flex align-center justify-center">
+              <span>AE</span>
+            </div>
+            <div class="call_details d-flex align-start justify-between">
+              <div class="call_detail_start">
+                <p>Andrew Evans</p>
+                <div class="d-flex align-center">
+                  <span class="material-symbols-rounded">
+                    call_made
+                  </span>
+                  <p class="call_status outgoing">Outgoing</p>
+                </div>
+              </div>
+              <div class="call_duration">
+                4m 23s
+              </div>
+              <div class="call_time">
+                7:55 PM
+                <p>12/1/2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="call_thread d-flex align-center justify-between">
+            <div class="call_icon d-flex align-center justify-center">
+              <span>AE</span>
+            </div>
+            <div class="call_details d-flex align-start justify-between">
+              <div class="call_detail_start">
+                <p>Andrew Evans</p>
+                <div class="d-flex align-center">
+                  <span class="material-symbols-rounded">
+                    call_made
+                  </span>
+                  <p class="call_status outgoing">Outgoing</p>
+                  <!- <span class="material-symbols-rounded">
+                    call_missed
+                  </span>
+                  <p class="call_status missed_incoming">Missed Incoming</p> ->
+                </div>
+              </div>
+              <div class="call_duration">
+                5m 33s
+              </div>
+              <div class="call_time">
+                 7:55 PM
+                 <p>11/29/2023</p>
+              </div>
+            </div>
+          </div>  -->
+
+        </div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>

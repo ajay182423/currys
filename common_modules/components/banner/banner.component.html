@@ -1,0 +1,15 @@
+<section class="banner">
+  <div class="banner__wrapper">
+    <div class="banner__img-container">
+      <img src="{{ bannerData.imageUrl }}" alt="banner">
+    </div>
+    <div class="banner__container center-container">
+      <div class="banner__data">
+        <h1 class="banner__title">{{bannerData.title}}</h1>
+        <h2 class="banner__subtitle">{{bannerData.subTitle}}
+        </h2>
+        <button class="btn btn-white-bg btn-xl" (click)="sendBannerClickEvent()">{{ bannerData.buttonText }}</button>
+      </div>
+    </div>
+  </div>
+</section>

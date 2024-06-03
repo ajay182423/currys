@@ -1,0 +1,7 @@
+<div [ngClass]="customStyle ? 'toggle-container ' + customStyle : 'toggle-container'">
+  <label class="field-label left">{{ label }}</label>
+  <label class="switch">
+    <input type="checkbox" [formControl]="ngControl.control" [readonly]="isReadOnly">
+    <span class="slider round"></span>
+  </label>
+</div>

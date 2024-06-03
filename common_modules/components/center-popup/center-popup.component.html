@@ -1,0 +1,24 @@
+<div *ngIf="modalPopupObj?.heading" [ngClass]="modalPopupObj?.popupPosition ? 'modal-popup-wrapper modal-popup-wrapper-' + modalPopupObj?.popupPosition : 'modal-popup-wrapper'">
+  <div [ngClass]="modalPopupObj?.popupPosition ? 'modal-popup modal-popup-' + modalPopupObj?.popupPosition : 'modal-popup'" [ngStyle]="{'width': modalPopupObj?.width}"  @centerModalSlideIn>
+    <div [ngClass]="modalPopupObj?.popupPosition ? 'modal-popup__header modal-popup-' + modalPopupObj?.popupPosition + '__header' : 'modal-popup__header'">
+      <div class="heading-container">
+        <button *ngIf="modalPopupObj?.previousPopup" class="header-btn" (click)="closePopup(true)" title="Go back">
+          <span class="mt-icon material-icons-round">
+            arrow_back
+          </span>
+        </button>
+        <h2>{{modalPopupObj?.heading}}</h2>
+      </div>
+      <button class="btn btn-icon btn-close" (click)="closePopup(false)">
+        <span class="mt-icon material-icons-round">
+          close
+        </span>
+      </button>
+    </div>
+    <perfect-scrollbar [ngStyle]="{'min-height': modalPopupObj?.height}" [ngClass]="modalPopupObj?.popupPosition ? 'modal-popup__main-wrapper modal-popup-' + modalPopupObj?.popupPosition + '__main-wrapper' : 'modal-popup__main-wrapper'">
+      <div [ngClass]="modalPopupObj?.popupPosition ? 'modal-popup__main modal-popup-' + modalPopupObj?.popupPosition + '__main' : 'modal-popup__main'">
+        <div #popupContent></div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>

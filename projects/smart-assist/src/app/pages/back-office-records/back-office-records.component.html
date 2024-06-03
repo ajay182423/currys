@@ -1,0 +1,38 @@
+<app-page-header [title]="'Smart Audit.BO'" [showSeparator]="true"></app-page-header>
+
+<div class="header_filter">
+    <div class="filter_form">
+      <div *ngIf="modalForm">
+        <form [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+            <div class="form-3-col" style="padding: 0 0 10px; margin: 0;">
+                <label class="kpi_label">
+                    <span>Select Date From</span>
+                    <text-input [formControl]='modalForm.controls["dateFrom"]' [type]='"date"' [required]="false"  [label]='"Date From"'></text-input>
+                </label>
+                <label class="kpi_label">
+                    <span>Select Date To</span>
+                    <text-input [formControl]='modalForm.controls["dateTo"]' [type]='"date"' [required]="false" [minDate]='modalForm.controls["dateFrom"].value' [label]='"Date To"'></text-input>
+                </label>
+                <div class="form-btns" style="margin-top: 2.1rem;justify-content:flex-start">
+                  <div class="full-width">
+                      <button class="btn btn-white-bg" style="margin-left: 0;" type="reset" (click)="resetFilter()">
+                          Reset
+                       </button>
+                      <button class="btn" type="submit">
+                          Filter
+                      </button>
+                  </div>
+              </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div class="search_form">
+      <app-table-filter [filterParams]="tableHeaders" [tableData]="tableData" (searchKey)="searchKey($event)"  [showFilterView]="false" (changeData)="recieveData($event)"></app-table-filter>
+    </div>
+</div>
+<div class="fp-table-page" @slideUp>
+  <full-page-table [enableFooter]="false" [isLoading]="isLoading" [tableMessage]="tableMessage" [hasFilter]="true" [tableHeaders]="tableHeaders" [customWidthClass]="'audit-record'" [applyCustomWidth]="true"
+    [tableData]="tableData"  (rowClickEvent)="receiveRowClickRequest($event)"
+    (pageChangeEvent)="receivePageChangeRequest($event)"></full-page-table>
+</div>

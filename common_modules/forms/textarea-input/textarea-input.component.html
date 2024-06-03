@@ -1,0 +1,19 @@
+<div style="display: flex; flex-direction: column;">
+    <textarea style="margin-bottom: -0.5rem;"
+        [class.is-invalid]="ngControl.touched && ngControl.invalid"
+        class="app-textarea"
+        rows={{rows}}
+        cols={{columns}}
+        [formControl]="ngControl.control"
+        [readonly]="isReadOnly"></textarea>
+    <div *ngIf="ngControl.touched && ngControl.control.errors?.required" class="invalid-feedback">{{label}} field is required</div>
+    <div *ngIf="ngControl.control.errors?.minlength" class="invalid-feedback">
+        {{label}} field's length must be at least {{ngControl.control.errors.minlength['requiredLength']}} character
+    </div>
+    <div *ngIf="ngControl.control.errors?.maxlength" class="invalid-feedback">
+        {{label}} field's length must be at most {{ngControl.control.errors.maxlength['requiredLength']}} character
+    </div>
+    <div *ngIf="ngControl.control.errors?.pattern" class="invalid-feedback">
+        {{label}} field does not meet required criteria
+    </div>
+</div>

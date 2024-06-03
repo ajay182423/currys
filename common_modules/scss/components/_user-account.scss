@@ -1,0 +1,185 @@
+//-------------------user-account
+.user-account {
+  margin-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.5rem 0;
+  height: calc(100vh - (var(--navbar) + 1.5rem));
+  .user-info {
+    display: flex;
+    width: 100%;
+    padding: 0rem 3.5rem;
+    &__pic {
+      width: 7rem;
+      height: 7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .mt-icon {
+        font-size: 8rem;
+        color: var(--bg-03);
+      }
+    }
+    &__name {
+      padding-left: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &__full-name {
+      font-size: 1.6rem;
+      color: var(--text-color-00);
+    }
+    &__user-name {
+      font-size: 1.3rem;
+      color: var(--text-color-00);
+    }
+  }
+  .separator {
+    display: block;
+    width: 75%;
+    background-color: var(--bg-02);
+    height: 0.1rem;
+    border-radius: 0.1rem;
+    margin: 1.5rem 0 1.5rem 0;
+  }
+  .links-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0rem 2.5rem;
+    .link,
+    .sub-links-heading,
+    .sub-link {
+      display: flex;
+      text-decoration: none;
+      padding: 0.6rem 1.8rem 0.6rem 1.2rem;
+      border-radius: var(--border-radius-xl);
+      border: 0.2rem dotted transparent;
+      .mt-icon {
+        font-size: 2rem;
+        color: var(--icon-color);
+        transition: 0s;
+      }
+      .link-text {
+        margin: auto 1.5rem;
+        flex-grow: 1;
+        font-size: 1.5rem;
+        color: var(--text-color-00);
+      }
+      .link-info {
+        display: flex;
+        justify-content: center;
+      }
+      &:hover {
+        background-color: var(--bg-02);
+        border-color: var(--bg-04);
+        .mt-icon {
+          color: var(--secondary-color);
+          transition: 0s;
+        }
+      }
+    }
+    .link-with-sub-links {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--border-radius-xl);
+      background-color: transparent;
+      .sub-links-heading {
+        .drop-icon {
+          content: "";
+          display: flex;
+          box-sizing: border-box;
+          position: absolute;
+          width: 0.7rem;
+          height: 0.7rem;
+          border-bottom: 0.2rem solid;
+          border-right: 0.2rem solid;
+          transform: rotate(45deg);
+          right: 2.9rem;
+          top: 1.5rem;
+          border-color: var(--icon-color);
+          transition: 0.4s ease-in-out;
+        }
+        &:hover {
+          .drop-icon {
+            border-color: var(--secondary-color);
+          }
+        }
+      }
+      .sub-links {
+        padding: 0;
+        margin-top: 0;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        .sub-link:hover {
+          background-color: transparent;
+        }
+      }
+    }
+    .show-sub-links {
+      background-color: var(--bg-01);
+      .sub-links-heading {
+        .mt-icon {
+          color: var(--secondary-color);
+        }
+        .drop-icon {
+          transform: rotate(225deg);
+          top: 1.8rem;
+          border-color: var(--secondary-color);
+        }
+      }
+    }
+  }
+  .btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    button:first-child,
+    button:last-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .mt-icon {
+        font-size: 2.2rem;
+        margin-right: 0.5rem;
+        color: var(--success-color);
+      }
+      margin: 1.5rem;
+      min-width: 11rem;
+      border: 0.1rem solid var(--success-color);
+      font-size: 1.37rem;
+      &:hover,
+      &:active,
+      &:focus {
+        .mt-icon {
+          color: var(--bg-00);
+        }
+        border-color: var(--success-color);
+        background-color: var(--success-color);
+        color: var(--bg-00);
+        .opening-dots span {
+          background-color: var(--bg-00);
+        }
+      }
+    }
+    button:last-child {
+      .mt-icon {
+        color: var(--danger-color);
+      }
+      border: 0.1rem solid var(--danger-color);
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: var(--danger-color);
+        background-color: var(--danger-color);
+      }
+    }
+  }
+}

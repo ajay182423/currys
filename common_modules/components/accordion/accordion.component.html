@@ -1,0 +1,9 @@
+<div [ngClass]="isOpened ? 'accordion accordion-active' : 'accordion'" (click)="toggleMe()">
+  <h2>{{accordionTitle}}</h2>
+  <span class="mt-icon material-icons-round">
+    {{ isOpened ? 'expand_less' : 'expand_more' }}
+  </span>
+</div>
+<div *ngIf="isOpened">
+  <ng-content></ng-content>
+</div>

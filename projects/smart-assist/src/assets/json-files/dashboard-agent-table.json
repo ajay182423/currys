@@ -1,0 +1,110 @@
+{
+  "pagination": {
+    "currentPage": 1,
+    "itemsPerPage": 10,
+    "totalItems": 10,
+    "totalPages": 1
+  },
+  "result": [
+    {
+      "agentId": 74,
+      "agentName": "Nayankumar Surti",
+      "noOfCalls": 114,
+      "totalScore": 1641,
+      "agentScored": 1419,
+      "averagePercentage": 86.47,
+      "noOfForms": 2,
+      "aht": 4.56
+    },
+    {
+      "agentId": 50,
+      "agentName": "Josna Figredo",
+      "noOfCalls": 57,
+      "totalScore": 751,
+      "agentScored": 649,
+      "averagePercentage": 86.42,
+      "noOfForms": 2,
+      "aht": 4.5
+    },
+    {
+      "agentId": 123,
+      "agentName": "Yogesh Mehtani",
+      "noOfCalls": 30,
+      "totalScore": 490,
+      "agentScored": 424,
+      "averagePercentage": 86.53,
+      "noOfForms": 2,
+      "aht": 5.98
+    },
+    {
+      "agentId": 91,
+      "agentName": "Sabrina Quintal",
+      "noOfCalls": 25,
+      "totalScore": 392,
+      "agentScored": 343,
+      "averagePercentage": 87.5,
+      "noOfForms": 2,
+      "aht": 3.88
+    },
+    {
+      "agentId": 66,
+      "agentName": "Mayuri Pund",
+      "noOfCalls": 25,
+      "totalScore": 369,
+      "agentScored": 322,
+      "averagePercentage": 87.26,
+      "noOfForms": 2,
+      "aht": 4.5
+    },
+    {
+      "agentId": 19,
+      "agentName": "Aniruddha Lavharale",
+      "noOfCalls": 22,
+      "totalScore": 294,
+      "agentScored": 256,
+      "averagePercentage": 87.07,
+      "noOfForms": 2,
+      "aht": 5.87
+    },
+    {
+      "agentId": 60,
+      "agentName": "Madhuri Pise",
+      "noOfCalls": 18,
+      "totalScore": 265,
+      "agentScored": 233,
+      "averagePercentage": 87.92,
+      "noOfForms": 2,
+      "aht": 4.16
+    },
+    {
+      "agentId": 79,
+      "agentName": "Pooja Darda",
+      "noOfCalls": 10,
+      "totalScore": 152,
+      "agentScored": 134,
+      "averagePercentage": 88.16,
+      "noOfForms": 1,
+      "aht": 5.39
+    },
+    {
+      "agentId": 85,
+      "agentName": "Rahim Shaikh",
+      "noOfCalls": 8,
+      "totalScore": 133,
+      "agentScored": 115,
+      "averagePercentage": 86.47,
+      "noOfForms": 1,
+      "aht": 5.03
+    },
+    {
+      "agentId": 43,
+      "agentName": "Hansie Murphy",
+      "noOfCalls": 5,
+      "totalScore": 76,
+      "agentScored": 66,
+      "averagePercentage": 86.84,
+      "noOfForms": 2,
+      "aht": 2.52
+    }
+  ]
+}

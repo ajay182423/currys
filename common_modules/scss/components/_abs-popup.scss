@@ -1,0 +1,67 @@
+.popup-menu,
+.context-menu {
+  margin-top: 0.5rem;
+  background-color: var(--bg-00);
+  box-shadow: 0.1rem 0rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-l);
+  min-height: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  z-index: 2;
+  position: absolute;
+  .item {
+    white-space: nowrap;
+    width: 100%;
+    border-radius: var(--border-radius-l);
+    padding: 0.6rem 2.7rem 0.6rem 0.7rem;
+    cursor: pointer !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    //justify-content: center;
+    .mt-icon {
+      padding: 0rem !important;
+      margin: 0rem 1.1rem 0rem 0rem !important;
+      color: var(--icon-color) !important;
+    }
+    .item-name {
+      margin-top: 0.1rem;
+      font-size: 1.5rem !important;
+      color: var(--text-color-00);
+      font-weight: 400;
+    }
+    &:hover {
+      background-color: var(--bg-01);
+      .mt-icon {
+        color: var(--secondary-color) !important;
+        font-variation-settings: 'FILL' 1;
+      }
+    }
+  }
+  .item-disabled {
+    cursor: default !important;
+    .mt-icon {
+      color: var(--bg-04) !important;
+    }
+    .item-name {
+      color: var(--bg-04);
+    }
+    &:hover {
+      background-color: var(--bg-00);
+      .mt-icon {
+        color: var(--bg-04) !important;
+      }
+    }
+  }
+}
+
+.context-menu {
+  margin-top: 0rem;
+  position: fixed !important;
+}
+
+.dark-mode .popup-menu,
+.dark-mode .context-menu {
+  background-color: var(--bg-02) !important;
+}

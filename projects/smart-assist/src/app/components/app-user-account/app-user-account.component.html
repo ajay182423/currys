@@ -1,0 +1,99 @@
+<div class="user-account">
+  <div class="user-info">
+    <div class="user-info__pic">
+      <span class="mt-icon material-icons-round">
+        account_circle
+      </span>
+    </div>
+    <div class="user-info__name">
+      <span class="user-info__full-name" title="Full Name">{{userFullName}}</span>
+      <span class="user-info__user-name" title="Username">{{roleName}}</span>
+    </div>
+  </div>
+  <span class="separator"></span>
+  <div class="links-container">
+    <a class="link">
+      <span class="mt-icon material-icons-round">
+        dark_mode
+      </span>
+      <span class="link-text">Dark Mode</span>
+      <div class="link-info">
+        <label class="switch">
+          <input type="checkbox" [checked]="isDarkMode" (change)="toggleDarkMode()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </a>
+    <a class="link">
+      <span class="mt-icon material-icons-round">
+        switch_left
+      </span>
+      <span class="link-text">Live Page Toggle</span>
+      <div class="link-info">
+        <label class="switch">
+          <input type="checkbox" [(ngModel)]="isLiveToggle" (change)="toggleLivePage()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </a>
+    <div class="link-with-sub-links" [class.show-sub-links]="showNavSettings">
+      <a class="sub-links-heading" (click)="showNavSettings = !showNavSettings" [style.background-color]="showNavSettings ? 'var(--bg-02)' : ''">
+        <span class="mt-icon material-icons-round">
+          menu
+        </span>
+        <span class="link-text">Navbar settings</span>
+        <span class="drop-icon"></span>
+      </a>
+      <div class="sub-links" *ngIf="showNavSettings">
+        <a class="sub-link">
+          <span class="mt-icon material-icons-round">
+            menu_open
+          </span>
+          <span class="link-text">Keep navbar expanded</span>
+          <div class="link-info">
+            <label class="switch">
+              <input type="checkbox" [checked]="keepNavbarExpanded" (change)="toggleKeepNavbarExpanded()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </a>
+        <a class="sub-link">
+          <span class="mt-icon material-icons-round">
+            aspect_ratio
+          </span>
+          <span class="link-text">Expand navbar on hover</span>
+          <div class="link-info">
+            <label class="switch">
+              <input type="checkbox" [checked]="expandNavbarOnHover" (change)="toggleExpandNavbarOnHover()">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </a>
+      </div>
+    </div>
+    <a class="link" (click)="logout()">
+      <span class="mt-icon material-icons-round">
+        logout
+      </span>
+      <span class="link-text">Logout</span>
+      <div class="opening-dots" *ngIf="isLoading">
+        <span></span><span></span><span></span>
+      </div>
+    </a>
+  </div>
+  <div class="btns-container" style="display: none;">
+    <button class="btn btn-transparent-bg">
+      <span class="mt-icon material-icons-round">
+        rate_review
+      </span>
+      Feedback
+    </button>
+    <button class="btn btn-transparent-bg">
+      <span class="mt-icon material-icons-round">
+        bug_report
+      </span>
+      Report a bug
+    </button>
+  </div>
+
+</div>

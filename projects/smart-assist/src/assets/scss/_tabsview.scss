@@ -1,0 +1,28 @@
+.tabs-button{
+    height: 40px;
+    border-radius: 0px;
+    border:solid 1px lightgray;
+    margin: 0 0 0 0;
+    background-color: #f6f6f6;
+    padding:3px;
+    font-weight: 500;
+    &:hover{
+        background-color: rgba(169, 169, 169, 0.548);
+    }
+
+
+}
+
+.tabs-button-active{
+    height: 40px;
+    border-radius: 0px;
+    border:solid 1px lightgray;
+    margin: 0 0 0 0;
+    padding:3px;
+    font-weight: 500;
+    background-color: rgba(169, 169, 169, 0.548);
+}
+
+
+
+

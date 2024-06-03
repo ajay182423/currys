@@ -1,0 +1,12 @@
+<dialog-container></dialog-container>
+<div #modalContainer></div>
+<app-page-header [title]="'Front Office Audit Page'" [showSeparator]="true"></app-page-header>
+<main class="app-main" [class.with-navbar]="navbarOptions?.isVisible"
+ [class.navbar-expanded]="navbarOptions?.keepItExpanded && navbarOptions?.isVisible">
+ <app-left-navbar *ngIf="navbarOptions?.isVisible"
+ [menuItems]="menuItems"
+ [navbar_icon]="true"
+ [keepNavbarExpanded]="navbarOptions?.keepItExpanded && navbarOptions?.isVisible"
+ [expandOnHover]="navbarOptions?.expandOnHover && navbarOptions?.isVisible"></app-left-navbar>
+ <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,120 @@
+//regular/xl size of multiselect dropdown
+.multi-select-r {
+  border: 0.1rem solid var(--field-border-color);
+  padding: 1rem 1.4rem;
+  height: 3.4rem;
+  padding: 0.6rem 0.9rem;
+}
+.multi-select-xl {
+  border: 0.1rem solid var(--bg-00);
+  height: 4.2rem;
+  padding: 1rem 1.4rem;
+}
+
+.multi-select-arrow-r {
+  top: 1rem;
+  right: 1.1rem;
+  width: 0.82rem;
+  height: 0.82rem;
+}
+.multi-select-arrow-xl {
+  top: 1.4rem;
+  right: 1.5rem;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.multi-select-popup-r {
+  top: 3.6rem;
+}
+.multi-select-popup-xl {
+  top: 4.4rem; 
+}
+
+.multi-select {
+  background-color: var(--bg-00);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0rem;
+  font-size: calc(var(--font-size-s) * 1.5);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  outline: none;
+  color: var(--text-color-00);
+  font-family: inherit;
+}  
+.multi-select-focused {
+  border-color: var(--focus-border-color);
+}
+.multi-select-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.multi-select-arrow {
+  position: absolute;
+  border: solid var(--icon-color);
+  border-width: 0 0.224rem 0.224rem 0;
+  display: inline-block;
+  padding: 0.23rem;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.multi-select:hover .multi-select-arrow, .multi-select:focus .multi-select-arrow {
+  border-color: var(--primary-color);
+}
+
+.multi-selected-items{
+  margin-right: 3rem;
+  height: 2.3rem;
+  //white-space:nowrap;
+  overflow: hidden;
+  //text-overflow: ellipsis;
+}
+
+.multi-select-popup {
+  overflow-y: auto;
+  background-color: var(--bg-00);
+  max-height: 30rem;
+  min-height: 1rem;
+  position: absolute;
+  left:-0.1rem;
+  right: -0.2rem;
+  z-index: 98;
+  font-size: calc(var(--font-size-s) * 1.5);
+  border: 0.1rem solid var(--focus-border-color);
+  border-radius: var(--border-radius);
+  outline: 0;
+  color: var(--text-color-00);
+  font-family: inherit;
+  box-shadow: 0rem 0rem 2rem var(--shadow-color);
+  .items {
+    .item{
+      display: flex;
+      flex-direction: row;
+      padding: 0.6rem 1rem;
+      align-content: flex-start;
+      label{
+        margin:0;
+        width: 2rem;
+        margin-right: 1.2rem;
+      }
+      p{
+        width: 100%;
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &:hover{
+        background-color: var(--bg-02);
+      }
+    }
+    .select-all-item{
+      border-bottom: 0.1rem solid var(--border-color);
+      padding: 0.9rem 1rem 0.9rem 1rem;
+    }
+    .data-not-found{
+      padding: 1rem 0.5rem 1rem 1rem;
+    }
+  }
+}

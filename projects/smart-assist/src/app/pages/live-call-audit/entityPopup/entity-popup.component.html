@@ -1,0 +1,54 @@
+<div class="card_content" style="height: 100%;" *ngIf="otherEntity">
+  <div class="transcriptBlock">
+    <div *ngIf="type1 === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+      (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+      (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+      <div class="scrollable-content">
+        <form class="form-2-col" [formGroup]='modalForm' (ngSubmit)="submitForm()">
+          <div class="full-width">
+            <label>{{modalPopupObj.recordObj?.entity.replace("_", " ")}}</label>
+            <textarea-input [formControl]="modalForm.controls['value']"  [label]=''></textarea-input>
+          </div>
+          <div class="full-width">
+            <div class="form-btns">
+              <div>
+                <button class="btn copy_btn" type="submit" title="Update">
+                  <span class="mt-icon material-icons-round" style="font-size: large;">save</span>
+                  <span> Update</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+</div>
+<div class="ai_entity" *ngIf="aiEntity">
+  <div class="entity" *ngFor="let entity of aiEntityData; let i = index;">
+    <div class="d-flex justify-between align-center">
+      <div class="transcript_entity_feedback" style="width: 30%;">
+        <div class="entity">
+          {{ entity?.entity.replace('_', ' ')}}
+        </div>
+      </div>
+      <div class="transcript_entity_feedback"  style="width: 50%;">
+        <input type="text" value="{{entity.text}}" class="entity_input" />
+      </div>
+      <div class="d-flex flex-column justify-end"  style="width: 10%;">
+        <span class="mt-icon material-icons-round" style="color: #378adf; cursor: pointer;"
+        (click)="copyContent({entity : entity.entity,text : entity.text, index: i})">
+          {{copyContentBtn[i] ? 'done' : 'content_copy'}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-column justify-end"  style="float: right; width: 10%; margin: 2rem 2rem 0 0;">
+    <button class="btn copy_btn" (click)="saveEntity()" title="Save">
+      <span class="mt-icon material-icons-round" style="font-size: large;">
+        save
+      </span>
+      <span>Save</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+:host{
+  display: block;
+}
+.accordion {
+  background-color: var(--bg-02);
+  color: var(--text-color-00);
+  cursor: pointer;
+  border-radius: 0.75rem;
+  padding: 1rem 1.8rem 1rem 1.8rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  h2 {
+    font-size: calc(var(--font-size-s) * 1.4);
+    font-weight: calc(var(--font-weight) + 100);
+    flex-grow: 1;
+  }
+  .mt-icon {
+    color: var(--icon-color);
+  }
+}
+
+.accordion-active, .accordion:hover {
+  background-color: var(--bg-01);
+  .mt-icon {
+    color: var(--secondary-color);
+  }
+}
+

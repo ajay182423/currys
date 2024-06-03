@@ -1,0 +1,433 @@
+{
+    "card1" : {
+        "type" : "3column",
+        "title" : "Flow Breakdown Elec",
+        "icon" : "receipt_long",
+        "borderColor" : "hsl(205, 100%, 50%)",
+        "content" : [
+            {
+                "label" : "D10",
+                "value" : 1091,
+                "fontColor" : "hsl(205, 100%, 50%)"
+            },
+            {
+                "label" : "No D4/D10",
+                "value" : 527,
+                "fontColor" : "hsl(4, 89%, 55%)"
+            },
+            {
+                "label" : "D04",
+                "value" : 207,
+                "fontColor" : "hsl(123, 40%, 46%)"
+            }
+        ]
+    },
+    "card2" : {
+        "type" : "3column",
+        "title" : "Flow Breakdown Gas",
+        "icon" : "e911_emergency",
+        "borderColor" : "hsl(295, 73%, 38%)",
+        "content" : [
+            {
+                "label" : "MSR",
+                "value" : 855,
+                "fontColor" : "hsl(188, 100%, 39%)"
+            },
+            {
+                "label" : "NO MSR",
+                "value" : 367,
+                "fontColor" : "hsl(352, 60%, 48%)"
+            }
+        ]
+    },
+    "card3" : {
+        "type" : "3column",
+        "title1" : "Overbilling",
+        "title2" : "Underbilling",
+        "icon" : "loyalty",
+        "borderColor" : "hsl(38, 100%, 53%)",
+        "content" : [
+            {
+                "label" : "",
+                "value" : "£ 1.72M",
+                "fontColor" : ""
+            },
+            {
+              "label" : "",
+              "value" : "£ 0.18M",
+              "fontColor" : ""
+          }
+        ]
+    },
+
+    "card4" : {
+        "type" : "1column",
+        "title" : "Quality",
+        "icon" : "calculate",
+        "borderColor" : "hsl(36, 100%, 47%)",
+        "content" : [
+            {
+                "label" : "",
+                "value" : 94.35
+            }
+        ]
+    },
+    "widget1" : {
+        "tab1" : {
+            "title" : "Day",
+            "content" : {
+                "type" : "bar",
+                "body" : {
+                    "chartTitle" : "No. of Transactions",
+                    "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+                    "data" : [
+                            {
+                                "name" : "Completed",
+                                "values" : [316, 317, 380, 315, 12, 336, 563, 447, 344],
+                                "bg" : "hsl(123, 40%, 46%)"
+                            },
+                            {
+                                "name" : "Pending",
+                                "values" : [3, 2, 3,  0, 0, 0, 7, 6, 5],
+                                "bg" : "hsl(4, 89%, 55%)"
+                            }
+                        ]
+                    }
+                }
+            },
+            "tab2" : {
+                "title" : "Month",
+                "content" : {
+                    "type" : "bar",
+                    "body" : {
+                        "chartTitle" : "No. of Transactions",
+                        "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                        "data" : [
+                                {
+                                    "name" : "Completed",
+                                    "values" : [2872, 2872, 3400, 3030],
+                                    "bg" : "hsl(123, 40%, 46%)"
+                                },
+                                {
+                                    "name" : "Pending",
+                                    "values" : [29, 24, 29, 26],
+                                    "bg" : "hsl(4, 89%, 55%)"
+                                }
+                            ]
+                        }
+                    }
+                }
+        },
+    "widget2" : {
+        "tab1" : {
+            "title" : "Read utilization",
+            "content" : {
+                "type" : "doughnut",
+                "body" : {
+                    "chartTitle" : "No. of Records",
+                    "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+                    "data" : [
+                            {
+                                "name" : "Actual",
+                                "values" : [2807],
+                                "bg" : "hsl(123, 40%, 46%)"
+                            },
+                            {
+                                "name" : "Estimated",
+                                "values" : [249],
+                                "bg" : "hsl(38, 100%, 53%)"
+                            }
+                        ]
+                    }
+                }
+            },
+            "tab2" : {
+                "title" : "Bill to Actual",
+                "content" : {
+                    "type" : "doughnut",
+                    "body" : {
+                        "chartTitle" : "No. of Records",
+                        "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                        "data" : [
+                                {
+                                    "name" : "Bill to Actual",
+                                    "values" : [2506],
+                                    "bg" : "hsl(123, 40%, 46%)"
+                                },
+                                {
+                                    "name" : "Others",
+                                    "values" : [550],
+                                    "bg" : "hsl(38, 100%, 53%)"
+                                }
+                            ]
+                        }
+                    }
+                },
+            "tab3" : {
+                "title" : "EOD",
+                "content" : {
+                    "type" : "doughnut",
+                    "body" : {
+                        "chartTitle" : "Expression of Disatisfaction",
+                        "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                        "data" : [
+                                {
+                                    "name" : "Satisfied",
+                                    "values" : [2889],
+                                    "bg" : "hsl(123, 40%, 46%)"
+                                },
+                                {
+                                    "name" : "Unsatisfied",
+                                    "values" : [167],
+                                    "bg" : "hsl(4, 89%, 55%)"
+                                }
+                            ]
+                        }
+                    }
+                },
+            "tab4" : {
+                "title" : "EOD",
+                "content" : {
+                    "type" : "doughnut",
+                    "body" : {
+                        "chartTitle" : "Customer Query Status",
+                        "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                        "data" : [
+                                {
+                                    "name" : "Resolved",
+                                    "values" : [2889],
+                                    "bg" : "hsl(123, 40%, 46%)"
+                                },
+                                {
+                                    "name" : "Not-Resolved",
+                                    "values" : [167],
+                                    "bg" : "hsl(4, 89%, 55%)"
+                                }
+                            ]
+                        }
+                    }
+                }
+        },
+    "widget3" : {
+        "tab1" : {
+            "title" : "Journey",
+            "content" : {
+                "type" : "doughnut",
+                "body" : {
+                    "chartTitle" : "Error Reasons",
+                    "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+                    "data" : [
+                            {
+                                "name" : "Incompatible read  entered",
+                                "values" : [1283],
+                                "bg" : "hsl(38, 100%, 53%)"
+                            },
+                            {
+                                "name" : "Actual Read not utilized",
+                                "values" : [488],
+                                "bg" : "hsl(247, 100%, 61%)"
+                            },
+                            {
+                                "name" : "Implausible released",
+                                "values" : [183],
+                                "bg" : "hsl(291, 100%, 56%)"
+                            },
+                            {
+                                "name" : "Others",
+                                "values" : [1102],
+                                "bg" : "hsl(156, 100%, 39%)"
+                            }
+                        ]
+                    }
+                }
+            },
+            "tab2" : {
+                "title" : "Sub Journey",
+                "content" : {
+                    "type" : "doughnut",
+                    "body" : {
+                        "chartTitle" : "No. of Records",
+                        "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                        "data" : [
+                                {
+                                    "name" : "Breakdown",
+                                    "values" : [1406],
+                                    "bg" : "hsl(38, 100%, 53%)"
+                                },
+                                {
+                                    "name" : "Renewal",
+                                    "values" : [459],
+                                    "bg" : "hsl(247, 100%, 61%)"
+                                },
+                                {
+                                    "name" : "Dyno Breakdown",
+                                    "values" : [304],
+                                    "bg" : "hsl(291, 100%, 56%)"
+                                },
+                                {
+                                    "name" : "ASV",
+                                    "values" : [254],
+                                    "bg" : "hsl(156, 100%, 39%)"
+                                },
+                                {
+                                    "name" : "Leave",
+                                    "values" : [227],
+                                    "bg" : "hsl(12, 54%, 50%)"
+                                },
+                                {
+                                    "name" : "Service Buy",
+                                    "values" : [221],
+                                    "bg" : "hsl(26, 51%, 54%)"
+                                },
+                                {
+                                    "name" : "Complaints",
+                                    "values" : [188],
+                                    "bg" : "hsl(188, 100%, 39%)"
+                                }
+                            ]
+                        }
+                    }
+                },
+            "tab3" : {
+                "title" : "Customer Intent",
+                "content" : {
+                    "type" : "doughnut",
+                    "body" : {
+                        "chartTitle" : "No. of Records",
+                        "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                        "data" : [
+                                {
+                                    "name" : "Book appointment",
+                                    "values" : [873],
+                                    "bg" : "hsl(38, 100%, 53%)"
+                                },
+                                {
+                                    "name" : "Enquire appointment",
+                                    "values" : [531],
+                                    "bg" : "hsl(247, 100%, 61%)"
+                                },
+                                {
+                                    "name" : "Renewal related queries",
+                                    "values" : [459],
+                                    "bg" : "hsl(291, 100%, 56%)"
+                                },
+                                {
+                                    "name" : "Book appointment",
+                                    "values" : [304],
+                                    "bg" : "hsl(156, 100%, 39%)"
+                                },
+                                {
+                                    "name" : "Contract cancellation and queries",
+                                    "values" : [254],
+                                    "bg" : "hsl(12, 54%, 50%)"
+                                },
+                                {
+                                    "name" : "Queries related to quotes, Products & Services",
+                                    "values" : [227],
+                                    "bg" : "hsl(26, 51%, 54%)"
+                                },
+                                {
+                                    "name" : "Raise / Escalate Complaint",
+                                    "values" : [188],
+                                    "bg" : "hsl(188, 100%, 39%)"
+                                }
+                            ]
+                        }
+                    }
+                }
+        },
+
+    "agents": [
+        {
+            "id" : 1,
+            "agentName": "Adarsh Pathariya",
+            "noOfCalls": 1,
+            "totalScore": 14,
+            "agentScored": 14,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 2,
+            "agentName": "Aruba singh",
+            "noOfCalls": 1,
+            "totalScore": 14,
+            "agentScored": 14,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 3,
+            "agentName": "Aston Jane",
+            "noOfCalls": 1,
+            "totalScore": 5,
+            "agentScored": 5,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 4,
+            "agentName": "Clare Copper",
+            "noOfCalls": 1,
+            "totalScore": 4,
+            "agentScored": 4,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 5,
+            "agentName": "Jacque Wanes",
+            "noOfCalls": 1,
+            "totalScore": 16,
+            "agentScored": 16,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 6,
+            "agentName": "Jan Wills",
+            "noOfCalls": 1,
+            "totalScore": 5,
+            "agentScored": 5,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 7,
+            "agentName": "Sabiha Timothy",
+            "noOfCalls": 1,
+            "totalScore": 8,
+            "agentScored": 8,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 8,
+            "agentName": "Saniya Khan 1",
+            "noOfCalls": 2,
+            "totalScore": 28,
+            "agentScored": 27,
+            "averagePercentage": 96.43,
+            "noOfForms": 1
+        },
+        {
+            "id" : 9,
+            "agentName": "Sappor Khan",
+            "noOfCalls": 1,
+            "totalScore": 4,
+            "agentScored": 4,
+            "averagePercentage": 100.0,
+            "noOfForms": 1
+        },
+        {
+            "id" : 10,
+            "agentName": "Shubham Bhamare",
+            "noOfCalls": 3,
+            "totalScore": 42,
+            "agentScored": 40,
+            "averagePercentage": 95.24,
+            "noOfForms": 1
+        }
+    ]
+
+}

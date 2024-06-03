@@ -1,0 +1,42 @@
+<div class="header">
+  <h2 class="heading">{{ mainTitle }}</h2>
+  <button title="Create" class="header-btn header-btn" (click)="openFolderSetupPopup(0, true)">
+    <span class="mt-icon material-icons-round">
+      add
+    </span>
+  </button>
+</div>
+<div class="sub-container">
+  <div class="search-box">
+    <span class="mt-icon material-icons-round">
+      search
+    </span>
+    <input name="searchKeywords" class="app-textbox" placeholder="{{ 'Search ' + otherTitle.toLowerCase() }}"
+      type="text">
+  </div>
+  <div class="folders-container">
+    <perfect-scrollbar>
+      <loading-spinner *ngIf="isListLoading"></loading-spinner>
+      <div [ngClass]="!isListLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+        <a class="folder" *ngFor="let item of folderList" (click)="openFolderList(item.id, item.name)"
+          [class.selected]="selectedFolderId === item.id" (contextmenu)="onRowRightClick($event, item.id)">
+          <span class="mt-icon material-icons-round">
+            folder
+          </span>
+          <span class="folder-text">{{ item.name }}</span>
+          <div class="folder-info">
+            {{item.totalRecords}}
+          </div>
+          <context-menu [menuItems]="menuItems" [showContextMenu]="contextMenu.show"
+            *ngIf="contextMenu.show && contextMenu.recordId === item.id" [mousePosition]="mousePosition"
+            (contextMenuClick)="onContextMenuClick($event, item.id)">
+          </context-menu>
+        </a>
+      </div>
+    </perfect-scrollbar>
+    <div class="no-content" *ngIf="folderList?.length === 0 && !isListLoading">
+      <img src="{{ fileUrl + 'assets/no-content.svg' }}" alt="No Content">
+      <p>No records found</p>
+    </div>
+  </div>
+</div>

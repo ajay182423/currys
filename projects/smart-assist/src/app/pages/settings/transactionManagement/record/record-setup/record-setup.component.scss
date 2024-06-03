@@ -1,0 +1,56 @@
+header{
+  margin-left: 40px;
+  color : #fb4e0b;
+  font-weight: bold;
+}
+table{
+  color: hsl(0, 1%, 36%);
+  border: 1px solid hsl(0, 0%, 67%);
+  width: 80vw;
+  margin: 10px 40px 0 40px;
+  border-collapse: collapse;
+
+  tbody,thead{
+    border-spacing: 0px;
+  }
+  th,td{
+    border: 1px solid hsl(0, 6%, 91%);
+    padding: 5px;
+  }
+
+}
+.audit-input{
+  color: hsl(0, 1%, 36%);
+  width: 94%;
+  height: 30px;
+  margin: 10px !important;
+
+}
+.confidence{
+  color: hsl(0, 1%, 36%);
+  width: 100px;
+  height: 30px;
+
+}
+.table-name{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  .second{
+    float: right;
+    margin-right: 80px;
+  }
+}
+
+.fatel-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.fp-table{
+  margin-bottom: 20px;
+}
+
+
+

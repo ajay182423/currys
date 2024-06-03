@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You are now talking to</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="./live-call-audit-home-page-new-two.component.scss">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body (click)="navigate2()">
+  <div class="container" style="margin-top: 18vh;">
+    <div class="">
+      <div class="caller-conatiner">
+        <div class="initials-circle">{{getShortName(agentName)}}</div>
+        <div class="caller-heading">
+            <div class="">You are now talking to</div>
+            <div class="caller-name">{{agentName}}</div>
+        </div>
+      </div>
+      <div class="info-container">
+        <div class="grid-box">
+            <div class="box-background">
+              <p class="box-heading">Call Type</p>
+              <p class="box-value">Booking</p>
+            </div>
+            <div class="box-background">
+              <p class="box-heading">Wait Time</p>
+              <p class="box-value">2:00</p>
+            </div>
+            <div class="box-background">
+              <p class="box-heading">Customer Lifetime Value</p>
+              <p class="box-value">VVIP</p>
+            </div>
+            <div class="box-background">
+              <p class="box-heading">NPS</p>
+              <p class="box-value">Promoter</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

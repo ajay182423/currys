@@ -1,0 +1,19 @@
+<ng-template [ngIf]="confirmDialogService.isConfirmPending()">
+	<confirm-dialog
+		[heading]="confirmDialogService.heading"
+		[message]="confirmDialogService.message"
+		[secondaryAction]="confirmDialogService.secondaryAction"
+		[primaryAction]="confirmDialogService.primaryAction"
+		(value)="handleConfirmDialogResult($event)">
+	</confirm-dialog>
+</ng-template>
+<ng-template [ngIf]="inputDialogService.isInputPending()">
+	<input-dialog
+		[heading]="inputDialogService.heading"
+		[message]="inputDialogService.message"
+		[defaultValue]="inputDialogService.defaultValue"
+		[secondaryAction]="inputDialogService.secondaryAction"
+		[primaryAction]="inputDialogService.primaryAction"
+		(value)="handleInputDialogResult($event)">
+	</input-dialog>
+</ng-template>

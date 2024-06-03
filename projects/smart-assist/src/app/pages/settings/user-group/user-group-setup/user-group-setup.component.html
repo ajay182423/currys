@@ -1,0 +1,35 @@
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+      <div class="full-width">
+        <label class="field-label">Group Name<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Group Name"'></text-input>
+      </div>
+      <div>
+        <ng-container *ngIf="!modalPopupObj.isNewEntry">
+          <div class="toggle-container disable-btn">
+            <label class="field-label left">Disable</label>
+            <label class="switch">
+              <input type="checkbox" formControlName='isActive'>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </ng-container>
+      </div>
+      <span class="separator full-width" *ngIf="!modalPopupObj.isNewEntry"></span>
+      <div class="form-btns">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <button class="btn btn-transparent-bg" type="button" (click)="deleteRecord()">
+              Delete
+            </button>
+          </ng-container>
+          <button class="btn" type="submit">
+            {{modalPopupObj.isNewEntry ? 'Add' : 'Save'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

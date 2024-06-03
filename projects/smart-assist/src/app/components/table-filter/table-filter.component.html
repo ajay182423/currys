@@ -1,0 +1,137 @@
+<div class="filter_container">
+    <div class="table_filters">
+        <div class="tableSort">
+            <div class="sort_head">
+                <div class="serachBox" [ngStyle]="{'width': showFilterView ? '' : '100%' }">
+                    <span class="mt-icon material-icons-round">
+                        search
+                    </span>
+                    <input type="search" #input placeholder="Search Here..." (keyup)="SearchAll(input.value)" (blur)="SearchAll(input.value)" class="searchInput">
+                </div>
+                <ng-container *ngIf="showFilterView">
+                    <div class="filterBtn" (click)="addNewFilter($event)" title="Click to add filters">Filters <span class="mt-icon material-icons-round"
+                        *ngIf="appliedFilter?.length > 0">filter_list</span> <span class="filterCaret"></span> </div>
+                    <div class="filterBox" *ngIf="showFilter" (click)="$event.stopPropagation()"> 
+                        <div class="addedFilters" > 
+                            <div class="appliedFilterBlock">
+                                <div class="appliedFilter" *ngFor="let filter of appliedFilter; let index = index" >
+                                {{filter.searchParam}}  :
+                                    <!-- <container-element [ngSwitch]="filter.type">
+                                        <span *ngSwitchCase="'string'">{{filter.Include}}</span>
+                                        <span *ngSwitchCase="'date'">{{filter.uploadedTime}}</span>
+                                        <span *ngSwitchCase="'number'">{{filter.numberFilter}}</span>
+                                    </container-element> -->
+                                    <i> {{filter.searchValue}} </i> 
+                                    <span class="closeBtn" (click)="removeFilter(filter, index)" title="Remove this filter">+</span></div>
+                            </div>
+                            <p class="filterText" *ngIf="appliedFilter?.length < 1">No Filters Applied!</p>
+                            <div class="addFilterbtn" (click)="addFilter($event)" title="Add new filter">+</div>
+
+                            <button class="btn" *ngIf="appliedFilter?.length > 0">
+                                Apply Filters
+                            </button>
+                        </div>  
+                        <div class="filterFormOuter">
+                            <div class="filterForm">
+                                <ul class="filterParams" *ngIf="showParams" (click)="$event.stopPropagation()">
+                                    <li *ngFor="let filter of filterParams; let i = index" (click)="openForm(i, $event)"><div>{{filter.name}}</div></li>
+                                </ul>                
+                            </div>
+                            
+                            <container-element *ngIf="showTitleFields">
+                                <!-- <div *ngSwitchCase="'string'"> -->
+                                    <div class="filterForm">
+                                        <ul class="filterParams">
+                                            <ng-container *ngFor="let data of filterdata" >                                            
+                                                <li (click)="onFilter(data)">  
+                                                    <div>
+                                                        {{data}}
+                                                    </div> 
+                                                </li>
+                                            </ng-container>                                        
+                                        </ul>
+                                        <!-- <form #myForm="ngForm" (ngSubmit)="onClickSubmit(myForm)"
+                                                autocomplete="off">
+                                                <div class="filterFields form-1-col"> 
+                                                        <label class="field-label">{{filterTitle}}</label>
+                                                        <input type="hidden" name="label" ngModel="{{filterTitle}}">
+                                                        <input type="hidden" name="type" ngModel="string">
+                                                        <label class="filterLabel">
+                                                            <input type="radio" name="Include" value="Include" ngModel > Include 
+                                                        </label>
+                                                        <input type="text" class="app-textbox" name="formInput" ngModel >
+                                                    <div>                                        
+                                                    </div>
+                                                    <div class="form-btns flex-end">
+                                                        <div>
+                                                            <button class="btn" type="submit">Apply Filter</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </form>                    -->
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div *ngSwitchCase="'number'">
+                                    <div class="filterForm">
+                                        <form #myForm="ngForm" (ngSubmit)="onClickSubmit(myForm)"
+                                                autocomplete="off">
+                                                <div  class="filterFields form-1-col"> 
+
+                                                        <label class="field-label">{{filterTitle}}</label>
+                                                        <input type="hidden" name="label" ngModel="{{filterTitle}}">
+                                                        <input type="hidden" name="type" ngModel="number">
+                                                        <label class="filterLabel">
+                                                            <input type="radio" name="numberFilter" value="Less Than" ngModel> Less Than 
+                                                        </label>
+                                                        <label class="filterLabel">
+                                                            <input type="radio" name="numberFilter" value="More Than" ngModel> More Than 
+                                                        </label>
+                                                        <input type="text" class="app-textbox" name="formInput" ngModel >
+                                                    <div>                                        
+                                                    </div>
+                                                    <div class="form-btns flex-end">
+                                                        <div>
+                                                            <button class="btn" type="submit">Apply Filter</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </form>                   
+                                    </div>
+                                </div> -->
+                                
+                                <!-- <div *ngSwitchCase="'date'">
+                                    <div class="filterForm">
+                                        <form #myForm="ngForm" (ngSubmit)="onClickSubmit(myForm)"
+                                                autocomplete="off">
+                                                <div  class="filterFields form-1-col">                              
+                                                        <label class="field-label">{{filterTitle}}</label>
+                                                        <input type="hidden" name="label" ngModel="{{filterTitle}}">
+                                                        <input type="hidden" name="type" ngModel="date">
+                                                        <label class="filterLabel">
+                                                            <input type="radio" name="uploadedTime" value="Last 1 Month" ngModel> Last 3 Months 
+                                                        </label>
+                                                        <label class="filterLabel">
+                                                            <input type="radio" name="uploadedTime" value="Last 3 Months" ngModel> Last 3 Months 
+                                                        </label>
+                                                        <label class="filterLabel">
+                                                            <input type="radio" name="uploadedTime" value="Last 6 Months" ngModel> Last 6 Months
+                                                        </label>
+                                                    <div>                                        
+                                                    </div>
+                                                    <div class="form-btns flex-end">
+                                                        <div>
+                                                        <button class="btn" type="submit">Apply Filter</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </form>                   
+                                    </div>
+                                </div> -->
+                            </container-element>                
+                        </div>        
+                    </div>   
+                </ng-container>     
+            </div>         
+        </div>
+    </div>
+</div>

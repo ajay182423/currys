@@ -1,0 +1,92 @@
+{
+    "card1" : {
+        "value1" : 3056,
+        "value2" : 3030,
+        "value3" : 26
+    },
+    "card2" : {
+        "value1" : 511,
+        "value2" : 48,
+        "value3" : 2497
+    },
+    "card3" : {
+        "value1" :240,
+        "value2" : 5.09
+    },
+    "card4" : 91.83,
+    "widget1" : {
+        "tab1" : {
+            "keys" : ["Pass", "Exception", "Failed"],
+            "values" : [1091, 73, 48]
+        },
+        "tab2" : {
+            "keys" : ["Non-Vulnerable", "Vulnerable"],
+            "values" : [3024,32]
+        },
+        "tab3" : {
+            "keys" : ["Satisfied", "UnSatisfied"],
+            "values" : [2889, 167]
+        },
+        "tab4" : {
+            "keys" : ["Resolved", "Not Resolved"],
+            "values" : [2847, 217]
+        }
+    },
+    "widget2" : {
+        "tab1" : {
+            "keys" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+            "values" : {
+                "value1" : [316, 317, 380, 315, 12, 336, 563, 447, 344],
+                "value2" : [3, 2, 3,  0, 0, 0, 7, 6, 5]
+            }
+        },
+        "tab2" : {
+            "keys" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+            "values" : {
+                "value1" : [2872, 2872, 3400, 3030],
+                "value2" : [29, 24, 29, 26]
+            }
+        }
+    },
+
+
+
+
+
+    "widget3" : {
+        "tab1" : {
+            "keys" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+            "values" : {
+                "value1" : [5,6,7,6,5,4,3],
+                "value2" : [6,7,5,6,4,3,6],
+                "value3" : [5,5,6,5,4,5,4]
+            }
+        },
+        "tab2" : {
+            "keys" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+            "values" : {
+                "value1" : [138, 139, 157, 158],
+                "value2" : [162, 150, 140, 156],
+                "value3" : [150, 147, 145, 123]
+            }
+        }
+    },
+    "widget4" : {
+        "tab1" :  {
+            "keys" : ["Help","Reconsider","Run","Buy"],
+            "values" : [1895,672,275,214]
+        },
+        "tab2" :  {
+          "keys" : ["Breakdown","Renewal","Dyno Breakdown","ASV","Leave","Service Buy","Complaints"],
+          "values" : ["1406","459","304","254","227","221","188"]
+        },
+        "tab3" :  {
+            "keys" : ["Book appointment","Enquire appointment","Renewal related queries","Book appointment","Book appointment","Contract cancellation and queries","Queries related to quotes, Products & Services","Raise / Escalate Complaint"],
+            "values" : [873,531,459,304,254,227,221,188]
+        }
+
+    }
+
+
+
+}

@@ -1,0 +1,13 @@
+<div class="html-editor-container">
+  <perfect-scrollbar style="position: relative;">
+    <div #editor [ngClass]="editorClass ? editorClass : 'html-editor'" contentEditable="true"></div>
+  </perfect-scrollbar>
+  <div class="html-editor-tools">
+    <button *ngFor="let btn of buttonList" type="button" class="btn btn-icon btn-transparent" (click)='editorButtonClick(btn.id)'>
+      <span class="mt-icon material-icons-round">
+        {{ btn.icon }}
+      </span>
+      <span class="tooltip tooltip-top">{{ btn.name }}</span>
+    </button>
+  </div>
+</div>

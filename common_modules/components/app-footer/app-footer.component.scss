@@ -1,0 +1,24 @@
+.app-footer {
+  border-top: 0.1rem solid var(--bg-00);
+  background-color: var(--bg-02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    width: auto;
+    color: var(--text-color-00);
+    font-size: calc(var(--font-size-s) * 1.3);
+    font-weight: 400;
+    padding: 0.7rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .app-footer p {
+    width: 27rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

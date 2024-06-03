@@ -1,0 +1,288 @@
+<!-- <loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+      <div class="full-width" >
+        <label class="field-label">Rule Name<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Rule Name"'></text-input>
+      </div>
+      <div class="full-width" >
+        <label class="field-label">Keyword<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Keyword"'></text-input>
+      </div>
+
+      <div class="full-width">
+        <label class="field-label">Find Similar Words<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #tableRHSDropDown formControlName='tableRHS'>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+      </div>
+
+      <div class="full-width" >
+        <label class="field-label">Phrase<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Phrase"'></text-input>
+      </div>
+
+      <div class="full-width">
+        <label class="field-label">Find Similar Phraser<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #tableRHSDropDown formControlName='tableRHS'>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+      </div>
+
+      <div class="full-width" >
+        <label class="field-label">Find Homonym<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Homonym"'></text-input>
+      </div>
+
+      <div style="display: flex;flex-direction: column;">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <div class="toggle-container disable-btn">
+              <label class="field-label left">Disable</label>
+              <label class="switch">
+                <input type="checkbox" formControlName='isActive'>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <span class="separator full-width" *ngIf="!modalPopupObj.isNewEntry"></span>
+      <div class="form-btns">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <button class="btn btn-white-bg" type="button" (click)="deleteRecord()">
+              Delete
+            </button>
+          </ng-container>
+          <button class="btn" type="submit">
+            {{modalPopupObj.isNewEntry ? 'Add' : 'Save'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+      <div class="full-width" >
+        <label class="field-label">Rule Name<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Rule Name"'></text-input>
+      </div>
+      <div >
+        <label class="field-label">Data Source 1<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #dataSourceDropDown formControlName='dataSource' [class.is-invalid]="dataSourceSelectError"
+              (change)="requiredCheckOnSelectInput('dataSourceSetup',dataSourceDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('dataSourceSetup',dataSourceDropDown.value)">
+              <option *ngFor="let dataSourceItem of appDataSourceList" value={{dataSourceItem}}>{{dataSourceItem}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="dataSourceSelectError" class="invalid-feedback">Data Source is required</div>
+      </div>
+      <div>
+        <label class="field-label">Data Source 2<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #dataSource2DropDown formControlName='dataSource2' [class.is-invalid]="dataSourceSelectError"
+              (change)="requiredCheckOnSelectInput('dataSourceSetup2',dataSource2DropDown.value)"
+              (blur)="requiredCheckOnSelectInput('dataSourceSetup2',dataSource2DropDown.value)">
+              <option *ngFor="let dataSourceItem of appDataSourceList" value={{dataSourceItem}}>{{dataSourceItem}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="dataSourceSelectError" class="invalid-feedback">Data Source is required</div>
+      </div>
+      <div>
+        <label class="field-label">Browse Data Source 1<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #tableLHSDropDown formControlName='tableLHS' [class.is-invalid]="tableLHSSelectError"
+              (change)="requiredCheckOnSelectInput('tableLHSSetup',tableLHSDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('tableLHSSetup',tableLHSDropDown.value)">
+              <option *ngFor="let tableLHSItem of tableLHSSourceList" value={{tableLHSItem}}>{{tableLHSItem}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="tableLHSSelectError" class="invalid-feedback">Data Source 1 Table is required</div>
+      </div>
+      <div>
+        <label class="field-label">Browse Data Source 2<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #tableRHSDropDown formControlName='tableRHS' [class.is-invalid]="tableRHSSelectError"
+              (change)="requiredCheckOnSelectInput('tableRHSSetup',tableRHSDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('tableRHSSetup',tableRHSDropDown.value)">
+              <option *ngFor="let tableRHSItem of tableRHSSourceList" value={{tableRHSItem}}>{{tableRHSItem}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="tableRHSSelectError" class="invalid-feedback">Data Source 2 Table is required</div>
+      </div>
+      <div class="toggle-container disable-btn" style="width: inherit;">
+        <label class="field-label left">Enter RHS Manually</label>
+        <label class="switch" (click)="rhsManuallyEnter(rhsManualCheck.value);">
+          <input type="checkbox" formControlName='rhsManually' #rhsManualCheck >
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="full-width" style="display: flex;flex-direction: row;">
+        <div style="margin-right: 1rem;width: 40%;">
+          <label class="field-label">Match Column LHS<span>*</span></label>
+            <div class="app-select">
+              <select class="select" #matchColumnLHSDropDown formControlName='matchColumnLHS' [class.is-invalid]="matchColumnLHSSelectError"
+                (change)="requiredCheckOnSelectInput('matchColumnLHSSetup',matchColumnLHSDropDown.value)"
+                (blur)="requiredCheckOnSelectInput('matchColumnLHSSetup',matchColumnLHSDropDown.value)">
+                <option *ngFor="let matchColumnLHSItem of matchcolumnLHSSourceList" value={{matchColumnLHSItem}}>{{matchColumnLHSItem}}</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="matchColumnLHSSelectError" class="invalid-feedback">Match LHS is required</div>
+        </div>
+        <div style="margin-right: 1rem;width: 20%;">
+          <label class="field-label">Condition<span>*</span></label>
+            <div class="app-select">
+              <select class="select" style="font-size: medium;" #conditionDropDown formControlName='condition' [class.is-invalid]="conditionSelectError"
+                (change)="requiredCheckOnSelectInput('conditionSetup',conditionDropDown.value)"
+                (blur)="requiredCheckOnSelectInput('conditionSetup',conditionDropDown.value)">
+                <option value='='>=</option>
+                <option value='!='>!=</option>
+                <option value='<='><=</option>
+                <option value='>='>>=</option>
+                <option value="<"><</option>
+                <option value='>'>></option>
+                <option value='like'>Like</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="conditionSelectError" class="invalid-feedback">Condition is required</div>
+        </div>
+        <div *ngIf="matchRHSFlag==false" style="width: 40%;">
+          <label class="field-label">Match Column RHS<span>*</span></label>
+            <div class="app-select">
+              <select class="select" #matchColumnRHSDropDown formControlName='matchColumnRHS' [class.is-invalid]="matchColumnRHSSelectError"
+                (change)="requiredCheckOnSelectInput('matchColumnRHSSetup',matchColumnRHSDropDown.value)"
+                (blur)="requiredCheckOnSelectInput('matchColumnRHSSetup',matchColumnRHSDropDown.value)">
+                <option *ngFor="let matchColumnRHSItem of matchColumnRHSSourceList" value={{matchColumnRHSItem}}>{{matchColumnRHSItem}}</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="matchColumnRHSSelectError" class="invalid-feedback">Match RHS is required</div>
+        </div>
+        <div *ngIf="matchRHSFlag==true" style="width: 40%;">
+          <label class="field-label">Match ColumnRHS<span>*</span></label>
+          <text-input [formControl]='modalForm.controls["matchColumnRHS"]' [label]='"Match Column RHS"'></text-input>
+        </div>
+      </div>
+
+<!--
+      <div>
+        <label class="field-label">Condition<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["condition"]' [label]='"Condition"'></text-input>
+      </div> -->
+      <div>
+
+      </div>
+      <div style="padding-left:8.5rem;">
+        <button class="btn" type="button" style="margin-top: 2rem;" (click)="addExpression()">
+          Add Expression
+        </button>
+      </div>
+      <div style="display: flex;flex-direction: row;">
+        <div style="flex-grow: 1;"></div>
+        <button class="btn" type="button" style="margin-top: 2rem;margin-right: 0;width: 7rem;" (click)="addORinExpression()">
+          OR
+        </button>
+      </div>
+      <div>
+        <button class="btn" type="button" style="margin-top: 2rem;" (click)="addANDinExpression()">
+          AND
+        </button>
+      </div>
+      <div class="full-width">
+        <label class="field-label">Rule Expression<span>*</span></label>
+        <text-input  [formControl]='modalForm.controls["ruleExpression"]' [label]='"Rule Expression"' ></text-input>
+      </div>
+      <div>
+        <label class="field-label">Column for LHS SUM<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #columnLHSSumDropDown formControlName='sumColumnLHS' [class.is-invalid]="columnLHSSumSelectError"
+              (change)="requiredCheckOnSelectInput('columnLHSSumSetup',columnLHSSumDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('columnLHSSumSetup',columnLHSSumDropDown.value)">
+              <option *ngFor="let matchColumnLHSItem of matchcolumnLHSSourceList" value={{matchColumnLHSItem}}>{{matchColumnLHSItem}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="columnLHSSumSelectError" class="invalid-feedback">Column LHS Sum is required</div>
+      </div>
+      <div>
+        <label class="field-label">Column for RHS SUM<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #columnRHSSumDropDown formControlName='sumColumnRHS' [class.is-invalid]="columnRHSSumSelectError"
+              (change)="requiredCheckOnSelectInput('columnRHSSumSetup',columnRHSSumDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('columnRHSSumSetup',columnRHSSumDropDown.value)">
+              <option *ngFor="let matchColumnRHSItem of matchColumnRHSSourceList" value={{matchColumnRHSItem}}>{{matchColumnRHSItem}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="columnRHSSumSelectError" class="invalid-feedback">Column RHS Sum is required</div>
+      </div>
+      <!-- <div>
+        <label class="field-label">Recon Name<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["reconName"]' [label]='"Recon Name"'></text-input>
+      </div> -->
+
+      <div style="display: flex;flex-direction: column;">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <div class="toggle-container disable-btn">
+              <label class="field-label left">Disable</label>
+              <label class="switch">
+                <input type="checkbox" formControlName='isActive'>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <span class="separator full-width" *ngIf="!modalPopupObj.isNewEntry"></span>
+      <div class="form-btns">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <button class="btn btn-white-bg" type="button" (click)="deleteRecord()">
+              Delete
+            </button>
+          </ng-container>
+          <button class="btn" type="submit">
+            {{modalPopupObj.isNewEntry ? 'Add' : 'Save'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

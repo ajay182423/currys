@@ -1,0 +1,620 @@
+{
+  "agentId": 79,
+  "agentName": "Pooja Darda",
+  "managerId": 8,
+  "managerName": "Rahul Tiwatia",
+  "departmentName": "Orders",
+  "dashboardData": {
+    "card1" : {
+      "type" : "3column",
+      "title" : "Transaction Status",
+      "icon" : "receipt_long",
+      "borderColor" : "hsl(205, 100%, 50%)",
+      "content" : [
+          {
+              "label" : "Total",
+              "value" : 10,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "Completed",
+              "value" : 10,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          },
+          {
+              "label" : "Pending",
+              "value" : 0,
+              "fontColor" : "hsl(4, 89%, 55%)"
+          }
+      ]
+    },
+    "card2" : {
+      "type" : "2column",
+      "title" : "",
+      "icon" : "timer",
+      "borderColor" : "hsl(4, 89%, 55%)",
+      "content" : [
+          {
+              "label" : "Total Compliance Duration",
+              "value" : 8.4,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "AHT",
+              "value" : 4.84,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          }
+      ]
+    },
+    "card3" : {
+      "type" : "1column",
+      "title" : "",
+      "icon" : "calculate",
+      "borderColor" : "hsl(36, 100%, 47%)",
+      "content" : [
+          {
+              "label" : "Quality",
+              "value" : 80.87,
+              "fontColor" : "hsl(36, 100%, 47%)"
+          }
+      ]
+    },
+    "card4": {
+      "type": "1column",
+      "title": "",
+      "icon": "",
+      "borderColor": "hsl(4, 89%, 55%)",
+      "content" : [
+        {
+            "query": "Not Resolved",
+            "value": 5
+        },
+        {
+            "query": "Resolved",
+            "value": 109
+        }
+    ]
+    },
+    "widget1" : {
+      "tab1": {
+        "title" : "ID&V",
+        "content": {
+          "type": "line",
+          "body" : {
+            "chartTitle" : "",
+            "legends" : [],
+            "data" : [
+              {
+                  "status": "Pass",
+                  "day": 24,
+                  "month": 11,
+                  "value": 18
+              },
+              {
+                  "status": "Pass",
+                  "day": 23,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 22,
+                  "month": 11,
+                  "value": 7
+              },
+              {
+                  "status": "Pass",
+                  "day": 21,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Pass",
+                  "day": 19,
+                  "month": 11,
+                  "value": 13
+              },
+              {
+                  "status": "Pass",
+                  "day": 18,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Pass",
+                  "day": 17,
+                  "month": 11,
+                  "value": 13
+              },
+              {
+                  "status": "Pass",
+                  "day": 16,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Fail",
+                  "day": 24,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Fail",
+                  "day": 23,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Fail",
+                  "day": 22,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Fail",
+                  "day": 21,
+                  "month": 11,
+                  "value": 6
+              },
+              {
+                  "status": "Fail",
+                  "day": 20,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Fail",
+                  "day": 19,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 18,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Fail",
+                  "day": 17,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 16,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Exception",
+                  "day": 24,
+                  "month": 11,
+                  "value": 2
+              },
+              {
+                  "status": "Exception",
+                  "day": 23,
+                  "month": 11,
+                  "value": 2
+              },
+              {
+                  "status": "Exception",
+                  "day": 22,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 21,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 19,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Exception",
+                  "day": 18,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Exception",
+                  "day": 17,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Exception",
+                  "day": 16,
+                  "month": 11,
+                  "value": 7
+              }
+            ]
+          }
+        }
+      },
+      "tab2": {
+        "title" : "PCI DSS",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data": [
+              {
+                  "status": "Pass",
+                  "day": 24,
+                  "month": 11,
+                  "value": 11
+              },
+              {
+                  "status": "Pass",
+                  "day": 23,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 22,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Pass",
+                  "day": 21,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Pass",
+                  "day": 19,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Pass",
+                  "day": 18,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Pass",
+                  "day": 17,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Pass",
+                  "day": 16,
+                  "month": 11,
+                  "value": 8
+              }
+            ]
+          }
+        }
+      },
+      "tab3": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "countResult": 222
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 185
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 59
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 130
+              }
+            ]
+          }
+        }
+      }
+    },
+    "widget2":{
+      "tab1": {
+        "title": "Days",
+        "content": {
+          "type": "bar",
+          "body" : {
+            "chartTitle" : "No. of Transactions",
+            "legends" : ["20 Nov","16 Nov", "17 Nov", "18 Nov","19 Nov","21 Nov","22 Nov","22 Nov", "23 Nov" ],
+            "data" : [
+                    {
+                        "name" : "Completed",
+                        "values" : [1,2,1,1,0,1,2,1,0],
+                        "bg" : "hsl(123, 40%, 46%)"
+                    },
+                    {
+                        "name" : "Pending",
+                        "values" : [0, 0, 0,  0, 0, 0, 0, 0, 0],
+                        "bg" : "hsl(4, 89%, 55%)"
+                    }
+                ]
+            }
+        }
+      },
+      "tab2": {
+        "title": "Months",
+        "content": {
+          "type": "bar",
+          "body" : {
+            "chartTitle" : "No. of Transactions",
+            "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+            "data" : [
+                    {
+                        "name" : "Completed",
+                        "values" : [872, 2072, 1400, 3230],
+                        "bg" : "hsl(123, 40%, 46%)"
+                    },
+                    {
+                        "name" : "Pending",
+                        "values" : [20, 24, 20, 26],
+                        "bg" : "hsl(4, 89%, 55%)"
+                    }
+                ]
+            }
+        }
+      }
+    },
+    "widget3": {
+      "tab1": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "countResult": 88
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 105
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 69
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      },
+      "tab2": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,"year": 2023,
+                  "countResult": 48
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,"year": 2023,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,"year": 2023,
+                  "countResult": 145
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,"year": 2023,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,"year": 2023,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tableData": {
+      "content":{
+        "body":{
+          "data": [
+            {
+                "id": 518,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "00bbefde80f71b5f33277ba0cea83b62",
+                "callDuration": "03:54",
+                "quality": 98.14,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2858,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "00bbefde80f71b5f33277ba0cea83b62_2",
+                "callDuration": "03:54",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1221,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "03febe58f2e332becc9d7d5ddd235506",
+                "callDuration": "08:14",
+                "quality": 52.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 46,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2098,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20_1",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2424,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20_2",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 391,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "0638ae8cfb833bcbdfb794dd758a0d19",
+                "callDuration": "06:00",
+                "quality": 51.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 486,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "10129ad358dc79d81ff5d945189a294c",
+                "callDuration": "03:19",
+                "quality": 82.36,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 102,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac",
+                "callDuration": "03:38",
+                "quality": 98.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2152,
+                "agentId": 74,
+                "agentName": "Pooja Darda",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac_1",
+                "callDuration": "03:38",
+                "quality": 98.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

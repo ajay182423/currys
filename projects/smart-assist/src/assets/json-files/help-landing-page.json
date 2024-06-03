@@ -1,0 +1,48 @@
+{
+  "helpTopics": [{
+    "name": "Getting Started 1",
+    "items": [{
+      "link": "/dashboard",
+      "name": "Dashboard 1"
+    }, {
+      "link": "help/doc/1123",
+      "name": "Vulchi Venky"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }]
+  }, {
+    "name": "Getting Started 2",
+    "items": [{
+      "link": "/dashboard",
+      "name": "Dashboard 2"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }]
+  }, {
+    "name": "Getting Started 3",
+    "items": [{
+      "link": "/dashboard",
+      "name": "Dashboard 3"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }, {
+      "link": "/dashboard",
+      "name": "Dashboard"
+    }]
+  }]
+}

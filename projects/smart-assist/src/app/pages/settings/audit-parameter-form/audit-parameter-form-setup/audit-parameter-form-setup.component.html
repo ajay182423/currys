@@ -1,0 +1,139 @@
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+        <div>
+          <label class="field-label">Process Name<span>*</span></label>
+            <div class="app-select">
+              <select class="select" #processDropDown [formControl]= 'modalForm.controls["processId"]' [class.is-invalid]="processSelectError"
+                (change)="requiredCheckOnSelectInput('processSetup',processDropDown.value)"
+                (blur)="requiredCheckOnSelectInput('processSetup',processDropDown.value)">
+                <option></option>
+              <option *ngFor="let process of processList" value={{process.id}}>{{process.processName}}</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="processSelectError" class="invalid-feedback">Process is required</div>
+        </div>
+        <div>
+          <label class="field-label">Section Name<span>*</span></label>
+            <div class="app-select">
+              <select class="select" #sectionDropDown [formControl]= 'modalForm.controls["sectionId"]' [class.is-invalid]="sectionSelectError"
+                (change)="requiredCheckOnSelectInput('sectionSetup',sectionDropDown.value)"
+                (blur)="requiredCheckOnSelectInput('sectionSetup',sectionDropDown.value)"
+                (change)="parameterBySection(sectionDropDown.value)">
+                <option></option>
+              <option *ngFor="let section of sectionList" value={{section.id}}>{{section.section}}</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="sectionSelectError" class="invalid-feedback">Section is required</div>
+        </div>
+        <div >
+          <label class="field-label"> QA Name<span>*</span></label>
+            <div class="app-select">
+              <select class="select" #QADropDown [formControl]= 'modalForm.controls["QAname"]' [class.is-invalid]="QaSelectError"
+                (change)="requiredCheckOnSelectInput('QaSetup',QADropDown.value)"
+                (blur)="requiredCheckOnSelectInput('QaSetup',QADropDown.value)">
+                <option></option>
+              <option *ngFor="let QAname of userList" value="{{QAname.firstName}} {{QAname.lastName}}">{{QAname.firstName}} {{QAname.lastName}}</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="QaSelectError" class="invalid-feedback">QA Name is required</div>
+        </div>
+        <div>
+          <label class="field-label"> Assigned To<span>*</span></label>
+            <div class="app-select">
+              <select class="select" #assignedToDropDown [formControl]= 'modalForm.controls["assignedTo"]' [class.is-invalid]="assignedToSelectError"
+                (change)="requiredCheckOnSelectInput('assignedToSetup',assignedToDropDown.value)"
+                (blur)="requiredCheckOnSelectInput('assignedToSetup',assignedToDropDown.value)">
+                <option></option>
+              <option *ngFor="let QAname of userList" value='{{QAname.firstName}} {{QAname.lastName}}'>{{QAname.firstName}} {{QAname.lastName}}</option>
+              </select>
+              <div class="app-select-arrow">
+              </div>
+            </div>
+            <div *ngIf="assignedToSelectError" class="invalid-feedback">Assigned To is required</div>
+        </div>
+        <div class="full-width">
+          <label class="field-label">Select Parameter Questions</label>
+          <div class="form-table-overflow">
+            <div class="form-table-container">
+              <div class="form-table-header">
+                <table class="form-table with-selection" cellpadding="0" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th title="Select all">
+                        <label class="chk-container">
+                          <input type="checkbox" [checked]="allParameterChecked" (change)="checkAllParameter()">
+                          <span class="checkmark"></span>
+                        </label>
+                      </th>
+                      <th title="All Parameter Questions">All Parameter Questions</th>
+                      <th style="float: right;" title="Max Score">Max Score</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <loading-spinner *ngIf="isListLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+              <div [ngClass]="!isListLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+                <div class="form-table-content">
+                  <div *ngIf="sectionSelected == false" style="margin-top: 20px;">
+                    <label class="field-label">Please select any Section for display Parameters</label>
+                  </div>
+                  <table *ngIf="sectionSelected" class="form-table with-selection" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <ng-container *ngFor="let item of parameterList">
+                        <tr>
+                          <td>
+                            <label class="chk-container">
+                              <input type="checkbox" [checked]="item.isSelected" (change)="checkSingleParameter(item)">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td title={{item.parameter}}>{{item.parameter}}</td>
+                          <!-- <td title={{item.parameter}}>{{item.parameter}}</td> -->
+                          <td style="width: 80px;">
+                            <text-input [formControl]='modalForm.controls["maxScore"]' [label]='"Max Score"'></text-input>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div>
+        <ng-container *ngIf="!modalPopupObj.isNewEntry">
+          <div class="toggle-container disable-btn">
+            <label class="field-label left">Disable</label>
+            <label class="switch">
+              <input type="checkbox" formControlName='isActive'>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </ng-container>
+      </div>
+      <span class="separator full-width" *ngIf="!modalPopupObj.isNewEntry"></span>
+      <div class="form-btns">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <button class="btn btn-transparent-bg" type="button" (click)="deleteRecord()">
+              Delete
+            </button>
+          </ng-container>
+          <button class="btn" type="submit">
+            {{modalPopupObj.isNewEntry ? 'Add' : 'Save'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

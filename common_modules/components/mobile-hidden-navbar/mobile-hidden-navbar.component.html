@@ -1,0 +1,40 @@
+<div class="mobile-hidden-nav">
+  <div class="menu-item" *ngFor="let item of modalPopupObj.menuItems">
+    <ng-container *ngIf="item?.subMenu?.length === 0">
+      <a *canAccessPage="item.id" class="mob-nav-link" [routerLink]=[item.link] routerLinkActive='active-mob-nav-link' title="{{ item.name }}">
+        <div class="menu-icon">
+          <span class="mt-icon material-icons-round">
+            {{ item.icon }}
+          </span>
+        </div>
+        <span class="mob-nav-name">{{ item.name }}</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="item?.subMenu?.length > 0">
+      <div *canAccessPage="item.id" class="link-with-sub-links" [class.show-sub-links]="item?.showSubMenu">
+        <a class="mob-nav-link" (click)="item.showSubMenu = !item.showSubMenu" [style.background-color]="item?.showSubMenu ? 'var(--bg-02)' : ''">
+          <div class="menu-icon">
+            <span class="mt-icon material-icons-round">
+              {{ item.icon }}
+            </span>
+          </div>
+          <span class="mob-nav-name">{{ item.name }}</span>
+          <span class="drop-icon"></span>
+        </a>
+        <div *ngIf="item?.showSubMenu" class="sub-menu" >
+          <ng-container *ngFor="let subItem of item?.subMenu">
+            <a class="sub-menu-link" [routerLink]=[subItem.link] routerLinkActive='sub-menu-link-active' title="{{ subItem.name }}">
+              <div class="menu-icon">
+                <span class="mt-icon material-icons-round">
+                  {{ item.icon }}
+                </span>
+              </div>
+              <span class="sub-menu-name">{{ subItem.name }}</span>
+            </a>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+</div>

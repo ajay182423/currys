@@ -1,0 +1,182 @@
+.container {
+  height: 100vh;
+  display: flex;
+}
+.container .left {
+  min-width: 40rem;
+  width: 40rem;
+  background-color: var(--bg-01);
+  border-right: 0.1rem solid var(--bg-02);
+  display: flex;
+  flex-direction: column;
+}
+.container .right {
+  flex-grow: 1;
+}
+.container .right .doc-content {
+  margin-top: 0rem;
+}
+.container .right .doc-content .meta-data {
+  padding: 0 3.8rem;
+  display: flex;
+  align-items: center;
+}
+.container .right .doc-content .meta-data .folder-info {
+  display: flex;
+  align-items: center;
+}
+.container .right .doc-content .meta-data .folder-info .folder {
+  font-size: 1.5rem;
+  color: var(--text-color-00);
+  font-weight: 400;
+}
+.container .right .doc-content .meta-data .folder-info .mt-icon {
+  font-size: 1.8rem;
+  color: var(--text-color-01);
+}
+.container .right .doc-content .meta-data .folder-info .mt-icon:last-child {
+  display: none;
+}
+.container .right .doc-content .meta-data .dot-separator {
+  margin: auto 0.8rem;
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--bg-03);
+}
+.container .right .doc-content .meta-data .info {
+  font-size: 1.5rem;
+  color: var(--text-color-01);
+  font-weight: 300;
+}
+.container .right .doc-content .meta-data .info .main {
+  color: var(--text-color-00);
+  font-weight: 400;
+}
+.container .right .doc-content .content {
+  padding: 0 3.8rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(var(--font-size-s) * 1.8);
+  font-weight: calc(var(--font-weight) - 100);
+}
+.container .right .doc-content .content h3 {
+  margin: 1rem 0 0 0;
+  font-size: calc(var(--font-size-r) * 1.9);
+  line-height: 4.08rem;
+  font-weight: calc(var(--font-weight) - 0);
+  color: var(--heading-color);
+}
+.container .right .doc-content .content a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+.container .right .doc-content .content a:hover {
+  color: var(--primary-color);
+}
+.container .right .doc-content .content p,
+.container .right .doc-content .content li {
+  margin: 1rem 0rem 0rem 0rem;
+  color: var(--text-color-00);
+  font-size: calc(var(--font-size-s) * 1.8);
+  font-weight: calc(var(--font-weight) - 100);
+  line-height: 2.6rem;
+}
+.container .right .doc-content .content ul,
+.container .right .doc-content .content ol {
+  padding-left: 0;
+  margin: 0rem 0 0 3rem;
+}
+.container .right .doc-content .content ul {
+  list-style: disc;
+}
+.container .right .doc-content .content .bold {
+  font-weight: calc(var(--font-weight) - 0);
+  color: var(--heading-color);
+}
+.container .right .doc-content .content .italic {
+  font-style: italic;
+}
+.container .right .doc-content .content .underline {
+  text-decoration: underline;
+}
+.container .right .doc-content .content img,
+.container .right .doc-content .content video {
+  margin: 1rem 0 0 0;
+  border: 0.1rem solid var(--bg-02);
+  border-radius: 0.25rem;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .right .doc-content .content table {
+  margin: 1rem 0 0.5rem 0;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+.container .right .doc-content .content table th {
+  background-color: var(--bg-02);
+  color: var(--heading-color);
+  font-size: calc(var(--font-size-s) * 1.7);
+  font-weight: calc(var(--font-weight) + 0);
+}
+.container .right .doc-content .content table th,
+.container .right .doc-content .content table td {
+  text-align: left;
+  padding: 0.8rem;
+  min-height: 2rem;
+  color: var(--text-color-00);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 0.1rem solid var(--border-color);
+  border-right: 0.1rem solid var(--border-color);
+}
+.container .right .doc-content .content table th:first-child,
+.container .right .doc-content .content table td:first-child {
+  border-left: 0.1rem solid var(--border-color);
+}
+.container .right .doc-content .content table th:last-child,
+.container .right .doc-content .content table td:last-child {
+  border-right: 0.1rem solid var(--border-color);
+}
+.container .right .doc-content .content .imp-note {
+  padding: 1rem 2rem 2rem 2rem;
+  margin: 1.5rem 0 0 0;
+  background-color: var(--bg-02);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  border-left: 0.3rem solid var(--danger-color);
+}
+.container .right .doc-content .content .imp-note h4 {
+  line-height: 3.5rem;
+  color: var(--heading-color);
+  font-size: calc(var(--font-size-s) * 1.6);
+  font-weight: calc(var(--font-weight) + 100);
+}
+.container .right .doc-content .content .imp-note .note-content {
+  color: var(--text-color-00);
+  font-size: calc(var(--font-size-s) * 1.5);
+  font-weight: calc(var(--font-weight) - 0);
+}
+.container .right .no-content {
+  margin-top: 6.5rem;
+  min-height: calc(100vh - (var(--navbar) + 6.5rem));
+  height: calc(100vh - (var(--navbar) + 6.5rem));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .right .no-content img {
+  width: 8rem;
+}
+.container .right .no-content p {
+  padding: 2rem 1rem;
+  font-weight: 300;
+  font-size: calc(var(--font-size-s) * 1.6);
+  color: var(--text-color-00);
+}/*# sourceMappingURL=help-doc.component.css.map */

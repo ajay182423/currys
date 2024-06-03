@@ -1,0 +1,21 @@
+<div class="card_content" style="height: 100%;">
+  <div class="transcriptBlock">
+    <div *ngIf="type1 === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+      (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+      (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+      <div class="scrollable-content">
+        <div *ngFor="let transcript of modalPopupObj.recordId" class="audit_snippet">
+            <div *ngIf="transcript.driver.vulnerability_type != 'Not Applicable'"  class="entity_block">
+              <p><strong>Vulnerability Comment :</strong> {{transcript.comment}}</p>
+              <div class=" d-flex align-start justify-between" style="color: #f00;">
+                <div>
+                  <p><strong>Vulnerability Type :</strong> {{transcript.driver.vulnerability_type}}</p>
+                </div>
+                <p><strong>Timestamp :</strong> {{transcript.end_time}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>

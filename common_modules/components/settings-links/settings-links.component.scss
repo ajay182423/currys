@@ -1,0 +1,81 @@
+.settings-links {
+  .separator {
+    display: flex;
+    b {
+      font-weight: 400;
+      color: var(--text-color-00);
+    }
+    span {
+      flex-grow: 1;
+      margin: 0.1rem 0rem 0 0rem;
+      align-self: center;
+      display: block;
+      border-top: 0.1rem solid var(--border-color);
+    }
+    span:first-child {
+      margin-right: 1rem;
+    }
+    span:last-child {
+      margin-left: 1rem;
+    }
+  }
+  &__card-wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-00);
+    word-wrap: break-word;
+    border-radius: var(--border-radius-l);
+    box-shadow: 0rem 0rem 0.9rem 0.2rem rgba(0, 0, 0, 0.09);
+    overflow: hidden;
+    &:hover {
+      background: #490E9F;
+      .settings-links__card-icon .mt-icon {
+        color: var(--text-color-00);
+        font-variation-settings: 'FILL' 1;
+        transition: 0s;
+      }
+    }
+  }
+  &__bar {
+    display: block;
+    min-width: 0.3rem;
+    height: 100%;
+    background-color: #490E9F;
+  }
+  &__card-icon {
+    margin: 2rem 0rem 2rem 2rem;
+    min-height: 4rem;
+    min-width: 4rem;
+    max-height: 4rem;
+    max-width: 4rem;
+    border-radius: var(--border-radius-l);
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mt-icon {
+      font-size: 3rem;
+      width: 3rem;
+      color: var(--icon-color);
+    }
+  }
+  &__card-body {
+    padding: 2.1rem 2rem 2rem 2rem;
+  }
+  &__card-title {
+    color: var(--heading-color);
+    line-height: 2rem;
+    font-size: calc(var(--font-size-s) * 1.74);
+    font-weight: calc(var(--font-weight) + 300);
+    margin-bottom: 0.2rem;
+    //white-space: nowrap;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+  }
+  &__card-caption {
+    line-height: 2rem;
+    font-size: calc(var(--font-size-s) * 1.4);
+    color: var(--text-color-00);
+  }
+}

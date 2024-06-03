@@ -1,0 +1,250 @@
+
+<perfect-scrollbar>
+  <div class="audit-details-container" style="margin-right: 10px;">
+    <div style="display: flex; justify-content:space-between; align-items: flex-start;">
+      <form [formGroup]='modalForm'>
+        <div class="get-audit-details">
+          <div style="width: 150%;">
+            <label class="field-label">Transaction/Call Id<span>*</span></label>
+            <text-input [formControl]='modalForm.controls["transaction"]' [label]='"Transaction Id"'>
+            </text-input>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <div>
+              <label class="field-label" style="margin-left: 10px;">ID</label>
+              <div class="idCallBox">{{IdFromRoute}}</div>
+            </div>
+            <div>
+              <label class="field-label">Call Duration</label>
+              <div class="idCallBox">{{audioLength}}</div>
+            </div>
+            <div>
+              <label class="field-label" style="margin-left: 10px;">Agent Name</label>
+              <div class="idCallBox"><span style="margin-left: 3px;">{{agentName}}</span></div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div style="margin-top: 1.6rem;">
+        <button class="btn btn-primary" *ngIf="(flaggedCall | lowercase) !== 'flagged'" (click)="flagThisCall()">Flag This Call</button>
+      </div>
+      <div class="get-audit-details" style="margin-right: 20px;">
+        <div *ngIf="scorecalcu">
+          <div class="buttons-count">
+            <div style="font-size: 25px;width: 5vw; text-align: center;">
+              <label class="field-label">Total Score</label>
+              {{scorecalcu}}/{{maxscorecalcu}} </div>
+            <div style="font-size: 25px;width: 5vw; margin-left: 10px; text-align: center;">
+              <label class="field-label" style="margin-left: -10px;">Quality</label>
+              <span *ngIf="scoreCalcTotalF >= 80" style="color: green;">{{scoreCalcTotalF}}%</span>
+              <span *ngIf="scoreCalcTotalF < 80" style="color: red;">{{scoreCalcTotalF}}%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content:space-between; align-items: flex-start;">
+      <div class="call_type_element">
+        <div>
+          <label class="field-label">Journey</label>
+          <div class="customerFeedback"><span style="margin-left: 5px;">{{department}}</span></div>
+        </div>
+        <div style="margin-left: 10px">
+          <label class="field-label">Sub Journey</label>
+          <div class="customerFeedback"><span style="margin-left: 5px;">{{workGroup}}</span></div>
+        </div>
+        <div style="margin-left: 10px">
+          <label class="field-label">Customer Intent</label>
+          <div class="customerFeedback"><span style="margin-left: 5px;">{{callResponse}}</span></div>
+        </div>
+        <div style="margin-left: 10px">
+          <label class="field-label"> Customer - Issue</label>
+          <div class="customerFeedback"><span style="margin-left: 5px;">{{queryResolved}}</span></div>
+        </div>
+      </div>
+      <div class="call-details">
+        <label class="field-label">Audio Details</label>
+        <div class="list">
+          <div style="display: flex;">
+            <div>Silence: <br> Non Silence:</div>
+            <div style="margin-left: 3px;"><b>{{silence}}</b> <br> <b>{{nonSilence}}</b></div>
+          </div>
+          <a (click)="AudioDetailsPopup(callDetails, audioSource)" *ngIf="moredetails"><u>more details</u></a>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div class="audio-player">
+      <div style="display: flex;">
+        <h1 style="font-size: 20px;font-weight: 600; color: #1954d1 ;">Voice Call Timeline</h1>
+        <div *ngIf="audioLoading" style="margin-left: 50px;">Audio loading... Please Wait..</div>
+      </div>
+      <div id="wave-timeline" class="wave-timeline"></div>
+      <div class="waveform">
+        <div id="waveform"></div><hr />
+        <div>
+          <canvas id="sentimentChart" height="25px"></canvas>
+          <div class="d-flex justify-center" style="border-left:1px solid hsl(0, 0%, 67%);padding: 10px; margin-top: -10px;">
+            <h4 style="margin-right: 3px;">Sentiments : </h4>
+            <div class="d-flex">
+              <p class="legend positive"><span></span> Positive</p>
+              <p class="legend neutral"><span></span> Neutral</p>
+              <p class="legend negative"><span></span> Negative</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="wave" class="controls">
+        <div style="padding:10px; color: hsl(0, 1%, 36%);">Total Call Duration:<span style="margin-left: 10px; font-weight: bold;">{{audioLength}}</span></div>
+        <div class="audioControls">
+          <button class="btn" (click)="onStopPressed()"><i class="fa fa-stop" aria-hidden="true" id="playPause"></i></button>
+          <button class ='btn' (click)="onStartPressed(isPlaying)">
+            <i *ngIf="isPlaying" class="fa fa-pause" aria-hidden="true"></i>
+            <i *ngIf="!isPlaying" class="fa fa-play" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="volume-slider">
+          <button class="btn" (click)="showVolumeButtons()" style="border: none; background: none; width: 5rem;">
+            <i *ngIf="!isShowing" class="fa fa-volume-up" aria-hidden="true" id="volume_icon"></i>
+            <i *ngIf="isShowing" class="fa fa-volume-off" aria-hidden="true" id="volume_icon"></i>
+          </button>
+          <input type="range" min="0" max="1" step="0.01" value="1" class="custom-range" (change)="setVolume($event)">
+        </div>
+      </div>
+
+    </div>
+    <div>
+      <div style="margin: 10px 22px 0 40px;" *ngIf="showTranscriptBox">
+        <div class="transcriptBlock">
+          <perfect-scrollbar>
+            <p *ngFor="let transcript of transcriptData">
+              <span class="{{transcript.speaker.toLowerCase()}}">{{transcript.speaker}}</span> : {{transcript.comment}}
+            </p>
+          </perfect-scrollbar>
+        </div>
+      </div>
+      <hr style="margin: 30px 30px 20px 40px;" *ngIf="showTranscriptBox">
+
+      <div class="audit-form">
+        <div class="table-name" *ngFor="let sectionItem of sectionsData">
+          <div class="headers">
+            <!-- {{sectionItem | json}} -->
+            <header style="color: #1954d1;">{{sectionItem.sectionName}}</header>
+            <!-- <header class="second">Weightage <span>{{sectionItem.weightage}}%</span></header> -->
+            <div class="phrase-checkbox" *ngIf="sectionItem.sectionName === 'Phrase/Text detection'">
+              <div class="toggle-container disable-btn">
+                <ng-container *ngIf="filterText == ''">
+                  <label class="field-label left toggle-change">All Phrase</label>
+                </ng-container>
+                <ng-container *ngIf="filterText == 'Yes'">
+                  <label class="field-label left toggle-change">Phrase Identified</label>
+                </ng-container>
+                <label class="switch">
+                  <input type="checkbox" (change)="toggleChange(auditToggle.checked)" #auditToggle>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="table">
+            <div class="thead">
+              <div class="th">
+                <label class="field-label">No</label>
+              </div>
+              <div class="th" style="width: 350px;">
+                <label class="field-label" style="font-size: small;">Parameter/Questions</label>
+              </div>
+              <div class="th" *ngFor="let items of isColumnRequiredList">
+                  <label class="field-label">{{items.parameterName}}<span>*</span></label>
+              </div>
+              <div class="th">
+                <label class="field-label">Associated Transcript with Timestamp<span>*</span></label>
+              </div>
+              <div class="th">
+                <label class="field-label">Help/Notes</label>
+              </div>
+            </div>
+            <ng-container *ngFor="let paramItem of (sectionItem.sectionName == 'Phrase/Text detection' ?
+              (sectionItem?.parameters | customAudit : filterText) : sectionItem?.parameters );
+                let index = index">
+                <!-- {{paramItem | json}} -->
+                <ng-container *ngIf="customForm[paramItem?.parameterIndex]">
+                  <form [formGroup]='customForm[paramItem?.parameterIndex]' autocomplete="off">
+                    <div class="td">{{index+1}}</div>
+                    <div class="td">
+                      <div class="questionDiv"> {{paramItem?.parameterName}} <br>
+                        <!-- {{paramItem.callData | json}} -->
+                        <div *ngIf="paramItem.callData.length > 0">
+                          <ng-container *ngFor="let callSpan of paramItem.callData; let callIndex = index">
+                            <ng-container *ngIf="callSpan.startTime != ''">
+                            <audio #audio [src]="audioSource+'#t=' + callSpan.startTime + ',' + callSpan.endTime | safe:'url'" id="audio_{{sectionItem.sectionName}}_{{index}}_{{callIndex}}">
+                            </audio>
+                            <button (click)="playSpanAudio(audio.id, {startTime : callSpan.startTime, endTime : callSpan.endTime })" *ngIf="audio.paused" type="button">
+                              <i class="fa fa-play" aria-hidden="true"></i>
+                            </button>
+                            <button (click)="pauseSpanAudio(audio.id)" *ngIf="!audio.paused" type="button">
+                              <i  class="fa fa-pause" aria-hidden="true"></i>
+                            </button>
+                            </ng-container>
+                          </ng-container>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="td">
+                      <div class="app-select" style="width: 95px;">
+                        <single-select-dropdown [formControl]='customForm[paramItem?.parameterIndex].controls["result"]'
+                          [label]='"result"' [optionList]="resultList" #resultDropDown>
+                        </single-select-dropdown>
+                        <div class="app-select-arrow" style="margin-left: 20px;">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="td">
+                      <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["confidence"]'
+                      [backgroundColor]="customForm[paramItem?.parameterIndex].value.backgroundColor"
+                      [blinker]="customForm[paramItem?.parameterIndex].value.blinker"
+                      [label]='"confidance"'>
+                    </text-input>
+                    </div>
+                    <div class="td">
+                      <text-input [formControl]='customForm[paramItem?.parameterIndex].controls["score"]'
+                      [label]='"Score"' [isReadOnly]="false">
+                    </text-input>
+                    </div>
+                    <div class="td" style="cursor: pointer; height: 74px; width: 394px;">
+                      <textarea-input style="cursor: pointer;" (click)='openAssoTranscript(customForm[paramItem?.parameterIndex].controls["AssociatedTranscriptObj"].value, paramItem?.parameterIndex)'
+                          [formControl]='customForm[paramItem?.parameterIndex].controls["AssociatedTranscript"]'
+                          [label]='"Associated Transcript"'>
+                      </textarea-input>
+                    </div>
+                    <div class="td">
+                      <a (click)="openHelpText(paramItem?.parameterHelpText)"
+                      style="color: rgb(97, 220, 236); font-size: small;">Help/Notes</a>
+                    </div>
+                  </form>
+                </ng-container>
+            </ng-container>
+
+          </div>
+          <div style="clear: both;"></div>
+
+          <div class="IDV" *ngIf="sectionItem.sectionName === 'ID&V'">
+            <p>{{sectionItem.sectionName}} Verdict : {{sectionItem.IDVoutcome}}</p>
+            <p>Comments : {{sectionItem.comments}}</p>
+          </div>
+          <div class="IDV" *ngIf="sectionItem.sectionName === 'PCI-DSS'">
+            <p>PCI Compliance : {{sectionItem.PCIoutcome}}</p>
+            <p>Comments : {{PCIcomment}}</p>
+          </div><br>
+        </div>
+      </div>
+      <div class="submit-audited-data" *ngIf="showSubmitAudit">
+        <button class="btn btn-primary" type="button" (click)="submitAudit()">Update</button>
+      </div><br>
+    </div>
+  </div>
+</perfect-scrollbar>

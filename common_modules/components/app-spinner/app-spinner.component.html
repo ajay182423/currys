@@ -1,0 +1,16 @@
+<div class="container" @slideUp>
+  <div class="separator"></div>
+  <div class="app-initials" *ngIf="options.appInitials">
+    <span>{{options.appInitials}}</span>
+  </div>
+  <div class="app-name">
+    {{ options.appName }}
+  </div>
+  <div class="loading">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="separator"></div>
+  <platform-logo class="logo" *ngIf="options.showPlatformLogo" [appName]="options.platformName" [logoImgUrl]="options.fileUrl"></platform-logo>
+</div>

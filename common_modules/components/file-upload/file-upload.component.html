@@ -1,0 +1,18 @@
+<div class="file-upload-container">
+  <div class="{{'upload-progress ' + options.class}}" *ngIf="progress > 0">
+    <span class="mt-icon material-icons-round">
+      cloud_upload
+    </span>
+    <span>{{progress}}%</span>
+  </div>
+
+  <div *ngIf="!(progress > 0)" class="{{'add-file ' + options.class}}" title="{{options.tooltip}}"
+    (click)="fileSelect.click()">
+    <input type="file" #fileSelect placeholder="Choose file" accept="{{options.customFileTypes}}"
+      (change)="uploadFile(fileSelect.files)" style="display:none;">
+    <span class="mt-icon material-icons-round">
+      cloud_upload
+    </span>
+    <span>{{options.tooltip}}</span>
+  </div>
+</div>

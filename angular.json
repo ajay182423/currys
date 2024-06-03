@@ -1,0 +1,251 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": { 
+    "smart-assist": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/smart-assist",
+      "sourceRoot": "projects/smart-assist/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/smart-assist",
+            "index": "projects/smart-assist/src/index.html",
+            "main": "projects/smart-assist/src/main.ts",
+            "polyfills": "projects/smart-assist/src/polyfills.ts",
+            "tsConfig": "projects/smart-assist/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/smart-assist/src/favicon.ico",
+              "projects/smart-assist/src/assets"
+            ],
+            "styles": [
+              "projects/smart-assist/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/smart-assist/src/environments/environment.ts",
+                  "with": "projects/smart-assist/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "smart-assist:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "smart-assist:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "smart-assist:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/smart-assist/src/test.ts",
+            "polyfills": "projects/smart-assist/src/polyfills.ts",
+            "tsConfig": "projects/smart-assist/tsconfig.spec.json",
+            "karmaConfig": "projects/smart-assist/karma.conf.js",
+            "assets": [
+              "projects/smart-assist/src/favicon.ico",
+              "projects/smart-assist/src/assets"
+            ],
+            "styles": [
+              "projects/smart-assist/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/smart-assist/tsconfig.app.json",
+              "projects/smart-assist/tsconfig.spec.json",
+              "projects/smart-assist/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/smart-assist/e2e/protractor.conf.js",
+            "devServerTarget": "smart-assist:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "smart-assist:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "tapestry": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/tapestry",
+      "sourceRoot": "projects/tapestry/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/tapestry",
+            "index": "projects/tapestry/src/index.html",
+            "main": "projects/tapestry/src/main.ts",
+            "polyfills": "projects/tapestry/src/polyfills.ts",
+            "tsConfig": "projects/tapestry/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/tapestry/src/favicon.ico",
+              "projects/tapestry/src/assets"
+            ],
+            "styles": [
+              "projects/tapestry/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/tapestry/src/environments/environment.ts",
+                  "with": "projects/tapestry/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tapestry:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tapestry:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tapestry:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tapestry/src/test.ts",
+            "polyfills": "projects/tapestry/src/polyfills.ts",
+            "tsConfig": "projects/tapestry/tsconfig.spec.json",
+            "karmaConfig": "projects/tapestry/karma.conf.js",
+            "assets": [
+              "projects/tapestry/src/favicon.ico",
+              "projects/tapestry/src/assets"
+            ],
+            "styles": [
+              "projects/tapestry/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tapestry/tsconfig.app.json",
+              "projects/tapestry/tsconfig.spec.json",
+              "projects/tapestry/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/tapestry/e2e/protractor.conf.js",
+            "devServerTarget": "tapestry:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tapestry:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "explorer"
+}

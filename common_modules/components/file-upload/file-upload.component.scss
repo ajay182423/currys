@@ -1,0 +1,46 @@
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload-brdr {
+  border: 0.2rem dotted var(--border-color);
+}
+
+.file-upload-dimensions {
+  width: 100%;
+  height: 15rem;
+}
+
+.add-file,
+.upload-progress {
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size-s) * 1.4);
+  .mt-icon {
+    font-size: 3rem;
+    color: var(--icon-color);
+  }
+  &:hover {
+    border-color: var(--secondary-color);
+    .mt-icon {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.upload-progress span {
+  font-size: 2.5rem;
+  margin-left: 0.5rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .file-upload-dimensions {
+    height: 15rem;
+  }
+}

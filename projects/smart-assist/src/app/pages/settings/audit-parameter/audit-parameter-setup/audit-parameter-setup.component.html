@@ -1,0 +1,80 @@
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+
+      <div class="full-width">
+        <label class="field-label">Section Name<span>*</span></label>
+          <div class="app-select">
+            <select class="select" #sectionDropDown [formControl]= 'modalForm.controls["sectionId"]' [class.is-invalid]="sectionSelectError"
+              (change)="requiredCheckOnSelectInput('sectionSetup',sectionDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('sectionSetup',sectionDropDown.value)">
+              <option></option>
+             <option *ngFor="let sections of sectionsList" value={{sections.id}}>{{sections.section}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="sectionSelectError" class="invalid-feedback">Section is required</div>
+      </div>
+
+      <div class="full-width">
+        <label class="field-label">Parent Parameter Name</label>
+          <div class="app-select">
+            <select class="select" #parentParameterDropDown formControlName='parentParameterId' [class.is-invalid]="parentParameterSelectError"
+              (change)="requiredCheckOnSelectInput('parentParameterSetup',parentParameterDropDown.value)"
+              (blur)="requiredCheckOnSelectInput('parentParameterSetup',parentParameterDropDown.value)">
+              <option></option>
+              <option *ngFor="let parentParameters of parentParameterList" value={{parentParameters.id}}>{{parentParameters.parameter}}</option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          <div *ngIf="parentParameterSelectError" class="invalid-feedback">Section is required</div>
+      </div>
+
+      <div class="full-width">
+        <label class="field-label">Parameter/Question<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["parameter"]' [label]='"parameter"'></text-input>
+      </div>
+      <div class="full-width">
+        <label class="field-label">Max Score<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["maxScore"]' [label]='"Max Score"'></text-input>
+      </div>
+      <div class="full-width">
+        <label class="field-label">Add Help/Notes<span>*</span></label>
+        <textarea-input [formControl]='modalForm.controls["helpText"]' [label]='"HelpText"'></textarea-input>
+      </div>
+
+
+      <div>
+        <ng-container *ngIf="!modalPopupObj.isNewEntry">
+          <div class="toggle-container disable-btn">
+            <label class="field-label left">Disable</label>
+            <label class="switch">
+              <input type="checkbox" formControlName='isActive'>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </ng-container>
+      </div>
+      <span class="separator full-width" *ngIf="!modalPopupObj.isNewEntry"></span>
+      <div class="form-btns">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <button class="btn btn-transparent-bg" type="button" (click)="deleteRecord()">
+              Delete
+            </button>
+          </ng-container>
+          <button class="btn" type="submit">
+            {{modalPopupObj.isNewEntry ? 'Add' : 'Save'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+

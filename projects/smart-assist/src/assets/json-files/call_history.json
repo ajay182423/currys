@@ -1,0 +1,50 @@
+[
+    {
+        "direction" : "Incoming",
+        "response" : "Answered",
+        "caller_name" : "Emma Watson",
+        "duration" : "1m 30s",
+        "call_type" : "Unauthorized Transaction",
+        "situation" : "A customer called regarding an unauthorized transaction on their credit card",
+        "action" : " Verified the customer's identity using account details. Investigated the transaction. Initiated a dispute process. Assured the customer that the funds would be ",
+        "resolution" : "Customer expressed satisfaction with the assistance provided.",
+        "date" : "9/20/2023",
+        "time" : "7:55 PM"
+    },
+    {
+        "direction" : "Outgoing",
+        "response" : "Answered",
+        "caller_name" : "Emma Watson",
+        "duration" : "3m 35s",
+        "call_type" : "Late Payment",
+        "situation" : "Called Customer due to overdue account.",
+        "action" : "Customer was informed about their account overdue amount of £2584.91, Customer mentioned cannot pay now, will pay later this month. ",
+        "resolution" : "Customer has promised to make payment next Tuesday, 19th December 2023. ",
+        "date" : "11/29/2023",
+        "time" : "2:55 PM"
+    },
+    {
+        "direction" : "Outgoing",
+        "response" : "Answered",
+        "caller_name" : "Emma Watson",
+        "duration" : "6m 22s",
+        "call_type" : "Late Payment",
+        "situation" : "Called Customer due to overdue account.",
+        "action" : "Customer was informed about their account overdue amount of £2584.91, Customer mentioned cannot pay now, will pay later this month.",
+        "resolution" : "Customer expressed frustration due to earlier promise to make payment next Tuesday. ",
+        "date" : "12/1/2023",
+        "time" : "4:22 PM"
+    },
+    {
+        "direction" : "Outgoing",
+        "response" : "Answered",
+        "caller_name" : "Emma Watson",
+        "duration" : "3m 16s",
+        "call_type" : "Late Payment",
+        "situation" : "Called Customer due to overdue account.",
+        "action" : "Customer was informed about their account overdue amount of £2584.91 Customer promised to pay later in the month.",
+        "resolution" : "Customer expressed frustration due to earlier promise to make payment next Tuesday. ",
+        "date" : "12/5/2023",
+        "time" : "8:29 PM"
+    }
+]

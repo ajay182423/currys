@@ -1,0 +1,43 @@
+.transcriptBlock{
+  color: hsl(0, 1%, 36%);
+  height: 75vh;
+  overflow: auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: stretch flex-start;
+  align-items: stretch;
+  flex: 1 1 auto;
+  p{
+    padding: 2px;
+    margin-left: 5px;
+  }
+}
+.scrollable-content {
+  padding: 5px 10px;
+}
+.entity_block {
+  padding: 10px;
+  border: 1px solid #f00;
+  border-radius: 10px;
+  width: 98%;
+  margin: 10px 0 10px 0;
+}
+.d-flex  {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-stretch {
+  align-items: stretch;
+}
+.align-end {
+  align-items: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}

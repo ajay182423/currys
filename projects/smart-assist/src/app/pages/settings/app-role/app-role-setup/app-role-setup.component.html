@@ -1,0 +1,89 @@
+<loading-spinner *ngIf="isRecordLoading"></loading-spinner>
+<div [ngClass]="!isRecordLoading ? 'page-slideleft dis-bk' : 'page-hidden'">
+  <div *ngIf="modalForm">
+    <form class="form-2-col popup-form" [formGroup]='modalForm' (ngSubmit)="submitForm()" autocomplete="off">
+      <div>
+        <label class="field-label">Hierarchy#<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["hierarchyNo"]' [label]='"Hierarchy#"'></text-input>
+      </div>
+      <div>
+        <label class="field-label">Name<span>*</span></label>
+        <text-input [formControl]='modalForm.controls["name"]' [label]='"Name"' [isReadOnly]="!modalPopupObj.isNewEntry"></text-input>
+      </div>
+      <div class="full-width">
+        <label class="field-label">Description</label>
+        <textarea-input [formControl]='modalForm.controls["description"]' [label]='"Description"' [rows]='"4"'
+          [columns]='"50"'></textarea-input>
+      </div>
+      <div class="full-width">
+        <label class="field-label">Enable Accesses for User Role</label>
+        <div class="form-table-overflow">
+          <div class="form-table-container">
+            <div class="form-table-header">
+              <table class="form-table with-action" cellpadding="0" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th title="Access Name">Access Name</th>
+                    <th title="Access Status" style="width: 15rem;">Access Status</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <loading-spinner *ngIf="isListLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+            <div [ngClass]="!isListLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+              <div class="form-table-content" *ngIf="specialAccessList?.length > 0">
+                <table class="form-table with-action" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <ng-container *ngFor="let item of specialAccessList">
+                      <tr>
+                        <td title={{item.uiName}}>{{item.uiName}}</td>
+                        <td style="width: 15rem;">
+                          <div class="toggle-container">
+                            <label class="switch ml0">
+                              <input type="checkbox" [checked]="item.isAccessOn" (change)="item.isAccessOn = !item.isAccessOn">
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+              <div class="form-table-no-content" *ngIf="pappList?.length === 0">
+                <div class="form-table-no-content__no-content-box">
+                  <img src="{{ fileUrl + 'assets/no-content.svg' }}" alt="No Content">
+                  <p>No records found</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ng-container *ngIf="!modalPopupObj.isNewEntry">
+          <div class="toggle-container disable-btn">
+            <label class="field-label left">Disable</label>
+            <label class="switch">
+              <input type="checkbox" formControlName='isActive'>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </ng-container>
+      </div>
+      <span class="separator full-width" *ngIf="!modalPopupObj.isNewEntry"></span>
+      <div class="form-btns">
+        <div>
+          <ng-container *ngIf="!modalPopupObj.isNewEntry">
+            <button class="btn btn-transparent-bg" type="button" (click)="deleteRecord()">
+              Delete
+            </button>
+          </ng-container>
+          <button class="btn" type="submit">
+            {{modalPopupObj.isNewEntry ? 'Add' : 'Save'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

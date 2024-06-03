@@ -1,0 +1,44 @@
+.p-galleria .p-galleria-thumbnail-container {
+  background: none !important;
+}
+.product_thumbs {
+  width: 55%;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.mb-2 {
+  margin-bottom: 2rem;
+}
+.product_details {
+  width: 40%;
+}
+.text-success {
+  color: var(--success-color) !important;
+}
+.text-danger {
+  color: var(--danger-color) !important;
+}
+.text-info {
+  color: var(--info-color) !important;
+}
+.product_details {
+  font-size: 1.3rem;
+}
+.p_name {
+
+}
+.p_price{
+
+}
+.p_color{
+
+}
+.p_inventory {
+
+}
+.p_description {
+  max-height:55vh;
+  overflow-y: auto;
+  margin-top:2rem
+}

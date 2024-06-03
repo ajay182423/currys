@@ -1,0 +1,70 @@
+//form fields textbox
+.app-textbox,
+.app-textarea,
+.app-datefield {
+  background-color: var(--bg-00);
+  width: 100%;
+  margin: 0;
+  height: 2.6rem;
+  padding: 0.6rem 0.9rem;
+  color: var(--text-color-00);
+  font-size: calc(var(--font-size-s) * 1.5);
+  border: 0.1rem solid var(--border-color-00);
+  border-radius: var(--border-radius);
+  outline: none;
+  font-family: inherit;
+  &.verified {
+    color: var(--text-color-02);
+    background: var(--success-color) !important;
+    border-color: var(--success-color);
+  }
+}
+
+.search-box {
+  background-color: var(--bg-00);
+  border-radius: var(--border-radius-l);
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  .mt-icon {
+    font-size: 2.5rem;
+    margin: 0 0.5rem 0 1rem;
+    color: var(--icon-color);
+    position: absolute;
+  }
+  input {
+    height: 4rem;
+    border-radius: var(--border-radius-l);
+    margin: 0 0rem 0 0rem;
+    padding-left: 4.5rem;
+    outline: none;
+    font-size: calc(var(--font-size-s) * 1.5);
+    border: 0.1rem solid var(--field-border-color);
+    &:hover,
+    &:focus {
+      border-color: var(--focus-border-color);
+    }
+  }
+}
+
+.app-datefield {
+  padding: 0.9rem;
+}
+.app-textbox:focus,
+.app-textarea:focus {
+  border-color: var(--focus-border-color);
+}
+.app-textbox:disabled,
+.app-textarea:disabled {
+  background-color: var(--bg-02);
+}
+.app-textbox:enabled,
+.app-textarea:enabled {
+  background-color: transparent;
+}
+.app-textarea {
+  resize: none;
+  min-height: 4rem;
+  height: auto;
+}

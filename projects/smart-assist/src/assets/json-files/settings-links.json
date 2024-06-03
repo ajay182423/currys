@@ -1,0 +1,112 @@
+{
+  "settingsMenu": [{
+      "name": "Users & Roles",
+      "items": [{
+          "id": "USE",
+          "link": "/settings/user-groups",
+          "icon": "group",
+          "name": "User Groups",
+          "caption": "Create, modify and view user groups details"
+        },
+        {
+          "id": "USE",
+          "link": "/settings/users",
+          "icon": "people_outline",
+          "name": "Users",
+          "caption": "Manage app users and user's settings"
+        },
+        {
+          "id": "ROL",
+          "link": "/settings/user-roles",
+          "icon": "admin_panel_settings",
+          "name": "User Roles",
+          "caption": "Manage user roles and control app accesses"
+        }
+      ]
+    },
+
+
+    {
+      "name": "Audit Maganement",
+      "items": [
+        {
+          "id": "ROL",
+          "link": "/settings/section-management",
+          "icon": "admin_panel_settings",
+          "name": "Section Management",
+          "caption": "Create, modify and view section"
+        },
+        {
+          "id": "ROL",
+          "link": "/settings/audit-parameter",
+          "icon": "admin_panel_settings",
+          "name": "Audit Parameter",
+          "caption": "Manage audit parameter and control"
+        },
+        {
+          "id": "ROL",
+          "link": "/settings/audit-parameter-type",
+          "icon": "admin_panel_settings",
+          "name": "Audit Parameter Type",
+          "caption": "Create, modify and view Audit Parameter Type"
+        },
+        {
+          "id": "ROL",
+          "link": "/settings/audit-parameter-form",
+          "icon": "admin_panel_settings",
+          "name": "Audit Parameter Form",
+          "caption": "Create, modify and view Audit Parameter Form"
+        },
+        {
+          "id": "ROL",
+          "link": "/settings/audit-status",
+          "icon": "admin_panel_settings",
+          "name": "Audit Status",
+          "caption": "Manage audit Status and control"
+        }
+      ]
+    },
+    {
+      "name": "Client Management",
+      "items": [{
+        "id": "USE",
+        "link": "/settings/customer-management",
+        "icon": "group",
+        "name": "Customer",
+        "caption": "Create, modify and view customer details"
+      },
+      {
+        "id": "USE",
+        "link": "/settings/process-management",
+        "icon": "people_outline",
+        "name": "Process",
+        "caption": "Manage process management settings"
+      }
+    ]
+    },
+    {
+      "name": "Ui Management",
+      "items": [
+        {
+        "id": "USE",
+        "link": "/settings/ui-customization",
+        "icon": "Rule Engine",
+        "name": "Ui Customization",
+        "caption": "Customize and view Live Assist details"
+        }
+      ]
+    },
+    {
+      "name": "Transaction Management",
+      "items": [{
+        "id": "USE",
+        "link": "/settings/transactionManagement/rule-engine",
+        "icon": "Rule Engine",
+        "name": "Rule Engine",
+        "caption": "Create, modify and view customer details"
+      }
+    ]
+    }
+
+  ]
+}

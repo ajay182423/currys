@@ -1,0 +1,74 @@
+@keyframes spinner-slideUp {
+  from {opacity: 0; margin-bottom: -20rem;}
+  to {opacity: 1; margin-bottom: 0rem;}
+}
+
+.loading-up{
+  animation-name: spinner-slideUp;
+  animation-duration: 0.2s;
+}
+
+@keyframes spinner-slideLeft {
+  from {opacity: 0; margin-right: -20rem;}
+  to {opacity: 1; margin-right: 0rem;}
+}
+
+.loading-left{
+  animation-name: spinner-slideLeft;
+  animation-duration: 0.2s;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.loading-text {
+  color: var(--text-color-01);
+  font-size: calc(var(--font-size-r) * 2);
+  font-weight: calc(var(--font-weight) - 0);
+  margin-bottom: 1rem;
+}
+
+.loading span {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin: 0.4rem;
+  background: #490E9F;
+}
+
+.loading span {
+  animation: bounce 0.6s cubic-bezier(0.6, 0.1, 1, 0.4);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.loading span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.loading span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(2rem);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    height: calc(100vh - var(--navbar));
+  }
+}

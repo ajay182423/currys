@@ -1,0 +1,22 @@
+<div *ngIf="mediaViewerObj" class="media-viewer-wrapper">
+  <div class="media-viewer">
+    <div class="media-viewer__header">
+      <button class="btn btn-icon btn-close" (click)="closeViewer()">
+        <span class="mt-icon material-icons-round">
+          close
+        </span>
+      </button>
+    </div>
+    <div class="media-viewer__main-wrapper">
+      <ng-container *ngIf="mediaViewerObj.mediaType === 'image'">
+        <img src="{{mediaViewerObj.mediaSrc}}" alt={{mediaViewerObj.mediaType}}>
+      </ng-container>
+      <ng-container *ngIf="mediaViewerObj.mediaType === 'video'">
+        <video controls autoplay>
+          <source src="{{mediaViewerObj.mediaSrc}}" type="video/mp4">
+          Your browser does not support HTML video.
+        </video>
+      </ng-container>
+    </div>
+  </div>
+</div>

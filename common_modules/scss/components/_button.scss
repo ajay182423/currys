@@ -1,0 +1,155 @@
+.btn {
+  height: 3.4rem;
+  width: auto;
+  margin: auto;
+  padding: 0 1.8rem;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--primary-color);
+  border: 0.155rem solid var(--primary-color);
+  font-family: inherit;
+  font-size: calc(var(--font-size-s) * 1.5);
+  font-weight: var(--font-weight);
+  box-shadow: none;
+  border-radius: var(--border-radius);
+  color: var(--bg-00);
+  &:hover,
+  &:active {
+    filter: brightness(90%);
+  }
+}
+
+.btn-white-bg,.btn-transparent-bg {
+  background-color: var(--bg-00);
+  color: var(--text-color-00);
+  &:hover,
+  &:active {
+    filter: brightness(90%);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-00);
+  }
+}
+
+.btn-transparent-bg {
+  background-color: transparent;
+}
+
+.btn-l {
+  height: 4rem;
+  padding: 0.1rem 4rem 0 4rem;
+  font-size: calc(var(--font-size-s) * 1.7);
+}
+
+.btn-xl {
+  height: 5rem;
+  padding: 0.1rem 4rem 0 4rem;
+  font-size: calc(var(--font-size-r) * 2.2);
+  font-weight: 300;
+}
+
+.btn-icon {
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  min-height: 4rem;
+  min-width: 4rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-close {
+  min-height: 2.6rem;
+  min-width: 2.6rem;
+  max-height: 2.6rem;
+  max-width: 2.6rem;
+  background-color: transparent;
+  border: 0.2rem solid transparent;
+  .mt-icon {
+    color: var(--icon-color);
+  }
+  &:hover,
+  &:active {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    .mt-icon {
+      color: var(--secondary-color);
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.btn-transparent {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--icon-color);
+  &:hover,
+  &:active {
+    background-color: transparent;
+    border-color: transparent;
+    .mt-icon {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.btn-link {
+  color: var(--secondary-color);
+  &:hover,
+  &:active {
+    color: var(--primary-color);
+  }
+}
+
+.header-btn {
+  min-height: 3rem;
+  min-width: 3rem;
+  max-height: 3rem;
+  max-width: 3rem;
+  background-color: transparent;
+  border: 0.1rem solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  .mt-icon {
+    font-size: 2.4rem;
+    color: var(--icon-color);
+  }
+  &:hover,
+  &:active {
+    background-color: var(--bg-02);
+    border-color: var(--bg-02);
+    box-shadow: none;
+    .mt-icon {
+      color: var(--secondary-color);
+      font-variation-settings: 'FILL' 1;
+    }
+  }
+}
+
+.header-btn-primary {
+  background-color: var(--primary-color);
+  color: var(--bg-00);
+  .mt-icon {
+    color: var(--bg-00);
+  }
+  &:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    .mt-icon{
+      color: var(--bg-00);
+      font-variation-settings: 'FILL' 1;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .btn-xl {
+    height: 4.2rem;
+  }
+}

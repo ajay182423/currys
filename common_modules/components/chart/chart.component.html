@@ -1,0 +1,8 @@
+<div style="display: block">
+    <canvas baseChart height="125px"
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      (click)="chartClickedEvent(lineChartData, lineChartOptions)"
+      [type]="lineChartType">
+    </canvas>
+  </div>

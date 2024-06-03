@@ -1,0 +1,54 @@
+.dark-mode {
+  .navbar {
+    border-right: 0.1rem solid var(--bg-03) !important;
+    box-shadow: 0.2rem 0rem 0.9rem 0.2rem rgba(0, 76, 255, 0.09) !important;
+  }
+  .tooltip{
+    background-color: var(--bg-03) !important;
+  }
+  .modal-popup-wrapper, .dialog-wrapper {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+  .card-type-1 {
+    &__wrapper {
+      border-top: 0.3rem solid var(--primary-color) !important;
+      background-color: var(--bg-02) !important;
+    }
+    &__img-wrapper {
+      border: 0.1rem solid var(--bg-02) !important;
+      .mask {
+        top: -0.2rem !important;
+        background-color: rgba(252, 114, 59, 0.5) !important;
+      }
+    }
+    &__title {
+      padding: 1.5rem 1.5rem 1rem 1.5rem !important;
+    }
+  }
+  .card-type-2 {
+    &__card-wrapper {
+      background-color: var(--bg-02) !important;
+      &:hover {
+        background: var(--bg-03) !important;
+        .card-type-2__bar {
+          background-color: var(--secondary-color) !important;
+        }
+      }
+    }
+  }
+
+  .settings-links {
+    &__card-wrapper {
+      background-color: var(--bg-02) !important;
+      &:hover {
+        background-color: var(--bg-03) !important;
+        .settings-links__card-icon .mt-icon {
+          color: var(--secondary-color) !important;
+        }
+        .settings-links__bar {
+          background-color: var(--secondary-color) !important;
+        }
+      }
+    }
+  }
+}

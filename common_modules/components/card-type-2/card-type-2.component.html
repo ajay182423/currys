@@ -1,0 +1,40 @@
+<ng-container *ngFor="let func of cardData">
+  <ng-container *ngIf="func.pappCardList?.length > 0">
+    <div class="card-type-2__list">
+      <div class="card-type-2__function">
+        <h2>{{func.name + ' (' + func.pappCardList.length + ')'}} </h2>
+        <ng-container *ngIf="func.pappCardList?.length > 4">
+          <a title="See more" *ngIf="func.pappCardShowCount === 4" (click)="showMoreOrLessPappCards(func)">
+            <span class="mt-icon material-icons-round">
+              arrow_forward
+            </span>
+          </a>
+          <a title="See less" *ngIf="func.pappCardShowCount > 4" (click)="showMoreOrLessPappCards(func)">
+            <span class="mt-icon material-icons-round">
+              arrow_back
+            </span>
+          </a>
+        </ng-container>
+      </div>
+      <div class="grid-4-col">
+        <div class="card-type-2__card-wrapper" *ngFor="let item of func.pappCardList.slice(0, func.pappCardShowCount)"
+          (click)="sendCardType2ClickEvent(item.id)">
+          <span class="card-type-2__bar"></span>
+          <div class="card-type-2__card-body">
+            <div class="card-type-2__card-title">
+              {{item.name}}
+            </div>
+            <div class="card-type-2__card-about">
+              {{item.smallDescription}}
+            </div>
+            <div class="card-type-2__card-link">
+              <a (click)="sendCardType2ClickEvent(item.id)">
+                Learn more
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

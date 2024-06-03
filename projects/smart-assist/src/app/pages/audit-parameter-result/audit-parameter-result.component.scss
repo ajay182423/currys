@@ -1,0 +1,17 @@
+.header_filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3.5rem;
+    .filter_form {
+        width: 60%;
+    }
+    .search_form {
+        width: 40%;
+        .top_search {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+    }
+}

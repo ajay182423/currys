@@ -1,0 +1,102 @@
+<div class="form-table-overflow">  
+  <div class="form-table-container" >
+    <div class="form-table-header">
+      <table [ngClass]="enableRecordSelector ? 'form-table with-selection' : 'form-table'" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th title="Select all" *ngIf="enableRecordSelector">
+              <label class="chk-container">
+                <input type="checkbox" [checked]="allRowsSelected" (change)="selectAllRows()">
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <th *ngFor="let item of tableHeaders; let index = index" title={{item.name}} id={{item.id}}
+              (click)="sortTableRows(item)" class={{item.class}}>{{item.name}}</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <loading-spinner *ngIf="isLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+    <div [ngClass]="!isLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+      <div class="form-table-content" #TABLE  *ngIf="tableData?.tableRows?.length > 0">
+        <table [ngClass]="enableRecordSelector ? 'form-table with-selection' : 'form-table'" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr *ngFor="let row of tableData?.tableRows" [ngClass]="enableRecordEditor ? 'row-hover-link' : 'row-hover'" (click)="sendEditRowRequest(row[0]?.value)">
+              <td *ngIf="enableRecordSelector">
+                <label class="chk-container">
+                  <input type="checkbox" [checked]="row[1]?.value" (change)="row[1].value = !row[1].value; getTotalSelectedRows();">
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td *ngFor="let header of tableHeaders; let index = index">
+                <span title={{row[index+columnStartIndex]?.value}}  (click)="row[index+columnStartIndex]?.linkable && openLink(row[index+columnStartIndex]?.link)"
+                  [ngClass]="row[index+columnStartIndex]?.class ? row[index+columnStartIndex]?.class : ''">{{row[index+columnStartIndex]?.value}}</span>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-table-footer" *ngIf="tableData?.tableRows?.length > 0">
+        <div *ngIf="totalRowsSelected === 0" class="records-info" title="Records">
+          {{ (tableData.itemsPerPage * tableData?.currentPage) - (tableData.itemsPerPage - 1)  }} -
+          <ng-container *ngIf="tableData.totalItems >= tableData.itemsPerPage">
+            {{ tableData.itemsPerPage * tableData?.currentPage }}
+          </ng-container>
+          <ng-container *ngIf="tableData.totalItems < tableData.itemsPerPage">
+            {{ tableData.totalItems }}
+          </ng-container>
+          of &nbsp;<p>{{ tableData.totalItems }}</p>
+        </div>
+        <div *ngIf="totalRowsSelected > 0" class="records-info">
+          <p>{{ totalRowsSelected }}</p> &nbsp; selected
+          <button class="btn btn-icon btn-close" title="Deselect" type="button" (click)="deselectRecords()">
+            <span class="mt-icon material-icons-round">
+              close
+            </span>
+          </button>
+        </div>
+        <div *ngIf="totalRowsSelected === 0" class="page-info" title="Pages">
+          <button class="btn btn-icon btn-pre" title="Previous page" (click)="goToPreviousPage()"
+            *ngIf="tableData?.currentPage > 1">
+            <span class="mt-icon material-icons-round">
+              arrow_back
+            </span>
+          </button>
+          <div class="app-select">
+            <select class="select" [(ngModel)]="tableData.currentPage" #pageNoDropDown
+              (change)="sendPageChangeRequest(pageNoDropDown?.value)"
+              (blur)="sendPageChangeRequest(clientDropDown?.value)">
+              <option value={{item}} *ngFor="let item of tableData?.pageNumbers">
+                {{item}}
+              </option>
+            </select>
+            <div class="app-select-arrow">
+            </div>
+          </div>
+          of <p>{{ tableData.totalPages }}</p>
+          <button class="btn btn-icon btn-next" title="Next page" (click)="goToNextPage()"
+            *ngIf="tableData?.currentPage < tableData.totalPages">
+            <span class="mt-icon material-icons-round">
+              arrow_forward
+            </span>
+          </button>
+        </div>
+        <div *ngIf="totalRowsSelected > 0" class="page-info">
+          <button *ngIf="enableRecordSelector.secondaryAction" class="btn btn-transparent-bg" type="button"
+            (click)="sendSecondaryActionRequest()">
+            {{recordSelector?.secondaryAction}}
+          </button>
+          <button *ngIf="enableRecordSelector.primaryAction" style="margin-left: 1.5rem;" class="btn" type="button"
+            (click)="sendPrimaryActionRequest()">
+            {{recordSelector?.primaryAction}}
+          </button>
+        </div>
+      </div>
+      <div class="form-table-no-content" *ngIf="tableData?.tableRows?.length === 0">
+        <div class="form-table-no-content__no-content-box">
+          <img src="{{ tableData.fileUrl + 'assets/no-content.svg' }}" alt="No Content">
+          <p>{{ tableData?.noContentMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

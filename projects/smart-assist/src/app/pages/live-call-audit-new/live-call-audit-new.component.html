@@ -1,0 +1,908 @@
+<div class="cards d-flex flex-row" *ngIf='variable'>
+  <div class="card-1 d-flex align-center">
+    <ng-container *ngIf="transcriptData?.length > 0">
+      <div class="sentiments d-flex align-center"
+        title="Sentiment {{ transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'Happy' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'Unhappy' : 'Neutral'}}">
+        <!-- <span [ngClass]="transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'text-success' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'text-danger' : 'text-secondary'" style="margin-right: 5px;">{{transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'Positive' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'Negative' : 'Neutral'}}</span>  -->
+        <span class="material-symbols-rounded"
+          [ngClass]="transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'text-success' : transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'text-danger' : 'text-secondary'">
+          {{transcriptData[transcriptData?.length -1 ]?.Sentiment > 0 ? 'sentiment_very_satisfied' :
+          transcriptData[transcriptData?.length -1 ]?.Sentiment < 0 ? 'sentiment_very_dissatisfied'
+            : 'sentiment_neutral' }} </span>
+      </div>
+    </ng-container>
+    <div class="console_button inactive">
+      <button class="vulnerable_btn" title="Vulnerability">
+        <span class="material-symbols-outlined" [ngClass]="VulSign == 'Yes'? 'text-danger' : 'success-color'">
+          warning
+        </span>
+      </button>
+    </div>
+    <div class="console_button inactive">
+      <button class="eod_btn" title="Expression of Dissatisfaction">
+        <span class="material-symbols-outlined" [ngClass]="eodCheck ? 'text-danger' : ''">
+          notification_important
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="card-2 d-flex align-center">
+    <div class="console_button active calling d-flex align-center">
+      <button class="curr_call" title="Current Call">
+        <span class="material-symbols-outlined">
+          wifi_calling_1
+        </span>
+
+      </button>
+      <div class="timer">{{currentAudio}}</div>
+    </div>
+    <span class="separator"></span>
+    <div class="console_button inactive">
+      <button (click)="onStartPressed(true)" class="play_pause" title="Play/Pause">
+        <span class="material-symbols-outlined">
+          {{playingState ? 'pause_circle' : 'play_circle' }}
+        </span>
+      </button>
+    </div>
+    <div class="console_button inactive">
+      <button class="call_forward" title="Call Forward">
+        <span class="material-symbols-outlined">
+          phone_forwarded
+        </span>
+      </button>
+    </div>
+    <div class="console_button inactive">
+      <button (click)="onStopPressed()" class="end_call" title="End Call">
+        <span class="material-symbols-outlined">
+          phone_disabled
+        </span>
+      </button>
+    </div>
+    <span class="separator"></span>
+    <div class="dropdown">
+      <span class="vert_dot">⋮</span>
+      <div class="dropdown-content dropdown-content1">
+        <div class="option">
+          <div class="name" [ngClass]="break ? 'take_break': 'on_break'" title="Take Break" (click)="takeBreakToggle()">
+            {{break? 'Take Break' : 'On Break'}}</div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="option">
+          <div class="name" [ngClass]="shift ? 'end_shift': 'start_shift'" title="End Shift" (click)="endShiftToggle()">
+            {{shift? 'End Shift' : 'Start Shift'}} </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="option toggle_transcript" (click)="toggleAgentVisibility()" title="Toggle Agent's Transcript">
+          Agent Chat <span class="material-symbols-rounded" id="eye_icon">
+            {{isAgentVisible ? 'visibility' : 'visibility_off' }} </span>
+        </div>
+        <div class="dropdown-divider"></div>
+      </div>
+    </div>
+    <!-- <div class="console_button inactive">
+    <button class="vulnerable_btn" title="Vulnerability" style="margin: 0 4px 0 4px;">
+      <span class="material-symbols-rounded" [ngClass]="VulSign == 'Yes'? 'text-danger' : 'success-color'">
+        warning
+      </span>
+    </button>
+  </div>
+  <div class="console_button inactive">
+    <button class="eod_btn" title="Expression of Dissatisfaction">
+      <span class="material-symbols-rounded" [ngClass]="eodCheck ? 'text-danger' : ''">
+        notification_important
+      </span>
+    </button>
+  </div>
+</div>
+<div class="card-2 d-flex align-center">
+  <div class="console_button active calling d-flex align-center">
+    <button title="Current Call" style="margin-right: 3px">
+      <span class="material-symbols-rounded">
+        wifi_calling_1
+      </span>
+    </button>
+    <div class="timer">{{currentAudio}}</div>
+  </div>
+  <span class="separator"></span>
+  <div class="console_button inactive">
+    <button (click)="onStartPressed()" class="play_pause" title="Play/Pause">
+      <span class="material-symbols-rounded">
+        {{playingState ? 'pause_circle' : 'play_circle' }}
+      </span>
+    </button>
+  </div>
+  <div class="console_button inactive">
+    <button class="call_forward" title="Call Forward" style="margin: 0 4px 0 4px;">
+      <span class="material-symbols-rounded">
+        phone_forwarded
+      </span>
+    </button>
+  </div>
+  <div class="console_button inactive">
+    <button (click)="onStopPressed()" class="end_call" title="End Call">
+      <span class="material-symbols-rounded">
+        phone_disabled
+      </span>
+    </button>
+  </div>
+  <span class="separator"></span> -->
+
+  </div>
+</div>
+<div class="audio-player audioplayerwave">
+  <div id="wave-timeline" class="wave-timeline" hidden></div>
+  <div id="waveform" class="waveform" style="display: block;"></div>
+</div>
+<perfect-scrollbar>
+
+
+  <ng-container *ngIf="showDynamicComponent1">
+    <!-- <app-ai-recommendations></app-ai-recommendations> -->
+    <app-ai-entity-extract-new></app-ai-entity-extract-new>
+
+  </ng-container>
+  <ng-container *ngIf="showDynamicComponent2">
+    <app-call-information-new></app-call-information-new>
+  </ng-container>
+  <ng-container *ngIf="showDynamicComponent3">
+    <app-call-wrap-up></app-call-wrap-up>
+  </ng-container>
+  <ng-container *ngIf="showDynamicComponent4">
+    <app-knowledge-show></app-knowledge-show>
+  </ng-container>
+  <div class="call_transcript" *ngIf='variable'>
+    <!-- <div class="audio-player audioplayerwave">
+      <div id="wave-timeline" class="wave-timeline" hidden></div>
+      <div id="waveform" class="waveform" style="display: block;"></div>
+    </div> -->
+    <div class="main_section">
+
+    </div>
+    <div class="main_block">
+
+
+      <!-- <div>
+       <ng-container *ngIf="playingState">
+         <button class="call_btn" (click)="onStartPressed(isPlaying)">
+           <span class="material-symbols-rounded icon_sm">
+             play_pause
+           </span>
+         </button>
+       </ng-container>
+       <ng-container *ngIf="!playingState">
+         <button class="call_btn" style="color: #099E06;" (click)="onStartPressed(isPlaying)">
+           <span class="material-symbols-rounded icon_sm">
+             play_pause
+           </span>
+         </button>
+       </ng-container>
+     </div> -->
+
+      <div class="card_tabs" style="display: flex">
+        <!-- <button [ngClass]="customerExtractedDetailsShow ? 'tab-active' : 'tab'"
+
+         (click)="customerExtractedDetails('details')">
+         <span class="tab_title">
+           <span class="material-symbols-rounded icon_sm">
+             checklist
+           </span>
+           Extracted Details
+         </span>
+         <ng-container *ngIf="detailsNotificationCount > 0">
+           <span class="notifiaction">{{detailsNotificationCount}}</span>
+         </ng-container>
+         <div class="nudges1" *ngIf="extractedNotification.length > 0">
+           {{extractedNotification | json}}
+           <div *ngFor="let transcript of extractedNotification" class="audit_snippet">
+             <ng-container *ngIf="transcript.driver.vulnerability_type != 'Not Applicable' ">
+               <div class="entity_block ">
+                 <p style="color:#fff">
+                   <span> Vulnerability Type : {{transcript.driver.vulnerability_type}}</span>
+                 </p>
+               </div>
+             </ng-container>
+           </div>
+         </div>
+       </button> -->
+
+        <!-- <button [ngClass]="transcriptShow ? 'tab-active' : 'tab'" (click)="customerExtractedDetails('transcript')">
+         <span class="tab_title">
+           <span class="material-symbols-rounded icon_sm">
+             live_tv
+           </span>
+           Live Transcript
+         </span>
+       </button> -->
+
+        <!-- <button [ngClass]="feedbackDetailsShow ? 'tab-active' : 'tab'"
+         (click)="customerExtractedDetails('customerDetails')">
+         <span class="tab_title">
+           <span class="material-symbols-rounded icon_sm">
+             account_circle
+           </span>
+           Live Feedback
+         </span>
+         <ng-container *ngIf="feedbackNotificationCount > 0">
+           <span class="notifiaction">{{feedbackNotificationCount}}</span>
+         </ng-container>
+         <div class="nudges" *ngIf="feedbackNotification.length > 0">
+           <div *ngFor="let transcript of feedbackNotification" class="audit_snippet">
+             <ng-container *ngIf="transcript.Feedback != '' ">
+               <div class="entity_block" #entity_block>
+                 <div *ngFor="let entity of transcript.Feedback">
+                   <p class="transcript_entity_feedback">
+                     {{ entity.entity}} : {{entity.text}}
+                   </p>
+                 </div>
+               </div>
+             </ng-container>
+           </div>
+         </div>
+       </button> -->
+      </div>
+
+      <div class="tab_content" style="width: 100%;">
+        <div class="card_content" style="height: 100%;" *ngIf="feedbackDetailsShow">
+          <div class="transcriptBlock" style="border-top:none">
+            <div class="" style="width: 100%;">
+              <div class="right_header">
+                <h5>Live Feedback</h5>
+              </div>
+              <div class="right_content">
+                <div *ngIf="type1 === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                  (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                  (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                  <div class="scrollable-content">
+                    <div *ngFor="let transcript of transcriptData" class="audit_snippet">
+                      <ng-container *ngIf="transcript.Feedback != '' ">
+                        <div class="entity_block" #entity_block>
+                          <div *ngFor="let entity of transcript.Feedback">
+                            <p class="transcript_entity_feedback">
+                              {{ entity.entity}} : {{entity.text}}
+                            </p>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card_content" style="height: 100%;" *ngIf="transcriptShow">
+          <div class="transcriptBlock" style="border-top:1px solid #ababab">
+
+            <div class="" style="width: 100%;">
+              <!-- <div class="right_header">
+               <h5>Live Transcript</h5>
+             </div> -->
+              <!-- <div class="right_content"> -->
+              <div *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <div class="conversation">
+                    <div *ngFor="let transcript of transcriptData" class="message" [hidden]="transcript.speaker.toLowerCase().trim() === 'agent' && !isAgentVisible"
+                      [ngClass]="{'agentblock': transcript.speaker.toLowerCase().trim() === 'agent', 'customerblock': transcript.speaker.toLowerCase().trim() === 'customer', 'feedbackblock': transcript.speaker.toLowerCase() === 'feedback'}">
+                      <!-- , 'feedbackblock': transcript.speaker.toLowerCase() === 'feedback' -->
+                      <div *ngIf="transcript.speaker.toLowerCase().trim() != 'feedback'" class="message_thread">
+                        <div class="d-flex align-start justify-start" style="width: 100%;">
+                          <div class="d-flex align-start justify-start" style="width: 100%;">
+                            <!-- <span
+                             class="{{transcript.speaker.toLowerCase()}} badge" >{{transcript.speaker.toUpperCase().slice(0, 1)}}</span> -->
+                            <span class="badge">
+                              <ng-container *ngIf="transcript.speaker.toLowerCase().trim() != 'agent'">
+                                {{transcript.speaker.toUpperCase().slice(0, 1)}}
+                              </ng-container>
+                              <ng-container *ngIf="transcript.speaker.toLowerCase().trim() == 'agent'">
+                                <span class="material-symbols-rounded" style="font-size: 1.8rem;">
+                                  support_agent
+                                </span>
+                              </ng-container>
+                            </span>
+                            <div style="width: 100%;">
+                              <div class="d-flex align-end justify-between">
+                                <span class="{{transcript.speaker.toLowerCase()}} speaker">{{transcript.speaker}}</span>
+                                <span class="time">{{transcript.end_time}}</span>
+                              </div>
+                              <p class="trans_comment"
+                                [class.vulnerable]="transcript.driver.vulnerability_type != 'Not Applicable'">
+                                <ng-container *ngIf="transcript.driver.vulnerability_type != 'Not Applicable'">
+                                  <angular-emojis [name]="'warning'" size="15" title="Vulnerability">
+                                  </angular-emojis>
+                                </ng-container>
+                                <span *ngIf="transcript.speaker.toLowerCase().trim() != 'feedback'">
+                                  {{transcript.comment}}
+                                </span>
+                              </p>
+                            </div>
+                          </div>
+                          <p>
+                            <ng-container *ngIf="transcript.emotion.label =='admiration'">
+                              <angular-emojis [name]="'clap'" size="15" title="Admiration"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='amusement'">
+                              <angular-emojis [name]="'popcorn'" size="15" title="Amusement"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='anger'">
+                              <angular-emojis [name]="'angry'" size="15" title="Anger"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='approval'">
+                              <angular-emojis [name]="'thumbsup'" size="15" title="Approval"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='caring'">
+                              <angular-emojis [name]="'palms_up_together'" size="15" title="Caring"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='confusion'">
+                              <angular-emojis [name]="'confused'" size="15" title="Confusion"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='curiosity'">
+                              <angular-emojis [name]="'raising_hand'" size="15" title="Curiosity"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='desire'">
+                              <angular-emojis [name]="'face-with-tears-of-joy'" size="15" title="Desire">
+                              </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='disappointment'">
+                              <angular-emojis [name]="'disappointed'" size="15" title="Disappointment">
+                              </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='disapproval'">
+                              <angular-emojis [name]="'thumbsdown'" size="15" title="Disapproval"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='disgust'">
+                              <angular-emojis [name]="'grimacing'" size="15" title="Disgust"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='embarrassment'">
+                              <angular-emojis [name]="'pensive'" size="15" title="Embarrassment"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='excitement'">
+                              <angular-emojis [name]="'blush'" size="15" title="Excitement"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='fear'">
+                              <angular-emojis [name]="'fearful'" size="15" title="Fear"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='gratitude'">
+                              <angular-emojis [name]="'pray'" size="15" title="Gratitude"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='grief'">
+                              <angular-emojis [name]="'pensive'" size="15" title="Grief"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='joy'">
+                              <angular-emojis [name]="'joy'" size="15" title="Joy"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='love'">
+                              <angular-emojis [name]="'heart'" size="15" title="Love"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='nervousness'">
+                              <angular-emojis [name]="'cry'" size="15" title="Nervousness"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='optimism'">
+                              <angular-emojis [name]="'open_mouth'" size="15" title="Optimism"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='pride'">
+                              <angular-emojis [name]="'smiley'" size="15" title="Pride"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='realization'">
+                              <angular-emojis [name]="'flushed'" size="15" title="Realization"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='relief'">
+                              <angular-emojis [name]="'relieved'" size="15" title="Relief"> </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='remorse'">
+                              <angular-emojis [name]="'slightly_frowning_face'" size="15" title="Remorse">
+                              </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='sadness'">
+                              <angular-emojis [name]="'white_frowning_face'" size="15" title="Sadness">
+                              </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='surprise'">
+                              <angular-emojis [name]="'face_with_raised_eyebrow'" size="15" title="Surprise">
+                              </angular-emojis>
+                            </ng-container>
+                            <ng-container *ngIf="transcript.emotion.label =='neutral'">
+                              <angular-emojis [name]="'neutral_face'" size="15" title="Neutral"> </angular-emojis>
+                            </ng-container>
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+
+            </div>
+          </div>
+        </div>
+        <div class="card_content" style="height: 100%;" *ngIf="customerExtractedDetailsShow">
+          <div class="transcriptBlock" style="border-top:none">
+            <div class="" style="width: 100%;">
+              <!-- <div class="call_info">
+               <div class="d-flex align-center justify-between">
+                 <div>
+                   <h5>Active Call</h5>
+                   <h2>{{currentAudio}}</h2>
+                 </div>
+                 <div>
+                   <h5>Call Type</h5>
+                   <h2>
+                     <ng-container *ngIf="callType != undefined || callType != '' ">
+                       <span class="callType">{{callType}}&nbsp;</span>
+                     </ng-container>
+                   </h2>
+                 </div>
+               </div>
+             </div> -->
+              <div class="user_info">
+                <!-- <div class="header_info"> -->
+                <!-- <div class="d-flex align-center justify-start"> -->
+                <!-- <span class="user_icon">
+                     <span class="material-symbols-rounded icon_sm">
+                       person
+                     </span>
+                   </span> -->
+                <div class="user_details">
+                  <h2>
+                    {{userExtractedNames && userExtractedNames.length ? userExtractedNames[0].text : ''}}
+                  </h2>
+                  <ng-container *ngIf="VulSign != 'Yes'">
+                    <h4 style="color: #099E06">
+                      {{customerExtractedDetails('transcript')}}
+                    </h4>
+                  </ng-container>
+                  <ng-container *ngIf="VulSign == 'Yes'">
+                    <h4 style="color:#f00;cursor: pointer;" (click)="clickDriver()">
+                      Vulnerable
+                    </h4>
+                  </ng-container>
+                </div>
+                <!-- </div> -->
+                <!-- </div> -->
+                <!-- <div class="extracted_details">
+                 <app-accordion [accordionTitle]="'Customer Details'" [isOpened]="true">
+                   <div style="padding:5px 10px">
+                     <ng-container *ngIf="userExtractedDetails.length > 0">
+                       <ng-container *ngFor="let entities of userExtractedDetails">
+                         <ng-container *ngFor="let detail of entities.entities">
+                           <ng-container *ngIf="detail.entity_type == 'customer_details'">
+                             <div>
+                               <ng-container *ngIf="detail.entity.toLowerCase() != 'name'">
+                                 <p class="entity">
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'customer_number'">
+                                     <span class="material-symbols-rounded icon_sm" title="Customer Number">
+                                       smartphone
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'telephone'">
+                                     <span class="material-symbols-rounded icon_sm" title="Telephone Number">
+                                       smartphone
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'email'">
+                                     <span class="material-symbols-rounded icon_sm" title="Email">
+                                       mail
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'address'">
+                                     <span class="material-symbols-rounded icon_sm" title="Address">
+                                       home
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'postcode'">
+                                     <span class="material-symbols-rounded icon_sm" title="Pincode">
+                                       local_shipping
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'dob'">
+                                     <span class="material-symbols-rounded icon_sm" title="DOB">
+                                       cake
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'account_no'">
+                                     <span class="material-symbols-rounded icon_sm" title="Account Number">
+                                       account_balance
+                                     </span>
+                                   </ng-container>
+                                   <span> {{detail.text}}</span>
+                                   
+                                   <span class="tooltip tooltip-top"> {{entities.comment}}</span>
+                                 </p>
+                               </ng-container>
+                             </div>
+                           </ng-container>
+                         </ng-container>
+                       </ng-container>
+                     </ng-container>
+                   </div>
+                 </app-accordion>
+                 <p></p>
+                 <app-accordion [accordionTitle]="'Item Details'" [isOpened]="true">
+                   <div style="padding:5px 10px">
+                     <ng-container *ngIf="userExtractedDetails.length > 0">
+                       <ng-container *ngFor="let entities of userExtractedDetails">
+                         <ng-container *ngFor="let detail of entities.entities">
+                           <ng-container *ngIf="detail.entity_type == 'item_details'">
+                             <div>
+                               <ng-container *ngIf="detail.entity.toLowerCase() != 'name'">
+                                 <p class="entity">
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'item_no'">
+                                     <span class="material-symbols-rounded icon_sm" title="Item Number">
+                                       tag
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'item_size'">
+                                     <span class="material-symbols-rounded icon_sm" title="Item Size">
+                                       fit_screen
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'item'">
+                                     <span class="material-symbols-rounded icon_sm" title="Item">
+                                       checklist
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'item_name'">
+                                     <span class="material-symbols-rounded icon_sm" title="Item Name">
+                                       playlist_add_check
+                                     </span>
+                                   </ng-container>
+                                   <span> {{detail.text}}</span>
+                                   <span class="tooltip tooltip-top"> {{entities.comment}}</span>
+                                 </p>
+                               </ng-container>
+                             </div>
+                           </ng-container>
+                         </ng-container>
+                       </ng-container>
+                     </ng-container>
+                   </div>
+                 </app-accordion>
+                 <p></p>
+                 <app-accordion [accordionTitle]="'Other Details'" [isOpened]="true">
+                   <div style="padding:5px 10px">
+                     <ng-container *ngIf="userExtractedDetails.length > 0">
+                       <ng-container *ngFor="let entities of userExtractedDetails">
+                         <ng-container *ngFor="let detail of entities.entities">
+                           <ng-container *ngIf="detail.entity_type == 'other_details'">
+                             <div>
+                               <ng-container *ngIf="detail.entity.toLowerCase() != 'name'">
+                                 <p class="entity">
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'date'">
+                                     <span class="material-symbols-rounded icon_sm" title="Date">
+                                       calendar_month
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'amount'">
+                                     <span class="material-symbols-rounded icon_sm" title="Amount">
+                                       attach_money
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'org'">
+                                     <span class="material-symbols-rounded icon_sm" title="Organization">
+                                       corporate_fare
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'service'">
+                                     <span class="material-symbols-rounded icon_sm" title="Service">
+                                       design_services
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'store'">
+                                     <span class="material-symbols-rounded icon_sm" title="Store">
+                                       storefront
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'dob'">
+                                     <span class="material-symbols-rounded icon_sm" title="DOB">
+                                       cake
+                                     </span>
+                                   </ng-container>
+                                   <ng-container *ngIf="detail.entity.toLowerCase() == 'return_date'">
+                                     <span class="material-symbols-rounded icon_sm" title="Return Date">
+                                       keyboard_return
+                                     </span>
+                                   </ng-container>
+                                   <span> {{detail.text}}</span>
+                                   <span class="tooltip tooltip-top"> {{entities.comment}}</span>
+                                 </p>
+                               </ng-container>
+                             </div>
+                           </ng-container>
+                         </ng-container>
+                       </ng-container>
+                     </ng-container>
+                     <ng-container *ngIf="userExtractedNames.length > 0">
+                       <ng-container *ngFor="let entity of userExtractedNames; let i = index">
+                         <ng-container *ngIf="i != 0">
+                           <p class="entity">
+                             <span class="material-symbols-rounded icon_sm" title="Name">
+                               person
+                             </span>
+                             <span> {{entity.text}}</span>
+                             <span class="tooltip tooltip-top"> {{entity.text}}</span>
+                           </p>
+                         </ng-container>
+  
+                       </ng-container>
+                     </ng-container>
+                   </div>
+                 </app-accordion>
+               </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeLine" [ngClass]="{auditFailed : !idvPass}">
+        <div>
+          <!-- <p style="margin-bottom:20px"> -->
+          <!-- <strong> Call Status :
+              <ng-container *ngFor="let transcript of transcriptData">
+                <span *ngIf="transcript.Call_Status.length > 0" class="blink_me">
+                  <span *ngIf="transcript.Call_Status.toLowerCase() == 'resolved'" style="color: #099E06;">
+                    {{transcript.Call_Status}}
+                  </span>
+                  <span *ngIf="transcript.Call_Status.toLowerCase() != 'resolved'" style="color:#f00;">
+                    {{transcript.Call_Status}}
+                  </span>
+                </span>
+              </ng-container>
+            </strong> -->
+          <!-- </p> -->
+
+          <div class="ss d-flex justify-center flex-row">
+            <button class="call_type">
+              <span class="material-symbols-outlined">
+                call
+              </span>
+            </button>
+            <div class="call_categories d-flex align-center">
+              <ng-container *ngFor="let transcript of transcriptData">
+                <ng-container *ngIf="transcript?.intent_data?.length > 0">
+                  <ng-container *ngFor="let intents of transcript.intent_data">
+                    <ng-container *ngFor="let intent of intents.value">
+                      <div class="call_category">
+                        <b style="align-items:center">{{intent.name}}</b>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="transcriptData == null || transcriptData?.length == 0">
+                <div class="call_category">
+                  <b>Call intent loading...</b>
+                </div>
+              </ng-container>
+              <!-- <div class="call_category">
+                  Booking
+                </div>
+                <div class="call_category">
+                  Air
+                </div>
+                <div class="call_category">
+                  Booking
+                </div>
+                <div class="call_category">
+                  Air
+                </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="timeLine" [ngClass]="{auditFailed : !idvPass}">
+       <div>
+         <div class="d-flex justify-center">
+           <p style="margin-bottom:20px">
+             <strong> Call Status :
+               <ng-container *ngFor="let transcript of transcriptData">
+                 <span *ngIf="transcript.Call_Status?.length > 0" class="blink_me">
+                   <span *ngIf="transcript.Call_Status.toLowerCase() == 'resolved'" style="color: #099E06;">
+                     {{transcript.Call_Status}}
+                   </span>
+                   <span *ngIf="transcript.Call_Status.toLowerCase() != 'resolved'" style="color:#f00;">
+                     {{transcript.Call_Status}}
+                   </span>
+                 </span>
+               </ng-container>
+             </strong>
+           </p>
+         </div>
+         <div class="d-flex justify-center">
+           <div class="timeLineFlex">
+             <div class="timeLineThread" [ngClass]="{active : emailPass}">
+               <span class="timeLineCircle"></span>
+               <p>Email or Customer Number</p>
+               <span class="timeStamp">{{emailTimestamp}}</span>
+             </div>
+             <div class="containera" [ngClass]="{active : emailPass}">
+               <input class="checkbox" type="checkbox">
+               <span class="indicator"></span>
+             </div>
+           </div>
+           <div class="timeLineFlex">
+             <div class="timeLineThread" [ngClass]="{active : namePass}">
+               <span class="timeLineCircle"></span>
+               <p>Full Name</p>
+               <span class="timeStamp">{{nameTimestamp}}</span>
+             </div>
+             <div class="containera" [ngClass]="{active : namePass}">
+               <input class="checkbox" type="checkbox">
+               <span class="indicator"></span>
+             </div>
+           </div>
+           <div class="timeLineFlex">
+             <div class="timeLineThread" [ngClass]="{active : addressPass}">
+               <span class="timeLineCircle"></span>
+               <p>First Line of Address</p>
+               <span class="timeStamp">{{addressTimestamp}}</span>
+             </div>
+             <div class="containera" [ngClass]="{active : addressPass}">
+               <input class="checkbox" type="checkbox">
+               <span class="indicator"></span>
+             </div>
+           </div>
+         </div>
+  
+       </div>
+     </div> -->
+      </div>
+    </div>
+    <!-- <app-slider-menu></app-slider-menu> -->
+  </div>
+  
+</perfect-scrollbar>
+<div class="btns d-flex flex-row">
+  <button (click)="showContent()" class="btn">
+    <span class="material-symbols-outlined">live_tv</span>
+    <span class="tooltiptext1 card-1">Live Transcription</span>
+  </button>
+
+  <button (click)="loadDynamicComponent1()" [disabled]="show1" class="btn">
+    <ng-container *ngIf="detailsNotificationCount > 0  ">
+      <span class="notifiaction">{{detailsNotificationCount}}</span>
+    </ng-container>
+    <span class="material-symbols-outlined">thumb_up</span>
+    <span class="tooltiptext1 card-1">AI Nudge</span>
+
+    <div class="nudges1" *ngIf="extractedNotification?.length > 0">
+      <!-- {{extractedNotification | json}} -->
+      <div *ngFor="let transcript of extractedNotification" class="audit_snippet">
+        <div *ngIf="transcript.Feedback.length  >= 1 ">
+          <div class="ai_entity">
+            <div class="d-flex align-start justify-between">
+              <div class="d-flex align-start justify-start">
+                <div class="ai_icon">
+                  <span class="material-symbols-rounded" style="font-size: 1.8rem;">
+                    neurology
+                  </span>
+                </div>
+                <h4 class="entity_heading success-color">AI Recommendation</h4>
+              </div>             
+            </div>
+            <div class="entity">
+              <div *ngFor="let item of transcript.Feedback; let i = index">
+                <ng-container *ngIf="multiLine(item.text)">
+                  <div *ngFor="let entity  of checkForSplit(item.text)">
+                    <p class="transcript_entity_feedback">
+                      <span style="color: #5d5b5b;">{{entity}}</span>
+                    </p>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!multiLine(item.text)">
+                  <p class="transcript_entity_feedback">
+                     <span style="color: #5d5b5b;">{{item.text}}</span>
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="transcript.entities != ' ' ">
+          <div class="ai_entity">
+            <div class="d-flex align-start justify-between">
+              <div class="d-flex align-start justify-start">
+                <div class="ai_icon">
+                  <span class="material-symbols-rounded" style="font-size: 1.8rem;">
+                    logout
+                  </span>
+                </div>
+                <h4 class="entity_heading warning-color">AI Entity Extract</h4>
+              </div>
+              <div class="review_buttons" >
+                <button class="dislike_btn" (click)="openFeedbackPopup({'type': 'entity','entity' : transcript.entities}, 'Edit Entity Extract')">
+                  <span class="material-symbols-outlined" style="font-size: 1.6rem;">
+                    thumb_down
+                  </span>
+                </button>
+              </div>
+            </div>
+              <div class="entity" *ngFor="let entity of transcript.entities">
+                <div class="d-flex justify-between align-center">
+                  <div class="transcript_entity_feedback">
+                    <div class="entity" title="{{transcript.comment}}">
+                      {{ entity?.entity.replace('_', ' ')}}
+                    </div>
+                  </div>
+                  <div class="transcript_entity_feedback">
+                    <div class="entity" title="{{transcript.comment}}">
+                        <span>{{entity?.text}}</span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column justify-end">
+                    <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                      <span class="mt-icon material-icons-round">
+                        content_copy
+                      </span>
+                    </button>
+                  </div>
+                  <!-- <div class="d-flex flex-column justify-end"  style="width: 10%;">
+                    <button class="copy_btn" (click)="saveEntity()">
+                      <span class="mt-icon material-icons-round" title="Save">
+                        save
+                      </span>
+                    </button>
+                  </div> -->
+                </div>
+              </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="transcript.actions != '' ">
+          <div class="ai_entity">
+            <div class="d-flex align-start justify-start">
+              <div class="ai_icon">
+                <span class="material-symbols-rounded" style="font-size: 1.8rem;" >
+                  target
+                </span>
+              </div>
+              <!-- <p class="entity_heading">AI Nudges</p> -->
+              <h4 class="entity_heading danger-text">AI Action</h4>
+            </div>
+            <div class="entity">
+
+              <div class="transcript_entity_feedback">
+                <div class="mb-1">
+                  <div class="d-flex align-start justify-start flex-wrap">
+                    <div class="" *ngFor="let actionItem of transcript.actions.action.Details.split('\n')">
+                      <p style="margin-bottom: 1rem;">{{actionItem}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right mb-1">
+                  <button class="btn-info btn1" (click)="callToActionEvent(transcript.actions.action.call_to_action)">{{transcript.actions.action.call_to_action}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+  </button>
+
+  <button (click)="loadDynamicComponent2()" [disabled]="show2" class="btn">
+    <span class="material-symbols-outlined">move_item</span>
+    <span class="tooltiptext1 card-1">AI Extracted Details</span>
+  </button>
+
+  <button (click)="loadDynamicComponent4()" [disabled]="show4" class="btn">
+    <ng-container *ngIf="pgtNotificationCount > 0  ">
+      <span class="notifiaction">{{pgtNotificationCount}}</span>
+    </ng-container>
+    <span class="material-symbols-outlined">neurology</span>
+    <span class="tooltiptext1 card-1">Knowledge Assist</span>
+  </button>
+
+  <button (click)="loadDynamicComponent3()" [disabled]="show3" class="btn">
+    <ng-container *ngIf="callWrapNotificationCount > 0  ">
+      <span class="notifiaction">{{callWrapNotificationCount}}</span>
+    </ng-container>
+    <span class="material-symbols-outlined">call</span>
+    <span class="tooltiptext1 card-1">Call Wrap Up</span>
+  </button>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="dialog-wrapper">
+  <div class="dialog">
+    <div class="dialog__header">
+      <h2>{{ heading }}</h2>
+      <button class="btn btn-icon btn-close" type="button" (click)="processConfirm(false)">
+        <span class="mt-icon material-icons-round">
+          close
+        </span>
+      </button>
+    </div>
+    <div class="dialog__main-wrapper">
+      <div class="dialog__main">
+        <div class="form-1-col">
+          <div>
+            <p class="dialog-message">{{ message }}</p>
+          </div>
+          <div class="form-btns">
+            <div>
+              <button class="btn btn-transparent-bg" type="button" (click)="processConfirm(false)">
+                {{ secondaryAction }}
+              </button>
+              <button #primaryButton class="btn" type="button" (click)="processConfirm(true)">
+                {{ primaryAction }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

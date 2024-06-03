@@ -1,0 +1,12 @@
+<div #contextMenu class="context-menu" *ngIf="showContextMenu" [style.left]="mousePosition.x + 'px'" [style.top]="mousePosition?.y + 'px'">
+  <ul>
+    <ng-container *ngFor="let item of menuItems">
+      <li *ngIf="item.show" class="item" [class.item-disabled]="!item.enabled"  (click)="onContextMenuClick($event, item)">
+        <span class="mt-icon material-icons-round" [ngStyle]="{'font-size': item.iconSize}">
+          {{item.icon}}
+        </span>
+        <span class="item-name">{{ item.name }}</span>
+      </li>
+    </ng-container>
+  </ul>
+</div>

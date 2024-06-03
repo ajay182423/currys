@@ -1,0 +1,626 @@
+<div class="final d-flex flex-column">
+  <div class="call_transcript_block">
+    <div class="call_transcript_header">
+      <div class="d-flex">
+        <div class="card_tabs d-flex align-center justify-center">
+          <!-- <button title="AI Nudges" class="d-flex align-center justify-start" [ngClass]="recommendationShow ? 'tabs-button-active' : 'tabs-button'"
+              (click)="showAITabs('recommendation')">
+              AI Nudge -->
+          <!-- <span class="material-symbols-outlined" style="font-size: 1.8rem;">
+                thumb_up
+              </span>                  -->
+          <!-- {{recommendationShow}}
+              and 
+              {{detailsNotificationCount}} -->
+          <!-- <span class="notifiaction">{{detailsNotificationCount}}</span> -->
+          <!-- <ng-container *ngIf="detailsNotificationCount > 0  ">
+                <span class="notifiaction">{{detailsNotificationCount}}</span>
+              </ng-container>
+          </button> -->
+          <!-- <button title="AI Extracted Details" [ngClass]="extracted_detailsShow ? 'tabs-button-active' : 'tabs-button'"
+            (click)="showAITabs('extracted_details')">
+            <span class="material-symbols-outlined" style="font-size: 1.8rem;">
+              logout
+            </span>
+          </button>
+          <button title="AI Action" [ngClass]="actionShow ? 'tabs-button-active' : 'tabs-button'"
+            (click)="showAITabs('action')">
+            <span class="material-symbols-outlined" style="font-size: 1.8rem;">
+              target
+            </span>
+          </button>  -->
+          <div class="k d-flex align-center justify-start" id="ka"
+            [ngClass]="knowledgeShow ? 'tabs-button-active' : 'tabs-button'" (click)="showAITabs('knowledge')">
+            <!-- <span class="material-symbols-outlined" style="font-size: 1.8rem;">
+              neurology
+            </span>  -->
+            <ng-container *ngIf="pgtNotificationCount > 0">
+              <span class="notifiaction">{{pgtNotificationCount}}</span>
+            </ng-container>
+          </div>
+          <!-- <button title="Call Wrap Up" class="d-flex align-center justify-start" [ngClass]="call_wrapShow ? 'tabs-button-active' : 'tabs-button'"
+            (click)="showAITabs('call_wrap')">
+            Call Wrap Up -->
+          <!-- <span class="material-symbols-outlined" style="font-size: 1.8rem;">
+              call
+            </span>  -->
+          <!-- <ng-container *ngIf="callWrapNotificationCount > 0">
+              <span class="notifiaction">{{callWrapNotificationCount}}</span>
+            </ng-container>
+          </button> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="content" *ngIf="recommendationShow">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner">
+          <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <div *ngFor="let transcript of transcriptData">
+                    <div *ngIf="transcript.Feedback.length  >= 1 ">
+                      <div class="ai_entity" style="border:1px solid #cff9c4;">
+                        <div class="d-flex align-start justify-between">
+                          <div class="d-flex align-start justify-start">
+                            <div class="ai_icon">
+                              <span class="material-symbols-rounded" >
+                                neurology
+                              </span>
+                            </div>
+                            <h4 class="entity_heading success-color">AI Recommendation</h4>
+                          </div>
+                          <div class="review_buttons" >
+                            <button class="dislike_btn" (click)="openFeedbackPopup({'type': 'feedback','entity':'Feedback', 'text' : transcript.Feedback[0].text}, 'Edit Ai Recommendation')">
+                              <span class="material-symbols-outlined" style="font-size: 1.6rem;">
+                                thumb_down
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="entity">
+                          <div *ngFor="let item of transcript.Feedback; let i = index">
+                            <ng-container *ngIf="multiLine(item.text)">
+                              <div *ngFor="let entity  of checkForSplit(item.text)">
+                                <p class="transcript_entity_feedback">
+                                  <span style="color: #5d5b5b;">{{entity}}</span>
+                                </p>
+                              </div>
+                            </ng-container>
+                            <ng-container *ngIf="!multiLine(item.text)">
+                              <p class="transcript_entity_feedback">
+                                 <span style="color: #5d5b5b;">{{item.text}}</span>
+                              </p>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <ng-container *ngIf="transcript.entities != ' ' ">
+                      <div class="ai_entity"  style="border:1px solid #fffacc;">
+                        <div class="d-flex align-start justify-between">
+                          <div class="d-flex align-start justify-start">
+                            <div class="ai_icon">
+                              <span class="material-symbols-rounded" >
+                                logout
+                              </span>
+                            </div>
+                            <h4 class="entity_heading warning-color">AI Entity Extract</h4>
+                          </div>
+                          <div class="review_buttons" >
+                            <button class="dislike_btn" (click)="openFeedbackPopup({'type': 'entity','entity' : transcript.entities}, 'Edit Entity Extract')">
+                              <span class="material-symbols-outlined" style="font-size: 1.6rem;">
+                                thumb_down
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                          <div class="entity" *ngFor="let entity of transcript.entities">
+                            <div class="d-flex justify-between align-center">
+                              <div class="transcript_entity_feedback" style="width: 30%;">
+                                <div class="entity" title="{{transcript.comment}}">
+                                  {{ entity?.entity.replace('_', ' ')}}
+                                </div>
+                              </div>
+                              <div class="transcript_entity_feedback"  style="width: 50%;">
+                                <div class="entity" title="{{transcript.comment}}">
+                                    <span>{{entity?.text}}</span>
+                                </div>
+                              </div>
+                              <div class="d-flex flex-column justify-end"  style="width: 10%;">
+                                <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                                  <span class="mt-icon material-icons-round">
+                                    content_copy
+                                  </span>
+                                </button>
+                              </div>
+                              <!-- <div class="d-flex flex-column justify-end"  style="width: 10%;">
+                                <button class="copy_btn" (click)="saveEntity()">
+                                  <span class="mt-icon material-icons-round" title="Save">
+                                    save
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="transcript.actions != '' ">
+                      <div class="ai_entity" style="border:1px solid #ffdddd;">
+                        <div class="d-flex align-start justify-start">
+                          <div class="ai_icon">
+                            <span class="material-symbols-rounded" >
+                              target
+                            </span>
+                          </div>
+                          <!-- <p class="entity_heading">AI Nudges</p> 
+                          <h4 class="entity_heading danger-text">AI Action</h4>
+                        </div>
+                        <div class="entity">
+  
+                          <div class="transcript_entity_feedback">
+                            <div class="mb-1">
+                              <div class="d-flex align-start justify-start flex-wrap">
+                                <div class="" *ngFor="let actionItem of transcript.actions.action.Details.split('\n')">
+                                  <p style="margin-bottom: 1rem;">{{actionItem}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="text-right mb-1">
+                              <button class="btn-info btn1" (click)="callToActionEvent(transcript.actions.action.call_to_action)">{{transcript.actions.action.call_to_action}}</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </perfect-scrollbar>
+    </div> -->
+    <!-- <div class="content" *ngIf="extracted_detailsShow">
+        <perfect-scrollbar class="ps">
+          <div class="content_inner">
+            <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                  (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                  (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                  <div class="scrollable-content">
+                    <div *ngFor="let transcript of transcriptData">
+                      <ng-container *ngIf="transcript.entities != ' ' ">
+                      <div class="ai_entity" *ngFor="let entity of transcript.entities">
+                          <div class="d-flex align-start justify-between">
+                            <div class="d-flex align-start justify-start">
+                              <div class="ai_icon">
+                                <span class="material-symbols-rounded" >
+                                  logout
+                                </span>
+                              </div>
+                              <p class="entity_heading">AI Entity Extract</p>
+                            </div>
+                            <div class="review_buttons" (click)="entityVerified()">
+                              <button class="like_btn">
+                                <span class="material-symbols-rounded" style="font-size: 1.6rem;">
+                                  thumb_up
+                                </span>
+                              </button>
+                              <button class="dislike_btn" (click)="openEntityPopup(1)">
+                                <span class="material-symbols-rounded" style="font-size: 1.6rem;">
+                                  thumb_down
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-between">
+                            <div class="entity" title="{{transcript.comment}}">
+                              {{ entity?.entity.replace('_', ' ')}} : <span>{{entity?.text}}</span>
+                            </div>
+                            <div class="d-flex flex-column justify-end">
+                              <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                                <span class="mt-icon material-icons-round">
+                                  content_copy
+                                </span>
+                              </button>
+                              <span  class="copy_text_info">
+                                <span>{{copiedText}}</span>
+                              </span>
+                            </div>
+                          </div>
+                      </div>
+                    </ng-container>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </perfect-scrollbar>
+      </div> -->
+    <!-- <div class="content" *ngIf="actionShow">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner">
+          <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <div *ngFor="let transcript of transcriptData">
+                    <ng-container *ngIf="transcript.actions != '' ">
+                      <div class="ai_entity">
+                        <div class="entity">
+                          <div class="mb-1">
+                            <div class="d-flex align-start justify-start flex-wrap">
+                              <div class="">
+                                <p>{{transcript.actions.action.Details}}</p>
+                                <!-- <p>LAXJFK</p> 
+                              </div>
+                            </div>
+                            <!-- <span class="h_sep"></span>
+                            <div class="text-right">
+                              <p class="mb-1">Air Fare: USD 767.80</p>
+                              <p class="mb-1">Taxes: USD 39.80</p>
+                              <p class="mb-1">Airline Surcharge: USD 30.80</p>
+                            </div> -->
+    <!-- <span class="h_sep"></span> -->
+    <!-- <p class="mb-1 text-right"><span><strong>Total: USD 838.40</strong></span></p>                         
+                          </div>
+                          <div class="text-right mb-1">
+                            <button class="btn-info btn1" (click)="callToActionEvent(transcript.actions.action.call_to_action)">{{transcript.actions.action.call_to_action}}</button>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <!-- <div class="ai_entity">
+                    <div class="entity">
+                      <div class="mb-1">
+                        <div class="d-flex align-start justify-start flex-wrap">
+                          <div class="fl-details">
+                            <p>From</p>
+                            <p>LAXJFK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>To</p>
+                            <p>JFKLAX</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Flight</p>
+                            <p>DL 773</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>CL</p>
+                            <p>Q</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Date</p>
+                            <p>01Jul 2024</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Departure</p>
+                            <p>08:00</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>14:35</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Time</p>
+                            <p>-</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>1JUL</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Bags</p>
+                            <p>2pcs</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>ST</p>
+                            <p>OK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Seat</p>
+                            <p>17A</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Meal</p>
+                            <p>Veg</p>
+                          </div>
+                        </div>
+  
+                        <span class="h_sep"></span>
+  
+                        <div class="d-flex align-start justify-start flex-wrap">
+                          <div class="fl-details">
+                            <p>From</p>
+                            <p>LAXJFK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>To</p>
+                            <p>JFKLAX</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Flight</p>
+                            <p>DL 773</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>CL</p>
+                            <p>Q</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Date</p>
+                            <p>01Jul 2024</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Departure</p>
+                            <p>08:00</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>14:35</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Time</p>
+                            <p>-</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>1JUL</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Bags</p>
+                            <p>2pcs</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>ST</p>
+                            <p>OK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Seat</p>
+                            <p>17A</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Meal</p>
+                            <p>Veg</p>
+                          </div>
+                        </div>
+                        <span class="h_sep"></span>
+                        <div class="text-right">
+                          <p class="mb-1">Air Fare: USD 767.80</p>
+                          <p class="mb-1">Taxes: USD 39.80</p>
+                          <p class="mb-1">Airline Surcharge: USD 30.80</p>
+                        </div>
+                        <span class="h_sep"></span>
+                        <p class="mb-1 text-right"><span><strong>Total: USD 838.40</strong></span></p>
+                      </div>
+                      <div class="text-right mb-1">
+                        <button class="btn-info btn1">Book</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ai_entity">
+                    <div class="entity">
+                      <div class="mb-1">
+                        <div class="d-flex align-center justify-between">
+                          <div class="d-flex align-center justify-start" style="width: 35%;">
+                            <span class="material-symbols-outlined danger-text" style="font-size: 1.8rem;">
+                              picture_as_pdf
+                            </span>
+                            Travel Itininary
+                          </div>
+                          <div class="d-flex align-center justify-start" style="width: 40%;">
+                            <span class="material-symbols-outlined info-text" style="font-size: 1.8rem;">
+                              mail
+                            </span>
+                            asmith@abc.com
+                          </div>
+                          <div class="d-flex align-center justify-end" style="width: 25%;">
+                            <button class="btn-info btn2">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-1">
+                        <div class="d-flex align-center justify-between">
+                          <div class="d-flex align-center justify-start" style="width: 35%;">
+                            <span class="material-symbols-outlined danger-text" style="font-size: 1.8rem;">
+                              picture_as_pdf
+                            </span>
+                            Invoice
+                          </div>
+                          <div class="d-flex align-center justify-start" style="width: 40%;">
+                            <span class="material-symbols-outlined info-text" style="font-size: 1.8rem;">
+                              mail
+                            </span>
+                            asmith@abc.com
+                          </div>
+                          <div class="d-flex align-center justify-end" style="width: 25%;">
+                            <button class="btn-info btn2">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+  
+                </div>
+              </div>
+        </div>
+      </perfect-scrollbar>
+    </div> -->
+    <div class="content" *ngIf="knowledgeShow">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner">
+          <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto"
+            [perfectScrollbar]="config" (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+            (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+            <div class="scrollable-content">
+              <!-- <span class="contents"> -->
+              <ng-container *ngFor="let transcript of transcriptData; let i = index">
+                <ng-container *ngIf="transcript.Procedural_Guidance != '' ">
+                  <p class="question">{{transcript.Procedural_Guidance.Question}}</p>
+                  <div class="answer" style="margin-bottom:10px">
+                    <div class="answer_content">
+                      <div class="primary_text" style="margin-bottom: 10px;">
+                        <ng-container *ngFor="let pgt of transcript.Procedural_Guidance.Answer.split('\n')">
+                          <span class="responseText">{{pgt}}</span>
+                        </ng-container>
+                      </div>
+                      <ng-container *ngFor="let key of objectKeys(transcript.Procedural_Guidance)">
+                        <ng-container *ngIf="key == 'img'">
+                          <div style="margin-bottom: 1rem;">
+                            <img src="{{imgFileUrl + transcript.Procedural_Guidance.img}}" style="max-width: 100%;height: auto;" alt="">
+                            <!-- <a href="{{transcript.Procedural_Guidance.link}}" style="display: block;text-align: center;line-height: 3rem;" target="_blank" class="btn">View On Map</a> -->
+                            <button class="btn btn-info" (click)="viewMap(transcript.Procedural_Guidance.link)">View On Map</button>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                      <div class="secondary_text">
+                        <p class="answer_heading">Reference Documents :</p>
+                        <ng-container *ngFor="let reference of transcript.Procedural_Guidance.Source">
+                          <button style="cursor: pointer;" (click)="openPopup(reference.source)">
+                            {{reference.Source_Name}}
+                          </button>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngFor="let response of responseData; let i = index">
+                <p class="question">{{response.query}}</p>
+                <div class="answer" style="margin-bottom:10px">
+                  <loading-spinner *ngIf="isRecordLoading" loadingText="Data Processing.."></loading-spinner>
+                  <div class="answer_content">
+                    <div class="primary_text" style="margin-bottom: 10px;">
+                      <span class="responseText">{{response.response}}</span>
+                    </div>
+                    <div class="secondary_text">
+                      <p class="answer_heading">Reference Documents :</p>
+                      <ng-container *ngFor="let reference of response.sources">
+                        <button (click)="openPopup(reference.source, reference.source_name)">
+                          {{reference.source_name}}
+                        </button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <div *ngIf="isLoading" style="position:relative">
+                <loading-spinner [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+              </div>
+              <!-- </span> -->
+
+              <!-- <div class="ai_action">
+                  <p class="mb-1"> <strong> Here are some appropriate questions you can ask</strong></p>
+                  <div class="mb-1 border-1 radius-2 p-1-2">
+                    <p>Hello User, How can I help you today?</p>
+                    </div>
+                    <div class="mb-1 border-1 radius-2 p-1-2">
+                      <p>Hello User, Sorry for the long wait how can I help you today?</p>
+                    </div>
+                    <div class="mb-1 border-1 radius-2 p-1-2">
+                      <p>Hi there, Sorry for the long wait how can I help you today?</p>
+                  </div>
+                    <p class="mb-1" style="margin-top: 2rem;"> <strong> Was this helpful?</strong></p>
+  
+                    <div class="radio_check_btns">
+                      <label class="yes">
+                        <input type="radio" value="Yes" (change)="recordFeedback()" name="hepful">
+                        <span>Yes</span>
+                      </label>
+                      <label class="no">
+                        <input type="radio" value="No" (change)="recordFeedback()" name="hepful">
+                        <span>No</span>
+                      </label>
+                    </div>
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </div>
+    <!-- <div class="content" *ngIf="call_wrapShow">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner" style="padding: 2rem;">
+          <div class="text-right mb-1">
+            <button class="btn-info btn2 btn_sm p-1-2" [disabled]="!call_summary?.length > 0"  style="margin-right: 1rem;" (click)="callWrapEvent()">Wrap Up & close</button>
+            <button class="btn-info btn2 btn_sm p-1-2" [disabled]="!call_summary?.length > 0" (click)="callWrapAndInitiateCaseEvent()">Wrap Up & Initiate a Case</button>
+          </div>
+          <div class="call_wrap_block">
+            <div class="ai_entity">
+              <div class="d-flex align-center justify-between">
+                <p><span><strong> ID:</strong> </span> 0123455678</p>
+                <p><span><strong>Status:</strong> </span> New</p>
+                <p><span><strong>Intent:</strong> </span> {{callIntent}}</p>
+              </div>
+            </div>
+            <div class="ai_entity" *ngIf="callWrapForm">
+              <form action="" [formGroup]="callWrapForm" (ngSubmit)="updateCallForm()">
+                <div class="call_wrap_block">
+                  <div class="d-flex align-center justify-between mb-1">
+                    <h4>Description</h4>
+                    <button class="btn-info btn2 sm-btn" type="button" (click)="editDescription()">Edit</button>
+                  </div>
+                  <div class="call_wrap_inner">
+                    <textarea-input [formControl]='callWrapForm.controls["call_description"]' [label]='"Call Description"'></textarea-input>
+                  </div>
+                </div>
+                <div class="call_wrap_block">
+                  <div class="d-flex align-center justify-between">
+                    <h4>Action</h4>
+                    <!-- <button class="btn-info btn2 sm-btn" type="button" (click)="editAction()">Edit</button> 
+                  </div>
+                  <div class="call_wrap_inner">
+                    <textarea-input [formControl]='callWrapForm.controls["call_action"]' [label]='"Call Action"'></textarea-input>
+                  </div>
+                </div>
+                <div class="call_wrap_block">
+                  <div class="d-flex align-center justify-between">
+                    <h4>Outcome</h4>
+                    <!-- <button class="btn-info btn2 sm-btn" type="button" (click)="editOutcome()">Edit</button> 
+                  </div>
+                  <div class="call_wrap_inner">
+                    <textarea-input [formControl]='callWrapForm.controls["call_outcome"]' [label]='"Call Outcome"'></textarea-input>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button class="btn-info btn1 sm-btn" type="submit">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+  
+          </div>
+      </perfect-scrollbar>
+    </div> -->
+
+  </div>
+  <div class="sf">
+    <!-- <form autocomplete="off"  [formGroup]='modalForm1' (ngSubmit)="submitForm()">
+          <div class="search_form">
+            <span class="mt-icon material-icons-round card_icon"> manage_search </span>
+            <input [formControl]='modalForm1.controls["question"]' type="text" class="search_input" placeholder="Search for articles" />
+            <div class="search_btns">
+              <button type="button">
+                <span class="mt-icon material-icons-round card_icon"> microphone </span>
+              </button>
+              <button type="submit">
+                <span class="mt-icon material-icons-round card_icon"> send </span>
+              </button>
+            </div>
+          </div>
+        </form> -->
+    <form autocomplete="off" [formGroup]='modalForm' (ngSubmit)="submitForm()">
+      <div class="search_form">
+        <span class="mt-icon material-icons-round card_icon"> manage_search </span>
+        <input [formControl]='modalForm.controls["question"]' type="text" class="search_input"
+          placeholder="Search for articles" />
+        <div class="search_btns">
+          <!-- <button type="button">
+                <span class="mt-icon material-icons-round card_icon"> microphone </span>
+              </button> -->
+          <button type="submit">
+            <span class="mt-icon material-icons-round card_icon"> send </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

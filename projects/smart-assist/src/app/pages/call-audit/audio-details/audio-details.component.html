@@ -1,0 +1,59 @@
+<div class="audit-details-container">
+  <div class="audio-details">
+    <div class="d-flex align-start justify-start padding_5_10">
+      <div class="w_33">
+        <label class="field-label">Audio Length</label>
+        <div class="idCallBox"><span>{{data.audio_length}}</span></div>
+      </div>
+      <div class="w_33">
+        <label class="field-label">No of Channels</label>
+        <div class="idCallBox"><span class="driverComment">{{data.no_of_channels}}</span></div>
+      </div>
+      <div class="w_33">
+        <label class="field-label">Sample Rate</label>
+        <div class="idCallBox"><span class="driverComment">{{data.sample_rate}}</span></div>
+      </div>
+    </div>
+    <div class="d-flex align-start justify-start padding_5_10">
+      <div class="w_33">
+        <label class="field-label">Silence</label>
+        <div class="idCallBox"><span>{{data.silence}}</span></div>
+      </div>
+      <div class="w_33">
+        <label class="field-label">Non Silence</label>
+        <div class="idCallBox"><span class="driverComment">{{data.non_silence}}</span></div>
+      </div>
+      <div class="w_33">
+        <label class="field-label">Silence Color</label>
+        <div class="idCallBox">
+          <div class="silenceBox"></div>
+        </div>
+      </div>
+    </div>
+  </div><br><hr style="margin: 0 40px 0 40px;">
+  <div class="audio-player">
+    <div id="wave-timeline" class="wave-timeline"></div>
+    <div class="waveform">
+      <div id="waveform"></div>
+    </div>
+  </div>
+  <div class="silence-refrence">
+    <label class="field-label">Silence Reference</label>
+    <table>
+      <thead>
+        <th>No.</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="referenceData.length > 0">
+          <tr *ngFor="let reference of referenceData; let index = index">
+            <td>{{index+1}}</td>
+            <td>{{reference.start_time}}</td>
+            <td>{{reference.end_time}}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div><br>
+</div>

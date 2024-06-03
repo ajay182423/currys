@@ -1,0 +1,10 @@
+<div class="abs-center container">
+  <div class="loading-text" *ngIf="loadingText">
+    {{ loadingText }}
+  </div>
+  <div [ngClass]="loaderClass ? 'loading ' + loaderClass : 'loading'">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>

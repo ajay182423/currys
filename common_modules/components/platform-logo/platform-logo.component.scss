@@ -1,0 +1,68 @@
+//-------------------platform-logo
+.platform-logo {
+  display: flex;
+  &__box{
+    display: flex;
+    align-items: center;
+    &__img{
+      height: 2.8rem;
+      display: flex;
+      justify-content: center;
+      img {
+        height: 100%;
+      }
+    }
+    span {
+      display: block;
+      height: 100%;
+      background-color: var(--border-color);
+      width: 0.15rem;
+      margin: auto 1.8rem auto 2rem;
+    }
+  }
+  &__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    &__1 {
+      line-height: 1.5rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+    &__3 {
+      line-height: 1.8rem;
+      font-weight: 500;
+      margin: 0rem 0 0 0rem;
+      font-size: 2.1rem;
+      color: var(--primary-color);
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .platform-logo {
+    &__box{
+      &__img{
+        height: 2.4rem;
+        margin-bottom: 0.2rem;
+      }
+      span {
+        margin: 0rem 0.8rem 0.2rem 0.8rem;
+      }
+    }
+    &__name {
+      &__1 {
+        line-height: 1.1rem;
+        font-size: 1.3rem;
+      }
+      &__3 {
+        line-height: 1.5rem;
+        margin: 0rem 0 0 -0.05rem;
+        font-size: 1.7rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

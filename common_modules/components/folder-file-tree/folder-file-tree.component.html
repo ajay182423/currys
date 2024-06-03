@@ -1,0 +1,36 @@
+<ul class="tree-view">
+  <ng-container *ngFor="let item of folderFileList">
+    <li class="folder" *ngIf="item?.isFolder" [class.folder-expaned]="item.isOpened"
+      [style.margin-left]="level === 0 ? '0rem' : ''">
+      <span class="bar" *ngIf="item.children.length > 0 && item.isOpened"></span>
+      <input type="checkbox" name="{{item.filePath}}" id="{{item.filePath}}" [checked]="item.isOpened"
+        (change)="item.isOpened = !item.isOpened; openOrCloseFolder(item.filePath, !item.isOpened)">
+      <label class="folder-name" for="{{item.filePath}}" [class.folder-selected]="selectedFilePath === item.filePath"
+        (click)="openFolderOrFile('Folder', item.filePath, item.name, 0)" (contextmenu)="onRowRightClick($event, item.filePath,0, item.name, 'Folder')">
+        <span *ngIf="showIcons" class="mt-icon material-icons-round">
+          folder
+        </span>
+        {{item.name}}
+      </label>
+      <context-menu [menuItems]="folderMenuItems" [showContextMenu]="contextMenu.show"
+        *ngIf="contextMenu.show && contextMenu.filePath === item.filePath" [mousePosition]="mousePosition"
+        (contextMenuClick)="onContextMenuClick($event, item.isFolder, item.name)">
+      </context-menu>
+      <folder-file-tree *ngIf="item.children.length > 0 && item.isOpened" [level]="level+1"
+        [folderFileList]="item.children" [showIcons]="showIcons"></folder-file-tree>
+    </li>
+    <li class="file" *ngIf="!item?.isFolder" [class.file-selected]="selectedFilePath === item.filePath"
+      (click)="openFolderOrFile('File', item.filePath, item.name, item.id)">
+      <label class="file-name" (contextmenu)="onRowRightClick($event, item.filePath, item.id, item.name, 'File')">
+        <span class="mt-icon material-icons-round">
+          description
+        </span>
+        {{item.name}}
+      </label>
+      <context-menu [menuItems]="fileMenuItems" [showContextMenu]="contextMenu.show"
+        *ngIf="contextMenu.show && contextMenu.filePath === item.filePath" [mousePosition]="mousePosition"
+        (contextMenuClick)="onContextMenuClick($event, item.isFolder, item.name)">
+      </context-menu>
+    </li>
+  </ng-container>
+</ul>

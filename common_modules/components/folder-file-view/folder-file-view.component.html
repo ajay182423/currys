@@ -1,0 +1,34 @@
+<div class="header">
+  <h2 class="heading">{{ mainTitle }}</h2>
+  <div class="create-new-container">
+    <a title="{{createMenuItems?.name}}" class="header-btn header-btn" (click)="openCreateMenu($event)">
+      <span class="mt-icon material-icons-round">
+        add
+      </span>
+    </a>
+    <popup-menu [menuItems]="createMenuItems?.items" [showPopupMenu]="showCreateMenu" [customStyle]="{right: 0}"
+      (popupMenuClick)="onPopupMenuClick($event)">
+    </popup-menu>
+  </div>
+</div>
+<div class="sub-container">
+  <div class="search-box">
+    <span class="mt-icon material-icons-round">
+      search
+    </span>
+    <input name="searchKeywords" class="app-textbox" placeholder="{{ 'Search ' + otherTitle.toLowerCase() }}"
+      type="text">
+  </div>
+  <div class="folders-container">
+    <perfect-scrollbar>
+      <loading-spinner *ngIf="isListLoading"></loading-spinner>
+      <div [ngClass]="!isListLoading ? 'page-slideup dis-bk' : 'page-hidden'">
+        <folder-file-tree [folderFileList]="folderFileList" [showIcons]="showIcons"></folder-file-tree>
+      </div>
+    </perfect-scrollbar>
+    <div class="no-content" *ngIf="folderFileList?.length === 0 && !isListLoading">
+      <img src="{{ fileUrl + 'assets/no-content.svg' }}" alt="No Content">
+      <p>No records found</p>
+    </div>
+  </div>
+</div>

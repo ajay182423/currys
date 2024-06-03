@@ -1,0 +1,366 @@
+//-------------------dashboard
+.dashboard {
+    background-color: var(--bg-color-02);
+    // margin-top: calc(var(--header-height));
+    &__header {
+      display: flex;
+      padding: 2rem 0;
+      justify-content: flex-end;
+      h2 {
+        align-self: center;
+        flex-grow: 1;
+        font-size: 2.5rem;
+        color: rgb(16, 45, 94);
+        font-weight: 700;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+      .action-btn-box {
+        display: flex;
+        align-items: center;
+        .square-btn {
+            margin-left: 0.5rem;
+            position: relative;
+            min-width: 3.06rem;
+            min-height: 3.06rem;
+            border-radius: 0.25rem;
+            height: auto;
+          }
+      .user-box-container {
+          position: relative;
+          margin-left: 20px;
+          .user-box {
+            display: flex;
+            align-items: center;
+            .user-box__expander {
+                background: no-repeat;
+                border: none;
+                color: var(--primary-color);
+                display: flex;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+                margin-left: 3px;
+                h4 {
+                  font-size: 12px;
+                  color: var(--text-color);
+                }
+            }
+          }
+          .user-menu {
+              position: absolute;
+              background: #fff;
+              width: 100%;
+              padding: 10px;
+              border-radius: 0 0 3px 3px;
+              box-shadow: 1px 1px 3px 1px #0000001f;
+              a {
+                display: flex;
+                align-items: center;
+              }
+          }
+        }
+        .today-date {
+          align-self: center;
+          margin-right: 1.5rem;
+          font-size: 1.37rem;
+          font-weight: 500;
+        }
+        .time-filter {
+          align-self: center;
+          border-left: 0.1rem solid $border-color;
+          border-top: 0.1rem solid $border-color;
+          border-bottom: 0.1rem solid $border-color;
+          padding: 0.45rem 1rem;
+          min-width: 7.5rem;
+          max-height: 3.4rem;
+          text-align: center;
+          font-size: 1.3rem;
+          font-weight: 500;
+          color: $color-text;
+          background-color: white;
+          &:hover {
+            color: var(--primary-color);
+            border-bottom: 0.2rem solid var(--secondary-color);
+          }
+        }
+        .time-filter-active {
+          background-color: var(--primary-color);
+          color: white;
+          border-color: var(--primary-color);
+          &:hover {
+            color: white;
+            border-bottom: 0.1rem solid var(--primary-color);
+            cursor: default;
+          }
+        }
+        .square-btn {
+          margin-left: 0.5rem;
+          position: relative;
+          min-width: 3.06rem;
+          min-height: 3.06rem;
+          border-radius: 0.25rem;
+          svg {
+            color: #fff;
+          }
+          &:hover {
+            span {
+              opacity: 1;
+              bottom: -1rem;
+              padding: 0.7rem 1.2rem;
+            }
+          }
+        }
+      }
+    }
+    &__content {
+      padding: 0rem 1rem 2rem 1rem;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 2rem;
+      .card {
+        transition: all ease-in-out 0.1s;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        background-color: var(--bg-color-01);
+        min-height: 0.1rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.5rem;
+      }
+      .time-card {
+        .icon {
+          width: 30%;
+          margin: 3rem 0;
+        }
+        .separator {
+          display: block;
+          height: 6rem;
+          border: 0.1rem solid $border-color;
+        }
+        .content-body {
+          width: 70%;
+          text-align: center;
+          .time {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            h2 {
+              font-size: 4.2rem;
+              color: $color-text-l1;
+              font-weight: 300;
+              line-height: 4.5rem;
+              margin-top: 0.5rem;
+              span {
+                margin: 0 0.9rem 0 0.2rem;
+                font-size: 2rem;
+                font-weight: 400;
+              }
+            }
+          }
+          .caption {
+            font-size: 1.3rem;
+            color: $color-text-l2;
+            font-weight: 400;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+      .utilization-circle {
+        flex-direction: column;
+        padding-bottom: 4rem;
+      }
+      .productivity-chart {
+        grid-column: 2 / span 3;
+      }
+      .apps-tracker {
+        grid-column: 1 / span 4;
+        display: flex;
+        flex-direction: column;
+        .apps-container {
+          width: 100%;
+          padding: 0rem 1.5rem 1.5rem 1.5rem;
+          align-self: flex-start;
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          grid-gap: 1rem;
+          .app-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: $color-text-l1;
+            font-weight: 400;
+            .name {
+              margin-left: 1rem;
+              flex-grow: 1;
+              font-size: 1.3rem;
+            }
+            .time {
+              font-size: 1.3rem;
+              span {
+                margin: 0 0.5rem 0 0.1rem;
+                font-size: 1.2rem;
+              }
+            }
+            .freq {
+              margin-left: 0.5rem;
+              margin-right: 1rem;
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
+    }
+    .card-caption {
+      align-self: flex-start;
+      font-size: 1.3rem;
+      color: $color-text;
+      font-weight: 500;
+      margin: 1rem 1.5rem 1rem 1.5rem;
+    }
+  }
+
+
+  .round-select-dashboard select {
+
+    border:none;
+    height: 2.5rem;
+    background-color:white;
+    border-radius: 0.3rem;
+    padding:0 3.8rem 0 2.1rem;
+    width: 100%;
+    cursor: pointer;
+    outline: 0;
+    color: $color-text;
+    font-weight: 400;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: inherit;
+    // border: 0.2rem solid $color-primary;
+
+  }
+      .round-select-dashboard select:hover {
+          border: 0.2rem solid $color-primary;
+      }
+      .round-select-dashboard select::-ms-expand {
+          display: none;
+      }
+      .round-select-dashboard select:focus {
+        border: 0.2rem solid $color-primary;
+      }
+      .round-select-dashboard select:disabled {
+          opacity: 0.5;
+          pointer-events: none;
+      }
+      .round-select-arrow {
+        margin-left: -2.5rem;
+        margin-top: -1rem;
+        width: 0.032rem;
+        height: 0.032rem;
+        border: solid darken($border-color,20%);
+        border-width: 0 0.16rem 0.16rem 0;
+        display: inline-block;
+        padding: 0.32rem;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+      .round-select-dash select:hover ~ .round-select-arrow,
+      .round-select-dash select:focus ~ .round-select-arrow {
+        border-color:$color-primary;
+      }
+      .round-select-dash select:disabled ~ .round-select-arrow {
+        border-top-color: #cccccc;
+      }
+
+
+      .table-header-container-dash{
+        background-color: $bg-color-02;
+        // border-bottom: solid 0.1rem $border-color;
+
+        // border-top: solid 0.1rem $border-color;
+        padding-right:0.5rem;
+
+      }
+      .table-content-container-dash{
+        flex-grow: 1;
+        overflow-x: hidden;
+        overflow-y: auto;
+        // height: calc(100vh - 13.3rem);
+        display: flex;
+        align-items: stretch;
+        // justify-content: center;
+        display: flex;
+        flex-direction: column;
+        .table-empty-msg{
+          align-self: center;
+          font-size: 1.3rem;
+          color:$color-text-l1;
+        }
+      }
+
+      //app level table
+      .app-table-dash{
+        width:100%;
+        table-layout: fixed;
+        border: solid 1px hsl(205, 100%, 30%);
+      }
+      .app-table-dash th{
+        padding: 1rem;
+        text-align: left;
+        font-weight: 500;
+        font-size: 1.3rem;
+        color:hsl(205, 100%, 30%);
+
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: hsl(205, 100%, 90%);
+      }
+      /*.app-table th:nth-child(1),.app-table  td:nth-child(1) {
+        width: 8rem;
+      }
+      */
+
+      .app-table-dash th:last-child, .app-table-dash td:last-child{
+        padding-right:0rem;
+      }
+      .app-table-dash th:first-child, .app-table-dash td:first-child{
+        width:15.50rem;
+        padding-left:2rem;
+      }
+
+      .app-table-dash td{
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding :1rem;
+        text-align: left;
+        align-items: center;
+        vertical-align:middle;
+        font-weight: 400;
+        font-size: 1.3rem;
+        color: $color-text;
+        border-bottom: solid 0.1rem $border-color;
+      }
+      .app-table-dash tbody {
+          tr {
+              border-radius: 10px;
+              &:hover {
+                  background-color:$bg-color-02;
+              }
+          }
+      }
+      .tbl-action-btn{
+          margin:0 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i{
+            font-size: 1.8rem;
+            color:$icon-color;
+          }
+          &:hover{
+            i{
+              color: $color-primary;
+            }
+          }
+        }

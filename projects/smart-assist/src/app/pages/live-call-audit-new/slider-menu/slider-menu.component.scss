@@ -1,0 +1,23 @@
+.popup {
+    //margin-top: 10px;
+    position: fixed;
+    top: 115px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 53px;
+    background-color: #f5f3f3;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* text-align: center; */
+    z-index: 1000;
+    border: 2px solid;
+    //text-align: left;
+    /* align-content: flex-start;*/
+}
+  

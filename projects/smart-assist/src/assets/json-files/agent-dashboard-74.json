@@ -1,0 +1,1873 @@
+{
+  "agentId": 74,
+  "agentName": "Nayankumar Surti",
+  "managerId": 8,
+  "managerName": "Akhil Kadi",
+  "departmentName": "Orders",
+  "dashboardData": {
+    "card1" : {
+      "type" : "3column",
+      "title" : "Transaction Status",
+      "icon" : "receipt_long",
+      "borderColor" : "hsl(205, 100%, 50%)",
+      "content" : [
+          {
+              "label" : "Total",
+              "value" : 114,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "Completed",
+              "value" : 114,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          },
+          {
+              "label" : "Pending",
+              "value" : 0,
+              "fontColor" : "hsl(4, 89%, 55%)"
+          }
+      ]
+    },
+    "card2" : {
+      "type" : "2column",
+      "title" : "",
+      "icon" : "timer",
+      "borderColor" : "hsl(4, 89%, 55%)",
+      "content" : [
+          {
+              "label" : "Total Compliance Duration",
+              "value" : 8.4,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "AHT",
+              "value" : 4.84,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          }
+      ]
+    },
+    "card3" : {
+      "type" : "1column",
+      "title" : "",
+      "icon" : "calculate",
+      "borderColor" : "hsl(36, 100%, 47%)",
+      "content" : [
+          {
+              "label" : "Quality",
+              "value" : 80.87,
+              "fontColor" : "hsl(36, 100%, 47%)"
+          }
+      ]
+    },
+    "card4": {
+      "type": "1column",
+      "title": "",
+      "icon": "",
+      "borderColor": "hsl(4, 89%, 55%)",
+      "content" : [
+        {
+            "query": "Not Resolved",
+            "value": 5
+        },
+        {
+            "query": "Resolved",
+            "value": 109
+        }
+    ]
+    },
+    "widget1" : {
+      "tab1": {
+        "title" : "ID&V",
+        "content": {
+          "type": "line",
+          "body" : {
+            "chartTitle" : "",
+            "legends" : [],
+            "data" : [
+              {
+                  "status": "Pass",
+                  "day": 24,
+                  "month": 11,
+                  "value": 8
+              },
+              {
+                  "status": "Pass",
+                  "day": 23,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 22,
+                  "month": 11,
+                  "value": 17
+              },
+              {
+                  "status": "Pass",
+                  "day": 21,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Pass",
+                  "day": 19,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 18,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Pass",
+                  "day": 17,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 16,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Fail",
+                  "day": 24,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 23,
+                  "month": 11,
+                  "value": 2
+              },
+              {
+                  "status": "Fail",
+                  "day": 22,
+                  "month": 11,
+                  "value": 6
+              },
+              {
+                  "status": "Fail",
+                  "day": 21,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 20,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 19,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 18,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 17,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 16,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Exception",
+                  "day": 24,
+                  "month": 11,
+                  "value": 2
+              },
+              {
+                  "status": "Exception",
+                  "day": 23,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 22,
+                  "month": 11,
+                  "value": 15
+              },
+              {
+                  "status": "Exception",
+                  "day": 21,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 19,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Exception",
+                  "day": 18,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 17,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Exception",
+                  "day": 16,
+                  "month": 11,
+                  "value": 1
+              }
+            ]
+          }
+        }
+      },
+      "tab2": {
+        "title" : "PCI DSS",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data": [
+              {
+                  "status": "Pass",
+                  "day": 24,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Pass",
+                  "day": 23,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 22,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Pass",
+                  "day": 21,
+                  "month": 11,
+                  "value": 11
+              },
+              {
+                  "status": "Pass",
+                  "day": 19,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Pass",
+                  "day": 18,
+                  "month": 11,
+                  "value": 11
+              },
+              {
+                  "status": "Pass",
+                  "day": 17,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Pass",
+                  "day": 16,
+                  "month": 11,
+                  "value": 4
+              }
+            ]
+          }
+        }
+      },
+      "tab3": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "countResult": 48
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 145
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      }
+    },
+    "widget2":{
+      "tab1": {
+        "title": "Days",
+        "content": {
+          "type": "bar",
+          "body" : {
+            "chartTitle" : "No. of Transactions",
+            "legends" : ["20 Nov","16 Nov", "17 Nov", "18 Nov","19 Nov","21 Nov","22 Nov","22 Nov", "23 Nov" ],
+            "data" : [
+                    {
+                        "name" : "Completed",
+                        "values" : [20,13,7,18,9,10,24,1,2],
+                        "bg" : "hsl(123, 40%, 46%)"
+                    },
+                    {
+                        "name" : "Pending",
+                        "values" : [0, 0, 1,  0, 0, 0, 1, 0, 0],
+                        "bg" : "hsl(4, 89%, 55%)"
+                    }
+                ]
+            }
+        }
+      },
+      "tab2": {
+        "title": "Months",
+        "content": {
+          "type": "bar",
+          "body" : {
+            "chartTitle" : "No. of Transactions",
+            "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+            "data" : [
+                    {
+                        "name" : "Completed",
+                        "values" : [2872, 2872, 3400, 3030],
+                        "bg" : "hsl(123, 40%, 46%)"
+                    },
+                    {
+                        "name" : "Pending",
+                        "values" : [29, 24, 29, 26],
+                        "bg" : "hsl(4, 89%, 55%)"
+                    }
+                ]
+            }
+        }
+      }
+    },
+    "widget3": {
+      "tab1": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "countResult": 48
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 145
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      },
+      "tab2": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "year": 2023,
+                  "countResult": 48
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "year": 2023,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "year": 2023,
+                  "countResult": 145
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "year": 2023,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "year": 2023,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tableData": {
+      "content":{
+        "body":{
+          "data": [
+            {
+                "id": 518,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "00bbefde80f71b5f33277ba0cea83b62",
+                "callDuration": "03:54",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2858,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "00bbefde80f71b5f33277ba0cea83b62_2",
+                "callDuration": "03:54",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1221,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "03febe58f2e332becc9d7d5ddd235506",
+                "callDuration": "08:14",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 46,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2098,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20_1",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2424,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20_2",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 391,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "0638ae8cfb833bcbdfb794dd758a0d19",
+                "callDuration": "06:00",
+                "quality": 21.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 486,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "10129ad358dc79d81ff5d945189a294c",
+                "callDuration": "03:19",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2826,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "10129ad358dc79d81ff5d945189a294c_2",
+                "callDuration": "03:19",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 502,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "115fd649a5f89db7158bd8ac913dd1ca",
+                "callDuration": "02:56",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2842,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "115fd649a5f89db7158bd8ac913dd1ca_2",
+                "callDuration": "02:56",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 499,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "15ee1f6849e9510eb2a2b1f81a94f152",
+                "callDuration": "02:48",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2839,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "15ee1f6849e9510eb2a2b1f81a94f152_2",
+                "callDuration": "02:48",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1035,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "19b64b586f74471435602dc3d3064f0c",
+                "callDuration": "04:03",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1217,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "221846437e4ddc4a42288fff060cc357",
+                "callDuration": "03:56",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1758,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "26156f92a5f0111759b30d3dca2711ff",
+                "callDuration": "05:27",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 563,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "27bd4d0598236f16e5ebeb7d746ef5fc",
+                "callDuration": "06:13",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2903,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "27bd4d0598236f16e5ebeb7d746ef5fc_2",
+                "callDuration": "06:13",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1228,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "2802fd8bb23390cf24d6c0c35791ff7e",
+                "callDuration": "01:45",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1238,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "2faaf6177040a94c63d2c94f42b38883",
+                "callDuration": "03:48",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1207,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "301be4aafcd464201de5663f4cbb2c08",
+                "callDuration": "07:22",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1472,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "31b33e5331e3cb6cd2b80f47616f1ad8",
+                "callDuration": "01:50",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 508,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "36445421dbcbaabd14c96b03b95cec60",
+                "callDuration": "04:15",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2848,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "36445421dbcbaabd14c96b03b95cec60_2",
+                "callDuration": "04:15",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 800,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "365cc78724c86ac414071f10571f019d",
+                "callDuration": "03:26",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 698,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "38b90dececa894d7d4b08122bafca971",
+                "callDuration": "03:24",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 3038,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "38b90dececa894d7d4b08122bafca971_2",
+                "callDuration": "03:24",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 978,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "3a40ed26164c109468d217f9373a053c",
+                "callDuration": "09:04",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 371,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "3b57f56425a28d4a336793645715a241",
+                "callDuration": "06:00",
+                "quality": 21.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-20T00:00:00",
+                "auditedDate": "2022-11-20T00:00:00"
+            },
+            {
+                "id": 1138,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "3ea95de8d07cebfd85ea18190809802d",
+                "callDuration": "04:36",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1163,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "40017ad2cf42eaa89a4946371f5df032",
+                "callDuration": "02:20",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1158,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "448c6a43cd7a622da45155468e442e2a",
+                "callDuration": "02:28",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 49,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "462b87a2c29daf9d36b005872d376b91",
+                "callDuration": "06:00",
+                "quality": 76.47,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2101,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "462b87a2c29daf9d36b005872d376b91_1",
+                "callDuration": "06:00",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2427,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "462b87a2c29daf9d36b005872d376b91_2",
+                "callDuration": "06:00",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 519,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "4a9d484c00b840a76c562281045ed9bb",
+                "callDuration": "03:37",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2859,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "4a9d484c00b840a76c562281045ed9bb_2",
+                "callDuration": "03:37",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1978,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "52f8dea5f67be202e23affba2f3bf8e0",
+                "callDuration": "05:22",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 1206,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "55a169e1fa233b5ca9df82a4b5b609ce",
+                "callDuration": "07:49",
+                "quality": 71.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1152,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "5ca79bb507b904fc1a1ba87409d9b070",
+                "callDuration": "07:40",
+                "quality": 71.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1991,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "64a77f3d7d0792a07a6ab1760afea1ac",
+                "callDuration": "03:55",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 554,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "69692254455077241985f79cac8f396c",
+                "callDuration": "12:16",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2894,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "69692254455077241985f79cac8f396c_2",
+                "callDuration": "12:16",
+                "quality": 82.35,
+                "flag": "Manual-Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 100,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "712d3e83bfd88e0f3b59400aae360f08",
+                "callDuration": "04:29",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2150,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "712d3e83bfd88e0f3b59400aae360f08_1",
+                "callDuration": "04:29",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2476,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "712d3e83bfd88e0f3b59400aae360f08_2",
+                "callDuration": "04:29",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 102,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac",
+                "callDuration": "03:38",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2152,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac_1",
+                "callDuration": "03:38",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2478,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac_2",
+                "callDuration": "03:38",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 42,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "72e726b0bcc2f40a6752f4f8facd9409",
+                "callDuration": "06:00",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2094,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "72e726b0bcc2f40a6752f4f8facd9409_1",
+                "callDuration": "06:00",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2420,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "72e726b0bcc2f40a6752f4f8facd9409_2",
+                "callDuration": "06:00",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 975,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "75df2b0e892fca1ae11420102c5cae35",
+                "callDuration": "05:43",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 213,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "79ad6047e1165a2353499520f037ec6a",
+                "callDuration": "06:00",
+                "quality": 70.77,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2263,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "79ad6047e1165a2353499520f037ec6a_1",
+                "callDuration": "06:00",
+                "quality": 50.00,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2589,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "79ad6047e1165a2353499520f037ec6a_2",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 1164,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "7b062a9c2def355d7eb6f08977871726",
+                "callDuration": "04:32",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1229,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "7d577a45862655b54f625cf13c00ba5b",
+                "callDuration": "05:11",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1168,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "7e0be53f0a47a3f2d912a9af769e2f61",
+                "callDuration": "02:50",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1040,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "80a212c268fccaf26133cd00d2da4c0f",
+                "callDuration": "05:17",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 757,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "81e978c3531a467e4c1ce5271a7fcdb7",
+                "callDuration": "06:30",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1827,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8aaf6c9a4175c91fba6547b53b4583cd",
+                "callDuration": "03:30",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 1902,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8be173ff8f4aaff46e074cb202585d78",
+                "callDuration": "03:05",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 208,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8c1c445988324ecf9b7ed24705e79086",
+                "callDuration": "06:00",
+                "quality": 90.88,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2258,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8c1c445988324ecf9b7ed24705e79086_1",
+                "callDuration": "06:00",
+                "quality": 90.99,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2584,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8c1c445988324ecf9b7ed24705e79086_2",
+                "callDuration": "06:00",
+                "quality": 20.77,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 801,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8ca9eeda13b5a56fe04c2842bc96b8e5",
+                "callDuration": "04:33",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1538,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "8cb3c622efe53cc9f0a80b5320493e67",
+                "callDuration": "03:11",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 389,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "93173281ec989c9bba7a6240534b4d4f",
+                "callDuration": "06:00",
+                "quality": 35.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 970,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "95974211bc5f160d949c52d2876cf8d7",
+                "callDuration": "07:04",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 504,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "993b6a2f14419dade071471ed6921df7",
+                "callDuration": "02:26",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2844,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "993b6a2f14419dade071471ed6921df7_2",
+                "callDuration": "02:26",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 567,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "9affeb0944daacb2ce8ce317238c865b",
+                "callDuration": "03:14",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2907,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "9affeb0944daacb2ce8ce317238c865b_2",
+                "callDuration": "03:14",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1020,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "9c21a5c391a6338f5cc861f85d6e100d",
+                "callDuration": "03:58",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1250,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "9d9ba27560c19ad2c05054eafb3b3039",
+                "callDuration": "03:14",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1823,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "9faa4681911f6a2bcc4f806640576de6",
+                "callDuration": "03:53",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 1903,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "a104adb88317897171146ef5b17e12f5",
+                "callDuration": "11:18",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 1096,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "a320a8e156dd11286420c88a119a9f6b",
+                "callDuration": "01:39",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 848,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "a885e7438c676d233c2066f5f839c01c",
+                "callDuration": "05:37",
+                "quality": 71.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 644,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "aab7b6f44ec6c616b004ab5e5ffb3c01",
+                "callDuration": "03:51",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2984,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "aab7b6f44ec6c616b004ab5e5ffb3c01_2",
+                "callDuration": "03:51",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1227,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "ab8267ba9e35b40970a47b02ac0538d3",
+                "callDuration": "02:29",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1847,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "accfb8106c72661284e1ba91f7dfba38",
+                "callDuration": "07:22",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 981,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "ad2302b1d009ed9e0f635304c811253c",
+                "callDuration": "00:53",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1222,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "aec8ede714b92621a85e538aff51fabc",
+                "callDuration": "09:21",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 639,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "b02d897c97476a95db7bde809881e899",
+                "callDuration": "03:02",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2979,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "b02d897c97476a95db7bde809881e899_2",
+                "callDuration": "03:02",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1756,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "b10c58c3b99d7ff9ff717d37cb3c4d84",
+                "callDuration": "05:48",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 1215,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "b2ab116895e48f10b988f27e4ae816bb",
+                "callDuration": "02:55",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1490,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "b50268a8716d781ac0a95bb69195f1da",
+                "callDuration": "01:51",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 1602,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "bbd87f680455283c06ee53c352c1bc95",
+                "callDuration": "10:43",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 1488,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "bbf50fda0a497642652efd9d64a4de9c",
+                "callDuration": "04:44",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 1016,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "c21cba35fd46daed01583ac189be1f6a",
+                "callDuration": "07:50",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1231,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "c9d5bc9b9862bc2295c22da017c8f99b",
+                "callDuration": "02:37",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1230,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "d2b3c89068ac4706e810bc995f1748e8",
+                "callDuration": "03:51",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1278,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "d536057e132c9191f2258ef83dcd5c66",
+                "callDuration": "04:46",
+                "quality": 92.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1559,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "d79d41b3915aaa8e78fb4e2a29560fec",
+                "callDuration": "02:32",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 490,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "d989107ef632258ce97e890003806f21",
+                "callDuration": "06:05",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2830,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "d989107ef632258ce97e890003806f21_2",
+                "callDuration": "06:05",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1622,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "dad3949a34f1b60a244ed3cf50b7c42c",
+                "callDuration": "03:53",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 1265,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "dfc5fb27ac9e91660513c3a43ef4290c",
+                "callDuration": "00:29",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1987,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "e0af740df5172fcb3324c6fe5019e116",
+                "callDuration": "03:27",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 1700,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "e198d2fa3915aeee58a894693160939a",
+                "callDuration": "08:30",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 1842,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "e3df8afb5526e2095de6f8a1e9bac774",
+                "callDuration": "01:25",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 386,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "e63cd948f814199ad09c7022dc1a1b5e",
+                "callDuration": "06:00",
+                "quality": 35.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 447,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "e9b1a5faf87b83c31e0b268c8bd84195",
+                "callDuration": "06:14",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2787,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "e9b1a5faf87b83c31e0b268c8bd84195_2",
+                "callDuration": "06:14",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1095,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "f6759ea8ec9cd8c3c71bebf0594fefe1",
+                "callDuration": "02:51",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1704,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "f96ec6ea4933254810d086b61c8f3ff5",
+                "callDuration": "03:46",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            },
+            {
+                "id": 166,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "fb468e338d38f755bab443a86c815791",
+                "callDuration": "06:00",
+                "quality": 99.55,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2216,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "fb468e338d38f755bab443a86c815791_1",
+                "callDuration": "06:00",
+                "quality": 60.88,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2542,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "fb468e338d38f755bab443a86c815791_2",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 1707,
+                "agentId": 74,
+                "agentName": "Nayankumar Surti",
+                "transactionId": "fcef045e021b0f982a831aa91a956418",
+                "callDuration": "04:03",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-23T00:00:00",
+                "auditedDate": "2022-11-23T00:00:00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "card1" : {
+      "type" : "3column",
+      "title" : "Transaction Status",
+      "icon" : "receipt_long",
+      "borderColor" : "hsl(205, 100%, 50%)",
+      "content" : [
+          {
+              "label" : "Total",
+              "value" : 3056,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "Completed",
+              "value" : 3030,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          },
+          {
+              "label" : "Pending",
+              "value" : 26,
+              "fontColor" : "hsl(4, 89%, 55%)"
+          }
+      ]
+  },
+  "card2" : {
+      "type" : "3column",
+      "title" : "Sentiments",
+      "icon" : "mood",
+      "borderColor" : "hsl(295, 73%, 38%)",
+      "content" : [
+          {
+              "label" : "Neutral",
+              "value" : 2497,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "Positive",
+              "value" : 511,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          },
+          {
+              "label" : "Negative",
+              "value" : 48,
+              "fontColor" : "hsl(4, 89%, 55%)"
+          }
+      ]
+  },
+  "card3" : {
+      "type" : "2column",
+      "icon" : "timer",
+      "borderColor" : "hsl(4, 89%, 55%)",
+      "content" : [
+          {
+              "label" : "Total Audit Duration",
+              "value" : 240,
+              "unit" : "Hours"
+          },
+          {
+              "label" : "AHT",
+              "value" : 15,
+              "unit" : "Minutes"
+          }
+      ]
+  },
+  "card4" : {
+      "type" : "1column",
+      "title" : "Quality",
+      "icon" : "calculate",
+      "borderColor" : "hsl(36, 100%, 47%)",
+      "content" : [
+          {
+              "label" : "",
+              "value" : 91.83
+          }
+      ]
+  },
+  "card5" : {
+    "type" : "3column",
+    "title" : "Credit Reference Agency Information",
+    "icon" : "credit_card",
+    "borderColor" : "hsl(205, 100%, 50%)",
+    "content" : [
+        {
+            "label" : "Eligible Volume",
+            "value" : 2764,
+            "fontColor" : "hsl(205, 100%, 50%)"
+        },
+        {
+            "label" : "Information Shared",
+            "value" : 1658,
+            "fontColor" : "hsl(123, 40%, 46%)"
+        },
+        {
+            "label" : "Percentage Shared",
+            "value" : "60%",
+            "fontColor" : "hsl(4, 89%, 55%)"
+        }
+    ]
+  },
+  "card6" : {
+    "type" : "3column",
+    "title" : "Cash Collected Summary",
+    "icon" : "account_balance_wallet",
+    "borderColor" : "hsl(295, 73%, 38%)",
+    "content" : [
+
+        {
+            "label" : "Cash Collected Accounts",
+            "value" : 284,
+            "fontColor" : "hsl(123, 40%, 46%)"
+        },
+        {
+            "label" : "Total Cash Collected",
+            "value" : "₤83,780",
+            "fontColor" : "hsl(4, 89%, 55%)"
+        },
+        {
+          "label" : "Cash At Plan",
+          "value" : "9%",
+          "fontColor" : "hsl(205, 100%, 50%)"
+        }
+    ]
+  },
+  "card7" : {
+  "type" : "3column",
+  "title" : "Smart Meter Conversion",
+  "icon" : "electric_meter",
+  "borderColor" : "hsl(4, 89%, 55%)",
+  "content" : [
+      {
+          "label" : "Eligible Account",
+          "value" : 2812,
+          "fontColor" : "hsl(205, 100%, 50%)"
+      },
+      {
+          "label" : "Meter Promoted",
+          "value" : "84%",
+          "fontColor" : "hsl(123, 40%, 46%)"
+      },
+      {
+          "label" : "Meter Booked",
+          "value" : "9%",
+          "fontColor" : "hsl(4, 89%, 55%)"
+      }
+    ]
+  },
+  "card8" : {
+  "type" : "3column",
+  "title" : "Self Service Promotion",
+  "icon" : "settings_applications",
+  "borderColor" : "hsl(36, 100%, 47%)",
+  "content" : [
+      {
+          "label" : "Eligible Account",
+          "value" : 2672,
+          "fontColor" : "hsl(205, 100%, 50%)"
+      },
+      {
+          "label" : "Service Promoted",
+          "value" : 936,
+          "fontColor" : "hsl(123, 40%, 46%)"
+      },
+      {
+          "label" : "Percentage Promoted",
+          "value" : "35%",
+          "fontColor" : "hsl(4, 89%, 55%)"
+      }
+    ]
+  },
+
+  "widget1" : {
+      "tab1" : {
+        "title" : "Day",
+        "content" : {
+            "type" : "bar",
+            "body" : {
+              "chartTitle" : "No. of Transactions",
+              "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+              "data" : [
+                      {
+                          "name" : "Completed",
+                          "values" : [316, 317, 380, 315, 12, 336, 563, 447, 344],
+                          "bg" : "hsl(123, 40%, 46%)"
+                      },
+                      {
+                          "name" : "Pending",
+                          "values" : [3, 2, 3,  0, 0, 0, 7, 6, 5],
+                          "bg" : "hsl(4, 89%, 55%)"
+                      }
+                  ]
+              }
+            }
+          },
+          "tab2" : {
+              "title" : "Month",
+              "content" : {
+                  "type" : "bar",
+                  "body" : {
+                      "chartTitle" : "No. of Transactions",
+                      "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                      "data" : [
+                              {
+                                  "name" : "Completed",
+                                  "values" : [2872, 2872, 3400, 3030],
+                                  "bg" : "hsl(123, 40%, 46%)"
+                              },
+                              {
+                                  "name" : "Pending",
+                                  "values" : [29, 24, 29, 26],
+                                  "bg" : "hsl(4, 89%, 55%)"
+                              }
+                          ]
+                      }
+                  }
+              }
+      },
+  "widget2" : {
+      "tab1" : {
+          "title" : "ID&V",
+          "content" : {
+              "type" : "doughnut",
+              "body" : {
+                  "chartTitle" : "No. of Records",
+                  "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+                  "data" : [
+                          {
+                              "name" : "Pass",
+                              "values" : [2842],
+                              "bg" : "hsl(123, 40%, 46%)"
+                          },
+                          {
+                              "name" : "Exception",
+                              "values" : [116],
+                              "bg" : "hsl(38, 100%, 53%)"
+                          },
+                          {
+                              "name" : "Failed",
+                              "values" : [68],
+                              "bg" : "hsl(4, 89%, 55%)"
+                          }
+                      ]
+                  }
+              }
+          },
+          "tab2" : {
+              "title" : "Vulnerable Customer",
+              "content" : {
+                  "type" : "doughnut",
+                  "body" : {
+                      "chartTitle" : "No. of Records",
+                      "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                      "data" : [
+                              {
+                                  "name" : "Non-Vulnerable",
+                                  "values" : [3024],
+                                  "bg" : "hsl(123, 40%, 46%)"
+                              },
+                              {
+                                  "name" : "Vulnerable",
+                                  "values" : [32],
+                                  "bg" : "hsl(4, 89%, 55%)"
+                              }
+                          ]
+                      }
+                  }
+              },
+          "tab3" : {
+              "title" : "EOD",
+              "content" : {
+                  "type" : "doughnut",
+                  "body" : {
+                      "chartTitle" : "Expression of Disatisfaction",
+                      "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                      "data" : [
+                              {
+                                  "name" : "Satisfied",
+                                  "values" : [2889],
+                                  "bg" : "hsl(123, 40%, 46%)"
+                              },
+                              {
+                                  "name" : "Dissatisfied",
+                                  "values" : [167],
+                                  "bg" : "hsl(4, 89%, 55%)"
+                              }
+                          ]
+                      }
+                  }
+              },
+          "tab4" : {
+              "title" : "EOD",
+              "content" : {
+                  "type" : "doughnut",
+                  "body" : {
+                      "chartTitle" : "Customer Query Status",
+                      "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                      "data" : [
+                              {
+                                  "name" : "Resolved",
+                                  "values" : [2889],
+                                  "bg" : "hsl(123, 40%, 46%)"
+                              },
+                              {
+                                  "name" : "Not-Resolved",
+                                  "values" : [167],
+                                  "bg" : "hsl(4, 89%, 55%)"
+                              }
+                          ]
+                      }
+                  }
+              }
+      },
+  "widget3" : {
+    "tab1" : {
+      "title" : "Journey",
+      "content" : {
+          "type" : "doughnut",
+          "body" : {
+              "chartTitle" : "No. of Records",
+              "legends" : ["25 Dec","26 Dec", "27 Dec", "28 Dec","29 Dec","30 Dec","31 Dec","1 Jan", "2 Jan" ],
+              "data" : [
+                      {
+                          "name" : "Help",
+                          "values" : [1895],
+                          "bg" : "hsl(38, 100%, 53%)"
+                      },
+                      {
+                          "name" : "Reconsider",
+                          "values" : [672],
+                          "bg" : "hsl(247, 100%, 61%)"
+                      },
+                      {
+                          "name" : "Run",
+                          "values" : [275],
+                          "bg" : "hsl(291, 100%, 56%)"
+                      },
+                      {
+                          "name" : "Buy",
+                          "values" : [214],
+                          "bg" : "hsl(156, 100%, 39%)"
+                      }
+                  ]
+              }
+          }
+        },
+        "tab2" : {
+            "title" : "Sub Journey",
+            "content" : {
+                "type" : "doughnut",
+                "body" : {
+                    "chartTitle" : "No. of Records",
+                    "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                    "data" : [
+                            {
+                                "name" : "Breakdown",
+                                "values" : [1406],
+                                "bg" : "hsl(38, 100%, 53%)"
+                            },
+                            {
+                                "name" : "Renewal",
+                                "values" : [459],
+                                "bg" : "hsl(247, 100%, 61%)"
+                            },
+                            {
+                                "name" : "Dyno Breakdown",
+                                "values" : [304],
+                                "bg" : "hsl(291, 100%, 56%)"
+                            },
+                            {
+                                "name" : "ASV",
+                                "values" : [254],
+                                "bg" : "hsl(156, 100%, 39%)"
+                            },
+                            {
+                                "name" : "Leave",
+                                "values" : [227],
+                                "bg" : "hsl(12, 54%, 50%)"
+                            },
+                            {
+                                "name" : "Service Buy",
+                                "values" : [221],
+                                "bg" : "hsl(26, 51%, 54%)"
+                            },
+                            {
+                                "name" : "Complaints",
+                                "values" : [188],
+                                "bg" : "hsl(188, 100%, 39%)"
+                            }
+                        ]
+                    }
+                }
+            },
+        "tab3" : {
+            "title" : "Customer Intent",
+            "content" : {
+                "type" : "doughnut",
+                "body" : {
+                    "chartTitle" : "No. of Records",
+                    "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+                    "data" : [
+                            {
+                                "name" : "Book appointment",
+                                "values" : [873],
+                                "bg" : "hsl(38, 100%, 53%)"
+                            },
+                            {
+                                "name" : "Enquire appointment",
+                                "values" : [531],
+                                "bg" : "hsl(247, 100%, 61%)"
+                            },
+                            {
+                                "name" : "Renewal related queries",
+                                "values" : [459],
+                                "bg" : "hsl(291, 100%, 56%)"
+                            },
+                            {
+                                "name" : "Book appointment",
+                                "values" : [304],
+                                "bg" : "hsl(156, 100%, 39%)"
+                            },
+                            {
+                                "name" : "Contract cancellation and queries",
+                                "values" : [254],
+                                "bg" : "hsl(12, 54%, 50%)"
+                            },
+                            {
+                                "name" : "Queries related to quotes, Products & Services",
+                                "values" : [227],
+                                "bg" : "hsl(26, 51%, 54%)"
+                            },
+                            {
+                                "name" : "Raise / Escalate Complaint",
+                                "values" : [188],
+                                "bg" : "hsl(188, 100%, 39%)"
+                            }
+                        ]
+                    }
+                }
+            }
+      },
+  "widget4": {
+    "tab1" : {
+      "title": "Call Drivers",
+      "content": {
+        "type":"doughnut",
+        "body": {
+          "chartTitle" : "No. of Records",
+          "data" : [
+            {
+              "name" : "Check account balance",
+              "values" : [52],
+              "bg" : "hsl(38, 100%, 53%)"
+            },
+            {
+              "name" : "Make a payment",
+              "values" : [18],
+              "bg" : "hsl(247, 100%, 61%)"
+            },
+            {
+              "name" : "General enquiry",
+              "values" : [7],
+              "bg" : "hsl(291, 100%, 56%)"
+            },
+            {
+              "name" : "Set up DD",
+              "values" : [15],
+              "bg" : "hsl(156, 100%, 39%)"
+            },
+            {
+              "name" : "Smart Meter",
+              "values" : [8],
+              "bg" : "hsl(12, 54%, 50%)"
+            }
+          ]
+        }
+      }
+    }
+  }
+
+}

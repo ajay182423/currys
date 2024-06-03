@@ -1,0 +1,12 @@
+<div class="app-select">
+  <select class="select" #dropDown [class.is-invalid]="fieldRequiredError"
+    (change)="requiredCheckOnSelectInput(dropDown.value)" (blur)="requiredCheckOnSelectInput(dropDown.value)">
+    <option value="0">Select</option>
+    <option value={{item.id}} *ngFor="let item of optionList">
+      {{item.name}}
+    </option>
+  </select>
+  <div class="app-select-arrow">
+  </div>
+</div>
+<div *ngIf="fieldRequiredError" class="invalid-feedback">{{label}} is required</div>

@@ -1,0 +1,74 @@
+.banner {
+  &__wrapper {
+    position: relative;
+    height: 49.1rem;
+  }
+  &__img-container {
+    img {
+      object-fit: cover;
+      object-position: 80% 30%;
+      max-width: none;
+      position: absolute;
+      top: 0rem;
+      left: 0rem;
+      width: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      height: 100%;
+      filter: grayscale(100%);
+    }
+  }
+  &__container {
+    position: relative;
+    height: 100%;
+    display: flex;
+  }
+  &__data {
+    position: absolute;
+    width: 65%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    margin-top: 4.5rem;
+  }
+  &__title {
+    margin-left: -0.5rem;
+    font-size: calc(var(--font-size-l) * 7);
+    line-height: 7.6rem;
+    color: var(--text-color-00);
+    font-weight: calc(var(--font-weight) - 100);
+    margin-bottom: 3rem;
+  }
+  &__subtitle {
+    font-size: calc(var(--font-size-r) * 2.2);
+    line-height: 2.4rem;
+    font-weight: 300;
+    color: var(--text-color-00);
+    margin-bottom: 4.5rem;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .banner {
+    &__data {
+      flex-grow: 1;
+      background-color: var(--bg-00);
+      position: absolute;
+      top: auto;
+      bottom: -5rem;
+      left: 0rem;
+      right: 0rem;
+      padding: 2rem;
+      width: auto;
+    }
+    &__title {
+      margin: 0rem;
+      line-height: 4.5rem;
+      margin-bottom: 1rem;
+    }
+    &__subtitle {
+      line-height: 2.16rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

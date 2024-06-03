@@ -1,0 +1,27 @@
+<div class="grid-auto-col settings-links">
+  <ng-container *ngFor="let category of settingsMenu">
+    <div *ngIf="hasAccessToCategory(category.items)" class="separator full-width">
+      <span></span>
+      <b>{{ category.name }}</b>
+      <span></span>
+    </div>
+    <ng-container *ngFor="let item of category.items">
+      <a *canAccessPage="item.id" [routerLink]=[item.link] class="settings-links__card-wrapper">
+        <span class="settings-links__bar"></span>
+        <div class="settings-links__card-icon">
+          <span class="mt-icon material-icons-round">
+            {{ item.icon }}
+          </span>
+        </div>
+        <div class="settings-links__card-body">
+          <div class="settings-links__card-title">
+            {{ item.name }}
+          </div>
+          <div class="settings-links__card-caption">
+            {{ item.caption }}
+          </div>
+        </div>
+      </a>
+    </ng-container>
+  </ng-container>
+</div>

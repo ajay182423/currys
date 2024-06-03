@@ -1,0 +1,8 @@
+<app-page-header [title]="'User Groups'" [goBack]="true" [createNew]="true" [showSeparator]="true"
+  (createNewEvent)="receiveCreateNewRequest()">
+</app-page-header>
+<div class="fp-table-page" @slideUp>
+  <full-page-table [isLoading]="isLoading" [tableMessage]="tableMessage" [tableHeaders]="tableHeaders"
+    [tableData]="tableData" (rowClickEvent)="receiveRowClickRequest($event)"
+    (pageChangeEvent)="receivePageChangeRequest($event)"></full-page-table>
+</div>

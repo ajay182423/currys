@@ -1,0 +1,17 @@
+<div class="card-type-1">
+  <div class="card-type-1__wrapper" *ngFor="let item of cardData" (click)="sendCardType1ClickEvent(item.returnValue)">
+    <div class="card-type-1__body">
+      <div class="card-type-1__title">
+        {{item.name}}
+      </div>
+      <div *ngIf="item.caption" class="card-type-1__caption">
+        Case study
+      </div>
+    </div>
+    <div class="card-type-1__img-wrapper">
+      <img src="{{ item.thumbnail }}" alt="{{ item.thumbnailAlt }}">
+      <div class="mask"></div>
+    </div>
+  </div>
+  <p class="card-type-1__no-content" *ngIf="cardData?.length < 1">No record found!</p>
+</div>

@@ -1,0 +1,363 @@
+.d-flex  {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-stretch {
+  align-items: stretch;
+}
+.align-end {
+  align-items: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-evenly{
+  justify-content: space-evenly;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-column {
+  flex-direction: column;
+}
+.disabled {
+  filter: opacity(50%);
+}
+.field-label {
+  color: var(--text-color-01);
+  display: inline-block;
+  align-self: flex-start;
+  width: 100%;
+  font-size: calc(var(--font-size-s) * 1.3);
+  padding-left: 0.1rem;
+  &.left {
+    font-size: inherit;
+  }
+  span {
+    font-size: 1.5rem;
+    margin-left: 0.3rem;
+    color: var(--danger-color);
+  }
+}
+.invalid-feedback {
+  color: var(--danger-color);
+  display: inline-block;
+  align-self: flex-start;
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.3rem;
+  padding-left: 0.1rem;
+  padding-top: 0.5rem;
+  &.left {
+    font-size: inherit;
+  }
+}
+
+.is-invalid {
+  border: 0.16rem solid var(--danger-color);
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.brdr-r {
+  border: 0.1rem solid var(--border-color);
+}
+
+//perfect-scrollbar for page
+.ps-page {
+  position: relative;
+  height: 100vh;
+}
+
+//--------------------Container
+.abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.center-container {
+  max-width: 1250px;
+  width: calc(100% - 4rem);
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+@media screen and (min-width: 1250px) {
+  .center-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+//--------------------Grid layout
+.media-auto-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 1.5rem;
+}
+
+.grid-auto-col {
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+  margin-bottom: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  grid-gap: 2.5rem;
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+.grid-3-col,
+.grid-4-col {
+  margin-top: 0.5rem;
+  margin-bottom: 3.5rem;
+  display: grid;
+  grid-gap: 3rem;
+}
+
+.grid-3-col {
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+}
+.grid-4-col {
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+}
+
+//--------------------forms
+.form-1-col,
+.form-2-col,
+.form-3-col {
+  padding: 0rem 4rem 4rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem 2rem;
+  .full-width {
+    grid-column: 1 / -1;
+  }
+  .separator {
+    display: none;
+    margin: 1rem 0 0rem 0;
+    border-bottom: 0.1rem solid var(--border-color);
+  }
+  .show-separator {
+    display: block;
+  }
+  .disable-btn,
+  .toggle-btn {
+    width: 10rem;
+    margin-top: 2.2rem;
+  }
+  .toggle-btn {
+    width: auto;
+    margin-top: 1rem;
+  }
+  .toggle-btn-no-label {
+    width: 3.5rem;
+  }
+  .form-btns {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      min-width: 9rem;
+      margin-left: 2rem;
+    }
+  }
+}
+
+.form-2-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-3-col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+//below form style has to be applied after form-n-col style applied
+//form on popup. padding has to match the header left-right padding
+.popup-form {
+  padding: 0rem 4rem 3.5rem 4rem;
+}
+
+.json-popup-form {
+  padding: 0rem 4rem 3.5rem 4rem;
+}
+
+.form-accordion {
+  padding: 0.5rem 2.5rem;
+}
+
+.form-accordion-content {
+  padding: 1rem 1.5rem 0.5rem 1.5rem; //0.5rem margin/padding is already there between accordion
+}
+
+.form-accordion-media {
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem; //0.5rem margin/padding is already there between accordion
+}
+
+.form-accordion-html-editor {
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem; //1rem margin/padding is already there between accordion
+}
+
+//=============================settings-page common style
+.settings-links-page {
+  margin-top: -1.5rem;
+  position: relative;
+  padding: 0rem 2.5rem 0 2.5rem;
+  min-height: calc(100vh - var(--navbar));
+  display: flex;
+  flex-direction: column;
+}
+
+.fp-table-page {
+  position: relative;
+  // height: calc(100vh - (var(--navbar)));
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-media {
+  border-radius: var(--border-radius);
+  width: 100%;
+  .media-item {
+    border: 0.1rem solid var(--field-border-color);
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    height: 15rem;
+    box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.2);
+    .media-item-menu {
+      background-color: rgba(0, 0, 0, 0.568);
+      position: absolute;
+      display: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      align-items: center;
+      justify-content: center;
+      .delete,
+      .open {
+        margin: 0.7rem;
+        min-height: 4rem;
+        min-width: 4rem;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--icon-color);
+        background-color: var(--bg-00);
+        border-color: var(--field-border-color);
+        box-shadow: none;
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: var(--bg-00);
+          color: var(--secondary-color);
+          //border-color: var(--bg-00);
+          box-shadow: none;
+        }
+      }
+    }
+    img,
+    video {
+      filter: grayscale(100%);
+      border-radius: 0.25rem;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .icon {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &:hover {
+      .media-item-menu {
+        display: flex;
+      }
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+//==================================media queries
+@media only screen and (max-width: 1000px) {
+  .form-3-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .ps-page {
+    position: relative;
+    height: calc(100vh - (var(--navbar) * 1));
+  }
+  .settings-links-page {
+    margin-top: 0rem;
+    padding: 0rem 0.8rem;
+  }
+  .settings-links {
+    min-height: calc(100vh - (var(--navbar) * 2));
+    margin-top: -0.5rem;
+    padding: 0rem 1.5rem;
+  }
+  .fp-table-page {
+    //browser height - (mobile-header + page-headder-height)
+    height: calc(100vh - (var(--navbar) * 2));
+    padding: 0 0rem;
+  }
+  .gallery-media {
+    .media-item {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .form-2-col,
+  .form-3-col {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem 3rem 0.5rem;
+    .separator {
+      display: block;
+      margin: 1rem 0 0.5rem 0;
+    }
+    .disable-btn,
+    .toggle-btn {
+      width: auto;
+      padding: 1rem 0rem 0rem 0rem;
+      margin: 0;
+    }
+    .form-accordion-disable-btn {
+      padding: 2rem 0rem 0.5rem 0rem;
+    }
+    .form-btns {
+      margin-top: 0.5rem;
+    }
+  }
+  .popup-form {
+    padding: 0rem 3rem 3.5rem 3rem;
+  }
+  .form-accordion {
+    padding: 0.5rem 1.5rem;
+  }
+}

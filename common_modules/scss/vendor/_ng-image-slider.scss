@@ -1,0 +1,67 @@
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div,
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div img, 
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div video {
+  filter: grayscale(100%) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.ng-image-slider .ng-image-slider-container .main .next, 
+.ng-image-slider .ng-image-slider-container .main .prev,
+.ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .next,
+.ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .prev {
+  right: 1rem !important;
+  background-color: var(--bg-01) !important;
+  color: var(--icon-color) !important;
+  font-size: 5.3rem !important;
+  width: 3.3rem !important;
+  height: 3.3rem !important;
+  transition: all 0.2s ease-in-out !important;
+  &:hover{
+    color: var(--secondary-color) !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+}
+.ng-image-slider .ng-image-slider-container .main .next,
+.ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .next {
+  padding-left:0.3rem;
+}
+.ng-image-slider .ng-image-slider-container .main .prev,
+.ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .prev {
+  padding-right:0.3rem;
+}
+
+.ng-image-fullscreen-view .lightbox-wrapper {
+  background-color: var(--bg-01) !important;
+}
+
+.ng-image-fullscreen-view .lightbox-wrapper .lightbox-div {
+  padding: 3rem 0 !important;
+}
+
+.ng-image-fullscreen-view .lightbox-wrapper .close {
+  background-image: none !important;
+  background-color: transparent !important;
+  height: 3.8rem !important;
+  width: 3.8rem !important;
+  color: var(--icon-color) !important;
+  line-height: 4rem !important;
+  transition: all 0.2s ease-in-out !important;
+  &:before{
+    text-align: center;
+    font-size: 4rem !important;
+    font-weight: 300;
+	  content: "\00d7";
+    transition: all 0.2s ease-in-out !important;
+  }
+  &:hover{
+    transform: rotate(90deg);
+    color: var(--secondary-color) !important;
+    transition: all 0.2s ease-in-out !important;
+    
+  }
+}
+
+.ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .lightbox-image-main .lightbox-image .custom-image-main img {
+  filter: grayscale(100%) !important;
+}

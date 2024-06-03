@@ -1,0 +1,87 @@
+//---------------animation
+.page-hidden {
+  display: none;
+}
+
+//----------slideUp
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.page-slideup {
+  animation-name: slideUp;
+  animation-duration: 0.5s;
+}
+
+.dis-bk {
+  display: block;
+}
+.dis-fx {
+  display: flex;
+}
+.dis-grd {
+  display: grid;
+}
+
+//----------slideLeft
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(3%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.page-slideleft {
+  animation-name: slideLeft;
+  animation-duration: 0.5s;
+}
+
+//opening-dots
+.opening-dots span {
+  display: inline-block;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  max-width: 0.5rem;
+  max-height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.opening-dots span:nth-child(1){
+  margin-right: 0.5rem;
+}
+
+.opening-dots span:nth-child(2){
+  animation-delay: .2s;
+  margin-right: 0.5rem;
+}
+
+.opening-dots span:nth-child(3){
+  animation-delay: .4s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+

@@ -1,0 +1,509 @@
+<perfect-scrollbar class="ps-page">
+  <main class="app-main">
+    <section class="dashboard">
+      <div>
+        <!-- <app-navbar-new></app-navbar-new> -->
+      </div>
+      <div class="dashboard__header center-container" style="max-width: initial;">
+        <button class="btn btn-primary" style="margin: 0 20px 0 0;" (click)="batchRun()">Batch Run</button>
+        <div class="action-btn-box">
+          <div class="round-select-dashboard" style="margin: 0px 0px 0px -8px;width:100px;">
+            <select name="selectTimeFrame" #selectTimeFrame
+              style="color: black;font-size: 1.3rem;font-weight: 500;height: 30px; border-left: 0.1rem solid rgb(231, 231, 238);border-top: 0.1rem solid rgb(231, 231, 238);border-bottom: 0.1rem solid rgb(231, 231, 238);"
+              (change)="showStats(selectTimeFrame.value)" (click)="showStats(selectTimeFrame.value)">
+
+              <option value="Total" selected>History</option>
+            </select>
+            <div class="round-select-arrow">
+            </div>
+          </div>
+          <div class="round-select-dashboard" style="margin: 0px 0px 0px -8px;width:190px;">
+            <select name="selectMailbox" #selectMailbox (change)="GetStatsMailboxAddress(selectMailbox.value);"
+              style="color: black;font-size: 1.3rem;font-weight: 500;height: 30px; border-left: 0.1rem solid rgb(231, 231, 238);border-top: 0.1rem solid rgb(231, 231, 238);border-bottom: 0.1rem solid rgb(231, 231, 238);">
+
+              <option value="All">Form Type - All</option>
+            </select>
+            <div class="round-select-arrow">
+            </div>
+          </div>
+
+          <!-- <button class="btn btn-icon square-btn" *appHasRole='["Admin", "Supervisor", "Client Manager"]' -->
+          <button class="btn btn-icon square-btn" routerLinkActive='link-active' routerLink="/reports">
+            <svg style="width: 2rem;" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M2 12H4V17H20V12H22V17C22 18.11 21.11 19 20 19H4C2.9 19 2 18.11 2 17V12M12 15L17.55 9.54L16.13 8.13L13 11.25V2H11V11.25L7.88 8.13L6.46 9.55L12 15Z" />
+            </svg>
+            <span class="tooltip tooltip-bottom">Reports</span>
+          </button>
+          <button class="btn btn-icon square-btn" style="border-radius: 0px;background-color:#47a44b;border: 0px;"
+            (click)="RefreshPage()">
+            <svg style="width: 2rem;" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2M18 11H13L14.81 9.19A3.94 3.94 0 0 0 12 8A4 4 0 1 0 15.86 13H17.91A6 6 0 1 1 12 6A5.91 5.91 0 0 1 16.22 7.78L18 6Z" />
+            </svg>
+            <span class="tooltip tooltip-bottom">Refresh</span>
+          </button>
+          <button class="btn btn-icon square-btn" style="display: none;">
+            <svg style="width: 2rem;" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M15,19.88C15.04,20.18 14.94,20.5 14.71,20.71C14.32,21.1 13.69,21.1 13.3,20.71L9.29,16.7C9.06,16.47 8.96,16.16 9,15.87V10.75L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L15,10.75V19.88M7.04,5L11,10.06V15.58L13,17.58V10.05L16.96,5H7.04Z" />
+            </svg>
+            <span class="tooltip tooltip-bottom">Filter</span>
+          </button>
+            <div class="user-box-container">
+              <div class="user-box">
+                <div class="user-box__icon fx-row">
+                  <svg style="width:3.5rem;height:3.5rem" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+                  </svg>
+                </div>
+                <button [ngClass]="isUserMenuOpened ? ('btn user-box__expander user-box-focused') : 'btn user-box__expander'"
+                  (click)='openUserMenu($event)'>
+                  <h4>{{userFirstName}}</h4>
+                  <svg style="width:2.4rem;height:2.4rem; margin-top:-0.2rem" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                  </svg>
+                </button>
+              </div>
+              <div class="user-menu" *ngIf="isUserMenuOpened">
+                <a class="item" (click)="logout()">
+                  <svg style="width:2rem;height:2.1rem" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" />
+                  </svg>
+                  <p>Logout</p>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="center-container" style="max-width: initial;">
+        <div style="display:flex;flex-direction: row;margin-top:-0.8rem;">
+          <div class="card time-card" *ngIf="card1Data" [ngStyle]="{'border-color': card1Data.borderColor}" style="border-left: 0.4rem solid;flex-grow: 1;margin:10px 20px 20px 0px;width: 325px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card1Data.borderColor}">
+                {{card1Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body">
+              <span class="caption">{{card1Data.title}}</span>
+              <div class="time">
+                <div *ngFor="let item of card1Data.content" style="display: flex;flex-direction: column;margin-right: 10px;">
+                  <p class="card_h4" [ngStyle]="{'color': item.fontColor}"><span>{{item.label}}</span></p>
+                  <p  class="card_value" [ngStyle]="{'color': item.fontColor}"><span>{{item.value}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card time-card" *ngIf="card2Data" [ngStyle]="{'border-color': card2Data.borderColor}"
+            style="border-left: 0.4rem solid #9b1aa7;flex-grow: 1;margin:10px 20px 20px 0rem;width: 325px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card2Data.borderColor}">
+                {{card2Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body">
+              <span class="caption">{{card2Data.title}}</span>
+              <div class="time">
+                <div *ngFor="let item of card2Data.content" style="display: flex;flex-direction: column;margin-right: 10px;">
+                  <p class="card_h4" [ngStyle]="{'color': item.fontColor}"><span>{{item.label}}</span></p>
+                  <p  class="card_value" [ngStyle]="{'color': item.fontColor}"><span>{{item.value}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card time-card" *ngIf="card3Data" [ngStyle]="{'border-color': card3Data.borderColor}"
+            style="border-left: 0.4rem solid hsl(4, 89%, 55%);flex-grow: 1;margin:10px 20px 20px 0px;width: 325px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card3Data.borderColor}">
+                {{card3Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body" >
+              <span class="caption">{{card3Data.content[0].label}}</span>
+              <div class="time">
+                <span style="font-size: 22px;line-height: 1.2rem;margin-top: 10px;">{{card3Data.content[0].value | number: '1.0-2'}} <span style="font-size: 12px;">{{card3Data.content[0].unit}}</span></span>
+              </div>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body" >
+              <span class="caption" title="Average Handling Time" style="font-size: 22px;">{{card3Data.content[1].label}}</span>
+              <div class="time">
+                <span style="font-size: 22px;line-height: 1.2rem; margin-top: 7px;">{{card3Data.content[1].value | number: '1.0-2'}}
+                  <span style="font-size: 12px;">{{card3Data.content[1].unit}}</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="card time-card" *ngIf="card4Data" [ngStyle]="{'border-color': card4Data.borderColor}"
+            style="border-left: 0.4rem solid hsl(36, 100%, 47%);flex-grow: 1;margin:10px 0px 20px 0px;width: 325px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card4Data.borderColor}">
+                {{card4Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body" >
+              <span class="caption">{{card4Data.title}}</span>
+              <div class="time">
+                <span style="font-size: 22px;">{{card4Data.content[0].value}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction: row;margin-top:-0.8rem;">
+          <div class="card time-card" *ngIf="card5Data" [ngStyle]="{'border-color': card5Data.borderColor}" style="border-left: 0.4rem solid;flex-grow: 1;margin:10px 20px 20px 0px;width: 335px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card5Data.borderColor}">
+                {{card5Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body">
+              <span class="caption">{{card5Data.title}}</span>
+              <div class="time">
+                <div *ngFor="let item of card5Data.content" style="display: flex;flex-direction: column;margin-right: 10px;">
+                  <p class="card_h4" [ngStyle]="{'color': item.fontColor}"><span>{{item.label}}</span></p>
+                  <p  class="card_value" [ngStyle]="{'color': item.fontColor}"><span>{{item.value}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card time-card" *ngIf="card6Data" [ngStyle]="{'border-color': card6Data.borderColor}" style="border-left: 0.4rem solid;flex-grow: 1;margin:10px 20px 20px 0px;width: 335px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card6Data.borderColor}">
+                {{card6Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body">
+              <span class="caption">{{card6Data.title}}</span>
+              <div class="time">
+                <div *ngFor="let item of card6Data.content" style="display: flex;flex-direction: column;margin-right: 10px;">
+                  <p class="card_h4" [ngStyle]="{'color': item.fontColor}"><span>{{item.label}}</span></p>
+                  <p  class="card_value" [ngStyle]="{'color': item.fontColor}"><span>{{item.value}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card time-card" *ngIf="card7Data" [ngStyle]="{'border-color': card7Data.borderColor}" style="border-left: 0.4rem solid;flex-grow: 1;margin:10px 20px 20px 0px;width: 335px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card7Data.borderColor}">
+                {{card7Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body">
+              <span class="caption">{{card7Data.title}}</span>
+              <div class="time">
+                <div *ngFor="let item of card7Data.content" style="display: flex;flex-direction: column;margin-right: 10px;">
+                  <p class="card_h4" [ngStyle]="{'color': item.fontColor}"><span>{{item.label}}</span></p>
+                  <p  class="card_value" [ngStyle]="{'color': item.fontColor}"><span>{{item.value}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card time-card" *ngIf="card8Data" [ngStyle]="{'border-color': card8Data.borderColor}" style="border-left: 0.4rem solid;flex-grow: 1;margin:10px 0px 20px 0px;width: 335px;">
+            <div class="card_icon">
+              <span class="mt-icon material-icons-round card_icon" [ngStyle]="{'color': card8Data.borderColor}">
+                {{card8Data.icon}}
+              </span>
+            </div>
+            <span class="separator"></span>
+            <div class="content-body">
+              <span class="caption">{{card8Data.title}}</span>
+              <div class="time">
+                <div *ngFor="let item of card8Data.content" style="display: flex;flex-direction: column;margin-right: 10px;">
+                  <p class="card_h4" [ngStyle]="{'color': item.fontColor}"><span>{{item.label}}</span></p>
+                  <p  class="card_value" [ngStyle]="{'color': item.fontColor}"><span>{{item.value}}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display: grid;grid-template-columns: 33% 33% 34%;margin: 2px 0px 20px 0px;">
+          <div class="card utilization-circle" style="display: flex;flex-direction: column;margin-right: 10px;">
+           <div class="card_tabs" style="display: flex;">
+            <button [ngClass]="WeekChartShow ? 'tabs-button-active' : 'tabs-button'"
+              style="flex-grow: 1;border-top-left-radius:5px;"
+              (click)="SelectPerformanceGraphShow('Day')">Days</button>
+            <button [ngClass]="MonthChartShow ? 'tabs-button-active' : 'tabs-button'"
+              style="flex-grow: 1;border-top-right-radius:5px;"
+              (click)="SelectPerformanceGraphShow('Month')">Month</button>
+            </div>
+            <div class="tab_content">
+              <div class="card_content" style="padding: 20px" *ngIf="WeekChartShow">
+                <canvas id="widget1_tab1Chart"></canvas>
+              </div>
+              <div class="card_content" style="padding: 20px;height: auto;" *ngIf="MonthChartShow">
+                <canvas id="widget1_tab2Chart"></canvas>
+              </div>
+            </div>
+          </div>
+            <div class="card utilization-circle" style="display: flex;flex-direction: column;margin-right: 10px;">
+
+              <div class="card_tabs" style="display: flex;">
+                <button [ngClass]="idvComplianceChartShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1;border-top-left-radius:5px;"
+                (click)="SelectGraphShow('IdvCompliance')">ID&V</button>
+                <button [ngClass]="pciComplianceChartShow ? 'tabs-button-active' : 'tabs-button'"
+                style="flex-grow: 1;"
+                (click)="SelectGraphShow('PciCompliance')">Vulnerable Customer</button>
+                <button [ngClass]="sectionChartShow ? 'tabs-button-active' : 'tabs-button'"
+                  style="flex-grow: 1;" (click)="SelectGraphShow('Section')">EOD</button>
+                <button [ngClass]="queryStatusChartShow ? 'tabs-button-active' : 'tabs-button'" style="flex-grow: 1;"
+                  (blur)="SelectGraphShow('queryStatus')" (click)="SelectGraphShow('queryStatus')">Resolution</button>
+
+              </div>
+              <div class="tab_content">
+                <div class="card_content" *ngIf="idvComplianceChartShow">
+                  <canvas id="widget2_tab1Chart"></canvas>
+                </div>
+                <div class="card_content" *ngIf="pciComplianceChartShow">
+                  <canvas id="widget2_tab2Chart"></canvas>
+                </div>
+                <div class="card_content"  *ngIf="sectionChartShow">
+                  <canvas id="widget2_tab3Chart"></canvas>
+                </div>
+                <div class="card_content"  *ngIf="queryStatusChartShow">
+                  <canvas id="widget2_tab4Chart"></canvas>
+                </div>
+
+            </div>
+
+            </div>
+            <div class="card utilization-circle" style="display: flex;flex-direction: column;">
+              <div class="card_tabs" style="display: flex">
+                <button [ngClass]="categorizationCallDriversChartShow ? 'tabs-button-active' : 'tabs-button'"
+                  style="flex-grow: 1;border-top-right-radius:5px;"
+                  (click)="categorizationChart('callDrivers')">Call Drivers</button>
+              </div>
+              <div class="tab_content">
+                <div class="card_content" style="padding:0 10px;" *ngIf="categorizationCallDriversChartShow">
+                  <canvas id="widget3_tab4Chart"></canvas>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div style="display: grid;grid-template-columns: 100% 0%;margin: 20px 0px 20px 0px;">
+          <div class="card utilization-circle" style="display: flex;flex-direction: column;">
+            <div style="margin-top: 17px;width: inherit;padding-left: 10px;padding-right: 10px;">
+                <div style="width: 500px;">
+                  <app-table-filter [filterParams]="tableHeaders" [tableData]="tableData" (searchKey)="searchKey($event)"  [showFilterView]="false"></app-table-filter>
+                </div>
+                <form-table [isLoading]="isLoading" (agentIdEvent)="getAgentId($event)" [enableRecordSelector]="false" (pageChangeEvent)="receivePageChangeRequest($event)" [tableHeaders]="tableHeaders"
+                [tableData]="tableData">
+              </form-table>
+
+            </div>
+          </div>
+        </div>
+        <div class="dash-base-Smart" style="width: 100vw;height: 100vh;" *ngIf="showTATPopup">
+          <div class="Smart-popup-container">
+            <div class="Smart-popup-content-container" style="width:500px;height: 400px;">
+              <div class="Smart-popup-content" style="display: flex;flex-direction: row;">
+                <h2 style="margin:20px 0px  0px 50px;flex-grow: 1;">Turn Around Time Analysis</h2>
+                <button class="btn-close" style="margin:20px 20px  0px 20px;" (click)="closeTATPopup()"><svg
+                    style="width:24px;height:24px;color:black" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                  </svg></button>
+              </div>
+              <div style="width: 470px;height: 220px;padding:10px;margin-top: 50px;">
+                <canvas id="chart_TATChart" height="130px"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-base-Smart" style="width: 100vw;height: 100vh;" *ngIf="showUserPopup">
+          <div class="Smart-popup-container">
+            <div class="Smart-popup-content-container" style="width:500px;height: 400px;">
+              <div class="Smart-popup-content" style="display: flex;flex-direction: row;">
+                <h2 style="margin:20px 0px  0px 50px;flex-grow: 1;">Cases by Users</h2>
+                <button class="btn-close" style="margin:20px 20px  0px 20px;" (click)="closeUserPopup()"><svg
+                    style="width:24px;height:24px;color:black" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                  </svg></button>
+              </div>
+              <div class="table-header-container" style="background-color: white;margin-top: 20px;">
+                <table class="app-table" cellpadding="0" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th style="color:#6d6d6d; font-size:12px;padding-left: 15px;width:130px;" title="Username"
+                        class="th-sort" (click)="sort('Username')">Username</th>
+                      <th style="color: #6d6d6d; font-size:12px;" title="Completed" class="th-sort"
+                        (click)="sort('completedCount')">Completed</th>
+                      <th style="color: #6d6d6d; font-size:12px;padding-right: 5px;justify-content: right;"
+                        title="Pending" class="th-sort" (click)="sort('pendingCount')">Pending</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div class="table-content-container" style="margin-top:0px;">
+                <table class="app-table" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr *ngFor="let item of teamStatsList | orderBy: key : reverse">
+                      <td style="text-align:left;padding-left: 15px;" title={{item.userName}}>{{item.userName}}</td>
+                      <td title={{item.completedCount}}>{{item.completedCount}}</td>
+                      <td style="padding-right: 10px;" title={{item.pendingCount}}>{{item.pendingCount}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="dash-base-Smart" style="width: 100vw;height: 100vh;" *ngIf="showIntentCountonTotalPopup">
+          <div class="Smart-popup-container">
+            <div class="Smart-popup-content-container" style="width:500px;height: 400px;">
+              <div class="Smart-popup-content" style="display: flex;flex-direction: row;">
+                <h2 style="margin:20px 0px  0px 50px;flex-grow: 1;">Case Distribution by Intents</h2>
+                <button class="btn-close" style="margin:20px 20px  0px 20px;"
+                  (click)="closeIntentCountDistributionPopup()"><svg style="width:24px;height:24px;color:black"
+                    viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                  </svg></button>
+              </div>
+              <div class="table-header-container" style="background-color: white;margin-top: 20px;">
+                <table class="app-table" cellpadding="0" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th style="color:#6d6d6d; font-size:12px;padding-left: 15px;width:130px;" title="Username"
+                        class="th-sort" (click)="sort('Username')">Intent</th>
+                      <th style="color: #6d6d6d; font-size:12px;" title="Completed" class="th-sort"
+                        (click)="sort('completedCount')">Total</th>
+                      <th style="color: #6d6d6d; font-size:12px;" title="Completed" class="th-sort"
+                        (click)="sort('completedCount')">Completed</th>
+                      <th style="color: #6d6d6d; font-size:12px;padding-right: 5px;justify-content: right;"
+                        title="Pending" class="th-sort" (click)="sort('pendingCount')">Pending</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div class="table-content-container" style="margin-top:0px;">
+                <table class="app-table" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr *ngFor="let item of intentDistributionList | orderBy: key : reverse">
+                      <td style="text-align:left;padding-left: 15px;" title={{item.intentName}}>{{item.intentName}}</td>
+                      <td title={{item.totalCount}}>{{item.totalCount}}</td>
+                      <td title={{item.completeCount}}>{{item.completeCount}}</td>
+                      <td style="padding-right: 10px;" title={{item.pendingCount}}>{{item.pendingCount}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-base-Smart" style="width: 100vw;height: 100vh;" *ngIf="showSLAMissedPopup">
+          <div class="Smart-popup-container">
+            <div class="Smart-popup-content-container" style="width:800px;height: 400px;overflow-x:hidden">
+              <div class="Smart-popup-content" style="display: flex;flex-direction: row;">
+                <h2 style="margin:20px 0px  0px 50px;flex-grow: 1;">Missed SLA</h2>
+                <button class="btn-close" style="margin:20px 20px  0px 20px;" (click)="closeSlaPopup()"><svg
+                    style="width:24px;height:24px;color:black" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                  </svg></button>
+              </div>
+              <div class="table-header-container" style="background-color: white;margin-top: 20px;width:180%">
+                <table class="app-table" style="width:180%;" cellpadding="0" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th style="color:#6d6d6d; font-size:12px;padding-left: 15px;width:110px;" title="SmartId"
+                        class="th-sort" (click)="sort('SmartId')">Mail Id</th>
+                      <th style="color: #6d6d6d; font-size:12px;width:180px;" title="MailSubject" class="th-sort"
+                        (click)="sort('MailSubject')">Subject</th>
+                        <th style="color: #6d6d6d; font-size:12px;width:180px;" title="MailSubject" class="th-sort"
+                          (click)="sort('from')">Sender</th>
+                          <th style="color: #6d6d6d; font-size:12px;width:180px;" title="MailSubject" class="th-sort"
+                            (click)="sort('to')">Assigned To</th>
+                      <th style="color: #6d6d6d; font-size:12px;padding-right: 5px;justify-content: right;"
+                        title="RecievedOn" class="th-sort" (click)="sort('Received')">Received On</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div class="table-content-container" style="margin-top:0px;width:180%;">
+                <table class="app-table" style="width:180%; "cellpadding="0" cellspacing="2">
+                  <tbody>
+                    <tr *ngFor="let item of pendingSlaPopUpData | orderBy: key : reverse">
+                    <td style="text-align:left;padding-left: 15px;font-size: smaller;width:115px;" title={{item.id}}>{{'SMI00000'+item.id}}</td>
+                      <td style="text-align:left;padding-left: 0px;margin-left:1px;font-size: smaller;width:180px" title={{item.mailSubject}}>{{item.mailSubject}}</td>
+                      <td style="text-align:left;padding-left: 0px;margin-left:1px;font-size: smaller;width:180px" title={{item.sender}}> {{item.sender}}</td>
+                      <td style="text-align:left;padding-left: 0px;margin-left:1px;font-size: smaller;width:180px" title={{item.assignedTo}}> {{item.assignedTo}}</td>
+                      <td style="text-align:left;padding-left: 0px;font-size: smaller;width:fit-content" title={{item.mailRecievedTime}}>{{item.mailRecievedTime}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="dash-base-Smart" style="width: 100vw;height: 100vh;" *ngIf="showCompletedSLAPopup">
+          <div class="Smart-popup-container">
+            <div class="Smart-popup-content-container" style="width:800px;height: 400px;overflow-x:hidden">
+              <div class="Smart-popup-content" style="display: flex;flex-direction: row;">
+                <h2 style="margin:20px 0px  0px 50px;flex-grow: 1;">Completed SLA</h2>
+                <button class="btn-close" style="margin:20px 20px  0px 20px;" (click)="closeCompletedSlaPopup()"><svg
+                    style="width:24px;height:24px;color:black" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                  </svg></button>
+              </div>
+              <div class="table-header-container" style="background-color: white;margin-top: 20px;width:180%">
+                <table class="app-table" style="width:180%;" cellpadding="0" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th style="color:#6d6d6d; font-size:12px;padding-left: 15px;width:110px;" title="SmartId" class="th-sort"
+                        (click)="sort('SmartId')">Mail Id</th>
+                      <th style="color: #6d6d6d; font-size:12px;width:180px;" title="MailSubject" class="th-sort"
+                        (click)="sort('MailSubject')">Subject</th>
+                      <th style="color: #6d6d6d; font-size:12px;width:180px;" title="MailSubject" class="th-sort"
+                        (click)="sort('from')">Sender</th>
+                      <th style="color: #6d6d6d; font-size:12px;width:180px;" title="MailSubject" class="th-sort"
+                        (click)="sort('to')">Assigned To</th>
+                      <th style="color: #6d6d6d; font-size:12px;padding-right: 5px;justify-content: right;" title="RecievedOn"
+                        class="th-sort" (click)="sort('Received')">Received On</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div class="table-content-container" style="margin-top:0px;width:180%;">
+                <table class="app-table" style="width:180%; " cellpadding="0" cellspacing="2">
+                  <tbody>
+                    <tr *ngFor="let item of completedSlaPopUpData | orderBy: key : reverse">
+                      <td style="text-align:left;padding-left: 15px;font-size: smaller;width:115px;" title={{item.id}}>
+                        {{'SMI00000'+item.id}}</td>
+                      <td style="text-align:left;padding-left: 0px;margin-left:1px;font-size: smaller;width:180px"
+                        title={{item.mailSubject}}>{{item.mailSubject}}</td>
+                      <td style="text-align:left;padding-left: 0px;margin-left:1px;font-size: smaller;width:180px"
+                        title={{item.sender}}> {{item.sender}}</td>
+                      <td style="text-align:left;padding-left: 0px;margin-left:1px;font-size: smaller;width:180px"
+                        title={{item.assignedTo}}> {{item.assignedTo}}</td>
+                      <td style="text-align:left;padding-left: 0px;font-size: smaller;width:fit-content"
+                        title={{item.mailRecievedTime}}>{{item.mailRecievedTime}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</perfect-scrollbar>
+<!-- <app-footer></app-footer> -->

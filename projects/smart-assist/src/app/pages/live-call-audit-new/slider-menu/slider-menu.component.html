@@ -1,0 +1,25 @@
+<div *ngIf="isVisible" class="popup">
+    <perfect-scrollbar class="ps">
+        <div class="content_inner">
+            <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto"
+                [perfectScrollbar]="config" (psXReachEnd)="onScrollEvent($event)"
+                (psYReachEnd)="onScrollEvent($event)" (psXReachStart)="onScrollEvent($event)"
+                (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                    <div class="ai_entity">
+                        <div class="d-flex align-start justify-between">
+                            <div class="d-flex align-start justify-start">
+                                <h4 class="entity_heading success-color">AI Recommendation</h4>
+                            </div>
+                        </div>
+                        <div class="entity">
+                            <p class="transcript_entity_feedback">
+                                <span style="color: #5d5b5b;">{{shownData[shownData.length - 1]}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </perfect-scrollbar>
+</div>

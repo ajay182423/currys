@@ -1,0 +1,20 @@
+<form class="form-2-col popup-form" [formGroup]='customForm' (ngSubmit)="submitForm()">
+  <ng-container *ngFor="let control of jsonFormData?.controls">
+    <div>
+      <label class="field-label" *ngIf="control.label !== ''">{{ control.label }}<span *ngIf="control?.validators?.required">*</span></label>
+      <text-input *ngIf="['text','password','email','number','search','tel','url'].includes(control.type)" [formControl]="control.name"></text-input>
+    </div>
+    <!--<div>
+      <label class="field-label" *ngIf="control.label !== ''">{{ control.label }}<span *ngIf="control?.validators?.required">*</span></label>
+      <text-input *ngIf="['text','password','email','number','search','tel','url'].includes(control.type)" [formControl]="control.name"></text-input>
+      <textarea-input *ngIf="control.type === 'textarea'" [formControl]="control.name" [rows]='"4"' [columns]='"50"'></textarea-input>
+    </div>-->
+  </ng-container>
+  <div class="form-btns full-width">
+    <div>
+      <button class="btn" type="submit">
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

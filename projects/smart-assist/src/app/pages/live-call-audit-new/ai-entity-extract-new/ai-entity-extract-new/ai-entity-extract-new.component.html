@@ -1,0 +1,419 @@
+
+<div class="call_transcript_block">
+    <div class="call_transcript_header">
+      <div class="d-flex align-end">
+        <div class="card_tabs d-flex align-center justify-center">
+          <button title="AI Nudges" class="d-flex align-center justify-start" [ngClass]="recommendationShow ? 'tabs-button-active' : 'tabs-button'"
+              (click)="showAITabs('recommendation')">
+              <ng-container *ngIf="detailsNotificationCount > 0  ">
+                <span class="notifiaction">{{detailsNotificationCount}}</span>
+              </ng-container>
+          </button>          
+        </div>
+      </div>
+    </div>
+
+    <div class="content" *ngIf="recommendationShow">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner">
+          <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto"
+            [perfectScrollbar]="config" (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+            (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+            <div class="scrollable-content">
+              <div *ngFor="let transcript of transcriptData">
+                <div *ngIf="transcript.Feedback.length  >= 1 ">
+                  <div class="ai_entity" >
+                    <div class="d-flex align-start justify-between">
+                      <div class="d-flex align-start justify-start">
+                        <div class="ai_icon1">
+                          <span class="material-symbols-outlined" style="font-size: 12px;">
+                            thumb_up
+                          </span>
+                        </div>
+                        <h4 class="entity_heading success-color">AI Recommendation</h4>
+                      </div>
+                      <div class="review_buttons">
+                        <!-- <button class="like_btn">                          
+                          <span class="material-symbols-outlined" style="font-size: 1.6rem;">
+                            thumb_up
+                          </span>
+                        </button> -->
+                        <button class="dislike_btn"
+                          (click)="openFeedbackPopup({'type': 'feedback','entity':'Feedback', 'text' : transcript.Feedback[0].text}, 'Edit Ai Recommendation')">
+                          <span class="material-symbols-outlined" style="font-size: 1.6rem;">
+                            thumb_down
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="entity">
+                      <div *ngFor="let item of transcript.Feedback; let i = index">
+                        <ng-container *ngIf="multiLine(item.text)">
+                          <div *ngFor="let entity  of checkForSplit(item.text)">
+                            <p class="transcript_entity_feedback">
+                              <span style="color: #5d5b5b;">{{entity}}</span>
+                            </p>
+                          </div>
+                        </ng-container>
+                        <ng-container *ngIf="!multiLine(item.text)">
+                          <p class="transcript_entity_feedback">
+                            <span style="color: #5d5b5b;">{{item.text}}</span>
+                          </p>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ng-container *ngIf="transcript.entities != ' ' ">
+                  <div class="ai_entity" style="border:1px solid #fffacc;">
+                    <div class="d-flex align-start justify-between">
+                      <div class="d-flex align-start justify-start">
+                        <div class="ai_icon">
+                          <span class="material-symbols-rounded">
+                            logout
+                          </span>
+                        </div>
+                        <h4 class="entity_heading warning-color">AI Entity Extract</h4>
+                      </div>
+                      <div class="review_buttons">
+                        
+                        <button class="dislike_btn"
+                          (click)="openFeedbackPopup({'type': 'entity','entity' : transcript.entities}, 'Edit Entity Extract')">
+                          <span class="material-symbols-outlined" style="font-size: 1.6rem;">
+                            thumb_down
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="entity" *ngFor="let entity of transcript.entities">
+                      <div class="d-flex justify-between align-center">
+                        <div class="transcript_entity_feedback" style="width: 30%;">
+                          <div class="entity" title="{{transcript.comment}}">
+                            {{ entity?.entity.replace('_', ' ')}}
+                          </div>
+                        </div>
+                        <div class="transcript_entity_feedback" style="width: 50%;">
+                          <div class="entity" title="{{transcript.comment}}">
+                            <span>{{entity?.text}}</span>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-column justify-end" style="width: 10%;">
+                          <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                            <span class="mt-icon material-icons-round">
+                              content_copy
+                            </span>
+                          </button>
+                        </div>
+                        <!-- <div class="d-flex flex-column justify-end"  style="width: 10%;">
+                                  <button class="copy_btn" (click)="saveEntity()">
+                                    <span class="mt-icon material-icons-round" title="Save">
+                                      save
+                                    </span>
+                                  </button>
+                                </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="transcript.actions != '' ">
+                  <div class="ai_entity2">
+                    <div class="d-flex align-start justify-start">
+                      <div class="ai_icon2">
+                        <span class="material-symbols-rounded" style="font-size: 12px;">
+                          target
+                        </span>
+                      </div>
+                      <!-- <p class="entity_heading">AI Nudges</p> -->
+                      <h4 class="entity_heading danger-text">AI Action</h4>
+                    </div>
+                    <div class="entity">
+  
+                      <div class="transcript_entity_feedback">
+                        <div class="mb-1">
+                          <div class="d-flex align-start justify-start flex-wrap">
+                            <div class="" *ngFor="let actionItem of transcript.actions.action.Details.split('\n')">
+                              <p style="margin-bottom: 1rem;">{{actionItem}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-right mb-1">
+                          <button class="btn-info btn1"
+                            (click)="callToActionEvent(transcript.actions.action.call_to_action)">{{transcript.actions.action.call_to_action}}</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </div>
+      <!-- <div class="content" *ngIf="extracted_detailsShow">
+        <perfect-scrollbar class="ps">
+          <div class="content_inner">
+            <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                  (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                  (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                  <div class="scrollable-content">
+                    <div *ngFor="let transcript of transcriptData">
+                      <ng-container *ngIf="transcript.entities != ' ' ">
+                      <div class="ai_entity" *ngFor="let entity of transcript.entities">
+                          <div class="d-flex align-start justify-between">
+                            <div class="d-flex align-start justify-start">
+                              <div class="ai_icon">
+                                <span class="material-symbols-rounded" >
+                                  logout
+                                </span>
+                              </div>
+                              <p class="entity_heading">AI Entity Extract</p>
+                            </div>
+                            <div class="review_buttons" (click)="entityVerified()">
+                              <button class="like_btn">
+                                <span class="material-symbols-rounded" style="font-size: 1.6rem;">
+                                  thumb_up
+                                </span>
+                              </button>
+                              <button class="dislike_btn" (click)="openEntityPopup(1)">
+                                <span class="material-symbols-rounded" style="font-size: 1.6rem;">
+                                  thumb_down
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-between">
+                            <div class="entity" title="{{transcript.comment}}">
+                              {{ entity?.entity.replace('_', ' ')}} : <span>{{entity?.text}}</span>
+                            </div>
+                            <div class="d-flex flex-column justify-end">
+                              <button class="copy_btn" (click)="copyContent({entity : entity.entity,text : entity.text})">
+                                <span class="mt-icon material-icons-round">
+                                  content_copy
+                                </span>
+                              </button>
+                              <span  class="copy_text_info">
+                                <span>{{copiedText}}</span>
+                              </span>
+                            </div>
+                          </div>
+                      </div>
+                    </ng-container>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </perfect-scrollbar>
+      </div> -->
+    <div class="content" *ngIf="actionShow">
+      <perfect-scrollbar class="ps">
+        <div class="content_inner">
+          <div style="position: relative;" *ngIf="type === 'directive'" class="scroll-container ps" fxFlex="auto" [perfectScrollbar]="config"
+                (psXReachEnd)="onScrollEvent($event)" (psYReachEnd)="onScrollEvent($event)"
+                (psXReachStart)="onScrollEvent($event)" (psYReachStart)="onScrollEvent($event)">
+                <div class="scrollable-content">
+                  <div *ngFor="let transcript of transcriptData">
+                    <ng-container *ngIf="transcript.actions != '' ">
+                      <div class="ai_entity">
+                        <div class="entity">
+                          <div class="mb-1">
+                            <div class="d-flex align-start justify-start flex-wrap">
+                              <div class="">
+                                <p>{{transcript.actions.action.Details}}</p>
+                                <!-- <p>LAXJFK</p> -->
+                              </div>
+                            </div>
+                            <!-- <span class="h_sep"></span>
+                            <div class="text-right">
+                              <p class="mb-1">Air Fare: USD 767.80</p>
+                              <p class="mb-1">Taxes: USD 39.80</p>
+                              <p class="mb-1">Airline Surcharge: USD 30.80</p>
+                            </div> -->
+                            <!-- <span class="h_sep"></span> -->
+                            <!-- <p class="mb-1 text-right"><span><strong>Total: USD 838.40</strong></span></p>                         -->
+                          </div>
+                          <div class="text-right mb-1">
+                            <button class="btn-info btn1" (click)="callToActionEvent(transcript.actions.action.call_to_action)">{{transcript.actions.action.call_to_action}}</button>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <!-- <div class="ai_entity">
+                    <div class="entity">
+                      <div class="mb-1">
+                        <div class="d-flex align-start justify-start flex-wrap">
+                          <div class="fl-details">
+                            <p>From</p>
+                            <p>LAXJFK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>To</p>
+                            <p>JFKLAX</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Flight</p>
+                            <p>DL 773</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>CL</p>
+                            <p>Q</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Date</p>
+                            <p>01Jul 2024</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Departure</p>
+                            <p>08:00</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>14:35</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Time</p>
+                            <p>-</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>1JUL</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Bags</p>
+                            <p>2pcs</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>ST</p>
+                            <p>OK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Seat</p>
+                            <p>17A</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Meal</p>
+                            <p>Veg</p>
+                          </div>
+                        </div>
+  
+                        <span class="h_sep"></span>
+  
+                        <div class="d-flex align-start justify-start flex-wrap">
+                          <div class="fl-details">
+                            <p>From</p>
+                            <p>LAXJFK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>To</p>
+                            <p>JFKLAX</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Flight</p>
+                            <p>DL 773</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>CL</p>
+                            <p>Q</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Date</p>
+                            <p>01Jul 2024</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Departure</p>
+                            <p>08:00</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>14:35</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Time</p>
+                            <p>-</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Arrival</p>
+                            <p>1JUL</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Bags</p>
+                            <p>2pcs</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>ST</p>
+                            <p>OK</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Seat</p>
+                            <p>17A</p>
+                          </div>
+                          <div class="fl-details">
+                            <p>Meal</p>
+                            <p>Veg</p>
+                          </div>
+                        </div>
+                        <span class="h_sep"></span>
+                        <div class="text-right">
+                          <p class="mb-1">Air Fare: USD 767.80</p>
+                          <p class="mb-1">Taxes: USD 39.80</p>
+                          <p class="mb-1">Airline Surcharge: USD 30.80</p>
+                        </div>
+                        <span class="h_sep"></span>
+                        <p class="mb-1 text-right"><span><strong>Total: USD 838.40</strong></span></p>
+                      </div>
+                      <div class="text-right mb-1">
+                        <button class="btn-info btn1">Book</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ai_entity">
+                    <div class="entity">
+                      <div class="mb-1">
+                        <div class="d-flex align-center justify-between">
+                          <div class="d-flex align-center justify-start" style="width: 35%;">
+                            <span class="material-symbols-outlined danger-text" style="font-size: 1.8rem;">
+                              picture_as_pdf
+                            </span>
+                            Travel Itininary
+                          </div>
+                          <div class="d-flex align-center justify-start" style="width: 40%;">
+                            <span class="material-symbols-outlined info-text" style="font-size: 1.8rem;">
+                              mail
+                            </span>
+                            asmith@abc.com
+                          </div>
+                          <div class="d-flex align-center justify-end" style="width: 25%;">
+                            <button class="btn-info btn2">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-1">
+                        <div class="d-flex align-center justify-between">
+                          <div class="d-flex align-center justify-start" style="width: 35%;">
+                            <span class="material-symbols-outlined danger-text" style="font-size: 1.8rem;">
+                              picture_as_pdf
+                            </span>
+                            Invoice
+                          </div>
+                          <div class="d-flex align-center justify-start" style="width: 40%;">
+                            <span class="material-symbols-outlined info-text" style="font-size: 1.8rem;">
+                              mail
+                            </span>
+                            asmith@abc.com
+                          </div>
+                          <div class="d-flex align-center justify-end" style="width: 25%;">
+                            <button class="btn-info btn2">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  -->
+  
+                </div>
+              </div>
+        </div>
+      </perfect-scrollbar>
+    </div>    
+  </div>
+  

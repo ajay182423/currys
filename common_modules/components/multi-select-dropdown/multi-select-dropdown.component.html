@@ -1,0 +1,28 @@
+<div [ngClass]="showPopup ? ('multi-select multi-select-' + controlSize + ' multi-select-focused') : 'multi-select multi-select-' + controlSize + ''" (click)='openPopup($event)'>
+  <div #selectedItemsContainer class="multi-selected-items" title={{selectedItems}}>{{selectedItems}}</div>
+  <div [ngClass]="'multi-select-popup multi-select-popup-' + controlSize + ''" *ngIf="showPopup">
+    <div class="items">
+      <ng-container *ngIf="optionList?.length > 0">
+        <div class="item select-all-item" *ngIf="optionList?.length > 1" (click)="selectAll($event)">
+          <label class="chk-container"> 
+            <input type="checkbox" [checked]="allItemsChecked" (change)="selectAll($event)">
+            <span class="checkmark"></span>
+          </label>
+          <p title="Select all">Select all</p>
+        </div>
+        <div class="item" *ngFor="let item of optionList" (click)="itemSelected(item,$event)">
+          <label class="chk-container">
+            <input type="checkbox" [checked]="item.isSelected" (change)="itemSelected(item,$event)">
+            <span class="checkmark"></span>
+          </label>
+          <p title={{item.name}}>{{item.name}}</p>
+        </div>
+      </ng-container>
+      <div *ngIf="optionList?.length < 1" class="data-not-found">
+        {{label}} list not found
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="'multi-select-arrow multi-select-arrow-' + controlSize + ''">
+  </div>
+</div>

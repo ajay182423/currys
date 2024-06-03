@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="left">
+    <folder-file-view [isListLoading]="isHelpDocListLoading" [mainTitle]="'Docs'" [otherTitle]="'Documentation'"
+      [folderFileList]="helpDocList" [fileUrl]="fileUrl" [folderSetupEndPoint]="helpDocApiBaseUrl + 'folder-setup'"
+      [fileSetupEndPoint]="helpDocApiBaseUrl + 'file-setup'" [showIcons]="true">
+    </folder-file-view>
+  </div>
+  <div class="right">
+    <app-page-header [title]="pageTitle" [showSaveButton]="editFile" [createNew]="editFile" [showSeparator]="editFile"
+      [createMenuItems]="createMenuItems" (createNewEvent)="receiveCreateMenuRequest($event)"
+      (saveButtonEvent)="receiveSaveButtonRequest($event)">
+    </app-page-header>
+    <div class="doc-content" @slideUp>
+      <perfect-scrollbar class="ps-page" *ngIf="helpTopicRecord">6
+        <div class="meta-data">
+          <div class="folder-info">
+            <ng-container *ngFor="let location of helpTopicRecord?.location">
+              <span class="folder">{{ location }}</span>
+              <span class="mt-icon material-icons-round">
+                chevron_right
+              </span>
+            </ng-container>
+          </div>
+          <span class="dot-separator"></span>
+          <span class="info">Updated by
+            <span class="main">{{ helpTopicRecord?.updatedBy }}</span> on
+            <span class="main">{{ helpTopicRecord?.lastWriteTime | date }}</span> at <span
+              class="main">{{ helpTopicRecord?.lastWriteTime | date:'shortTime' }}</span>
+          </span>
+        </div>
+        <div #helpDocElement [contentEditable]="editFile" class="content"
+          [innerHTML]="helpTopicRecord?.content | sanitizeHtml" (mouseup)="checkTextSelection()">
+
+        </div>
+      </perfect-scrollbar>
+      <div class="no-content">
+        <img src="{{ fileUrl + 'assets/no-content.svg' }}" alt="No Content">
+        <p>No help record found, click on plus button to create new</p>
+      </div>
+    </div>
+  </div>
+</div>

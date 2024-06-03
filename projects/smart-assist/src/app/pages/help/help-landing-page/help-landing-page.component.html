@@ -1,0 +1,46 @@
+<app-page-header [title]="'Help'" [showSeparator]="false" [bgColor]="'var(--bg-01)'">
+</app-page-header>
+<div class="help">
+  <div class="top-container">
+    <div class="bg-text">
+      <span>faq</span>
+      <span>?</span>
+    </div>
+    <div class="search-container">
+      <h2>How can we help?</h2>
+      <div class="search-box">
+        <div class="input-box">
+          <span class="mt-icon material-icons-round">
+            search
+          </span>
+          <input name="searchKeywords" class="app-textbox" placeholder="Search" type="text">
+        </div>
+        <button type="button" class="btn btn-big btn-primary search-btn" (click)="openHelpDoc(1)">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="empty-container" @slideUp>
+    <loading-spinner *ngIf="isLoading" [loaderClass]="'loading-up'" [loadingText]="''"></loading-spinner>
+    <div [ngClass]="!isLoading ? 'help-topics page-slideup dis-grd' : 'page-hidden'">
+      <div class="help-card" *ngFor="let topic of helpTopics">
+        <span class="bar"></span>
+        <div class="body">
+          <div class="title">
+            {{ topic.name }}
+          </div>
+          <div class="links">
+            <a *ngFor="let link of topic?.items">
+              {{ link.name }}
+            </a>
+          </div>
+          <div class="view-all-link">
+            <a>
+              View all
+            </a>
+          </div>
+        </div>
+      </div>
+      <page-no-content *ngIf="noContentOptions" [options]="noContentOptions"></page-no-content>
+    </div>
+  </div>
+</div>

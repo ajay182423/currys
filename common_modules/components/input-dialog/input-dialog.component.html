@@ -1,0 +1,62 @@
+<div class="dialog-wrapper">
+  <form (submit)="processInput()">
+    <div class="dialog">
+      <div class="dialog__header">
+        <h2>{{ formOptions?.formHeading }}</h2>
+        <button class="btn btn-icon btn-close" type="button" (click)="cancelPrompt()">
+          <span class="mt-icon material-icons-round">
+            close
+          </span>
+        </button>
+      </div>
+      <div class="dialog__main-wrapper">
+        <div class="dialog__main">
+          <form class="form-1-col"
+            [formGroup]='modalForm' (ngSubmit)="processInput()" autocomplete="off">
+            <ng-container *ngFor="let control of formOptions?.formControls;let index = index;">
+              <div *ngIf="!control.options?.hidden">
+                <!--Label-->
+                <label class="field-label" *ngIf="control.label !== '' && control.type !== 'disable-toggle'">
+                  {{ control.label }}
+                  <span *ngIf="control.validators?.required">*</span>
+                </label>
+
+                <!--Text-->
+                <text-input *ngIf="control.type === 'text'" [formControl]="modalForm.controls[control.name]"
+                  [label]="control.label" [autoFocus]="control?.options?.autofocus">
+                </text-input>
+
+                <!--Single Select-->
+                <single-select-dropdown *ngIf="control.type === 'single-select'"
+                  [formControl]="modalForm.controls[control.name]" [label]="control.label"
+                  [optionList]="control.options.singleSelectOptions" [autoFocus]="control?.options?.autofocus">
+                </single-select-dropdown>
+
+                <!--Textarea-->
+                <textarea-input *ngIf="control.type === 'text-area'" [formControl]="modalForm.controls[control.name]"
+                  [label]="control.label" [rows]='"4"' [columns]='"50"' [autoFocus]="control?.options?.autofocus">
+                </textarea-input>
+
+                <!--Disable Toggle-->
+                <toggle-input *ngIf="control.type === 'disable-toggle'" [formControl]="modalForm.controls[control.name]"
+                  [label]="control.label" [customStyle]="'disable-btn'" [autoFocus]="control?.options?.autofocus">
+                </toggle-input>
+              </div>
+            </ng-container>
+            <div class="form-btns">
+              <div>
+                <button *ngIf="formOptions?.secondaryAction" class="btn btn-transparent-bg" type="button"
+                  (click)="cancelPrompt()">
+                  {{ formOptions?.secondaryAction?.name }}
+                </button>
+                <button *ngIf="formOptions?.primaryAction" class="btn" type="submit">
+                  {{ formOptions?.primaryAction }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+<section class="error-page" @slideUp>
+  <div class="error-page__container">
+    <div class="error-page__content">
+      <h2>{{ errorData.code }}</h2>
+      <span>{{ errorData.title }}</span>
+      <p>{{ errorData.message }}</p>
+      <a style="display: none;" routerLink="/">
+        <button class="btn btn-l" type="button">{{ errorData.buttonText }}</button>
+      </a>
+    </div>
+  </div>
+</section>
+

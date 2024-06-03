@@ -1,0 +1,805 @@
+{
+  "agentId": 91,
+  "agentName": "Sabrina Quintal",
+  "managerId": 8,
+  "managerName": "Mayank Tiwatia",
+  "departmentName": "Orders",
+  "dashboardData": {
+    "card1" : {
+      "type" : "3column",
+      "title" : "Transaction Status",
+      "icon" : "receipt_long",
+      "borderColor" : "hsl(205, 100%, 50%)",
+      "content" : [
+          {
+              "label" : "Total",
+              "value" : 25,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "Completed",
+              "value" : 25,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          },
+          {
+              "label" : "Pending",
+              "value" : 0,
+              "fontColor" : "hsl(4, 89%, 55%)"
+          }
+      ]
+    },
+    "card2" : {
+      "type" : "2column",
+      "title" : "",
+      "icon" : "timer",
+      "borderColor" : "hsl(4, 89%, 55%)",
+      "content" : [
+          {
+              "label" : "Total Compliance Duration",
+              "value" : 8.4,
+              "fontColor" : "hsl(205, 100%, 50%)"
+          },
+          {
+              "label" : "AHT",
+              "value" : 4.84,
+              "fontColor" : "hsl(123, 40%, 46%)"
+          }
+      ]
+    },
+    "card3" : {
+      "type" : "1column",
+      "title" : "",
+      "icon" : "calculate",
+      "borderColor" : "hsl(36, 100%, 47%)",
+      "content" : [
+          {
+              "label" : "Quality",
+              "value" : 80.87,
+              "fontColor" : "hsl(36, 100%, 47%)"
+          }
+      ]
+    },
+    "card4": {
+      "type": "1column",
+      "title": "",
+      "icon": "",
+      "borderColor": "hsl(4, 89%, 55%)",
+      "content" : [
+        {
+            "query": "Not Resolved",
+            "value": 5
+        },
+        {
+            "query": "Resolved",
+            "value": 109
+        }
+    ]
+    },
+    "widget1" : {
+      "tab1": {
+        "title" : "ID&V",
+        "content": {
+          "type": "line",
+          "body" : {
+            "chartTitle" : "",
+            "legends" : [],
+            "data" : [
+              {
+                  "status": "Pass",
+                  "day": 24,
+                  "month": 11,
+                  "value": 7
+              },
+              {
+                  "status": "Pass",
+                  "day": 23,
+                  "month": 11,
+                  "value": 3
+              },
+              {
+                  "status": "Pass",
+                  "day": 22,
+                  "month": 11,
+                  "value": 11
+              },
+              {
+                  "status": "Pass",
+                  "day": 21,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Pass",
+                  "day": 19,
+                  "month": 11,
+                  "value": 2
+              },
+              {
+                  "status": "Pass",
+                  "day": 18,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Pass",
+                  "day": 17,
+                  "month": 11,
+                  "value": 6
+              },
+              {
+                  "status": "Pass",
+                  "day": 16,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Fail",
+                  "day": 24,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 23,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Fail",
+                  "day": 22,
+                  "month": 11,
+                  "value": 6
+              },
+              {
+                  "status": "Fail",
+                  "day": 21,
+                  "month": 11,
+                  "value": 17
+              },
+              {
+                  "status": "Fail",
+                  "day": 20,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 19,
+                  "month": 11,
+                  "value": 12
+              },
+              {
+                  "status": "Fail",
+                  "day": 18,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Fail",
+                  "day": 17,
+                  "month": 11,
+                  "value": 15
+              },
+              {
+                  "status": "Fail",
+                  "day": 16,
+                  "month": 11,
+                  "value": 8
+              },
+              {
+                  "status": "Exception",
+                  "day": 24,
+                  "month": 11,
+                  "value": 2
+              },
+              {
+                  "status": "Exception",
+                  "day": 23,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 22,
+                  "month": 11,
+                  "value": 14
+              },
+              {
+                  "status": "Exception",
+                  "day": 21,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Exception",
+                  "day": 19,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Exception",
+                  "day": 18,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Exception",
+                  "day": 17,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Exception",
+                  "day": 16,
+                  "month": 11,
+                  "value": 9
+              }
+            ]
+          }
+        }
+      },
+      "tab2": {
+        "title" : "PCI DSS",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data": [
+              {
+                  "status": "Pass",
+                  "day": 24,
+                  "month": 11,
+                  "value": 10
+              },
+              {
+                  "status": "Pass",
+                  "day": 23,
+                  "month": 11,
+                  "value": 1
+              },
+              {
+                  "status": "Pass",
+                  "day": 22,
+                  "month": 11,
+                  "value": 11
+              },
+              {
+                  "status": "Pass",
+                  "day": 21,
+                  "month": 11,
+                  "value": 9
+              },
+              {
+                  "status": "Pass",
+                  "day": 19,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Pass",
+                  "day": 18,
+                  "month": 11,
+                  "value": 5
+              },
+              {
+                  "status": "Pass",
+                  "day": 17,
+                  "month": 11,
+                  "value": 4
+              },
+              {
+                  "status": "Pass",
+                  "day": 16,
+                  "month": 11,
+                  "value": 6
+              }
+            ]
+          }
+        }
+      },
+      "tab3": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "countResult": 77
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 195
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 52
+              }
+            ]
+          }
+        }
+      }
+    },
+    "widget2":{
+      "tab1": {
+        "title": "Days",
+        "content": {
+          "type": "bar",
+          "body" : {
+            "chartTitle" : "No. of Transactions",
+            "legends" : ["20 Nov","16 Nov", "17 Nov", "18 Nov","19 Nov","21 Nov","22 Nov","22 Nov", "23 Nov" ],
+            "data" : [
+                    {
+                        "name" : "Completed",
+                        "values" : [3,1,5,2,4,3,1,4,2],
+                        "bg" : "hsl(123, 40%, 46%)"
+                    },
+                    {
+                        "name" : "Pending",
+                        "values" : [0, 1, 0,  0, 0, 0, 0, 1, 0],
+                        "bg" : "hsl(4, 89%, 55%)"
+                    }
+                ]
+            }
+        }
+      },
+      "tab2": {
+        "title": "Months",
+        "content": {
+          "type": "bar",
+          "body" : {
+            "chartTitle" : "No. of Transactions",
+            "legends" : ["Sep 2022", "Oct 2022", "Nov 2022", "Dec 2022"],
+            "data" : [
+                    {
+                        "name" : "Completed",
+                        "values" : [2079, 2872, 2400, 3120],
+                        "bg" : "hsl(123, 40%, 46%)"
+                    },
+                    {
+                        "name" : "Pending",
+                        "values" : [2, 24, 29, 6],
+                        "bg" : "hsl(4, 89%, 55%)"
+                    }
+                ]
+            }
+        }
+      }
+    },
+    "widget3": {
+      "tab1": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "countResult": 48
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 145
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      },
+      "tab2": {
+        "title" : "section",
+        "content": {
+          "type": "line",
+          "body": {
+            "chartTitle" : "",
+            "legends": [],
+            "data" : [
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 1,
+                  "month": 11,
+                  "year": 2023,
+                  "countResult": 48
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 21,
+                  "month": 10,
+                  "year": 2023,
+                  "countResult": 90
+              },
+              {
+                  "sectionId": 10,
+                  "section": "ID&V",
+                  "day": 30,
+                  "month": 9,
+                  "year": 2023,
+                  "countResult": 145
+              },
+              {
+                  "sectionId": 11,
+                  "section": "PCI-DSS",
+                  "day": 30,
+                  "month": 9,
+                  "year": 2023,
+                  "countResult": 89
+              },
+              {
+                  "sectionId": 12,
+                  "section": "Phrase/Text detection",
+                  "day": 30,
+                  "month": 9,
+                  "year": 2023,
+                  "countResult": 32
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tableData": {
+      "content":{
+        "body":{
+          "data": [
+            {
+                "id": 518,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "00bbefde80f71b5f33277ba0cea83b62",
+                "callDuration": "03:54",
+                "quality": 88.04,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2858,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "00bbefde80f71b5f33277ba0cea83b62_2",
+                "callDuration": "03:54",
+                "quality": 88.04,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1221,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "03febe58f2e332becc9d7d5ddd235506",
+                "callDuration": "08:14",
+                "quality": 32.86,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 46,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2098,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20_1",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2424,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "061308bd85408491f0397b5d91bdfb20_2",
+                "callDuration": "06:00",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 391,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "0638ae8cfb833bcbdfb794dd758a0d19",
+                "callDuration": "06:00",
+                "quality": 21.43,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 486,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "10129ad358dc79d81ff5d945189a294c",
+                "callDuration": "03:19",
+                "quality": 89.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2826,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "10129ad358dc79d81ff5d945189a294c_2",
+                "callDuration": "03:19",
+                "quality": 64.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 502,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "115fd649a5f89db7158bd8ac913dd1ca",
+                "callDuration": "02:56",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2842,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "115fd649a5f89db7158bd8ac913dd1ca_2",
+                "callDuration": "02:56",
+                "quality": 92.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 499,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "15ee1f6849e9510eb2a2b1f81a94f152",
+                "callDuration": "02:48",
+                "quality": 85.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2839,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "15ee1f6849e9510eb2a2b1f81a94f152_2",
+                "callDuration": "02:48",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-18T00:00:00",
+                "auditedDate": "2022-11-18T00:00:00"
+            },
+            {
+                "id": 1035,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "19b64b586f74471435602dc3d3064f0c",
+                "callDuration": "04:03",
+                "quality": 82.35,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1217,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "221846437e4ddc4a42288fff060cc357",
+                "callDuration": "03:56",
+                "quality": 78.57,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-22T00:00:00",
+                "auditedDate": "2022-11-22T00:00:00"
+            },
+            {
+                "id": 1758,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "26156f92a5f0111759b30d3dca2711ff",
+                "callDuration": "05:27",
+                "quality": 95.71,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-24T00:00:00",
+                "auditedDate": "2022-11-24T00:00:00"
+            },
+            {
+                "id": 563,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "27bd4d0598236f16e5ebeb7d746ef5fc",
+                "callDuration": "06:13",
+                "quality": 100,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-21T00:00:00",
+                "auditedDate": "2022-11-21T00:00:00"
+            },
+            {
+                "id": 2150,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "712d3e83bfd88e0f3b59400aae360f08_1",
+                "callDuration": "04:29",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2476,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "712d3e83bfd88e0f3b59400aae360f08_2",
+                "callDuration": "04:29",
+                "quality": 74.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 102,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac",
+                "callDuration": "03:38",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2152,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac_1",
+                "callDuration": "03:38",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2478,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "723ebb2f11a1fe35a19656aa29ed29ac_2",
+                "callDuration": "03:38",
+                "quality": 88.24,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            },
+            {
+                "id": 42,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "72e726b0bcc2f40a6752f4f8facd9409",
+                "callDuration": "06:00",
+                "quality": 74.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-19T00:00:00",
+                "auditedDate": "2022-11-19T00:00:00"
+            },
+            {
+                "id": 2094,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "72e726b0bcc2f40a6752f4f8facd9409_1",
+                "callDuration": "06:00",
+                "quality": 94.12,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-16T00:00:00",
+                "auditedDate": "2022-11-10T00:00:00"
+            },
+            {
+                "id": 2420,
+                "agentId": 74,
+                "agentName": "Sabrina Quintal",
+                "transactionId": "72e726b0bcc2f40a6752f4f8facd9409_2",
+                "callDuration": "06:00",
+                "quality": 94.56,
+                "flag": "Reviewed",
+                "status": "COMPLETED",
+                "callDate": "2022-11-17T00:00:00",
+                "auditedDate": "2022-11-17T00:00:00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

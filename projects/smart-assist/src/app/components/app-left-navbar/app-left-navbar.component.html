@@ -1,0 +1,87 @@
+<nav class="navbar"
+[class.expand-on-hover]="expandOnHover"
+[class.keep-navbar-expanded]="keepNavbarExpanded">
+  <!--Hamburger Menu-->
+  <!-- <a class="nav-ham-bur-icon" (click)="openMobileHiddenMenu()">
+    <span class="mt-icon material-icons-round">
+      menu
+    </span>
+  </a>
+  <div class="nav-logo">
+    <a class="desktop" href="#">
+      <img src="{{ fileUrl + 'assets/exl_logo_rgb_orange_pos_94.png'}}" alt="logo">
+      <span></span>
+      <div class="appName">
+        <h4>{{appName1}}</h4>
+        <h1>{{appName2}}</h1>
+      </div>
+    </a>
+    <app-logo class="mobile" [logoImgUrl]="fileUrl" [appName]="appName1 + appName2 "></app-logo>
+  </div> 
+  <span class="nav-separator"></span> -->
+  <div class="menu">
+    <div class="menu-item" *ngFor="let item of menuItems">
+      <ng-container *ngIf="item?.subMenu?.length === 0">
+        <a *canAccessPage="item.id" class="menu-link" [routerLink]=[item.link] routerLinkActive='menu-link-active' title="{{ item.name }}">
+          <div class="menu-icon">
+            <span class="mt-icon material-icons-round">
+              {{ item.icon }}
+            </span>
+          </div>
+          <span class="menu-name">{{ item.name }}</span>
+        </a>
+      </ng-container>
+      <ng-container *ngIf="item?.subMenu?.length > 0">
+        <div *canAccessPage="item.id" class="link-with-sub-links" [class.show-sub-links]="item?.showSubMenu">
+          <a class="menu-link" (click)="item.showSubMenu = !item.showSubMenu" [style.background-color]="item?.showSubMenu ? 'var(--bg-02)' : ''">
+            <div class="menu-icon">
+              <span class="mt-icon material-icons-round">
+                {{ item.icon }}
+              </span>
+            </div>
+            <span class="menu-name">{{ item.name }}</span>
+            <span class="drop-icon"></span>
+          </a>
+          <div *ngIf="item?.showSubMenu" class="sub-menu" >
+            <ng-container *ngFor="let subItem of item?.subMenu">
+              <a class="sub-menu-link" [routerLink]=[subItem.link] routerLinkActive='sub-menu-link-active' title="{{ subItem.name }}">
+                <div class="menu-icon">
+                  <span class="mt-icon material-icons-round">
+                    {{ subItem.icon }}
+                  </span>
+                </div>
+                <span class="sub-menu-name">{{ subItem.name }}</span>
+              </a>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- <a class="nav-logo-name" href="#">
+    <div class="appName">
+      <h4>{{appName1}}</h4>
+      <h1>{{appName2}}</h1>
+    </div>
+  </a> -->
+  <!-- <span class="nav-separator"></span> -->
+  
+  <div class="last-link-container" style="display: none;">
+    <!-- <a class="help-link" routerLink="/help/" routerLinkActive='menu-link-active'>
+      <div class="link-icon">
+        <span class="mt-icon material-icons-round">
+          help
+        </span>
+      </div>
+      <span class="link-name">Help</span>
+    </a> -->
+    <a class="account-link" (click)="openUserAccountInMobile()">
+      <div class="link-icon">
+        <span class="mt-icon material-icons-round">
+          account_circle
+        </span>
+      </div>
+      <span class="link-name">Account</span>
+    </a>
+  </div>
+</nav>
